@@ -40,11 +40,19 @@ struct TKAHuman {
 typedef struct TKAHuman TKAHuman;
 
 extern
-TKAHuman *TKAHumanCreate(TKAString *name, uint8_t age, TKAGender gender);
-
+TKAHuman *TKAHumanCreateWithNameString(TKAString *name, uint8_t age, TKAGender gender);
 
 extern
-void TKAHumanSetName(TKAHuman *human, TKAString *name);
+TKAHuman *TKAHumanCreateWithNameChar(char *name, uint8_t age, TKAGender gender);
+
+extern
+TKAHuman *TKAHumanCreate(uint8_t age, TKAGender gender);
+
+extern
+void TKAHumanChangeName(TKAHuman *human, char *name);
+
+//extern
+//void TKAHumanSetName(TKAHuman *human, TKAString *name);
 
 extern
 void TKAHumanSetAge(TKAHuman *human, uint8_t age);
@@ -71,25 +79,16 @@ extern
 TKAHuman *TKAHumanGetPartner(TKAHuman *human);
 
 extern
-void TKAHumanSetPartner(TKAHuman *human1, TKAHuman *human2);
-
-extern
 TKAHuman *TKAHumanGetFather(TKAHuman *human);
-
-extern
-void TKAHumanSetFather(TKAHuman *human1, TKAHuman *human2);
 
 extern
 TKAHuman *TKAHumanGetMother(TKAHuman *human);
 
 extern
-void TKAHumanSetMother(TKAHuman *human1, TKAHuman *human2);
-
-extern
 TKAArray *TKAHumanGetChildren(TKAHuman *human);
 
-extern
-void TKAHumanSetChildren(TKAHuman *human, TKAArray *children);
+//extern
+//void TKAHumanSetChildren(TKAHuman *human, TKAArray *children);
 
 extern
 TKAHuman *TKAHumanBorn(TKAHuman *father, TKAHuman *mother, TKAGender gender);
@@ -101,10 +100,7 @@ extern
 void TKAHumanMarry(TKAHuman *humanMale, TKAHuman *humanFemale);
 
 extern
-void TKAHumanDivorcePartner(TKAHuman *human);
-
-extern
-void TKAHumanDivorce(TKAHuman *partner1, TKAHuman *partner2);
+void TKAHumanDivorce(TKAHuman *human);
 
 extern
 void TKAHumanRemoveChild(TKAHuman *parent, TKAHuman *child);

@@ -11,6 +11,8 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
+const uint64_t uint64ReturnError  = 1877706843543542525;
+
 #pragma mark -
 #pragma mark Privat Implementations
 
@@ -24,6 +26,12 @@ void __TKAStringDeallocate(TKAString *string) {
 #pragma mark Public Implementations
 
 void TKAStringSetLength(TKAString *string, uint64_t length) {
+    if (0 == length) {
+        free(string->_data);
+        string->_data = NULL;
+        string->_length = length;
+    }
+    
     if (string->_length != length) {
         string->_data = realloc(string->_data, length * sizeof(*string->_data));
         
@@ -37,7 +45,7 @@ void TKAStringSetLength(TKAString *string, uint64_t length) {
 
 uint64_t TKAStringGetLength(TKAString *string) {
     if (NULL == string) {
-        return 18446744073709551615;//??
+        return uint64ReturnError ;//??
     }
     
     return string->_length;
@@ -46,6 +54,9 @@ uint64_t TKAStringGetLength(TKAString *string) {
 void TKAStringSetData(TKAString *string, char *data) {
     if (NULL == string) {
         return;
+    }
+    if (NULL == data) {
+        TKAStringSetLength(string, 0);
     }
     
     if (string->_data != data) {
@@ -57,13 +68,12 @@ void TKAStringSetData(TKAString *string, char *data) {
         if (NULL != data) {
             TKAStringCopyData(string, data);
         }
-        if (NULL == data) {
-            TKAStringSetLength(string, 0);
-        }
+//        if (NULL == data) {
+//            TKAStringSetLength(string, 0);
+//        }
     }
     
 }
-
 
 void TKAStringCopyData(TKAString *string, char *data) {
     uint64_t lengthData = strlen(data);

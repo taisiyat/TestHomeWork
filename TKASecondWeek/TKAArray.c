@@ -12,6 +12,8 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
+const uint16_t uint16ReturnError  = 65535;
+
 #pragma mark -
 #pragma mark Privat Implementations
 
