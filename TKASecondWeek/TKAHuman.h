@@ -35,12 +35,13 @@ struct TKAHuman {
     
     uint8_t _age;
     TKAGender _gender;
-    uint8_t _countChildren;
+    uint8_t _childCount;
 };
 typedef struct TKAHuman TKAHuman;
 
 extern
 TKAHuman *TKAHumanCreate(TKAString *name, uint8_t age, TKAGender gender);
+
 
 extern
 void TKAHumanSetName(TKAHuman *human, TKAString *name);
@@ -61,10 +62,10 @@ extern
 TKAGender TKAHumanGetGender(TKAHuman *human);
 
 extern
-uint8_t TKAHumanGetCountChildren(TKAHuman *human);
+uint8_t TKAHumanGetChildCount(TKAHuman *human);
 
 extern
-void TKAHumanSetCountChildren(TKAHuman *human, uint8_t count);
+void TKAHumanSetChildCount(TKAHuman *human, uint8_t count);
 
 extern
 TKAHuman *TKAHumanGetPartner(TKAHuman *human);

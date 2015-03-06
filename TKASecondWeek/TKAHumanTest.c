@@ -29,7 +29,7 @@ void TKAHumanOutput(TKAHuman *human) {
     printf(" ");
     printf("age = %d, ",TKAHumanGetAge(human));
     printf("gender = %d, ", TKAHumanGetGender(human));
-    printf("count children = %d, ", TKAHumanGetCountChildren(human));
+    printf("count children = %d, ", TKAHumanGetChildCount(human));
     
     if (NULL != TKAHumanGetPartner(human)) {
         printf("partner = ");

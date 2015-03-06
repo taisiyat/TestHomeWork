@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
 //    TKAArrayStructTestMain();
 
   TKAHumanTestMain();
-    TKAStringTestMain();
+//    TKAStringTestMain();
 //  TKAArrayTestMain();
 
     
