@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A45C6251A9335D800025837 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C6241A9335D800025837 /* main.c */; };
+		8A4727601AA5C50E00CE0FE9 /* TKAHuman.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D721AA328040092407B /* TKAHuman.c */; };
+		8A4727611AA5C98100CE0FE9 /* TKAHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D781AA3285E0092407B /* TKAHumanTest.c */; };
+		8A4DD5461A962529003EAB27 /* TKAObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DD5441A962529003EAB27 /* TKAObject.c */; };
+		8AB9F2131AA58BBD00DD56C1 /* TKAArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D6F1AA327E50092407B /* TKAArray.c */; };
+		8AE27D771AA328240092407B /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D751AA328240092407B /* TKAString.c */; };
+		8AE27D7D1AA328850092407B /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D7B1AA328850092407B /* TKAStringTest.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A45C61F1A9335D800025837 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8A45C6211A9335D800025837 /* TKASecondWeek */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKASecondWeek; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A45C6241A9335D800025837 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		8A45C62B1A93363E00025837 /* TKAHumanStruct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHumanStruct.c; sourceTree = "<group>"; };
+		8A45C62C1A93363E00025837 /* TKAHumanStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanStruct.h; sourceTree = "<group>"; };
+		8A45C62F1A93394300025837 /* TKAHumanStructTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHumanStructTest.c; sourceTree = "<group>"; };
+		8A45C6301A93394300025837 /* TKAHumanStructTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanStructTest.h; sourceTree = "<group>"; };
+		8A48CDF11A98DE04002B0B9E /* TKAStringStruct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringStruct.c; sourceTree = "<group>"; };
+		8A48CDF21A98DE04002B0B9E /* TKAStringStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringStruct.h; sourceTree = "<group>"; };
+		8A48CDF41A990A68002B0B9E /* TKAArrayStruct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArrayStruct.c; sourceTree = "<group>"; };
+		8A48CDF51A990A68002B0B9E /* TKAArrayStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayStruct.h; sourceTree = "<group>"; };
+		8A4DD5441A962529003EAB27 /* TKAObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAObject.c; sourceTree = "<group>"; };
+		8A4DD5451A962529003EAB27 /* TKAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAObject.h; sourceTree = "<group>"; };
+		8A5B10B81AA1F176005B899F /* TKAStringStructTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringStructTest.c; sourceTree = "<group>"; };
+		8A5B10B91AA1F176005B899F /* TKAStringStructTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringStructTest.h; sourceTree = "<group>"; };
+		8A5B10BB1AA1F1B3005B899F /* TKAArrayStructTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArrayStructTest.c; sourceTree = "<group>"; };
+		8A5B10BC1AA1F1B3005B899F /* TKAArrayStructTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayStructTest.h; sourceTree = "<group>"; };
+		8AE27D6F1AA327E50092407B /* TKAArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArray.c; sourceTree = "<group>"; };
+		8AE27D701AA327E50092407B /* TKAArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArray.h; sourceTree = "<group>"; };
+		8AE27D721AA328040092407B /* TKAHuman.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHuman.c; sourceTree = "<group>"; };
+		8AE27D731AA328040092407B /* TKAHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHuman.h; sourceTree = "<group>"; };
+		8AE27D751AA328240092407B /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAString.c; sourceTree = "<group>"; };
+		8AE27D761AA328240092407B /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAString.h; sourceTree = "<group>"; };
+		8AE27D781AA3285E0092407B /* TKAHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHumanTest.c; sourceTree = "<group>"; };
+		8AE27D791AA3285E0092407B /* TKAHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanTest.h; sourceTree = "<group>"; };
+		8AE27D7B1AA328850092407B /* TKAStringTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringTest.c; sourceTree = "<group>"; };
+		8AE27D7C1AA328850092407B /* TKAStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringTest.h; sourceTree = "<group>"; };
+		8AE27D7E1AA328B10092407B /* TKAArrayTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArrayTest.c; sourceTree = "<group>"; };
+		8AE27D7F1AA328B10092407B /* TKAArrayTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayTest.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A45C61E1A9335D800025837 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A45C6181A9335D800025837 = {
+			isa = PBXGroup;
+			children = (
+				8A45C6231A9335D800025837 /* TKASecondWeek */,
+				8A45C6221A9335D800025837 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8A45C6221A9335D800025837 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A45C6211A9335D800025837 /* TKASecondWeek */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A45C6231A9335D800025837 /* TKASecondWeek */ = {
+			isa = PBXGroup;
+			children = (
+				8A45C6241A9335D800025837 /* main.c */,
+				8AD7C9D61A9F58FD00EC35D8 /* TKAHumanStruct */,
+				8AD7C9D71A9F592F00EC35D8 /* TKAHumanObject */,
+			);
+			path = TKASecondWeek;
+			sourceTree = "<group>";
+		};
+		8A5B10BE1AA1F1C8005B899F /* TKAStructTest */ = {
+			isa = PBXGroup;
+			children = (
+				8A45C62F1A93394300025837 /* TKAHumanStructTest.c */,
+				8A45C6301A93394300025837 /* TKAHumanStructTest.h */,
+				8A5B10B81AA1F176005B899F /* TKAStringStructTest.c */,
+				8A5B10B91AA1F176005B899F /* TKAStringStructTest.h */,
+				8A5B10BB1AA1F1B3005B899F /* TKAArrayStructTest.c */,
+				8A5B10BC1AA1F1B3005B899F /* TKAArrayStructTest.h */,
+			);
+			name = TKAStructTest;
+			sourceTree = "<group>";
+		};
+		8AD7C9D61A9F58FD00EC35D8 /* TKAHumanStruct */ = {
+			isa = PBXGroup;
+			children = (
+				8A45C62B1A93363E00025837 /* TKAHumanStruct.c */,
+				8A45C62C1A93363E00025837 /* TKAHumanStruct.h */,
+				8A48CDF11A98DE04002B0B9E /* TKAStringStruct.c */,
+				8A48CDF21A98DE04002B0B9E /* TKAStringStruct.h */,
+				8A48CDF41A990A68002B0B9E /* TKAArrayStruct.c */,
+				8A48CDF51A990A68002B0B9E /* TKAArrayStruct.h */,
+				8A5B10BE1AA1F1C8005B899F /* TKAStructTest */,
+			);
+			name = TKAHumanStruct;
+			sourceTree = "<group>";
+		};
+		8AD7C9D71A9F592F00EC35D8 /* TKAHumanObject */ = {
+			isa = PBXGroup;
+			children = (
+				8A4DD5441A962529003EAB27 /* TKAObject.c */,
+				8A4DD5451A962529003EAB27 /* TKAObject.h */,
+				8AE27D6F1AA327E50092407B /* TKAArray.c */,
+				8AE27D701AA327E50092407B /* TKAArray.h */,
+				8AE27D721AA328040092407B /* TKAHuman.c */,
+				8AE27D731AA328040092407B /* TKAHuman.h */,
+				8AE27D751AA328240092407B /* TKAString.c */,
+				8AE27D761AA328240092407B /* TKAString.h */,
+				8AE27D811AA328BF0092407B /* TKAObjectTest */,
+			);
+			name = TKAHumanObject;
+			sourceTree = "<group>";
+		};
+		8AE27D811AA328BF0092407B /* TKAObjectTest */ = {
+			isa = PBXGroup;
+			children = (
+				8AE27D781AA3285E0092407B /* TKAHumanTest.c */,
+				8AE27D791AA3285E0092407B /* TKAHumanTest.h */,
+				8AE27D7B1AA328850092407B /* TKAStringTest.c */,
+				8AE27D7C1AA328850092407B /* TKAStringTest.h */,
+				8AE27D7E1AA328B10092407B /* TKAArrayTest.c */,
+				8AE27D7F1AA328B10092407B /* TKAArrayTest.h */,
+			);
+			name = TKAObjectTest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A45C6201A9335D800025837 /* TKASecondWeek */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A45C6281A9335D800025837 /* Build configuration list for PBXNativeTarget "TKASecondWeek" */;
+			buildPhases = (
+				8A45C61D1A9335D800025837 /* Sources */,
+				8A45C61E1A9335D800025837 /* Frameworks */,
+				8A45C61F1A9335D800025837 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKASecondWeek;
+			productName = TKASecondWeek;
+			productReference = 8A45C6211A9335D800025837 /* TKASecondWeek */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A45C6191A9335D800025837 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = TKhomeWork;
+				TargetAttributes = {
+					8A45C6201A9335D800025837 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 8A45C61C1A9335D800025837 /* Build configuration list for PBXProject "TKASecondWeek" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8A45C6181A9335D800025837;
+			productRefGroup = 8A45C6221A9335D800025837 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A45C6201A9335D800025837 /* TKASecondWeek */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A45C61D1A9335D800025837 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A4727601AA5C50E00CE0FE9 /* TKAHuman.c in Sources */,
+				8A4727611AA5C98100CE0FE9 /* TKAHumanTest.c in Sources */,
+				8A4DD5461A962529003EAB27 /* TKAObject.c in Sources */,
+				8A45C6251A9335D800025837 /* main.c in Sources */,
+				8AE27D771AA328240092407B /* TKAString.c in Sources */,
+				8AE27D7D1AA328850092407B /* TKAStringTest.c in Sources */,
+				8AB9F2131AA58BBD00DD56C1 /* TKAArray.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8A45C6261A9335D800025837 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8A45C6271A9335D800025837 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8A45C6291A9335D800025837 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8A45C62A1A9335D800025837 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A45C61C1A9335D800025837 /* Build configuration list for PBXProject "TKASecondWeek" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A45C6261A9335D800025837 /* Debug */,
+				8A45C6271A9335D800025837 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A45C6281A9335D800025837 /* Build configuration list for PBXNativeTarget "TKASecondWeek" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A45C6291A9335D800025837 /* Debug */,
+				8A45C62A1A9335D800025837 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A45C6191A9335D800025837 /* Project object */;
+}
