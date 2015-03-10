@@ -22,12 +22,10 @@ int main(int argc, const char * argv[]) {
 //    TKAStringStructTestMain();
 //    TKAArrayStructTestMain();
 
-  TKAHumanTestMain();
+    TKAHumanTestMain();
 //    TKAStringTestMain();
-//  TKAArrayTestMain();
-
-    
-    
+//    TKAArrayTestMain();
+   
     printf("Hello, World!\n");
     
     return 0;

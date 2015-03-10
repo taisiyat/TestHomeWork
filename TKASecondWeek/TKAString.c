@@ -24,6 +24,12 @@ void __TKAStringDeallocate(TKAString *string) {
 #pragma mark Public Implementations
 
 void TKAStringSetLength(TKAString *string, uint64_t length) {
+    if (0 == length) {
+        free(string->_data);
+        string->_data = NULL;
+        string->_length = length;
+    }
+    
     if (string->_length != length) {
         string->_data = realloc(string->_data, length * sizeof(*string->_data));
         
@@ -37,7 +43,7 @@ void TKAStringSetLength(TKAString *string, uint64_t length) {
 
 uint64_t TKAStringGetLength(TKAString *string) {
     if (NULL == string) {
-        return 18446744073709551615;//??
+        return UINT64_MAX ;
     }
     
     return string->_length;
@@ -46,6 +52,9 @@ uint64_t TKAStringGetLength(TKAString *string) {
 void TKAStringSetData(TKAString *string, char *data) {
     if (NULL == string) {
         return;
+    }
+    if (NULL == data) {
+        TKAStringSetLength(string, 0);
     }
     
     if (string->_data != data) {
@@ -57,13 +66,10 @@ void TKAStringSetData(TKAString *string, char *data) {
         if (NULL != data) {
             TKAStringCopyData(string, data);
         }
-        if (NULL == data) {
-            TKAStringSetLength(string, 0);
-        }
+
     }
     
 }
-
 
 void TKAStringCopyData(TKAString *string, char *data) {
     uint64_t lengthData = strlen(data);
@@ -74,7 +80,6 @@ void TKAStringCopyData(TKAString *string, char *data) {
 char *TKAStringGetData(TKAString *string) {
     if (NULL == string) {
         return NULL;
-        //NULL;//65535 //""??
     }
 
     return string->_data;

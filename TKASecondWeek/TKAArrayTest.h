@@ -10,18 +10,12 @@
 #define __TKASecondWeek__TKAArrayTest__
 
 #include <stdio.h>
-#pragma mark -
-#pragma mark Privat Declarations
+#include "TKAArray.h"
+#include "TKAHuman.h"
+#include "TKAString.h"
+#include "TKAHumanTest.h"
 
-#pragma mark -
-#pragma mark Public Declarations
-
-#pragma mark -
-#pragma mark Privat Implementations
-
-#pragma mark -
-#pragma mark Public Implementations
-
+extern
 void TKAArrayTestMain();
 
 #endif /* defined(__TKASecondWeek__TKAArrayTest__) */

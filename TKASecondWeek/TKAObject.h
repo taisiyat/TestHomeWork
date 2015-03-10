@@ -22,6 +22,7 @@ typedef struct TKAObject TKAObject;
 
 extern
 void *__TKAObjectCreate(size_t objectSize, TKADeallocateCallback deallocateCallback);
+
 #define TKAObjectCreate(type)\
     __TKAObjectCreate(sizeof(type), (TKADeallocateCallback)__##type##Deallocate)
 

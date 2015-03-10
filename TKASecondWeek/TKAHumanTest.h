@@ -16,6 +16,9 @@
 #include "TKAStringTest.h"
 
 extern
+void TKAHumanOutput(TKAHuman *human);
+
+extern
 void TKAHumanTestMain();
 
 #endif /* defined(__TKASecondWeek__TKAHumanTest__) */
