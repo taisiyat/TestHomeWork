@@ -16,13 +16,13 @@ static
 void TKAHumanTest();
 
 static
-void TKAHumanOutput(TKAHuman *human);
-
-static
 void TKAHumanCreatTest();
 
 static
 void TKAHumanMarryDivorceTest();
+
+static
+void TKAHumanChildBirthTest();
 
 static
 void TKAHumanChildTest();
@@ -32,45 +32,6 @@ void TKAHumanChildTest();
 
 #pragma mark -
 #pragma mark Privat Implementations
-
-void TKAHumanOutput(TKAHuman *human) {
-    
-    TKAStringOutput(TKAHumanGetName(human));
-    printf(" ");
-    printf("age = %d, ",TKAHumanGetAge(human));
-    printf("gender = %d, ", TKAHumanGetGender(human));
-    printf("count children = %d, ", TKAHumanGetChildCount(human));
-    
-    if (NULL != TKAHumanGetPartner(human)) {
-        printf("partner = ");
-        TKAStringOutput(TKAHumanGetName(TKAHumanGetPartner(human)));
-        printf(", ");
-    }
-    
-    if (NULL != TKAHumanGetFather(human)) {
-        printf("father = ");
-        TKAStringOutput(TKAHumanGetName(TKAHumanGetFather(human)));
-        printf(", ");
-    }
-    
-    if (NULL != TKAHumanGetMother(human)) {
-        printf("motner = ");
-        TKAStringOutput(TKAHumanGetName(TKAHumanGetMother(human)));
-        printf(", ");
-    }
-    
-    if (NULL != TKAHumanGetChildren(human)) {
-        printf("children: ");
-        TKAArrayOutput(TKAHumanGetChildren(human));
-    }
-    
-    printf(" \n");
-    printf("reference count = %llu, ", TKAObjectGetReferenceCount(human));
-    printf("reference count name = %llu, ", TKAObjectGetReferenceCount(human->_name));
-    printf("reference count array = %llu, ", TKAObjectGetReferenceCount(human->_children));
-    
-    printf(" \n");
-}
 
 void TKAHumanCreatTest() {
     TKAHuman *man1 = TKAHumanCreateWithNameChar("man1", 35, TKAMale);
@@ -95,6 +56,9 @@ void TKAHumanCreatTest() {
     
     TKAHumanChangeName(woman1, "woman1name2");
     TKAHumanOutput(woman1);
+    assert(1 == TKAObjectGetReferenceCount(man1->_name));
+    assert(1 == TKAObjectGetReferenceCount(man1->_children));
+    assert(1 == TKAObjectGetReferenceCount(man1));
     
 //    TKAHumanChangeName(man1, "man1name2");
 //    TKAHumanOutput(man1);
@@ -203,6 +167,74 @@ void TKAHumanMarryDivorceTest() {
 //    assert(0 == TKAObjectGetReferenceCount(man2));
 }
 
+void TKAHumanChildBirthTest() {
+    TKAHuman *man1 = TKAHumanCreateWithNameChar("man1", 35, TKAMale);
+    TKAHuman *woman1 = TKAHumanCreateWithNameChar("woman1", 35, TKAFemale);
+    TKAHuman *newBorn1 = TKAHumanBirth(man1, woman1, TKAMale);
+    
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(newBorn1);
+    printf(" \n");
+    printf("///////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanChangeName(newBorn1, "newborn1");
+    
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(newBorn1);
+    printf(" \n");
+    printf("/////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHuman *newBorn2 = TKAHumanBirth(NULL, woman1, TKAFemale);
+    TKAHumanChangeName(newBorn2, "newborn2");
+    
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(newBorn2);
+    printf(" \n");
+    printf("///////////////////////// \n");
+    printf(" \n");
+    
+    TKAHuman *newBorn4 = TKAHumanBirth(man1, NULL, TKAFemale);
+    TKAHumanChangeName(newBorn4, "newborn4");
+    
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(newBorn4);
+    printf(" \n");
+    printf("///////////////////////// \n");
+    printf(" \n");
+    
+    TKAHuman *newBorn3 = TKAHumanBirth(NULL, NULL, TKAFemale);
+    
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    printf("/////////////////////////// \n");
+    printf(" \n");
+    
+    TKAObjectRelease(woman1);
+    TKAObjectRelease(man1);
+}
+
+# define TKAHumanBirthChildNumber(number) \
+        TKAHuman *newBorn##number = TKAHumanBirth(man1, woman1, TKAFemale);\
+        TKAHumanChangeName(newBorn##number, "newborn"#number" ");\
+//        TKAHumanOutput(newBorn##number);\
+//        printf(" \n");
+
 void TKAHumanChildTest() {
     TKAHuman *man1 = TKAHumanCreateWithNameChar("man1", 35, TKAMale);
     TKAHuman *woman1 = TKAHumanCreateWithNameChar("woman1", 35, TKAFemale);
@@ -212,9 +244,104 @@ void TKAHumanChildTest() {
     TKAHuman *childF1 = TKAHumanCreateWithNameChar("childF1", 10, TKAFemale);
     TKAHuman *childM2 = TKAHumanCreateWithNameChar("childM2", 5, TKAMale);
     TKAHuman *childF2 = TKAHumanCreateWithNameChar("childF2", 5, TKAFemale);
+    
+    TKAHumanBirthChildNumber(1);
+    TKAHumanBirthChildNumber(2);
+    TKAHumanBirthChildNumber(3);
+    TKAHumanBirthChildNumber(4);
+    TKAHumanBirthChildNumber(5);
+    TKAHumanBirthChildNumber(6);
+    TKAHumanBirthChildNumber(7);
+    TKAHumanBirthChildNumber(8);
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanAddChild(man1, childM1);
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(childM1);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanAddChild(man1, childM1);
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(childM1);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanAddChild(man1, NULL);
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(childM1);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanAddChild(NULL, childF2);
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(childF2);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanRemoveChild(man1, newBorn5);
+    TKAHumanOutput(man1);
+    printf(" \n");
+    TKAHumanOutput(newBorn5);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    
+    TKAHumanRemoveChild(woman1, newBorn5);
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(newBorn5);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+ ///////////////////
+    TKAHumanAddChild(woman1, childM1);
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(childM1);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
+    
+    TKAHumanRemoveChild(woman1, childM1);
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanOutput(childM1);
+    printf(" \n");
+    printf(" \n");
+    printf("/////////////////////////////// \n");
+    printf(" \n");
 
-    
-    
+ //////////////////
+    TKAHumanRemoveAllChildren(woman1);
+    TKAHumanOutput(woman1);
+    printf(" \n");
+    TKAHumanRemoveAllChildren(man1);
+    TKAHumanOutput(man1);
+    printf(" \n");
+  
     TKAObjectRelease(childM1);
     TKAObjectRelease(childF1);
     TKAObjectRelease(childM2);
@@ -223,7 +350,8 @@ void TKAHumanChildTest() {
     TKAObjectRelease(man1);
     TKAObjectRelease(woman2);
     TKAObjectRelease(man2);
-}
+    
+ }
 
 void TKAHumanTest() {
 //    TKAHumanCreatTest();
@@ -232,97 +360,55 @@ void TKAHumanTest() {
 //    TKAHumanMarryDivorceTest();
 //    printf("\n");
 //    printf("\n");
-    TKAHumanChildTest();
     
+//    TKAHumanChildBirthTest();
+//    printf("\n");
+    //    printf("\n");
     
-    
-    
-    
-    
-//
-//    TKAString *stringGod = TKAStringCreateTest("God");
-//    TKAString *stringAdam = TKAStringCreateTest("Adam");
-//    TKAString *stringEve = TKAStringCreateTest("Eve");
-//    TKAString *stringSon1 = TKAStringCreateTest("Son1");
-//    TKAString *stringSon2 = TKAStringCreateTest("Son2");
-//    
-//    TKAHuman *god = TKAHumanCreateTest(stringGod, 100, TKAMale);
-//    TKAHuman *adam = TKAHumanCreateTest(stringAdam, 30, TKAMale);
-//    TKAHuman *eve = TKAHumanCreateTest(stringEve, 25, TKAFemale);
-//    
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    printf(" \n");
-//    
-//    TKAHumanMarry(adam, eve);
-//    
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    printf(" \n");
-//    
-//    TKAHumanDivorce(eve);
-//    
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    printf(" \n");
-//    
-//    TKAHumanMarry(god, eve);
-//    
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    printf(" \n");
-//    
-//    //    TKAHumanDivorce(adam, eve);
-//    //
-//    //    TKAHumanOutput(god);
-//    //    TKAHumanOutput(adam);
-//    //    TKAHumanOutput(eve);
-//    //    printf(" \n");
-//    
-////    TKAHumanDivorce(god, eve);
-//    
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    printf(" \n");
-//    
-//    TKAHuman *son1 = TKAHumanBorn(adam, eve, TKAMale);
-//  //  TKAHumanSetName(son1, stringSon1);
-//    
-//    TKAHumanOutput(son1);
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    printf(" \n");
-//    
-//    TKAHuman *son2 = TKAHumanBorn(god, eve, TKAMale);
-//  //  TKAHumanSetName(son2, stringSon2);
-//    
-//    TKAHumanOutput(son1);
-//    TKAHumanOutput(son2);
-//    TKAHumanOutput(god);
-//    TKAHumanOutput(adam);
-//    TKAHumanOutput(eve);
-//    
-//    TKAObjectRelease(son1);
-//    TKAObjectRelease(son2);
-//    TKAObjectRelease(god);
-//    TKAObjectRelease(adam);
-//    TKAObjectRelease(eve);
-//    
-//    TKAObjectRelease(stringSon1);
-//    TKAObjectRelease(stringSon2);
-//    TKAObjectRelease(stringGod);
-//    TKAObjectRelease(stringAdam);
-//    TKAObjectRelease(stringEve);
+      TKAHumanChildTest();
 }
 
 #pragma mark -
 #pragma mark Public Implementations
+
+void TKAHumanOutput(TKAHuman *human) {
+    
+    TKAStringOutput(TKAHumanGetName(human));
+    printf(" ");
+    printf("age = %d, ",TKAHumanGetAge(human));
+    printf("gender = %d, ", TKAHumanGetGender(human));
+    printf("count children = %d, ", TKAHumanGetChildCount(human));
+    
+    if (NULL != TKAHumanGetPartner(human)) {
+        printf("partner = ");
+        TKAStringOutput(TKAHumanGetName(TKAHumanGetPartner(human)));
+        printf(", ");
+    }
+    
+    if (NULL != TKAHumanGetFather(human)) {
+        printf("father = ");
+        TKAStringOutput(TKAHumanGetName(TKAHumanGetFather(human)));
+        printf(", ");
+    }
+    
+    if (NULL != TKAHumanGetMother(human)) {
+        printf("motner = ");
+        TKAStringOutput(TKAHumanGetName(TKAHumanGetMother(human)));
+        printf(", ");
+    }
+    
+    if (NULL != TKAHumanGetChildren(human)) {
+        printf("children: ");
+        TKAArrayOutput(TKAHumanGetChildren(human));
+    }
+    
+    printf(" \n");
+    printf("reference count = %llu, ", TKAObjectGetReferenceCount(human));
+    printf("reference count name = %llu, ", TKAObjectGetReferenceCount(human->_name));
+    printf("reference count array = %llu, ", TKAObjectGetReferenceCount(human->_children));
+    
+    printf(" \n");
+}
 
 void TKAHumanTestMain(){
     

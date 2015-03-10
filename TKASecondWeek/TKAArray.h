@@ -9,6 +9,8 @@
 #ifndef __TKASecondWeek__TKAArray__
 #define __TKASecondWeek__TKAArray__
 
+#include "TKAObject.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "TKAHuman.h"
@@ -37,13 +39,25 @@ extern
 void *TKAArrayGetChild(TKAArray *array);
 
 extern
-TKAHuman *TKAArrayGetChildIndex(TKAArray *array, uint16_t index);
+uint16_t TKAArrayGetChildCount(TKAArray *array);
 
 extern
-void TKAArrayAddChildIndex(TKAArray *array, TKAHuman *data, uint16_t index);
+uint16_t TKAArrayGetIndexOfFirstNullChild(TKAArray *array);
 
 extern
-void TKAArrayRemoveChildIndex(TKAArray *array, uint16_t index);
+uint16_t TKAArrayGetIndexOfLastChild(TKAArray *array);
+
+extern
+uint16_t TKAArrayGetIndexOfChild(TKAArray *array, TKAHuman *child);
+
+extern
+TKAHuman *TKAArrayGetChildAtIndex(TKAArray *array, uint16_t index);
+
+extern
+void TKAArrayAddChildAtIndex(TKAArray *array, TKAHuman *data, uint16_t index);
+
+extern
+void TKAArrayRemoveChildAtIndex(TKAArray *array, uint16_t index);
 
 extern
 void TKAArrayRemoveChild(TKAArray *array, TKAHuman *child);
@@ -52,7 +66,7 @@ extern
 void TKAArrayOutput(TKAArray *array);
 
 extern
-void TKAArrayRemoveAllChildren(TKAArray *array);
+void TKAArrayRemoveAllChild(TKAArray *array);
 
 extern
 void __TKAArrayDeallocate(TKAArray *array);

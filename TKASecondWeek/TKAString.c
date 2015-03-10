@@ -11,8 +11,6 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
-const uint64_t uint64ReturnError  = 1877706843543542525;
-
 #pragma mark -
 #pragma mark Privat Implementations
 
@@ -45,7 +43,7 @@ void TKAStringSetLength(TKAString *string, uint64_t length) {
 
 uint64_t TKAStringGetLength(TKAString *string) {
     if (NULL == string) {
-        return uint64ReturnError ;//??
+        return UINT64_MAX ;
     }
     
     return string->_length;
@@ -68,9 +66,7 @@ void TKAStringSetData(TKAString *string, char *data) {
         if (NULL != data) {
             TKAStringCopyData(string, data);
         }
-//        if (NULL == data) {
-//            TKAStringSetLength(string, 0);
-//        }
+
     }
     
 }
@@ -84,7 +80,6 @@ void TKAStringCopyData(TKAString *string, char *data) {
 char *TKAStringGetData(TKAString *string) {
     if (NULL == string) {
         return NULL;
-        //NULL;//65535 //""??
     }
 
     return string->_data;

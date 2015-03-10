@@ -9,12 +9,15 @@
 #ifndef __TKASecondWeek__TKAHuman__
 #define __TKASecondWeek__TKAHuman__
 
+#include "TKAObject.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include "TKAString.h"
 #include "TKAArray.h"
+
 
 typedef struct TKAHuman TKAHuman;
 typedef struct TKAArray TKAArray;
@@ -91,7 +94,7 @@ TKAArray *TKAHumanGetChildren(TKAHuman *human);
 //void TKAHumanSetChildren(TKAHuman *human, TKAArray *children);
 
 extern
-TKAHuman *TKAHumanBorn(TKAHuman *father, TKAHuman *mother, TKAGender gender);
+TKAHuman *TKAHumanBirth(TKAHuman *father, TKAHuman *mother, TKAGender gender);
 
 extern
 void TKAHumanAddChild(TKAHuman *parent, TKAHuman *child);

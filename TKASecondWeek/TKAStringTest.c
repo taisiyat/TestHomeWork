@@ -50,7 +50,7 @@ void TKAStringOutputTest(TKAString *string) {
 // TKAString
 //      after being created
 //             data should be NULL, length should be 0
-//                  objects reference count should 1
+//                  objects reference count should be 1
 
 void TKAStringCreateWithNULLTest() {
     TKAString * stringTest = TKAObjectCreate(TKAString);
@@ -67,7 +67,7 @@ void TKAStringCreateWithNULLTest() {
 // TKAString
 //      after being created
 //             data should be NULL, length should be not 0
-//                  objects reference count shouldn't change
+//                  objects reference count should  be 1
 //                      after copying data
 //                          data should be not NULL, length should be not 0
 //                              objects reference count shouldn't change
@@ -138,7 +138,6 @@ void TKAStringNULLCopyNULLTest() {
     TKAObjectRelease(stringTest);
 }
 
-
 void TKAStringTest() {
     TKAStringCreateWithNULLTest();
     printf("\n");
@@ -155,7 +154,7 @@ void TKAStringTest() {
 #pragma mark Public Implementations
 
 TKAString *TKAStringCreateTest(char *string) {
-    TKAString * stringTest = TKAObjectCreate(TKAString);
+    TKAString *stringTest = TKAObjectCreate(TKAString);
     TKAStringSetData(stringTest, string);
     
     return stringTest;
