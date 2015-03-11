@@ -13,7 +13,7 @@
 #pragma mark Private Declarations
 
 static
-void TKAHumanSet(void *human1, void *human2);
+void TKAHumanSet(void **human1, void *human2);
 
 static
 void TKAHumanSetName(TKAHuman *human, TKAString *name);
@@ -38,15 +38,15 @@ const uint16_t arrayLength = 20;
 #pragma mark -
 #pragma mark Privat Implementations
 
-//void TKAHumanSet(void *human1, void *human2) {
+//void TKAHumanSet(void **human1, void *human2) {
 //    if (human1 != human2) {
 //        
-//        if (NULL != human1) {
-//            TKAObjectRelease(human1);
+//        if (NULL != *human1) {
+//            TKAObjectRelease(*human1);
 //        }
 //        
-//        human1 = human2;
-//        if (NULL != human1) {
+//        *human1 = human2;
+//        if (NULL != *human1) {
 //            TKAObjectRetain(human2);
 //        }
 //        
