@@ -23,38 +23,38 @@ void TKAArrayChangeLength(TKAArray *array);
 #pragma mark -
 #pragma mark Privat Implementations
 
-uint16_t TKAArrayNeedToChangeLength(TKAArray *array){
-    if (NULL == array) {
-        return TKAArrayReturnError;
-    }
-    
-    uint16_t tempChildCount = TKAArrayGetChildCount(array);
-    uint16_t tempLength = TKAArrayGetLength(array);
-    
-    if (tempChildCount >= tempLength) {
-        return (tempLength * 2);
-    }
-    
-    if (tempChildCount <= (tempLength / 2 - 1)) {
-        return (tempChildCount * 2);
-    }
-    
-    return TKAArrayReturnError;
-}
-
-void TKAArrayChangeLength(TKAArray *array) {
-    if (NULL == array) {
-        return;
-    }
-    
-    if (TKAArrayReturnError == TKAArrayNeedToChangeLength(array)) {
-        return;
-    
-    } else {
-        uint16_t tempLength = TKAArrayNeedToChangeLength(array);
-        TKAArraySetLength(array, tempLength);
-    }
-}
+//uint16_t TKAArrayNeedToChangeLength(TKAArray *array){
+//    if (NULL == array) {
+//        return TKAArrayReturnError;
+//    }
+//    
+//    uint16_t tempChildCount = TKAArrayGetChildCount(array);
+//    uint16_t tempLength = TKAArrayGetLength(array);
+//    
+//    if (tempChildCount >= tempLength) {
+//        return (tempLength * 2);
+//    }
+//    
+//    if (tempChildCount <= (tempLength / 2 - 1)) {
+//        return (tempChildCount * 2);
+//    }
+//    
+//    return TKAArrayReturnError;
+//}
+//
+//void TKAArrayChangeLength(TKAArray *array) {
+//    if (NULL == array) {
+//        return;
+//    }
+//    
+//    if (TKAArrayReturnError == TKAArrayNeedToChangeLength(array)) {
+//        return;
+//    
+//    } else {
+//        uint16_t tempLength = TKAArrayNeedToChangeLength(array);
+//        TKAArraySetLength(array, tempLength);
+//    }
+//}
 
 #pragma mark -
 #pragma mark Public Implementations
@@ -68,32 +68,52 @@ void __TKAArrayDeallocate(TKAArray *array) {
 }
 
 void TKAArraySetLength(TKAArray *array, uint16_t length) {
-    if (array->_length != length) {
-        void *tempResult = NULL;
-        tempResult = realloc(array->_child, length * sizeof(*array->_child));
-        if (array->_length > length) {
-            for (uint16_t iter = array->_length-1; iter > length; iter--) {
-                TKAArrayRemoveChildAtIndex(array, iter);
+//    if (array->_length > length) {
+//        for (uint16_t iter = array->_length-1; iter > length; iter--) {
+//            TKAArrayRemoveChildAtIndex(array, iter);
+//        }
+//    }
+//
+//    
+       if (array->_length != length) {
+            array->_child = realloc(array->_child, length * sizeof(*array->_child));
+   
+            if (array->_length < length) {
+                memset(array->_child + array->_length, 0, length - array->_length);
             }
             
-            array->_child = tempResult;
+            array->_length = length;
         }
-    
-        if (array->_length < length) {
-            if (0 != tempResult) {
-                array->_child = tempResult;
-            
-            } else {
-            
-                return;//????
-            }
-            
-            memset(array->_child + array->_length, 0, length - array->_length);
-        }
-        
-        array->_length = length;
-    }
 }
+
+
+//void TKAArraySetLength(TKAArray *array, uint16_t length) {
+//    if (array->_length != length) {
+//        void *tempResult = NULL;
+//        tempResult = realloc(array->_child, length * sizeof(*array->_child));
+//        if (array->_length > length) {
+//            for (uint16_t iter = array->_length-1; iter > length; iter--) {
+//                TKAArrayRemoveChildAtIndex(array, iter);
+//            }
+//            
+//            array->_child = tempResult;
+//        }
+//    
+//        if (array->_length < length) {
+//            if (0 != tempResult) {
+//                array->_child = tempResult;
+//            
+//            } else {
+//            
+//                return;//????
+//            }
+//            
+//            memset(array->_child + array->_length, 0, length - array->_length);
+//        }
+//        
+//        array->_length = length;
+//    }
+//}
 
 uint16_t TKAArrayGetLength(TKAArray *array) {
     return (NULL == array) ? TKAArrayReturnError : array->_length;

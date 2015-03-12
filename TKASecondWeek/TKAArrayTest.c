@@ -362,8 +362,8 @@ void TKAArrayRemoveChildTest() {
 
 void TKAArrayTestMain() {
     
-//    TKAArrayCreateTest();
-//    TKAArrayAddChildTest();
+    TKAArrayCreateTest();
+    TKAArrayAddChildTest();
     TKAArrayRemoveChildTest();
  
 }
