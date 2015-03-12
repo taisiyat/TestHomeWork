@@ -358,7 +358,7 @@ void TKAHumanTest() {
 //    TKAHumanCreatTest();
     printf("\n");
     printf("\n");
-//   TKAHumanMarryDivorceTest();
+//  TKAHumanMarryDivorceTest();
 //    printf("\n");
 //    printf("\n");
 //    
@@ -366,7 +366,7 @@ void TKAHumanTest() {
 //    printf("\n");
 //        printf("\n");
 //    
-//   TKAHumanChildTest();
+   TKAHumanChildTest();
 }
 
 #pragma mark -
