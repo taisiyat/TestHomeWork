@@ -355,14 +355,14 @@ void TKAHumanChildTest() {
  }
 
 void TKAHumanTest() {
-    TKAHumanCreatTest();
+//    TKAHumanCreatTest();
     printf("\n");
     printf("\n");
 //   TKAHumanMarryDivorceTest();
 //    printf("\n");
 //    printf("\n");
 //    
-//  TKAHumanChildBirthTest();
+ TKAHumanChildBirthTest();
 //    printf("\n");
 //        printf("\n");
 //    
