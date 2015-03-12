@@ -36,9 +36,6 @@ extern
 void TKAStringSetData(TKAString *string, char *data);
 
 extern
-void TKAStringCopyData(TKAString *string, char *data);
-
-extern
 void TKAStringOutput(TKAString *string);
 
 extern

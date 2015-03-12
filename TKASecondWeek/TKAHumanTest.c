@@ -257,6 +257,7 @@ void TKAHumanChildTest() {
     printf(" \n");
     TKAHumanOutput(woman1);
     printf(" \n");
+    TKAHumanOutput(newBorn5);
     printf(" \n");
     printf("/////////////////////////////// \n");
     printf(" \n");
@@ -295,14 +296,14 @@ void TKAHumanChildTest() {
     printf(" \n");
     printf(" \n");
     printf("/////////////////////////////// \n");
-    printf(" \n");
+    printf(" ????????????????????????????\n");
     
     TKAHumanRemoveChild(man1, newBorn5);
     TKAHumanOutput(man1);
     printf(" \n");
     TKAHumanOutput(newBorn5);
     printf(" \n");
-    printf(" \n");
+    printf(" ??????????????????????????\n");
     printf("/////////////////////////////// \n");
     printf(" \n");
     
