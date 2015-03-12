@@ -30,10 +30,7 @@ void TKAHumanSetFather(TKAHuman *human1, TKAHuman *human2);
 static
 void TKAHumanSetMother(TKAHuman *human1, TKAHuman *human2);
 
-//static
-//void TKAHumanSetParent(TKAHuman *human1, TKAHuman *human2);
-
-const uint16_t arrayLength = 20;
+static const uint16_t TKAArrayLength = 20;
 
 #pragma mark -
 #pragma mark Public Declarations
@@ -111,59 +108,6 @@ void TKAHumanSetFather(TKAHuman *child, TKAHuman *parent) {
 //    
 //}
 
-//void TKAHumanSetPartner(TKAHuman *human, TKAHuman *partner) {
-//    if (NULL == human) {
-//        return;
-//    }
-//    
-//    if (human->_partner != partner && human != partner) {
-//        if (NULL != human->_partner) {
-//            TKAObjectRelease(human->_partner);
-//        }
-//        
-//        human->_partner = partner;
-//        if (NULL != human->_partner) {
-//            TKAObjectRetain(partner);
-//        }
-//    }
-//}
-//
-//void TKAHumanSetMother(TKAHuman *child, TKAHuman *parent) {
-//    if (NULL == child) {
-//        return;
-//    }
-//    
-//    if (child->_mother != parent && child != parent) {
-//        
-//        if (NULL != child->_mother) {
-//            TKAObjectRelease(child->_mother);
-//        }
-//        
-//        child->_mother = parent;
-//        if (NULL != child->_mother) {
-//            TKAObjectRetain(parent);
-//        }
-//    }
-//}
-//
-//void TKAHumanSetFather(TKAHuman *child, TKAHuman *parent) {
-//    if (NULL == child) {
-//        return;
-//    }
-//    
-//    if (child->_father != parent && child != parent) {
-//        
-//        if (NULL != child->_father) {
-//            TKAObjectRelease(child->_father);
-//        }
-//        
-//        child->_father = parent;
-//        if (NULL != child->_father) {
-//            TKAObjectRetain(parent);
-//        }
-//        
-//    }
-//}
 
 void TKAHumanSetName(TKAHuman *human, TKAString *name) {
     if (NULL == human) {
@@ -217,55 +161,29 @@ void __TKAHumanDeallocate(TKAHuman *human) {
 }
 
 TKAHuman *TKAHumanCreateWithNameString(TKAString *name, uint8_t age, TKAGender gender) {
-    TKAHuman *human = TKAObjectCreate(TKAHuman);
+    TKAHuman *human = TKAHumanCreate(age, gender);
     
     TKAHumanSetName(human, name);
-    TKAHumanSetAge(human, age);
-    TKAHumanSetGender(human, gender);
-    TKAHumanSetChildCount(human, 0);
-
-    TKAArray *arrayChild = TKAObjectCreate(TKAArray);
-    TKAHumanSetChildren(human, arrayChild);
-    TKAObjectRelease(arrayChild);
     
     return human;
 }
 
 TKAHuman *TKAHumanCreateWithNameChar(char *name, uint8_t age, TKAGender gender) {
-    TKAHuman *human = TKAObjectCreate(TKAHuman);
+    TKAHuman *human = TKAHumanCreate(age, gender);
     
-    TKAHumanSetAge(human, age);
-    TKAHumanSetGender(human, gender);
-    TKAHumanSetChildCount(human, 0);
-    
-    if (NULL != name) {
-        TKAString *newName = TKAObjectCreate(TKAString);
-        TKAStringSetData(newName, name);
-        TKAHumanSetName(human, newName);
-        TKAObjectRelease(newName);
-    }
-    
-    TKAArray *arrayChild = TKAObjectCreate(TKAArray);
-   //
-    TKAArraySetLength(arrayChild, arrayLength);
-   //
-    TKAHumanSetChildren(human, arrayChild);
-    TKAObjectRelease(arrayChild);
+    TKAHumanChangeName(human, name);
     
     return human;
 }
 
-TKAHuman *TKAHumanCreate(uint8_t age, TKAGender gender){
+TKAHuman *TKAHumanCreate(uint8_t age, TKAGender gender) {
     TKAHuman *human = TKAObjectCreate(TKAHuman);
 
     TKAHumanSetAge(human, age);
     TKAHumanSetGender(human, gender);
-    TKAHumanSetChildCount(human, 0);
 
     TKAArray *arrayChild = TKAObjectCreate(TKAArray);
-    //
-    TKAArraySetLength(arrayChild, arrayLength);
-    //
+    TKAArraySetLength(arrayChild, TKAArrayLength);
     TKAHumanSetChildren(human, arrayChild);
     TKAObjectRelease(arrayChild);
 
@@ -283,7 +201,6 @@ void TKAHumanChangeName(TKAHuman *human, char *name) {
         TKAHumanSetName(human, newName);
         TKAObjectRelease(newName);
     }
-    
 }
 
 TKAString *TKAHumanGetName(TKAHuman *human) {
