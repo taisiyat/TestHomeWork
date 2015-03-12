@@ -198,7 +198,7 @@ void TKAArrayAddChildTest() {
     printf("\n");
     printf("///////////////////\n");
     
-    TKAArrayRemoveAllChild(TKAHumanGetChildren(man1));
+    TKAArrayRemoveAllChildren(TKAHumanGetChildren(man1));
     TKAArrayOutput(TKAHumanGetChildren(man1));
     printf("\n");
     TKAHumanOutput(man1);
@@ -336,7 +336,7 @@ void TKAArrayRemoveChildTest() {
     printf("\n");
     printf("///////////////////\n");
     
-    TKAArrayRemoveAllChild(TKAHumanGetChildren(man1));
+    TKAArrayRemoveAllChildren(TKAHumanGetChildren(man1));
     TKAArrayOutput(TKAHumanGetChildren(man1));
     printf("\n");
     printf("count of children in array = %d", TKAArrayGetChildCount(TKAHumanGetChildren(man1)));
@@ -362,8 +362,8 @@ void TKAArrayRemoveChildTest() {
 
 void TKAArrayTestMain() {
     
-    TKAArrayCreateTest();
-    TKAArrayAddChildTest();
+//    TKAArrayCreateTest();
+//    TKAArrayAddChildTest();
     TKAArrayRemoveChildTest();
  
 }

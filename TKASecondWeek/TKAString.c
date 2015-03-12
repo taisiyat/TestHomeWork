@@ -11,6 +11,8 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
+uint64_t TKAStringReturnError = UINT64_MAX;
+
 #pragma mark -
 #pragma mark Privat Implementations
 
@@ -24,12 +26,16 @@ void __TKAStringDeallocate(TKAString *string) {
 #pragma mark Public Implementations
 
 void TKAStringSetLength(TKAString *string, uint64_t length) {
-    if (0 == length) {
+    if (NULL == string) {
+        return;
+    }
+    
+    if (0 == length && string->_length != length) {
         free(string->_data);
         string->_data = NULL;
         string->_length = length;
     }
-    
+
     if (string->_length != length) {
         string->_data = realloc(string->_data, length * sizeof(*string->_data));
         
@@ -42,47 +48,31 @@ void TKAStringSetLength(TKAString *string, uint64_t length) {
 }
 
 uint64_t TKAStringGetLength(TKAString *string) {
-    if (NULL == string) {
-        return UINT64_MAX ;
-    }
-    
-    return string->_length;
+    return (NULL == string) ? TKAStringReturnError : string->_length;
 }
 
 void TKAStringSetData(TKAString *string, char *data) {
     if (NULL == string) {
         return;
     }
-    if (NULL == data) {
-        TKAStringSetLength(string, 0);
-    }
-    
+
     if (string->_data != data) {
-        if (NULL != string->_data) {
-            free(string->_data);
-            string->_data = NULL;
+        uint64_t lengthData = 0;
+        
+        if (NULL != string->_data || NULL == data) {
+            TKAStringSetLength(string, lengthData);
         }
- 
+
         if (NULL != data) {
-            TKAStringCopyData(string, data);
+            lengthData = strlen(data)+1;
+            TKAStringSetLength(string, lengthData);
+            memmove(string->_data, data, lengthData);
         }
-
     }
-    
-}
-
-void TKAStringCopyData(TKAString *string, char *data) {
-    uint64_t lengthData = strlen(data);
-    TKAStringSetLength(string, lengthData+1);
-    memmove(string->_data, data, lengthData+1);
 }
 
 char *TKAStringGetData(TKAString *string) {
-    if (NULL == string) {
-        return NULL;
-    }
-
-    return string->_data;
+    return (NULL == string) ? NULL : string->_data;
 }
 
 void TKAStringOutput(TKAString *string) {

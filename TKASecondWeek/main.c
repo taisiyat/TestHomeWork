@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
 
     TKAHumanTestMain();
 //    TKAStringTestMain();
-//    TKAArrayTestMain();
+ //   TKAArrayTestMain();
    
     printf("Hello, World!\n");
     

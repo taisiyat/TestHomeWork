@@ -21,8 +21,9 @@ typedef struct TKAHuman TKAHuman;
 struct TKAArray {
     TKAObject _object;
     
-    uint16_t _length;
     TKAHuman **_child;
+    uint16_t _childCount;
+    uint16_t _length;
 };
 typedef struct TKAArray TKAArray;
 
@@ -34,9 +35,6 @@ uint16_t TKAArrayGetLength(TKAArray *array);
 
 extern
 void TKAArrayAddChild(TKAArray *array, TKAHuman *child);
-
-extern
-void *TKAArrayGetChild(TKAArray *array);
 
 extern
 uint16_t TKAArrayGetChildCount(TKAArray *array);
@@ -63,13 +61,13 @@ extern
 void TKAArrayRemoveChild(TKAArray *array, TKAHuman *child);
 
 extern
-void TKAArrayOutput(TKAArray *array);
-
-extern
-void TKAArrayRemoveAllChild(TKAArray *array);
+void TKAArrayRemoveAllChildren(TKAArray *array);
 
 extern
 void __TKAArrayDeallocate(TKAArray *array);
+
+extern
+void TKAArrayOutput(TKAArray *array);
 
 #endif /* defined(__TKASecondWeek__TKAArray__) */
 
