@@ -12,7 +12,8 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
-static const uint16_t TKAArrayReturnError = UINT16_MAX;
+//static
+const uint16_t TKAArrayReturnError = UINT16_MAX;
 
 static
 uint16_t TKAArrayNeedToChangeLength(TKAArray *array);
