@@ -18,44 +18,41 @@ const uint16_t TKAArrayReturnError = UINT16_MAX;
 static
 uint16_t TKAArrayNeedToChangeLength(TKAArray *array);
 
-static
-void TKAArrayChangeLength(TKAArray *array);
-
 #pragma mark -
 #pragma mark Privat Implementations
 
-//uint16_t TKAArrayNeedToChangeLength(TKAArray *array){
-//    if (NULL == array) {
-//        return TKAArrayReturnError;
-//    }
-//    
-//    uint16_t tempChildCount = TKAArrayGetChildCount(array);
-//    uint16_t tempLength = TKAArrayGetLength(array);
-//    
-//    if (tempChildCount >= tempLength) {
-//        return (tempLength * 2);
-//    }
-//    
-//    if (tempChildCount <= (tempLength / 2 - 1)) {
-//        return (tempChildCount * 2);
-//    }
-//    
-//    return TKAArrayReturnError;
-//}
-//
-//void TKAArrayChangeLength(TKAArray *array) {
-//    if (NULL == array) {
-//        return;
-//    }
-//    
-//    if (TKAArrayReturnError == TKAArrayNeedToChangeLength(array)) {
-//        return;
-//    
-//    } else {
-//        uint16_t tempLength = TKAArrayNeedToChangeLength(array);
-//        TKAArraySetLength(array, tempLength);
-//    }
-//}
+uint16_t TKAArrayNeedToChangeLength(TKAArray *array){
+    if (NULL == array) {
+        return TKAArrayReturnError;
+    }
+    
+    uint16_t tempChildCount = TKAArrayGetChildCount(array); /// with index of last Child in Array
+    uint16_t tempLength = TKAArrayGetLength(array);
+    
+    if (tempChildCount+1 >= tempLength) {
+        return (tempLength + tempLength);
+    }
+    
+    if (tempChildCount < (tempLength / 2 - 1)) {
+        return (tempLength - tempLength /2);
+    }
+    
+    return TKAArrayReturnError;
+}
+
+void TKAArrayChangeLength(TKAArray *array) {
+    if (NULL == array) {
+        return;
+    }
+    
+    if (TKAArrayReturnError == TKAArrayNeedToChangeLength(array)) {
+        return;
+    
+    } else {
+        uint16_t tempLength = TKAArrayNeedToChangeLength(array);
+        TKAArraySetLength(array, tempLength);
+    }
+}
 
 #pragma mark -
 #pragma mark Public Implementations
@@ -78,7 +75,6 @@ void TKAArraySetLength(TKAArray *array, uint16_t length) {
     void *tempResult = NULL;
     if (array->_length != length) {
         tempResult = realloc(array->_child, length * sizeof(*array->_child));
-        array->_child = realloc(array->_child, length * sizeof(*array->_child));
         assert(NULL != tempResult);
         array->_child = tempResult;
            
@@ -202,12 +198,14 @@ void TKAArrayAddChildAtIndex(TKAArray *array, TKAHuman *child, uint16_t index) {
         return;
     }
     
+ //   TKAArrayChangeLength(array);
     if (TKAArrayGetLength(array) > index && 0 <= index) {
         if (TKAArrayReturnError == TKAArrayGetIndexOfChild(array, child)) {
             if (NULL == TKAArrayGetChildAtIndex(array, index)) {
                 TKAArraySetChild(array, child, index);
                 uint16_t tempChildCount = TKAArrayGetChildCount(array);
                 TKAArraySetChildCount(array, tempChildCount+1);
+                
             }
         }
     }
@@ -225,6 +223,7 @@ void TKAArrayRemoveChildAtIndex(TKAArray *array, uint16_t index) {
             TKAArraySetChildCount(array, tempChildCount-1);
         }
     }
+//    TKAArrayChangeLength(array);
 }
     
 void TKAArrayRemoveChild(TKAArray *array, TKAHuman *child) {

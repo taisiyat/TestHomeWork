@@ -74,5 +74,9 @@ void __TKAArrayDeallocate(TKAArray *array);
 extern
 void TKAArrayOutput(TKAArray *array);
 
+extern
+void TKAArrayChangeLength(TKAArray *array);
+
+
 #endif /* defined(__TKASecondWeek__TKAArray__) */
 

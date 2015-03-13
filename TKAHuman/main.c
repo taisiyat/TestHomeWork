@@ -7,9 +7,6 @@
 //
 
 #include <stdio.h>
-//#include "TKAHumanStructTest.h"
-//#include "TKAStringStructTest.h"
-//#include "TKAArrayStructTest.h"
 #include "TKAHumanTest.h"
 #include "TKAStringTest.h"
 #include "TKAArrayTest.h"
@@ -17,14 +14,10 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    
-//    TKAHumanStructTestMain();
-//    TKAStringStructTestMain();
-//    TKAArrayStructTestMain();
 
-  TKAHumanTestMain();
+//    TKAHumanTestMain();
 //    TKAStringTestMain();
-//    TKAArrayTestMain();
+    TKAArrayTestMain();
    
     printf("Hello, World!\n");
     

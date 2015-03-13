@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A45C6251A9335D800025837 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A45C6241A9335D800025837 /* main.c */; };
-		8A4727601AA5C50E00CE0FE9 /* TKAHuman.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D721AA328040092407B /* TKAHuman.c */; };
-		8A4727611AA5C98100CE0FE9 /* TKAHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D781AA3285E0092407B /* TKAHumanTest.c */; };
-		8A4BCC911AAA57B600D5BA53 /* TKAArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D7E1AA328B10092407B /* TKAArrayTest.c */; };
-		8A4DD5461A962529003EAB27 /* TKAObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DD5441A962529003EAB27 /* TKAObject.c */; };
-		8AB9F2131AA58BBD00DD56C1 /* TKAArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D6F1AA327E50092407B /* TKAArray.c */; };
-		8AE27D771AA328240092407B /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D751AA328240092407B /* TKAString.c */; };
-		8AE27D7D1AA328850092407B /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AE27D7B1AA328850092407B /* TKAStringTest.c */; };
+		8A5C0CF41AB32002003EEF0E /* TKAHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CEE1AB32002003EEF0E /* TKAHumanTest.c */; };
+		8A5C0CF51AB32002003EEF0E /* TKAObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CF01AB32002003EEF0E /* TKAObject.c */; };
+		8A5C0CF61AB32002003EEF0E /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CF21AB32002003EEF0E /* TKAString.c */; };
+		8A5C0CF91AB32019003EEF0E /* TKAHuman.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CF71AB32019003EEF0E /* TKAHuman.c */; };
+		8A5C0CFB1AB32026003EEF0E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CFA1AB32026003EEF0E /* main.c */; };
+		8A5C0CFE1AB3203A003EEF0E /* TKAArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CFC1AB3203A003EEF0E /* TKAArray.c */; };
+		8A5C0D011AB3204C003EEF0E /* TKAArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CFF1AB3204C003EEF0E /* TKAArrayTest.c */; };
+		8A5C0D041AB3205C003EEF0E /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0D021AB3205C003EEF0E /* TKAStringTest.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,33 +31,21 @@
 
 /* Begin PBXFileReference section */
 		8A45C6211A9335D800025837 /* TKAHuman */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAHuman; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A45C6241A9335D800025837 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		8A45C62B1A93363E00025837 /* TKAHumanStruct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHumanStruct.c; sourceTree = "<group>"; };
-		8A45C62C1A93363E00025837 /* TKAHumanStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanStruct.h; sourceTree = "<group>"; };
-		8A45C62F1A93394300025837 /* TKAHumanStructTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHumanStructTest.c; sourceTree = "<group>"; };
-		8A45C6301A93394300025837 /* TKAHumanStructTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanStructTest.h; sourceTree = "<group>"; };
-		8A48CDF11A98DE04002B0B9E /* TKAStringStruct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringStruct.c; sourceTree = "<group>"; };
-		8A48CDF21A98DE04002B0B9E /* TKAStringStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringStruct.h; sourceTree = "<group>"; };
-		8A48CDF41A990A68002B0B9E /* TKAArrayStruct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArrayStruct.c; sourceTree = "<group>"; };
-		8A48CDF51A990A68002B0B9E /* TKAArrayStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayStruct.h; sourceTree = "<group>"; };
-		8A4DD5441A962529003EAB27 /* TKAObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAObject.c; sourceTree = "<group>"; };
-		8A4DD5451A962529003EAB27 /* TKAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAObject.h; sourceTree = "<group>"; };
-		8A5B10B81AA1F176005B899F /* TKAStringStructTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringStructTest.c; sourceTree = "<group>"; };
-		8A5B10B91AA1F176005B899F /* TKAStringStructTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringStructTest.h; sourceTree = "<group>"; };
-		8A5B10BB1AA1F1B3005B899F /* TKAArrayStructTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArrayStructTest.c; sourceTree = "<group>"; };
-		8A5B10BC1AA1F1B3005B899F /* TKAArrayStructTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayStructTest.h; sourceTree = "<group>"; };
-		8AE27D6F1AA327E50092407B /* TKAArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArray.c; sourceTree = "<group>"; };
-		8AE27D701AA327E50092407B /* TKAArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArray.h; sourceTree = "<group>"; };
-		8AE27D721AA328040092407B /* TKAHuman.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHuman.c; sourceTree = "<group>"; };
-		8AE27D731AA328040092407B /* TKAHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHuman.h; sourceTree = "<group>"; };
-		8AE27D751AA328240092407B /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAString.c; sourceTree = "<group>"; };
-		8AE27D761AA328240092407B /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAString.h; sourceTree = "<group>"; };
-		8AE27D781AA3285E0092407B /* TKAHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAHumanTest.c; sourceTree = "<group>"; };
-		8AE27D791AA3285E0092407B /* TKAHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanTest.h; sourceTree = "<group>"; };
-		8AE27D7B1AA328850092407B /* TKAStringTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringTest.c; sourceTree = "<group>"; };
-		8AE27D7C1AA328850092407B /* TKAStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringTest.h; sourceTree = "<group>"; };
-		8AE27D7E1AA328B10092407B /* TKAArrayTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAArrayTest.c; sourceTree = "<group>"; };
-		8AE27D7F1AA328B10092407B /* TKAArrayTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAArrayTest.h; sourceTree = "<group>"; };
+		8A5C0CEE1AB32002003EEF0E /* TKAHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAHumanTest.c; path = TKAHuman/TKAHumanTest.c; sourceTree = SOURCE_ROOT; };
+		8A5C0CEF1AB32002003EEF0E /* TKAHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAHumanTest.h; path = TKAHuman/TKAHumanTest.h; sourceTree = SOURCE_ROOT; };
+		8A5C0CF01AB32002003EEF0E /* TKAObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAObject.c; path = TKAHuman/TKAObject.c; sourceTree = SOURCE_ROOT; };
+		8A5C0CF11AB32002003EEF0E /* TKAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAObject.h; path = TKAHuman/TKAObject.h; sourceTree = SOURCE_ROOT; };
+		8A5C0CF21AB32002003EEF0E /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAString.c; path = TKAHuman/TKAString.c; sourceTree = SOURCE_ROOT; };
+		8A5C0CF31AB32002003EEF0E /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAString.h; path = TKAHuman/TKAString.h; sourceTree = SOURCE_ROOT; };
+		8A5C0CF71AB32019003EEF0E /* TKAHuman.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAHuman.c; path = TKAHuman/TKAHuman.c; sourceTree = SOURCE_ROOT; };
+		8A5C0CF81AB32019003EEF0E /* TKAHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAHuman.h; path = TKAHuman/TKAHuman.h; sourceTree = SOURCE_ROOT; };
+		8A5C0CFA1AB32026003EEF0E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = TKAHuman/main.c; sourceTree = SOURCE_ROOT; };
+		8A5C0CFC1AB3203A003EEF0E /* TKAArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAArray.c; path = TKAHuman/TKAArray.c; sourceTree = SOURCE_ROOT; };
+		8A5C0CFD1AB3203A003EEF0E /* TKAArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAArray.h; path = TKAHuman/TKAArray.h; sourceTree = SOURCE_ROOT; };
+		8A5C0CFF1AB3204C003EEF0E /* TKAArrayTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAArrayTest.c; path = TKAHuman/TKAArrayTest.c; sourceTree = SOURCE_ROOT; };
+		8A5C0D001AB3204C003EEF0E /* TKAArrayTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAArrayTest.h; path = TKAHuman/TKAArrayTest.h; sourceTree = SOURCE_ROOT; };
+		8A5C0D021AB3205C003EEF0E /* TKAStringTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAStringTest.c; path = TKAHuman/TKAStringTest.c; sourceTree = SOURCE_ROOT; };
+		8A5C0D031AB3205C003EEF0E /* TKAStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAStringTest.h; path = TKAHuman/TKAStringTest.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +78,7 @@
 		8A45C6231A9335D800025837 /* TKAHuman */ = {
 			isa = PBXGroup;
 			children = (
-				8A45C6241A9335D800025837 /* main.c */,
-				8AD7C9D61A9F58FD00EC35D8 /* TKAHumanStruct */,
+				8A5C0CFA1AB32026003EEF0E /* main.c */,
 				8AD7C9D71A9F592F00EC35D8 /* TKAHumanObject */,
 			);
 			name = TKAHuman;
@@ -101,8 +88,8 @@
 		8A4BCC921AAA5F5500D5BA53 /* TKAObject */ = {
 			isa = PBXGroup;
 			children = (
-				8A4DD5441A962529003EAB27 /* TKAObject.c */,
-				8A4DD5451A962529003EAB27 /* TKAObject.h */,
+				8A5C0CF01AB32002003EEF0E /* TKAObject.c */,
+				8A5C0CF11AB32002003EEF0E /* TKAObject.h */,
 			);
 			name = TKAObject;
 			sourceTree = "<group>";
@@ -110,8 +97,8 @@
 		8A4BCC931AAA5F7900D5BA53 /* TKAHuman */ = {
 			isa = PBXGroup;
 			children = (
-				8AE27D721AA328040092407B /* TKAHuman.c */,
-				8AE27D731AA328040092407B /* TKAHuman.h */,
+				8A5C0CF71AB32019003EEF0E /* TKAHuman.c */,
+				8A5C0CF81AB32019003EEF0E /* TKAHuman.h */,
 			);
 			name = TKAHuman;
 			sourceTree = "<group>";
@@ -119,8 +106,8 @@
 		8A4BCC941AAA5F9600D5BA53 /* TKAString */ = {
 			isa = PBXGroup;
 			children = (
-				8AE27D751AA328240092407B /* TKAString.c */,
-				8AE27D761AA328240092407B /* TKAString.h */,
+				8A5C0CF21AB32002003EEF0E /* TKAString.c */,
+				8A5C0CF31AB32002003EEF0E /* TKAString.h */,
 			);
 			name = TKAString;
 			sourceTree = "<group>";
@@ -128,8 +115,8 @@
 		8A4BCC951AAA5FAF00D5BA53 /* TKAArray */ = {
 			isa = PBXGroup;
 			children = (
-				8AE27D6F1AA327E50092407B /* TKAArray.c */,
-				8AE27D701AA327E50092407B /* TKAArray.h */,
+				8A5C0CFC1AB3203A003EEF0E /* TKAArray.c */,
+				8A5C0CFD1AB3203A003EEF0E /* TKAArray.h */,
 			);
 			name = TKAArray;
 			sourceTree = "<group>";
@@ -137,8 +124,8 @@
 		8A4BCC961AAA5FEB00D5BA53 /* TKAStringTest */ = {
 			isa = PBXGroup;
 			children = (
-				8AE27D7B1AA328850092407B /* TKAStringTest.c */,
-				8AE27D7C1AA328850092407B /* TKAStringTest.h */,
+				8A5C0D021AB3205C003EEF0E /* TKAStringTest.c */,
+				8A5C0D031AB3205C003EEF0E /* TKAStringTest.h */,
 			);
 			name = TKAStringTest;
 			sourceTree = "<group>";
@@ -146,46 +133,19 @@
 		8A50CA771AAEFD8000B02B68 /* TKAHumanTest */ = {
 			isa = PBXGroup;
 			children = (
-				8AE27D781AA3285E0092407B /* TKAHumanTest.c */,
-				8AE27D791AA3285E0092407B /* TKAHumanTest.h */,
+				8A5C0CEE1AB32002003EEF0E /* TKAHumanTest.c */,
+				8A5C0CEF1AB32002003EEF0E /* TKAHumanTest.h */,
 			);
 			name = TKAHumanTest;
-			sourceTree = "<group>";
-		};
-		8A5B10BE1AA1F1C8005B899F /* TKAStructTest */ = {
-			isa = PBXGroup;
-			children = (
-				8A45C62F1A93394300025837 /* TKAHumanStructTest.c */,
-				8A45C6301A93394300025837 /* TKAHumanStructTest.h */,
-				8A5B10B81AA1F176005B899F /* TKAStringStructTest.c */,
-				8A5B10B91AA1F176005B899F /* TKAStringStructTest.h */,
-				8A5B10BB1AA1F1B3005B899F /* TKAArrayStructTest.c */,
-				8A5B10BC1AA1F1B3005B899F /* TKAArrayStructTest.h */,
-			);
-			name = TKAStructTest;
 			sourceTree = "<group>";
 		};
 		8A88018A1AAB2C220085F634 /* TKAArrayTest */ = {
 			isa = PBXGroup;
 			children = (
-				8AE27D7E1AA328B10092407B /* TKAArrayTest.c */,
-				8AE27D7F1AA328B10092407B /* TKAArrayTest.h */,
+				8A5C0CFF1AB3204C003EEF0E /* TKAArrayTest.c */,
+				8A5C0D001AB3204C003EEF0E /* TKAArrayTest.h */,
 			);
 			name = TKAArrayTest;
-			sourceTree = "<group>";
-		};
-		8AD7C9D61A9F58FD00EC35D8 /* TKAHumanStruct */ = {
-			isa = PBXGroup;
-			children = (
-				8A45C62B1A93363E00025837 /* TKAHumanStruct.c */,
-				8A45C62C1A93363E00025837 /* TKAHumanStruct.h */,
-				8A48CDF11A98DE04002B0B9E /* TKAStringStruct.c */,
-				8A48CDF21A98DE04002B0B9E /* TKAStringStruct.h */,
-				8A48CDF41A990A68002B0B9E /* TKAArrayStruct.c */,
-				8A48CDF51A990A68002B0B9E /* TKAArrayStruct.h */,
-				8A5B10BE1AA1F1C8005B899F /* TKAStructTest */,
-			);
-			name = TKAHumanStruct;
 			sourceTree = "<group>";
 		};
 		8AD7C9D71A9F592F00EC35D8 /* TKAHumanObject */ = {
@@ -266,14 +226,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A4727601AA5C50E00CE0FE9 /* TKAHuman.c in Sources */,
-				8A4727611AA5C98100CE0FE9 /* TKAHumanTest.c in Sources */,
-				8A4DD5461A962529003EAB27 /* TKAObject.c in Sources */,
-				8A45C6251A9335D800025837 /* main.c in Sources */,
-				8AE27D771AA328240092407B /* TKAString.c in Sources */,
-				8AE27D7D1AA328850092407B /* TKAStringTest.c in Sources */,
-				8A4BCC911AAA57B600D5BA53 /* TKAArrayTest.c in Sources */,
-				8AB9F2131AA58BBD00DD56C1 /* TKAArray.c in Sources */,
+				8A5C0CFB1AB32026003EEF0E /* main.c in Sources */,
+				8A5C0CF91AB32019003EEF0E /* TKAHuman.c in Sources */,
+				8A5C0CF41AB32002003EEF0E /* TKAHumanTest.c in Sources */,
+				8A5C0CF51AB32002003EEF0E /* TKAObject.c in Sources */,
+				8A5C0CF61AB32002003EEF0E /* TKAString.c in Sources */,
+				8A5C0D041AB3205C003EEF0E /* TKAStringTest.c in Sources */,
+				8A5C0D011AB3204C003EEF0E /* TKAArrayTest.c in Sources */,
+				8A5C0CFE1AB3203A003EEF0E /* TKAArray.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

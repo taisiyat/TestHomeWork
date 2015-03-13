@@ -39,7 +39,7 @@ void TKAHumanSetFather(TKAHuman *child, TKAHuman *parent);
 static
 void TKAHumanSetMother(TKAHuman *child, TKAHuman *parent);
 
-static const uint16_t TKAArrayLength = 20;
+static const uint16_t TKAArrayLength = 2;
 
 static const uint8_t TKAHumanReturnError = UINT8_MAX;
 
