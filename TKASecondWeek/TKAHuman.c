@@ -200,16 +200,7 @@ TKAGender TKAHumanGetGender(TKAHuman *human) {
     return (NULL == human) ? TKAHumanReturnError : human->_gender; 
 }
 
-// change to Array Count !!!!!!!!!
-void TKAHumanSetChildCount(TKAHuman *human, uint8_t count) {
-    if (NULL == human) {
-        return;
-    }
-    
-    human->_childCount = count;
-}
-
-uint8_t TKAHumanGetChildCount(TKAHuman *human) {
+uint16_t TKAHumanGetChildCount(TKAHuman *human) {
     return (NULL == human) ? TKAHumanReturnError : TKAArrayGetChildCount(human->_children);
 }
 
@@ -301,9 +292,6 @@ void TKAHumanRemoveChild(TKAHuman *parent, TKAHuman *child) {
           
                 TKAHumanSetMother(child, NULL);
             }
-        
-            uint8_t childCount = TKAHumanGetChildCount(parent);
-            TKAHumanSetChildCount(parent, childCount-1);
         }
     }
 }

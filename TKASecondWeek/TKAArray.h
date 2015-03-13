@@ -13,8 +13,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "TKAHuman.h"
 #include "TKAObject.h"
+
 
 extern
 const uint16_t TKAArrayReturnError;

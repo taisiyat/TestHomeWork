@@ -355,10 +355,10 @@ void TKAHumanChildTest() {
  }
 
 void TKAHumanTest() {
-//    TKAHumanCreatTest();
+//   TKAHumanCreatTest();
     printf("\n");
     printf("\n");
-//  TKAHumanMarryDivorceTest();
+// TKAHumanMarryDivorceTest();
 //    printf("\n");
 //    printf("\n");
 //    
