@@ -12,7 +12,8 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
-static const uint16_t TKAArrayReturnError = UINT16_MAX;
+//static
+const uint16_t TKAArrayReturnError = UINT16_MAX;
 
 static
 uint16_t TKAArrayNeedToChangeLength(TKAArray *array);
@@ -68,22 +69,25 @@ void __TKAArrayDeallocate(TKAArray *array) {
 }
 
 void TKAArraySetLength(TKAArray *array, uint16_t length) {
-//    if (array->_length > length) {
-//        for (uint16_t iter = array->_length-1; iter > length; iter--) {
-//            TKAArrayRemoveChildAtIndex(array, iter);
-//        }
-//    }
-//
-//    
-       if (array->_length != length) {
-            array->_child = realloc(array->_child, length * sizeof(*array->_child));
-   
-            if (array->_length < length) {
-                memset(array->_child + array->_length, 0, length - array->_length);
-            }
-            
-            array->_length = length;
+    if (array->_length > length) {
+        for (uint16_t iter = array->_length-1; iter > length; iter--) {
+            TKAArrayRemoveChildAtIndex(array, iter);
         }
+    }
+
+    void *tempResult = NULL;
+    if (array->_length != length) {
+        tempResult = realloc(array->_child, length * sizeof(*array->_child));
+        array->_child = realloc(array->_child, length * sizeof(*array->_child));
+        assert(NULL != tempResult);
+        array->_child = tempResult;
+           
+        if (array->_length < length) {
+             memset(array->_child + array->_length, 0, length - array->_length);
+        }
+            
+        array->_length = length;
+    }
 }
 
 
@@ -156,24 +160,8 @@ void TKAArraySetChildCount(TKAArray *array, uint16_t count) {
 
 uint16_t TKAArrayGetChildCount(TKAArray *array) {
     return (NULL == array) ? TKAArrayReturnError : array->_childCount;
-    
-//    if (NULL == array) {
-//        return UINT16_MAX;
-//    }
-//    
-//    uint16_t tempChildCount = 0;
-//    for (uint16_t iter = 0; iter < array->_length; iter ++) {
-//        if (array->_child[iter] != NULL) {
-//            tempChildCount ++;
-//        }
-//       
-//    }
-//    
-//    return tempChildCount;
 }
 
-
-// ????????? change or dell
 uint16_t TKAArrayGetIndexOfLastChild(TKAArray *array) {
     if (NULL == array) {
         return TKAArrayReturnError;
@@ -232,15 +220,12 @@ void TKAArrayAddChild(TKAArray *array, TKAHuman *child) {
     if (TKAArrayReturnError == TKAArrayGetIndexOfChild(array, child)) {
         uint16_t indexOfFirstNull = TKAArrayGetIndexOfChild(array, NULL);
         uint16_t tempChildCount = TKAArrayGetChildCount(array);
-//        if (NULL == TKAArrayGetChildAtIndex(array, indexOfFirstNull)) {
         TKAArraySetChild(array, child, indexOfFirstNull);
         TKAArraySetChildCount(array, tempChildCount+1);
-//        }
-
     }
     
 }
-
+// used only in ArrayTest
 void TKAArrayAddChildAtIndex(TKAArray *array, TKAHuman *child, uint16_t index) {
     if (NULL == array) {
         return;
@@ -256,7 +241,7 @@ void TKAArrayAddChildAtIndex(TKAArray *array, TKAHuman *child, uint16_t index) {
         }
     }
 }
-
+// used only in ArrayTest and in SetLength
 void TKAArrayRemoveChildAtIndex(TKAArray *array, uint16_t index) {
     if (NULL == array) {
         return;
@@ -291,8 +276,9 @@ void TKAArrayRemoveAllChildren(TKAArray *array) {
     if (NULL == array) {
         return;
     }
-
-    for (uint16_t iter = 0; iter < TKAArrayGetLength(array); iter++) {
+    
+    uint16_t tempIndexOfLastChild = TKAArrayGetIndexOfLastChild(array);
+    for (uint16_t iter = 0; iter <= tempIndexOfLastChild; iter++) {
         if (NULL != TKAArrayGetChildAtIndex(array, iter)) {
             TKAArraySetChild(array, NULL, iter);
             uint16_t tempChildCount = TKAArrayGetChildCount(array);
@@ -306,7 +292,8 @@ void TKAArrayOutput(TKAArray *array) {
         return;
     }
     
-    for (uint16_t iter = 0; iter < array->_length; iter++) {
+    uint16_t tempIndexOfLastChild = TKAArrayGetIndexOfLastChild(array);
+    for (uint16_t iter = 0; iter <= tempIndexOfLastChild; iter++) {
         if (NULL != TKAArrayGetChildAtIndex(array, iter)) {
             TKAStringOutput(TKAHumanGetName(TKAArrayGetChildAtIndex(array,iter)));
             printf(" ");
