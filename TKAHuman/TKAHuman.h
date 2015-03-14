@@ -24,7 +24,8 @@ typedef struct TKAArray TKAArray;
 
 typedef enum {
     TKAMale,
-    TKAFemale
+    TKAFemale,
+    TKANeuter
 } TKAGender;
 
 struct TKAHuman {
@@ -38,7 +39,7 @@ struct TKAHuman {
     
     uint8_t _age;
     TKAGender _gender;
-  uint16_t _childCount;
+//  uint16_t _childCount;
 };
 typedef struct TKAHuman TKAHuman;
 
@@ -46,19 +47,16 @@ extern
 TKAHuman *TKAHumanCreateWithNameString(TKAString *name, uint8_t age, TKAGender gender);
 
 extern
-TKAHuman *TKAHumanCreateWithNameChar(char *name, uint8_t age, TKAGender gender);
-
-extern
 TKAHuman *TKAHumanCreate(uint8_t age, TKAGender gender);
-
-extern
-void TKAHumanChangeName(TKAHuman *human, char *name);
 
 extern
 void TKAHumanSetAge(TKAHuman *human, uint8_t age);
 
 extern
 void TKAHumanSetGender(TKAHuman *human, TKAGender gender);
+
+extern
+void TKAHumanSetName(TKAHuman *human, TKAString *name);
 
 extern
 TKAString *TKAHumanGetName(TKAHuman *human);
@@ -85,7 +83,7 @@ extern
 TKAArray *TKAHumanGetChildren(TKAHuman *human);
 
 extern
-TKAHuman *TKAHumanBirth(TKAHuman *father, TKAHuman *mother, TKAGender gender);
+TKAHuman *TKAHumanGiveBirth(TKAHuman *father, TKAHuman *mother, TKAGender gender);
 
 extern
 void TKAHumanAddChild(TKAHuman *parent, TKAHuman *child);

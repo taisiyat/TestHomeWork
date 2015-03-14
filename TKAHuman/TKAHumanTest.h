@@ -16,6 +16,9 @@
 #include "TKAStringTest.h"
 
 extern
+TKAHuman *TKAHumanCreateWithNameChar(char *name, uint8_t age, TKAGender gender);
+
+extern
 void TKAHumanOutput(TKAHuman *human);
 
 extern

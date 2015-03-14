@@ -14,9 +14,6 @@
 #include "TKAString.h"
 
 extern
-void TKAStringTestMain();
-
-extern
-TKAString *TKAStringCreateTest();
+void TKAStringTest();
 
 #endif /* defined(__TKASecondWeek__TKAStringTest__) */

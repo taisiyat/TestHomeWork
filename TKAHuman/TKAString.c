@@ -11,8 +11,6 @@
 #pragma mark -
 #pragma mark Privat Declarations
 
-uint64_t TKAStringReturnError = UINT64_MAX;
-
 #pragma mark -
 #pragma mark Privat Implementations
 
@@ -26,21 +24,17 @@ void __TKAStringDeallocate(TKAString *string) {
 #pragma mark Public Implementations
 
 void TKAStringSetLength(TKAString *string, uint64_t length) {
-    if (NULL == string) {
-        return;
-    }
-    
-    if (0 == length && string->_length != length) {
-        free(string->_data);
-        string->_data = NULL;
-        string->_length = length;
-    }
-
-    if (string->_length != length) {
-        string->_data = realloc(string->_data, length * sizeof(*string->_data));
+    if (NULL != string && string->_length != length) {
+        if (0 == length ) {
+            free(string->_data);
+            string->_data = NULL;
+            
+        } else {
+            string->_data = realloc(string->_data, length * sizeof(*string->_data));
         
-        if (string->_length < length) {
-            memset(string->_data + string->_length, 0, length - string->_length);
+            if (string->_length < length) {
+                memset(string->_data + string->_length, 0, length - string->_length);
+            }
         }
         
         string->_length = length;
@@ -48,22 +42,17 @@ void TKAStringSetLength(TKAString *string, uint64_t length) {
 }
 
 uint64_t TKAStringGetLength(TKAString *string) {
-    return (NULL == string) ? TKAStringReturnError : string->_length;
+    return (NULL == string) ? 0 : string->_length;
 }
 
 void TKAStringSetData(TKAString *string, char *data) {
-    if (NULL == string) {
-        return;
-    }
-
-    if (string->_data != data) {
+    if (NULL != string && string->_data != data) {
         uint64_t lengthData = 0;
         
-        if (NULL != string->_data || NULL == data) {
+        if (NULL == data) {
             TKAStringSetLength(string, lengthData);
-        }
-
-        if (NULL != data) {
+                
+        } else {
             lengthData = strlen(data)+1;
             TKAStringSetLength(string, lengthData);
             memmove(string->_data, data, lengthData);

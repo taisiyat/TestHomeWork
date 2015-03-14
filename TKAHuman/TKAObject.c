@@ -40,11 +40,7 @@ void TKAObjectRelease(void *voidObject) {
 }
 
 uint64_t TKAObjectGetReferenceCount(void *object) {
-    if (NULL == object) {
-        return 0;
-    }
-    
-    return ((TKAObject *)object)->_referenceCount;
+    return (NULL == object) ? 0 : ((TKAObject *)object)->_referenceCount;
 }
 
 void __TKAObjectDeallocate(void *object) {
