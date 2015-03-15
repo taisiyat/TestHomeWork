@@ -101,21 +101,21 @@ void TKAArrayCreateTest() {
     //                              after being created TKAHuman
     TKAHuman *man = TKAHumanCreateWithNameChar("man", 35, TKAMale);
     //                                  array shouldnt be NULL,
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     //                                  length should be 0
-    assert(0 == TKAArrayGetLength(TKAHumanGetChildren(man)));
+    assert(0 == TKAArrayGetLength(TKAHumanGetArrayOfChildren(man)));
     //                                  count of child should be 0
-    assert(0 == TKAArrayGetChildCount(TKAHumanGetChildren(man)));
+    assert(0 == TKAArrayGetChildCount(TKAHumanGetArrayOfChildren(man)));
     //                                  objects reference count of Array should be 1
-    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetChildren(man)));
-//    TKAArrayOutputTest(TKAHumanGetChildren(man));
+    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetArrayOfChildren(man)));
+//    TKAArrayOutputTest(TKAHumanGetArrayOfChildren(man));
     
     //                                      after being releasing TKAHuman
     TKAObjectRelease(man);
     //                                          array should be NULL,
-    assert(NULL == TKAHumanGetChildren(man));
+    assert(NULL == TKAHumanGetArrayOfChildren(man));
     //                                          objects reference count of Array should be 0
-    assert(0 == TKAObjectGetReferenceCount(TKAHumanGetChildren(man)));
+    assert(0 == TKAObjectGetReferenceCount(TKAHumanGetArrayOfChildren(man)));
 }
 
 
