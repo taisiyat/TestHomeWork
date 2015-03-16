@@ -44,9 +44,6 @@ void TKAArrayAddChild(TKAArray *array, TKAHuman *child);
 extern
 uint16_t TKAArrayGetChildCount(TKAArray *array);
 
-//extern
-//uint16_t TKAArrayGetIndexOfFirstNullChild(TKAArray *array);
-
 extern
 uint16_t TKAArrayGetIndexOfLastChild(TKAArray *array);
 
@@ -55,12 +52,6 @@ uint16_t TKAArrayGetIndexOfChild(TKAArray *array, TKAHuman *child);
 
 extern
 TKAHuman *TKAArrayGetChildAtIndex(TKAArray *array, uint16_t index);
-
-//extern
-//void TKAArrayAddChildAtIndex(TKAArray *array, TKAHuman *data, uint16_t index);
-
-//extern
-//void TKAArrayRemoveChildAtIndex(TKAArray *array, uint16_t index);
 
 extern
 void TKAArrayRemoveOfChild(TKAArray *array, TKAHuman *child);

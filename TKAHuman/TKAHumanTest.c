@@ -48,12 +48,12 @@ void TKAHumanChangeName(TKAHuman *human, char *name) {
 void TKAHumanCreatTest() {
     
     TKAHuman *testHuman = TKAHumanCreate(20, TKAMale);
-    assert(NULL != TKAHumanGetChildren(testHuman));
+    assert(NULL != TKAHumanGetArrayOfChildren(testHuman));
     assert(NULL == TKAHumanGetName(testHuman));
     assert(20 == TKAHumanGetAge(testHuman));
     assert(TKAMale == TKAHumanGetGender(testHuman));
     assert(0 == TKAObjectGetReferenceCount(TKAHumanGetName(testHuman)));
-    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetChildren(testHuman)));
+    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetArrayOfChildren(testHuman)));
     assert(1 == TKAObjectGetReferenceCount(testHuman));
     
     char *newName = "NewHuman";
@@ -62,12 +62,12 @@ void TKAHumanCreatTest() {
     assert(1 == TKAObjectGetReferenceCount(testName));
     
     TKAHumanSetName(testHuman, testName);
-    assert(NULL != TKAHumanGetChildren(testHuman));
+    assert(NULL != TKAHumanGetArrayOfChildren(testHuman));
     assert(testName == TKAHumanGetName(testHuman));
     assert(20 == TKAHumanGetAge(testHuman));
     assert(TKAMale == TKAHumanGetGender(testHuman));
     assert(2 == TKAObjectGetReferenceCount(TKAHumanGetName(testHuman)));
-    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetChildren(testHuman)));
+    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetArrayOfChildren(testHuman)));
     assert(1 == TKAObjectGetReferenceCount(testHuman));
     
     TKAObjectRelease(testName);
@@ -81,12 +81,12 @@ void TKAHumanCreatTest() {
     assert(1 == TKAObjectGetReferenceCount(nameWoman));
     
     TKAHuman *woman = TKAHumanCreateWithNameString(nameWoman, 20, TKAFemale);
-    assert(NULL != TKAHumanGetChildren(woman));
+    assert(NULL != TKAHumanGetArrayOfChildren(woman));
     assert(nameWoman == TKAHumanGetName(woman));
     assert(20 == TKAHumanGetAge(woman));
     assert(TKAFemale == TKAHumanGetGender(woman));
     assert(2 == TKAObjectGetReferenceCount(TKAHumanGetName(woman)));
-    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetChildren(woman)));
+    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetArrayOfChildren(woman)));
     assert(1 == TKAObjectGetReferenceCount(woman));
     
     TKAObjectRelease(nameWoman);
@@ -95,12 +95,12 @@ void TKAHumanCreatTest() {
     TKAObjectRelease(woman);
     
     TKAHuman *man = TKAHumanCreateWithNameChar("man", 35, TKAMale);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(NULL != TKAHumanGetName(man));
     assert(35 == TKAHumanGetAge(man));
     assert(TKAMale == TKAHumanGetGender(man));
     assert(1 == TKAObjectGetReferenceCount(TKAHumanGetName(man)));
-    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetChildren(man)));
+    assert(1 == TKAObjectGetReferenceCount(TKAHumanGetArrayOfChildren(man)));
     assert(1 == TKAObjectGetReferenceCount(man));
     TKAObjectRelease(man);
 }
@@ -110,133 +110,130 @@ void TKAHumanMarryDivorceTest() {
     TKAHuman *woman1 = TKAHumanCreateWithNameChar("woman1", 35, TKAFemale);
     TKAHuman *man2 = TKAHumanCreateWithNameChar("man2", 20, TKAMale);
     TKAHuman *woman2 = TKAHumanCreateWithNameChar("woman2", 20, TKAFemale);
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    assert(NULL != man2);
+    assert(1 == TKAObjectGetReferenceCount(man2));
+    assert(TKAMale == TKAHumanGetGender(man2));
+    assert(NULL == TKAHumanGetPartner(man2));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(NULL == TKAHumanGetPartner(woman1));
+    assert(NULL != woman2);
+    assert(1 == TKAObjectGetReferenceCount(woman2));
+    assert(TKAFemale == TKAHumanGetGender(woman2));
+    assert(NULL == TKAHumanGetPartner(woman2));
+   
+    TKAHumanDivorce(man1);
+    TKAHumanDivorce(woman1);
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(NULL == TKAHumanGetPartner(woman1));
+
+    TKAHumanMarry(woman1, man1);
+    assert(NULL != man1);
+    assert(2 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(woman1 == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(man1 == TKAHumanGetPartner(woman1));
     
-    TKAHumanMarry(man1, woman1);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(woman1);
-    printf("\n");
+    TKAHumanDivorce(man1);
+    assert(NULL != man1);
+    assert(2 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(woman1 == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(man1 == TKAHumanGetPartner(woman1));
     
+    TKAHumanDivorce(woman1);
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(NULL == TKAHumanGetPartner(woman1));
+    
+    TKAHumanMarry(woman1, man1);
     TKAHumanMarry(woman1, man2);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-    printf("\n");
-    
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(man2 == TKAHumanGetPartner(woman1));
+    assert(NULL != man2);
+    assert(2 == TKAObjectGetReferenceCount(man2));
+    assert(TKAMale == TKAHumanGetGender(man2));
+    assert(woman1 == TKAHumanGetPartner(man2));
+
     TKAHumanMarry(woman2, man2);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-    printf("\n");
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(man2 == TKAHumanGetPartner(woman1));
+    assert(NULL != man2);
+    assert(2 == TKAObjectGetReferenceCount(man2));
+    assert(TKAMale == TKAHumanGetGender(man2));
+    assert(woman1 == TKAHumanGetPartner(man2));
     
-    TKAHumanMarry(man1, NULL);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-//    assert(man1 == TKAHumanGetPartner(woman2));
-//    assert(woman2 == TKAHumanGetPartner(man1));
-//    assert(NULL == TKAHumanGetPartner(woman1));
-//    assert(NULL == TKAHumanGetPartner(man2));
-//    assert(2 == TKAObjectGetReferenceCount(man1));
-//    assert(1 == TKAObjectGetReferenceCount(woman1));
-//    assert(2 == TKAObjectGetReferenceCount(woman2));
-//    assert(1 == TKAObjectGetReferenceCount(man2));
-    printf("\n");
-    
-    TKAHumanDivorce(man2);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-    printf("\n");
-
-    TKAHumanDivorce(woman1);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-    //    assert(NULL == TKAHumanGetPartner(woman2));
-    //    assert(NULL == TKAHumanGetPartner(man1));
-    //    assert(NULL == TKAHumanGetPartner(woman1));
-    //    assert(NULL == TKAHumanGetPartner(man2));
-    //    assert(1 == TKAObjectGetReferenceCount(man1));
-    //    assert(1 == TKAObjectGetReferenceCount(woman1));
-    //    assert(1 == TKAObjectGetReferenceCount(woman2));
-    //    assert(1 == TKAObjectGetReferenceCount(man2));
-    printf("\n");
-
     TKAHumanDivorce(woman2);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-      printf("\n");
-    
-    
-    TKAHumanMarry(NULL, woman1);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-        printf("\n");
-
-    
-    TKAHumanMarry(man1, NULL);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-
-    printf("\n");
-    
-    TKAHumanMarry(man1, woman1);
-    TKAHumanMarry(man2, woman2);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-    //    assert(NULL == TKAHumanGetPartner(woman2));
-    //    assert(NULL == TKAHumanGetPartner(man1));
-    //    assert(NULL == TKAHumanGetPartner(woman1));
-    //    assert(NULL == TKAHumanGetPartner(man2));
-    //    assert(1 == TKAObjectGetReferenceCount(man1));
-    //    assert(1 == TKAObjectGetReferenceCount(woman1));
-    //    assert(1 == TKAObjectGetReferenceCount(woman2));
-    //    assert(1 == TKAObjectGetReferenceCount(man2));
-    printf("\n");
-    
-    TKAHumanMarry(man2, woman1);
-//    TKAHumanMarry(man2, woman2);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-       printf("\n");
-
+    TKAHumanDivorce(man1);
     TKAHumanDivorce(man2);
     TKAHumanDivorce(woman1);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
-       printf("\n");
-    TKAHumanDivorce(woman2);
-    TKAHumanDivorce(woman1);
-    TKAHumanOutput(man1);
-    TKAHumanOutput(man2);
-    TKAHumanOutput(woman1);
-    TKAHumanOutput(woman2);
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(NULL == TKAHumanGetPartner(woman1));
+    assert(NULL != man2);
+    assert(1 == TKAObjectGetReferenceCount(man2));
+    assert(TKAMale == TKAHumanGetGender(man2));
+    assert(NULL == TKAHumanGetPartner(man2));
+    assert(NULL != woman2);
+    assert(1 == TKAObjectGetReferenceCount(woman2));
+    assert(TKAFemale == TKAHumanGetGender(woman2));
+    assert(NULL == TKAHumanGetPartner(woman2));
+    
+    TKAHumanMarry(man1, NULL);
+    assert(NULL != man1);
+    assert(1 == TKAObjectGetReferenceCount(man1));
+    assert(TKAMale == TKAHumanGetGender(man1));
+    assert(NULL == TKAHumanGetPartner(man1));
+    
+    TKAHumanMarry(woman1, NULL);
+    assert(NULL != woman1);
+    assert(1 == TKAObjectGetReferenceCount(woman1));
+    assert(TKAFemale == TKAHumanGetGender(woman1));
+    assert(NULL == TKAHumanGetPartner(woman1));
     
     TKAObjectRelease(woman1);
     TKAObjectRelease(man1);
     TKAObjectRelease(woman2);
     TKAObjectRelease(man2);
-//    assert(0 == TKAObjectGetReferenceCount(man1));
-//    assert(0 == TKAObjectGetReferenceCount(woman1));
-//    assert(0 == TKAObjectGetReferenceCount(woman2));
-//    assert(0 == TKAObjectGetReferenceCount(man2));
 }
 
 void TKAHumanGiveBirthtChildTest() {
@@ -244,25 +241,25 @@ void TKAHumanGiveBirthtChildTest() {
     TKAHuman *man = TKAHumanCreateWithNameChar("man", 35, TKAMale);
     TKAHuman *woman = TKAHumanCreateWithNameChar("woman", 35, TKAFemale);
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(0 == TKAHumanGetChildCount(man));
     assert(1 == TKAObjectGetReferenceCount(man));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
     
     assert(NULL != woman);
-    assert(NULL != TKAHumanGetChildren(woman));
+    assert(NULL != TKAHumanGetArrayOfChildren(woman));
     assert(1 == TKAObjectGetReferenceCount(woman));
     assert(0 == TKAHumanGetChildCount(woman));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
     
     TKAHuman *newBorn1 = TKAHumanGiveBirth(man, woman, TKAMale);
     TKAHumanChangeName(newBorn1, "newborn1");
     assert(2 == TKAObjectGetReferenceCount(man));
     assert(1 == TKAHumanGetChildCount(man));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
     assert(2 == TKAObjectGetReferenceCount(woman));
     assert(1 == TKAHumanGetChildCount(woman));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
     assert(NULL != newBorn1);
     assert(2 == TKAObjectGetReferenceCount(newBorn1));
     assert(0 == TKAHumanGetChildCount(newBorn1));
@@ -275,12 +272,12 @@ void TKAHumanGiveBirthtChildTest() {
     
     assert(2 == TKAObjectGetReferenceCount(man));
     assert(1 == TKAHumanGetChildCount(man));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
-    assert(newBorn2 != TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
+    assert(newBorn2 != TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
     assert(3 == TKAObjectGetReferenceCount(woman));
     assert(2 == TKAHumanGetChildCount(woman));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
-    assert(newBorn2 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 1));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
+    assert(newBorn2 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 1));
     assert(NULL != newBorn2);
     assert(1 == TKAObjectGetReferenceCount(newBorn2));
     assert(0 == TKAHumanGetChildCount(newBorn2));
@@ -292,12 +289,12 @@ void TKAHumanGiveBirthtChildTest() {
     
     assert(3 == TKAObjectGetReferenceCount(man));
     assert(2 == TKAHumanGetChildCount(man));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
-    assert(newBorn3 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 1));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
+    assert(newBorn3 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 1));
     assert(3 == TKAObjectGetReferenceCount(woman));
     assert(2 == TKAHumanGetChildCount(woman));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
-    assert(newBorn2 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 1));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
+    assert(newBorn2 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 1));
     assert(NULL != newBorn3);
     assert(1 == TKAObjectGetReferenceCount(newBorn3));
     assert(0 == TKAHumanGetChildCount(newBorn3));
@@ -308,12 +305,12 @@ void TKAHumanGiveBirthtChildTest() {
     assert(NULL == newBorn4);
     assert(3 == TKAObjectGetReferenceCount(man));
     assert(2 == TKAHumanGetChildCount(man));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
-    assert(newBorn3 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 1));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
+    assert(newBorn3 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 1));
     assert(3 == TKAObjectGetReferenceCount(woman));
     assert(2 == TKAHumanGetChildCount(woman));
-    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
-    assert(newBorn2 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 1));
+    assert(newBorn1 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
+    assert(newBorn2 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 1));
     assert(NULL == newBorn4);
     assert(0 == TKAObjectGetReferenceCount(newBorn4));
 
@@ -338,19 +335,19 @@ void TKAHumanAddRemoveChildTest() {
     TKAHuman *childFemale = TKAHumanCreateWithNameChar("childFemale", 5, TKAFemale);
     
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(0 == TKAHumanGetChildCount(man));
     assert(1 == TKAObjectGetReferenceCount(man));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
     
     assert(NULL != woman);
-    assert(NULL != TKAHumanGetChildren(woman));
+    assert(NULL != TKAHumanGetArrayOfChildren(woman));
     assert(1 == TKAObjectGetReferenceCount(woman));
     assert(0 == TKAHumanGetChildCount(woman));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
     
     assert(NULL != childMale);
-    assert(NULL != TKAHumanGetChildren(childMale));
+    assert(NULL != TKAHumanGetArrayOfChildren(childMale));
     assert(1 == TKAObjectGetReferenceCount(childMale));
     assert(0 == TKAHumanGetChildCount(childMale));
     assert(NULL == TKAHumanGetFather(childMale));
@@ -366,20 +363,20 @@ void TKAHumanAddRemoveChildTest() {
     TKAHumanBirthChildNumber(7);
     TKAHumanBirthChildNumber(8);
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(9 == TKAHumanGetChildCount(man));
     assert(10 == TKAObjectGetReferenceCount(man));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 9));
-    assert(newBorn8 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 8));
-    assert(newBorn0 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 9));
+    assert(newBorn8 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 8));
+    assert(newBorn0 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 0));
 
     assert(NULL != woman);
-    assert(NULL != TKAHumanGetChildren(woman));
+    assert(NULL != TKAHumanGetArrayOfChildren(woman));
     assert(10 == TKAObjectGetReferenceCount(woman));
     assert(9 == TKAHumanGetChildCount(woman));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 9));
-    assert(newBorn8 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 8));
-    assert(newBorn0 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 9));
+    assert(newBorn8 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 8));
+    assert(newBorn0 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
     
     assert(NULL != newBorn5);
     assert(2 == TKAObjectGetReferenceCount(newBorn5));
@@ -395,12 +392,12 @@ void TKAHumanAddRemoveChildTest() {
     assert(NULL == TKAHumanGetMother(childMale));
 
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(10 == TKAHumanGetChildCount(man));
     assert(11 == TKAObjectGetReferenceCount(man));
-    assert(childMale == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 9));
-    assert(NULL != TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 8));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 10));
+    assert(childMale == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 9));
+    assert(NULL != TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 8));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 10));
 
     TKAHumanAddChild(man, childMale);
     assert(NULL != childMale);
@@ -410,21 +407,21 @@ void TKAHumanAddRemoveChildTest() {
     assert(NULL == TKAHumanGetMother(childMale));
     
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(10 == TKAHumanGetChildCount(man));
     assert(11 == TKAObjectGetReferenceCount(man));
-    assert(childMale == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 9));
-    assert(NULL != TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 8));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 10));
+    assert(childMale == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 9));
+    assert(NULL != TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 8));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 10));
    
     TKAHumanAddChild(man, NULL);
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(10 == TKAHumanGetChildCount(man));
     assert(11 == TKAObjectGetReferenceCount(man));
-    assert(childMale == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 9));
-    assert(NULL != TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 8));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 10));
+    assert(childMale == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 9));
+    assert(NULL != TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 8));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 10));
     
     TKAHumanAddChild(NULL, childFemale);
     assert(NULL != childFemale);
@@ -435,12 +432,12 @@ void TKAHumanAddRemoveChildTest() {
     
     TKAHumanRemoveChild(man, newBorn5);
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(9 == TKAHumanGetChildCount(man));
     assert(10 == TKAObjectGetReferenceCount(man));
-    assert(newBorn4 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 4));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 5));
-    assert(newBorn6 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 6));
+    assert(newBorn4 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 4));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 5));
+    assert(newBorn6 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 6));
     
     assert(NULL != newBorn5);
     assert(1 == TKAObjectGetReferenceCount(newBorn5));
@@ -450,12 +447,12 @@ void TKAHumanAddRemoveChildTest() {
     
     TKAHumanAddChild(man, childFemale);
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(10 == TKAHumanGetChildCount(man));
     assert(11 == TKAObjectGetReferenceCount(man));
-    assert(newBorn4 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 4));
-    assert(childFemale == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 5));
-    assert(newBorn6 == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 6));
+    assert(newBorn4 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 4));
+    assert(childFemale == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 5));
+    assert(newBorn6 == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 6));
     
     assert(NULL != childFemale);
     assert(2 == TKAObjectGetReferenceCount(childFemale));
@@ -466,12 +463,12 @@ void TKAHumanAddRemoveChildTest() {
     
     TKAHumanRemoveAllChildren(man);
     assert(NULL != man);
-    assert(NULL != TKAHumanGetChildren(man));
+    assert(NULL != TKAHumanGetArrayOfChildren(man));
     assert(0 == TKAHumanGetChildCount(man));
     assert(1 == TKAObjectGetReferenceCount(man));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 9));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 8));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(man), 10));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 9));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 8));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(man), 10));
     
     assert(1 == TKAObjectGetReferenceCount(childFemale));
     assert(0 == TKAHumanGetChildCount(childFemale));
@@ -479,12 +476,12 @@ void TKAHumanAddRemoveChildTest() {
     assert(NULL == TKAHumanGetMother(childFemale));
     
     TKAHumanRemoveAllChildren(woman);
-    assert(NULL != TKAHumanGetChildren(woman));
+    assert(NULL != TKAHumanGetArrayOfChildren(woman));
     assert(1 == TKAObjectGetReferenceCount(woman));
     assert(0 == TKAHumanGetChildCount(woman));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 9));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 8));
-    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetChildren(woman), 0));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 9));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 8));
+    assert(NULL == TKAArrayGetChildAtIndex(TKAHumanGetArrayOfChildren(woman), 0));
     
     TKAObjectRelease(childMale);
     TKAObjectRelease(childFemale);
@@ -502,7 +499,6 @@ TKAHuman *TKAHumanCreateWithNameChar(char *name, uint8_t age, TKAGender gender) 
     
     return human;
 }
-
 
 void TKAHumanOutput(TKAHuman *human) {
     
@@ -531,15 +527,15 @@ void TKAHumanOutput(TKAHuman *human) {
         printf(", ");
     }
     
-    if (NULL != TKAHumanGetChildren(human)) {
+    if (NULL != TKAHumanGetArrayOfChildren(human)) {
         printf("children: ");
-        TKAArrayOutput(TKAHumanGetChildren(human));
+        TKAArrayOutput(TKAHumanGetArrayOfChildren(human));
     }
     
     printf(" \n");
-//    printf("ref count name = %llu, ", TKAObjectGetReferenceCount(human->_name));
-//    printf("ref count array = %llu, ", TKAObjectGetReferenceCount(human->_children));
-//    
+    printf("ref count name = %llu, ", TKAObjectGetReferenceCount(human->_name));
+    printf("ref count array = %llu, ", TKAObjectGetReferenceCount(human->_children));
+    
     printf(" \n");
 }
 
@@ -549,8 +545,8 @@ void TKAHumanTestMain(){
     TKAHumanCreatTest();
     printf("test creating Human \n");
 
-    // TKAHumanMarryDivorceTest();
-    //    printf("\n");
+    TKAHumanMarryDivorceTest();
+    printf("test Marry Divorce Human \n");
     
     TKAHumanGiveBirthtChildTest();
     printf("test GiveBirth Human \n");

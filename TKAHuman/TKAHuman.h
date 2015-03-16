@@ -39,7 +39,6 @@ struct TKAHuman {
     
     uint8_t _age;
     TKAGender _gender;
-//  uint16_t _childCount;
 };
 typedef struct TKAHuman TKAHuman;
 
@@ -80,7 +79,7 @@ extern
 TKAHuman *TKAHumanGetMother(TKAHuman *human);
 
 extern
-TKAArray *TKAHumanGetChildren(TKAHuman *human);
+TKAArray *TKAHumanGetArrayOfChildren(TKAHuman *human);
 
 extern
 TKAHuman *TKAHumanGiveBirth(TKAHuman *father, TKAHuman *mother, TKAGender gender);
