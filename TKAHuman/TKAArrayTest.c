@@ -185,7 +185,7 @@ void TKAArrayResizeTest() {
     //              after adding child
     TKADEFAddChild(0);
     //                  array shouldn't be NULL, first element shouldn't be NULL
-    assert(NULL != TKAArrayGetChildAtIndex(testArray,0));
+    assert(NULL != TKAArrayGetChildAtIndex(testArray, 0));
     //                  length should be change, equal 2
     assert(0 != TKAArrayGetLength(testArray));
     assert(2 == TKAArrayGetLength(testArray));
@@ -193,6 +193,7 @@ void TKAArrayResizeTest() {
     assert(1 == TKAArrayGetChildCount(testArray));
     //                  objects reference count of Array should be 1
     assert(1 == TKAObjectGetReferenceCount(testArray));
+    ///////////////////////////
 //    TKAArrayOutputTest(testArray);
     
     //                      after adding 5 child
@@ -201,6 +202,7 @@ void TKAArrayResizeTest() {
     TKADEFAddChild(3);
     TKADEFAddChild(4);
     TKADEFAddChild(5);
+    /////////////////////////
 //    TKAArrayOutputTest(testArray);
     //                      after adding 5 child
     //                          array shouldn't be NULL,
@@ -231,7 +233,8 @@ void TKAArrayResizeTest() {
      assert(4 == TKAArrayGetChildCount(testArray));
     //                                  objects reference count of Array should be 1
     assert(1 == TKAObjectGetReferenceCount(testArray));
-    
+    ///////////////////////////
+//   TKAArrayOutputTest(testArray);
     //                                      after removing ALL children
     TKAArrayRemoveAllChildren(testArray);
     //                                 elements of array should be NULL,
@@ -245,7 +248,7 @@ void TKAArrayResizeTest() {
     assert(0 == TKAArrayGetChildCount(testArray));
     //                                  objects reference count of Array should be 1
     assert(1 == TKAObjectGetReferenceCount(testArray));
-
+/////////////////////////////////////
 //   TKAArrayOutputTest(testArray);
     //                                              ObjectRelease Children
     TKADEFReleaseChild(5);
@@ -323,6 +326,7 @@ void TKAArrayAddRemoveChildTest() {
     // TKAArray
     //        after being created
     TKAArray * testArray = TKAObjectCreate(TKAArray);
+    ///////////////////////
 //    TKAArrayOutputTest(testArray);
     //              array shouldn't be NULL,
     assert(NULL != testArray);
@@ -344,6 +348,7 @@ void TKAArrayAddRemoveChildTest() {
     
     //                  after removing child from array with 0 length
        TKADEFRemoveChild(2);
+    ///////////////////
 //    TKAArrayOutputTest(testArray);
     //                      array shouldn't be NULL
     assert(NULL != testArray);
@@ -366,7 +371,7 @@ void TKAArrayAddRemoveChildTest() {
     assert(0 == TKAArrayGetChildCount(testArray));
     //                              objects reference count of Array should be 1
     assert(1 == TKAObjectGetReferenceCount(testArray));
-//    printf("Remove NULL \n");
+    /////////////////////////
 //    TKAArrayOutputTest(testArray);
 
     //                                              after adding NULL to array with 0 length
@@ -379,7 +384,7 @@ void TKAArrayAddRemoveChildTest() {
     assert(0 == TKAArrayGetChildCount(testArray));
     //                                                   objects reference count of Array should be 1
     assert(1 == TKAObjectGetReferenceCount(testArray));
-//    printf("ADD NULL \n");
+////////////////////////////
 //    TKAArrayOutputTest(testArray);
     
     //                  after adding 3 child
@@ -416,6 +421,7 @@ void TKAArrayAddRemoveChildTest() {
     assert(3 == TKAArrayGetChildCount(testArray));
     assert(2 == TKAObjectGetReferenceCount(child_0));
     assert(1 == TKAObjectGetReferenceCount(testArray));
+    //////////////////////////////
 //    TKAArrayOutputTest(testArray);
 
     //                                      after removing NULL from array with not 0 length
@@ -428,8 +434,8 @@ void TKAArrayAddRemoveChildTest() {
     assert(3 <= TKAArrayGetLength(testArray));
     assert(3 == TKAArrayGetChildCount(testArray));
     assert(1 == TKAObjectGetReferenceCount(testArray));
-//    printf("Remove NULL \n");
-//    TKAArrayOutputTest(testArray);
+//////////////////////////////////
+//   TKAArrayOutputTest(testArray);
 
     //                                              after adding NULL to array with 0 length
     //                                                  array shouldn't be NULL
@@ -442,7 +448,7 @@ void TKAArrayAddRemoveChildTest() {
     assert(3 <= TKAArrayGetLength(testArray));
     assert(3 == TKAArrayGetChildCount(testArray));
     assert(1 == TKAObjectGetReferenceCount(testArray));
-//    printf("ADD NULL \n");
+//////////////////////////////////
 //    TKAArrayOutputTest(testArray);
     
     //                                                          after removing 1 child, whot not in Array
@@ -457,7 +463,7 @@ void TKAArrayAddRemoveChildTest() {
     assert(3 == TKAArrayGetChildCount(testArray));
     assert(1 == TKAObjectGetReferenceCount(child_5));
     assert(1 == TKAObjectGetReferenceCount(testArray));
-//    printf("Remove child is apsend \n");
+/////////////////////////////////////
 //    TKAArrayOutputTest(testArray);
     
     //                                                                     after removing 3 child
