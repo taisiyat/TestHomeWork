@@ -94,7 +94,7 @@ void TKAArraySetLength(TKAArray *array, uint16_t length) {
         assert(NULL != array->_child);
         
         if (array->_length < length) {
-             memset(array->_child + array->_length, 0, (length - array->_length));        //tesst!!!
+             memset(array->_child + array->_length, 0, (length - array->_length) * sizeof(*array->_child));        //tesst!!!
         }
             
         array->_length = length;
