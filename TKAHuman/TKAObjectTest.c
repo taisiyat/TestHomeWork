@@ -25,7 +25,7 @@ void TKAObjectBehaviorTest();
 
 // TKAObject
 //  after being created
-//      objects reference count should be equal 1
+//      objects reference count should equal 1
 //           after releasing
 //               objects reference count should be 0
 //

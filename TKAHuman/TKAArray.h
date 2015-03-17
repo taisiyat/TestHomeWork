@@ -54,7 +54,7 @@ extern
 TKAHuman *TKAArrayGetChildAtIndex(TKAArray *array, uint16_t index);
 
 extern
-void TKAArrayRemoveOfChild(TKAArray *array, TKAHuman *child);
+void TKAArrayRemoveChild(TKAArray *array, TKAHuman *child);
 
 extern
 void TKAArrayRemoveAllChildren(TKAArray *array);
@@ -66,7 +66,7 @@ extern
 void TKAArrayOutput(TKAArray *array);
 
 extern
-void TKAArrayCheckOfLength(TKAArray *array);
+void TKAArrayResizeIfNeed(TKAArray *array);
 
 
 #endif /* defined(__TKASecondWeek__TKAArray__) */

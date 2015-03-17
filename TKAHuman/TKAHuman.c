@@ -12,14 +12,7 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-static
 const uint8_t TKAHumanReturnError = UINT8_MAX;
-
-static
-void TKAAssign(void **humanFild, void *human);
-
-static
-void TKAUniversalSet(void **humanFild, void *human);
 
 static
 void TKAHumanSetArrayOfChildren(TKAHuman *human, TKAArray *children);
@@ -42,36 +35,34 @@ bool TKAHumanIsMarred(TKAHuman *human);
 #pragma mark -
 #pragma mark Privat Implementations
 
-void TKAAssign(void **humanFild, void *human) {
-    if (*humanFild != human ) {
-        *humanFild = human;
-    }
-}
-
-void TKAUniversalSet(void **humanFild, void *human) {
-    if (*humanFild != human) {
-        if (NULL != *humanFild) {
-            TKAObjectRelease(*humanFild);
-        }
-        
-        *humanFild = human;
-        if (NULL != *humanFild) {
-            TKAObjectRetain(human);
-        }
-    }
-}
+//void TKAHumanSetPartner(TKAHuman *human, TKAHuman *partner) {
+//    if (NULL != human && human != partner) {
+//        if (TKAHumanGetGender(human) == TKAFemale) {
+//            if (TKAHumanGet(partner, human) != NULL) {
+//                TKAPropertyAssignSet((void *)&TKAHumanGet(partner, human)->_partner, partner);
+//            }
+//            TKAPropertyRetainSet((void *)&human->_partner, partner);
+//            
+//        } else {
+//            if (TKAHumanGet(partner, human) != NULL) {
+//                TKAPropertyRetainSet((void *)&TKAHumanGet(partner, human)->_partner, partner);
+//            }
+//            TKAPropertyAssignSet((void *)&human->_partner, partner);
+//            }
+//        }
+//    }
 
 void TKAHumanSetPartner(TKAHuman *human, TKAHuman *partner) {
     if (NULL != human && human != partner) {
         if ((TKAHumanGetGender(human) == TKAFemale)) {
-             TKAUniversalSet((void *)&human->_partner, partner);
+             TKAPropertyRetainSet((void *)&human->_partner, partner);
             
             if (human->_partner != NULL) {
-                TKAAssign((void *)&partner->_partner, human);
+                TKAPropertyAssignSet((void *)&partner->_partner, human);
             }
 
         } else {
-            TKAAssign((void *)&human->_partner, partner);
+            TKAPropertyAssignSet((void *)&human->_partner, partner);
         }
     }
 }
@@ -112,24 +103,24 @@ void TKAHumanSetPartner(TKAHuman *human, TKAHuman *partner) {
 
 void TKAHumanSetMother(TKAHuman *child, TKAHuman *parent) {
     if (NULL != child && child != parent) {
-       TKAUniversalSet((void *)&child->_mother, parent);
+       TKAPropertyRetainSet((void *)&child->_mother, parent);
     }
 }
 
 void TKAHumanSetFather(TKAHuman *child, TKAHuman *parent) {
     if (NULL != child && child != parent) {
-        TKAUniversalSet((void *)&child->_father, parent);
+        TKAPropertyRetainSet((void *)&child->_father, parent);
     }
 }
 
 void TKAHumanSetArrayOfChildren(TKAHuman *parent, TKAArray *children) {
     if (NULL != parent) {
-        TKAUniversalSet((void *)&parent->_children, children);
+        TKAPropertyRetainSet((void *)&parent->_children, children);
     }
 }
 
 bool TKAHumanIsMarred(TKAHuman *human) {
-    return (NULL != TKAHumanGetPartner(human)) ? true : false;
+    return (NULL != TKAHumanGet(partner, human)) ? true : false;
 }
 
 #pragma mark -
@@ -147,7 +138,7 @@ void __TKAHumanDeallocate(TKAHuman *human) {
 
 void TKAHumanSetName(TKAHuman *human, TKAString *name) {
     if (NULL != human) {
-        TKAUniversalSet((void *)&human->_name, name);
+        TKAPropertyRetainSet((void *)&human->_name, name);
     }
 }
 
@@ -172,11 +163,6 @@ TKAHuman *TKAHumanCreate(uint8_t age, TKAGender gender) {
     return human;
 }
 
-
-TKAString *TKAHumanGetName(TKAHuman *human) {
-    return (NULL == human) ? NULL : human->_name;
-}
-
 void TKAHumanSetAge(TKAHuman *human, uint8_t age) {
     if (NULL != human) {
         human->_age = age;
@@ -194,34 +180,28 @@ void TKAHumanSetGender(TKAHuman *human, TKAGender gender) {
 }
 
 TKAGender TKAHumanGetGender(TKAHuman *human) {
-    return (NULL == human) ? TKANeuter : human->_gender;
+    return (NULL == human) ? TKANone : human->_gender;
 }
 
 uint16_t TKAHumanGetChildCount(TKAHuman *human) {
     return (NULL == human) ? 0 : TKAArrayGetChildCount(human->_children);
 }
 
-TKAArray *TKAHumanGetArrayOfChildren(TKAHuman *human) {
-    return (NULL == human) ? NULL : human->_children;
-}
+TKAHumanGetImplementation(partner);
 
-TKAHuman *TKAHumanGetPartner(TKAHuman *human) {
-    return (NULL == human) ? NULL : human->_partner;
-}
+TKAHumanGetImplementation(father);
 
-TKAHuman *TKAHumanGetFather(TKAHuman *human) {
-    return (NULL == human) ? NULL : human->_father;
-}
+TKAHumanGetImplementation(mother);
 
-TKAHuman *TKAHumanGetMother(TKAHuman *human) {
-    return (NULL == human) ? NULL : human->_mother;
-}
+TKAHumanGetImplementation(name);
+
+TKAHumanGetImplementation(children);
 
 void TKAHumanDivorce(TKAHuman *human) {
-    if (TKAHumanIsMarred(human) && human != TKAHumanGetPartner(human)
+    if (TKAHumanIsMarred(human) && human != TKAHumanGet(partner, human)
         && TKAFemale == TKAHumanGetGender(human)) {
         
-        TKAHumanSetPartner(TKAHumanGetPartner(human), NULL);
+        TKAHumanSetPartner(TKAHumanGet(partner, human), NULL);
         TKAHumanSetPartner(human, NULL);
     }
 }
@@ -250,7 +230,7 @@ void TKAHumanMarry(TKAHuman *partner1, TKAHuman *partner2) {
 
 void TKAHumanAddChild(TKAHuman *parent, TKAHuman *child) {
     if (NULL != child && NULL != parent && child != parent) {
-        TKAArray *arrayOfChild = TKAHumanGetArrayOfChildren(parent);
+        TKAArray *arrayOfChild = TKAHumanGet(children, parent);
         if (NULL != arrayOfChild) {
                 TKAArrayAddChild(arrayOfChild, child);
 
@@ -287,9 +267,9 @@ TKAHuman *TKAHumanGiveBirth(TKAHuman *father, TKAHuman *mother, TKAGender gender
 
 void TKAHumanRemoveChild(TKAHuman *parent, TKAHuman *child) {
     if (child != parent && NULL != parent && NULL != child) {
-        TKAArray *arrayOfChildren = TKAHumanGetArrayOfChildren(parent);
+        TKAArray *arrayOfChildren = TKAHumanGet(children, parent);
         if (NULL != arrayOfChildren){
-            TKAArrayRemoveOfChild(arrayOfChildren, child);
+            TKAArrayRemoveChild(arrayOfChildren, child);
         
             if (TKAMale == TKAHumanGetGender(parent)) {
                 TKAHumanSetFather(child, NULL);
@@ -304,12 +284,12 @@ void TKAHumanRemoveChild(TKAHuman *parent, TKAHuman *child) {
 
 void TKAHumanRemoveAllChildren(TKAHuman *human) {
     if (NULL != human) {
-        TKAArray *arrayOfChildren = TKAHumanGetArrayOfChildren(human);
+        TKAArray *arrayOfChildren = TKAHumanGet(children, human);
         if ( NULL != arrayOfChildren) {
             uint16_t indexOfLastChild = TKAArrayGetIndexOfLastChild(arrayOfChildren);
             if (0 != indexOfLastChild &&  TKAArrayReturnError != indexOfLastChild) {
-                for (uint8_t iter = 0; iter <= indexOfLastChild; iter++) {
-                    TKAHumanRemoveChild(human, TKAArrayGetChildAtIndex(arrayOfChildren, iter));
+                for (uint8_t iter = indexOfLastChild+1; iter > 0; iter--) {
+                    TKAHumanRemoveChild(human, TKAArrayGetChildAtIndex(arrayOfChildren, iter-1));
                 }
             }
         }

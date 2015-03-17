@@ -17,15 +17,16 @@
 #include <stdlib.h>
 #include "TKAString.h"
 #include "TKAArray.h"
+#include "TKAPropertySetter.h"
 
 
 typedef struct TKAHuman TKAHuman;
 typedef struct TKAArray TKAArray;
 
 typedef enum {
+    TKANone,
     TKAMale,
-    TKAFemale,
-    TKANeuter
+    TKAFemale
 } TKAGender;
 
 struct TKAHuman {
@@ -43,6 +44,31 @@ struct TKAHuman {
 typedef struct TKAHuman TKAHuman;
 
 extern
+const uint8_t TKAHumanReturnError;
+
+#define TKAHumanGetDeclaration(field)\
+        extern\
+        void *TKAHumanGet_##field(TKAHuman *human)
+
+#define TKAHumanGetImplementation(field) \
+        void *TKAHumanGet_##field(TKAHuman *human) { \
+            return (NULL == human) ? NULL : human->_##field; \
+        }
+
+#define TKAHumanGet(field, valueHuman)\
+        TKAHumanGet_##field(valueHuman)
+
+TKAHumanGetDeclaration(partner);
+
+TKAHumanGetDeclaration(father);
+
+TKAHumanGetDeclaration(mother);
+
+TKAHumanGetDeclaration(name);
+
+TKAHumanGetDeclaration(children);
+
+extern
 TKAHuman *TKAHumanCreateWithNameString(TKAString *name, uint8_t age, TKAGender gender);
 
 extern
@@ -58,9 +84,6 @@ extern
 void TKAHumanSetName(TKAHuman *human, TKAString *name);
 
 extern
-TKAString *TKAHumanGetName(TKAHuman *human);
-
-extern
 uint8_t TKAHumanGetAge(TKAHuman *human);
 
 extern
@@ -68,18 +91,6 @@ TKAGender TKAHumanGetGender(TKAHuman *human);
 
 extern
 uint16_t TKAHumanGetChildCount(TKAHuman *human);
-
-extern
-TKAHuman *TKAHumanGetPartner(TKAHuman *human);
-
-extern
-TKAHuman *TKAHumanGetFather(TKAHuman *human);
-
-extern
-TKAHuman *TKAHumanGetMother(TKAHuman *human);
-
-extern
-TKAArray *TKAHumanGetArrayOfChildren(TKAHuman *human);
 
 extern
 TKAHuman *TKAHumanGiveBirth(TKAHuman *father, TKAHuman *mother, TKAGender gender);

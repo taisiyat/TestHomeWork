@@ -16,6 +16,7 @@
 		8A5C0D011AB3204C003EEF0E /* TKAArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CFF1AB3204C003EEF0E /* TKAArrayTest.c */; };
 		8A5C0D041AB3205C003EEF0E /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0D021AB3205C003EEF0E /* TKAStringTest.c */; };
 		8A5DC2391AB380B70057CF83 /* TKAObjectTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DC2371AB380B70057CF83 /* TKAObjectTest.c */; };
+		8A93D60A1AB77B140043F26B /* TKAPropertySetter.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A93D6081AB77B140043F26B /* TKAPropertySetter.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		8A5C0D031AB3205C003EEF0E /* TKAStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAStringTest.h; path = TKAHuman/TKAStringTest.h; sourceTree = SOURCE_ROOT; };
 		8A5DC2371AB380B70057CF83 /* TKAObjectTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAObjectTest.c; path = TKAHuman/TKAObjectTest.c; sourceTree = SOURCE_ROOT; };
 		8A5DC2381AB380B70057CF83 /* TKAObjectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAObjectTest.h; path = TKAHuman/TKAObjectTest.h; sourceTree = SOURCE_ROOT; };
+		8A93D6081AB77B140043F26B /* TKAPropertySetter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAPropertySetter.c; path = TKAHuman/TKAPropertySetter.c; sourceTree = SOURCE_ROOT; };
+		8A93D6091AB77B140043F26B /* TKAPropertySetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAPropertySetter.h; path = TKAHuman/TKAPropertySetter.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,9 +163,19 @@
 			name = TKAArrayTest;
 			sourceTree = "<group>";
 		};
+		8A93D60B1AB77B3B0043F26B /* TKAPropertySetter */ = {
+			isa = PBXGroup;
+			children = (
+				8A93D6081AB77B140043F26B /* TKAPropertySetter.c */,
+				8A93D6091AB77B140043F26B /* TKAPropertySetter.h */,
+			);
+			name = TKAPropertySetter;
+			sourceTree = "<group>";
+		};
 		8AD7C9D71A9F592F00EC35D8 /* TKAHumanObject */ = {
 			isa = PBXGroup;
 			children = (
+				8A93D60B1AB77B3B0043F26B /* TKAPropertySetter */,
 				8A4BCC921AAA5F5500D5BA53 /* TKAObject */,
 				8A4BCC951AAA5FAF00D5BA53 /* TKAArray */,
 				8A4BCC931AAA5F7900D5BA53 /* TKAHuman */,
@@ -240,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5C0CFB1AB32026003EEF0E /* main.c in Sources */,
+				8A93D60A1AB77B140043F26B /* TKAPropertySetter.c in Sources */,
 				8A5C0CF91AB32019003EEF0E /* TKAHuman.c in Sources */,
 				8A5C0CF41AB32002003EEF0E /* TKAHumanTest.c in Sources */,
 				8A5C0CF51AB32002003EEF0E /* TKAObject.c in Sources */,

@@ -24,9 +24,6 @@ struct TKAString {
 typedef struct TKAString TKAString;
 
 extern
-void TKAStringSetLength(TKAString *string, uint64_t length);
-
-extern
 uint64_t TKAStringGetLength(TKAString *string);
 
 extern
