@@ -33,41 +33,31 @@ struct TKAArray {
 typedef struct TKAArray TKAArray;
 
 extern
-void TKAArraySetLength(TKAArray *array, uint16_t length);
-
-extern
 uint16_t TKAArrayGetLength(TKAArray *array);
 
 extern
-void TKAArrayAddChild(TKAArray *array, TKAHuman *child);
+void TKAArrayAddObject(TKAArray *array, TKAHuman *child);
 
 extern
-uint16_t TKAArrayGetChildCount(TKAArray *array);
+uint16_t TKAArrayGetObjectCount(TKAArray *array);
 
 extern
-uint16_t TKAArrayGetIndexOfLastChild(TKAArray *array);
+uint16_t TKAArrayGetIndexOfObject(TKAArray *array, TKAHuman *child);
 
 extern
-uint16_t TKAArrayGetIndexOfChild(TKAArray *array, TKAHuman *child);
+TKAHuman *TKAArrayGetObjectAtIndex(TKAArray *array, uint16_t index);
 
 extern
-TKAHuman *TKAArrayGetChildAtIndex(TKAArray *array, uint16_t index);
+void TKAArrayRemoveObject(TKAArray *array, TKAHuman *child);
 
 extern
-void TKAArrayRemoveChild(TKAArray *array, TKAHuman *child);
-
-extern
-void TKAArrayRemoveAllChildren(TKAArray *array);
+void TKAArrayRemoveAllObjects(TKAArray *array);
 
 extern
 void __TKAArrayDeallocate(TKAArray *array);
 
 extern
 void TKAArrayOutput(TKAArray *array);
-
-extern
-void TKAArrayResizeIfNeed(TKAArray *array);
-
 
 #endif /* defined(__TKASecondWeek__TKAArray__) */
 

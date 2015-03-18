@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A5AB1DE1AB9BA5E00066CD4 /* TKAEnumeration.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5AB1DC1AB9BA5E00066CD4 /* TKAEnumeration.c */; };
 		8A5C0CF41AB32002003EEF0E /* TKAHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CEE1AB32002003EEF0E /* TKAHumanTest.c */; };
 		8A5C0CF51AB32002003EEF0E /* TKAObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CF01AB32002003EEF0E /* TKAObject.c */; };
 		8A5C0CF61AB32002003EEF0E /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C0CF21AB32002003EEF0E /* TKAString.c */; };
@@ -33,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		8A45C6211A9335D800025837 /* TKAHuman */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAHuman; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5AB1DC1AB9BA5E00066CD4 /* TKAEnumeration.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAEnumeration.c; sourceTree = "<group>"; };
+		8A5AB1DD1AB9BA5E00066CD4 /* TKAEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAEnumeration.h; sourceTree = "<group>"; };
 		8A5C0CEE1AB32002003EEF0E /* TKAHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAHumanTest.c; path = TKAHuman/TKAHumanTest.c; sourceTree = SOURCE_ROOT; };
 		8A5C0CEF1AB32002003EEF0E /* TKAHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAHumanTest.h; path = TKAHuman/TKAHumanTest.h; sourceTree = SOURCE_ROOT; };
 		8A5C0CF01AB32002003EEF0E /* TKAObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAObject.c; path = TKAHuman/TKAObject.c; sourceTree = SOURCE_ROOT; };
@@ -68,6 +71,8 @@
 		8A45C6181A9335D800025837 = {
 			isa = PBXGroup;
 			children = (
+				8A5AB1DC1AB9BA5E00066CD4 /* TKAEnumeration.c */,
+				8A5AB1DD1AB9BA5E00066CD4 /* TKAEnumeration.h */,
 				8A45C6231A9335D800025837 /* TKAHuman */,
 				8A45C6221A9335D800025837 /* Products */,
 			);
@@ -258,6 +263,7 @@
 				8A5C0CF41AB32002003EEF0E /* TKAHumanTest.c in Sources */,
 				8A5C0CF51AB32002003EEF0E /* TKAObject.c in Sources */,
 				8A5DC2391AB380B70057CF83 /* TKAObjectTest.c in Sources */,
+				8A5AB1DE1AB9BA5E00066CD4 /* TKAEnumeration.c in Sources */,
 				8A5C0CF61AB32002003EEF0E /* TKAString.c in Sources */,
 				8A5C0D041AB3205C003EEF0E /* TKAStringTest.c in Sources */,
 				8A5C0D011AB3204C003EEF0E /* TKAArrayTest.c in Sources */,
