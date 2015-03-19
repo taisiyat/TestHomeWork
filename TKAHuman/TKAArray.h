@@ -24,10 +24,10 @@ const uint16_t TKAArrayReturnError;
 typedef struct TKAHuman TKAHuman;
 
 struct TKAArray {
-    TKAObject _object;
+    TKAObject _superObject;
     
-    TKAHuman **_child;
-    uint16_t _childCount;
+    TKAObject **_object;
+    uint16_t _objectCount;
     uint16_t _length;
 };
 typedef struct TKAArray TKAArray;
@@ -36,19 +36,19 @@ extern
 uint16_t TKAArrayGetLength(TKAArray *array);
 
 extern
-void TKAArrayAddObject(TKAArray *array, TKAHuman *child);
+void TKAArrayAddObject(TKAArray *array, void *object );
 
 extern
 uint16_t TKAArrayGetObjectCount(TKAArray *array);
 
 extern
-uint16_t TKAArrayGetIndexOfObject(TKAArray *array, TKAHuman *child);
+uint16_t TKAArrayGetIndexOfObject(TKAArray *array, void *object );
 
 extern
-TKAHuman *TKAArrayGetObjectAtIndex(TKAArray *array, uint16_t index);
+void *TKAArrayGetObjectAtIndex(TKAArray *array, uint16_t index);
 
 extern
-void TKAArrayRemoveObject(TKAArray *array, TKAHuman *child);
+void TKAArrayRemoveObject(TKAArray *array, void *object );
 
 extern
 void TKAArrayRemoveAllObjects(TKAArray *array);

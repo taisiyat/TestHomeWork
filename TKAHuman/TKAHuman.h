@@ -43,8 +43,8 @@ struct TKAHuman {
 };
 typedef struct TKAHuman TKAHuman;
 
-extern
-const uint8_t TKAHumanReturnError;
+//extern
+//const uint8_t TKAHumanReturnError;
 
 #define TKAHumanGetDeclaration(field)\
         extern\
