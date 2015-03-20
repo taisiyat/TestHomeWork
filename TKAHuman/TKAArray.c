@@ -72,12 +72,12 @@ void TKAArrayChangeValueObjectCount(TKAArray *array, int8_t count) {
 
 void TKAArrayReorderObjects(TKAArray *array, uint16_t index) {
     uint16_t objectCount = TKAArrayGetObjectCount(array);
-    if (index < objectCount - 1) {
-        for (uint16_t iter = index; iter < objectCount - 1; iter++) {
+    if (index < objectCount) {
+        for (uint16_t iter = index; iter < objectCount; iter++) {
             array->_object[iter] = array->_object[iter + 1];
         }
-    
-        array->_object[objectCount - 1] = NULL;
+
+        array->_object[objectCount] = NULL;
     }
 }
 
@@ -125,13 +125,6 @@ uint16_t TKAArrayGetLength(TKAArray *array) {
 
 bool TKAArrayContainsObject(TKAArray *array, void *object ) {
     return (NULL != array && TKAArrayReturnError != TKAArrayGetIndexOfObject(array, object));
-//    for (uint16_t iter = 0; iter < TKAArrayGetLength(array); iter ++) {
-//        if (TKAArrayGetObjectAtIndex(array, iter) == object) {
-//            return true;
-//        }
-//    }
-//    
-//    return false;
 }
 
 void *TKAArrayGetObjectAtIndex(TKAArray *array, uint16_t index) {
@@ -146,16 +139,12 @@ uint16_t TKAArrayGetIndexOfObject(TKAArray *array, void *object ) {
     uint16_t childIndex = TKAArrayReturnError;
     
     if (NULL != array) {
-        for (uint16_t iter = 0; iter <= TKAArrayGetObjectCount(array); iter++) {   ///early was length
+        for (uint16_t iter = 0; iter <= TKAArrayGetObjectCount(array); iter++) {   
             if (TKAArrayGetObjectAtIndex(array, iter) == object) {
                 childIndex = iter;
             }
         }
-//        for (uint16_t iter = TKAArrayGetObjectCount(array) + 1; iter > 0; iter--) {   ///early was length
-//            if (TKAArrayGetObjectAtIndex(array, iter - 1) == object) {
-//                childIndex = iter - 1;
-//            }
-//        }
+
     }
     
     return childIndex;
@@ -173,7 +162,6 @@ void TKAArrayAddObject(TKAArray *array, void *object ) {
         TKAArraySetObjectAtIndex(array,
                                  object,
                                  TKAArrayGetObjectCount(array));
-//                                TKAArrayGetIndexOfObject(array, NULL));
         TKAArrayChangeValueObjectCount(array, 1);
     }
 }
