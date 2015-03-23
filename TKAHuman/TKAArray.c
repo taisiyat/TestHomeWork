@@ -32,77 +32,7 @@ static
 void TKAArrayReorderObjects(TKAArray *array, uint16_t index);
 
 static
-void TKAArrayChangeValueObjectCount(TKAArray *array, int8_t count);
-
-#pragma mark -
-#pragma mark Privat Implementations
-
-uint16_t TKAArrayProposedLength(TKAArray *array){
-    if (NULL == array) {
-        return 0;
-    }
-    
-    uint16_t objectCount = TKAArrayGetObjectCount(array);
-    uint16_t currentLength = TKAArrayGetLength(array);
-    
-    if (objectCount == currentLength) {
-        return fmax(2 * currentLength, 1);
-    }
-    
-    if (objectCount <= (currentLength / 2)) {
-        return (currentLength - currentLength / 2);
-    }
-    
-    return currentLength;
-}
-
-void TKAArrayResizeIfNeeded(TKAArray *array) {
-    if (NULL != array) {
-        uint16_t newLength = TKAArrayProposedLength(array);
-
-        TKAArraySetLength(array, newLength);
-    }
-}
-
-void TKAArrayChangeValueObjectCount(TKAArray *array, int8_t count) {
-    if (NULL != array && abs(count) == 1) {
-        array->_objectCount += count;
-    }
-}
-
-void TKAArrayReorderObjects(TKAArray *array, uint16_t index) {
-    uint16_t objectCount = TKAArrayGetObjectCount(array);
-    if (index < objectCount) {
-        for (uint16_t iter = index; iter < objectCount; iter++) {
-            array->_object[iter] = array->_object[iter + 1];
-        }
-
-        array->_object[objectCount] = NULL;
-    }
-}
-
-void TKAArraySetLength(TKAArray *array, uint16_t length) {
-    if (NULL == array) {
-        return;
-    }
-    
-    if (array->_length > length) {
-        for (uint16_t iter = array->_length - 1; iter > length; iter--) {
-            TKAArraySetObjectAtIndex(array, NULL, iter);
-        }
-    }
-    
-    if (array->_length != length) {
-        array->_object = realloc(array->_object, length * sizeof(*array->_object));
-        assert(NULL != array->_object);
-        
-        if (array->_length < length) {
-            memset(array->_object + array->_length, 0, (length - array->_length) * sizeof(*array->_object));
-        }
-        
-        array->_length = length;
-    }
-}
+void TKAArrayObjectCountAddValue(TKAArray *array, int8_t count);
 
 #pragma mark -
 #pragma mark Public Implementations
@@ -142,6 +72,8 @@ uint16_t TKAArrayGetIndexOfObject(TKAArray *array, void *object ) {
         for (uint16_t iter = 0; iter <= TKAArrayGetObjectCount(array); iter++) {   
             if (TKAArrayGetObjectAtIndex(array, iter) == object) {
                 childIndex = iter;
+                
+                break;
             }
         }
 
@@ -162,7 +94,7 @@ void TKAArrayAddObject(TKAArray *array, void *object ) {
         TKAArraySetObjectAtIndex(array,
                                  object,
                                  TKAArrayGetObjectCount(array));
-        TKAArrayChangeValueObjectCount(array, 1);
+        TKAArrayObjectCountAddValue(array, 1);
     }
 }
 
@@ -172,7 +104,7 @@ void TKAArrayRemoveObject(TKAArray *array, void *object ) {
         
         TKAArraySetObjectAtIndex(array, NULL, index);
         
-        TKAArrayChangeValueObjectCount(array, -1);
+        TKAArrayObjectCountAddValue(array, -1);
         
         TKAArrayReorderObjects(array, index);
         
@@ -206,3 +138,74 @@ void TKAArrayOutput(TKAArray *array) {
         }
     }
 }
+
+#pragma mark -
+#pragma mark Privat Implementations
+
+uint16_t TKAArrayProposedLength(TKAArray *array){
+    if (NULL == array) {
+        return 0;
+    }
+    
+    uint16_t objectCount = TKAArrayGetObjectCount(array);
+    uint16_t currentLength = TKAArrayGetLength(array);
+    
+    if (objectCount == currentLength) {
+        return fmax(2 * currentLength, 1);
+    }
+    
+    if (objectCount <= (currentLength / 2)) {
+        return (currentLength - currentLength / 2);
+    }
+    
+    return currentLength;
+}
+
+void TKAArrayResizeIfNeeded(TKAArray *array) {
+    if (NULL != array) {
+        uint16_t newLength = TKAArrayProposedLength(array);
+        
+        TKAArraySetLength(array, newLength);
+    }
+}
+
+void TKAArrayObjectCountAddValue(TKAArray *array, int8_t count) {
+    if (NULL != array && abs(count) == 1) {
+        array->_objectCount += count;
+    }
+}
+
+void TKAArrayReorderObjects(TKAArray *array, uint16_t index) {
+    uint16_t objectCount = TKAArrayGetObjectCount(array);
+    if (index < objectCount) {
+        for (uint16_t iter = index; iter < objectCount; iter++) {
+            array->_object[iter] = array->_object[iter + 1];
+        }
+        
+        array->_object[objectCount] = NULL;
+    }
+}
+
+void TKAArraySetLength(TKAArray *array, uint16_t length) {
+    if (NULL == array) {
+        return;
+    }
+    
+    if (array->_length > length) {
+        for (uint16_t iter = array->_length - 1; iter > length; iter--) {
+            TKAArraySetObjectAtIndex(array, NULL, iter);
+        }
+    }
+    
+    if (array->_length != length) {
+        array->_object = realloc(array->_object, length * sizeof(*array->_object));
+        assert(NULL != array->_object);
+        
+        if (array->_length < length) {
+            memset(array->_object + array->_length, 0, (length - array->_length) * sizeof(*array->_object));
+        }
+        
+        array->_length = length;
+    }
+}
+

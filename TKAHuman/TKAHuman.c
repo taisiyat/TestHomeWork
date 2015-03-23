@@ -34,51 +34,6 @@ static
 bool TKAHumanIsMarried(TKAHuman *human);
 
 #pragma mark -
-#pragma mark Privat Implementations
-
-void TKAHumanSetPartner(TKAHuman *human, TKAHuman *partner) {
-    if (NULL != human && human != partner) {
-        if ((TKAHumanGetGender(human) == TKAFemale)) {
-            TKAPropertyRetainSet((void *)&human->_partner, partner);
-        } else {
-            TKAPropertyAssignSet((void *)&human->_partner, partner);
-        }
-    }
-}
-
-void TKAHumanSetParent(TKAHuman *child, TKAHuman *parent) {
-    if (NULL != child && child != parent) {
-        if (TKAFemale == TKAHumanGetGender(parent)) {
-            TKAHumanSetMother(child, parent);
-        } else {
-            TKAHumanSetFather(child, parent);
-        }
-    }
-}
-
-void TKAHumanSetMother(TKAHuman *child, TKAHuman *parent) {
-    if (NULL != child && child != parent) {
-        TKAPropertyAssignSet((void *)&child->_mother, parent);
-    }
-}
-
-void TKAHumanSetFather(TKAHuman *child, TKAHuman *parent) {
-    if (NULL != child && child != parent) {
-        TKAPropertyAssignSet((void *)&child->_father, parent);
-    }
-}
-
-void TKAHumanSetArrayOfChildren(TKAHuman *parent, TKAArray *children) {
-    if (NULL != parent) {
-        TKAPropertyRetainSet((void *)&parent->_children, children);
-    }
-}
-
-bool TKAHumanIsMarried(TKAHuman *human) {
-    return (NULL != TKAHumanGet(partner, human));
-}
-
-#pragma mark -
 #pragma mark Public Implementations
 
 void __TKAHumanDeallocate(TKAHuman *human) {
@@ -225,4 +180,49 @@ void TKAHumanRemoveAllChildren(TKAHuman *human) {
             }
         }
     }
+}
+
+#pragma mark -
+#pragma mark Privat Implementations
+
+void TKAHumanSetPartner(TKAHuman *human, TKAHuman *partner) {
+    if (NULL != human && human != partner) {
+        if ((TKAHumanGetGender(human) == TKAFemale)) {
+            TKAPropertyRetainSet((void *)&human->_partner, partner);
+        } else {
+            TKAPropertyAssignSet((void *)&human->_partner, partner);
+        }
+    }
+}
+
+void TKAHumanSetParent(TKAHuman *child, TKAHuman *parent) {
+    if (NULL != child && child != parent) {
+        if (TKAFemale == TKAHumanGetGender(parent)) {
+            TKAHumanSetMother(child, parent);
+        } else {
+            TKAHumanSetFather(child, parent);
+        }
+    }
+}
+
+void TKAHumanSetMother(TKAHuman *child, TKAHuman *parent) {
+    if (NULL != child && child != parent) {
+        TKAPropertyAssignSet((void *)&child->_mother, parent);
+    }
+}
+
+void TKAHumanSetFather(TKAHuman *child, TKAHuman *parent) {
+    if (NULL != child && child != parent) {
+        TKAPropertyAssignSet((void *)&child->_father, parent);
+    }
+}
+
+void TKAHumanSetArrayOfChildren(TKAHuman *parent, TKAArray *children) {
+    if (NULL != parent) {
+        TKAPropertyRetainSet((void *)&parent->_children, children);
+    }
+}
+
+bool TKAHumanIsMarried(TKAHuman *human) {
+    return (NULL != TKAHumanGet(partner, human));
 }
