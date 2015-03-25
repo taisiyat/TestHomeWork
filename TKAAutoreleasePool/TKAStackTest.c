@@ -2,7 +2,7 @@
 //  TKAStackTest.c
 //  TKAAutoreleasePool
 //
-//  Created by Taisiya on 11.03.15.
+//  Created by Taisiya on 25.03.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
@@ -11,7 +11,8 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-static const size_t TKAStackSize = 128;
+static
+const size_t TKAStackSize = 128;
 
 static
 void TKAStackCreateTest();
@@ -20,10 +21,25 @@ static
 void TKAStackBehaviorTest();
 
 static
-void TKAStackPushPopObjectsTest();
+void TKAStackPushPopObjectsTest1();
+
+static
+void TKAStackPushPopObjectsTest2();
+
+static
+void TKAStackPushPopObjectsTest3();
 
 #pragma mark -
-#pragma mark Public Declarations
+#pragma mark Public Implementations
+
+void TKAStackPerformTest() {
+    
+        TKAStackCreateTest();
+        TKAStackBehaviorTest();
+    TKAStackPushPopObjectsTest1();
+    TKAStackPushPopObjectsTest2();
+    TKAStackPushPopObjectsTest3();
+}
 
 #pragma mark -
 #pragma mark Private Implementations
@@ -64,15 +80,15 @@ void TKAStackPushPopObjectsTest1() {
     }
     
     assert(1 == TKAObjectGetReferenceCount(stack));
-//    assert(17 == TKAObjectGetReferenceCount(testObject));
+    //    assert(17 == TKAObjectGetReferenceCount(testObject));
     assert(TKAStackIsFull(stack));
     assert(false == TKAStackIsEmpty(stack));
     
     TKAStackPopType result = TKAStackPopObjects(stack);
-
+    
     assert(TKAStackObjectPop == result);
     assert(1 == TKAObjectGetReferenceCount(stack));
-//    assert(1 == TKAObjectGetReferenceCount(testObject));
+    //    assert(1 == TKAObjectGetReferenceCount(testObject));
     assert(TKAStackIsEmpty(stack));
     
     TKAObjectRelease(testObject);
@@ -82,7 +98,7 @@ void TKAStackPushPopObjectsTest1() {
 void TKAStackPushPopObjectsTest2() {
     TKAStack *stack = TKAStackCreateWithSize(TKAStackSize);
     TKAObject *testObject = TKAObjectCreate(TKAObject);
-
+    
     TKAStackPushObject(stack, NULL);
     for (uint8_t iter = 1; iter <= 15; iter++) {
         TKAStackPushObject(stack, testObject);
@@ -123,7 +139,7 @@ void TKAStackPushPopObjectsTest3() {
             testCount++;
         }
     }
-
+    
     assert(16 == testCount);
     assert(1 == TKAObjectGetReferenceCount(stack));
     //    assert(1 == TKAObjectGetReferenceCount(testObject));
@@ -131,17 +147,4 @@ void TKAStackPushPopObjectsTest3() {
     
     TKAObjectRelease(testObject);
     TKAObjectRelease(stack);
-}
-
-#pragma mark -
-#pragma mark Public Implementations
-
-void TKAStackPerformTest() {
-    
-//    TKAStackCreateTest();
-//    TKAStackBehaviorTest();
-    TKAStackPushPopObjectsTest1();
-    TKAStackPushPopObjectsTest2();
-    TKAStackPushPopObjectsTest3();
-    
 }
