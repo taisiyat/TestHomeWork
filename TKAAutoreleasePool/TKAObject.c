@@ -2,29 +2,38 @@
 //  TKAObject.c
 //  TKAAutoreleasePool
 //
-//  Created by Taisiya on 10.03.15.
+//  Created by Taisiya on 24.03.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
 #include "TKAObject.h"
 
 #pragma mark -
-#pragma mark Public Implementation
+#pragma mark Private Declarations
 
-void *__TKAObjectCreate(size_t objectSize, TKADeallocateCallback deallocateCallback) {
-    TKAObject *object = calloc(1, objectSize);
+#pragma mark -
+#pragma mark Public Implementations
+
+void *__TKAObjectCreate(size_t size, TKADeallocateCallback deallocateCallback) {
+    TKAObject *object = calloc(1, size);
     object->_referenceCount = 1;
     object->_deallocateCallback = deallocateCallback;
     
     return object;
 }
 
-void *TKAObjectRatain(void *object) {
+void __TKAObjectDeallocate(void *object) {
     if (NULL != object) {
-        ((TKAObject *)object)->_referenceCount++;
+        free(object);
+    }
+}
+
+void *TKAObjectRetain(void *voidObject) {
+    if (NULL != voidObject) {
+        ((TKAObject *)voidObject)->_referenceCount++;
     }
     
-    return object;
+    return voidObject;
 }
 
 void TKAObjectRelease(void *voidObject) {
@@ -34,19 +43,15 @@ void TKAObjectRelease(void *voidObject) {
     
     TKAObject *object = (TKAObject *)voidObject;
     object->_referenceCount--;
-    
+
     if (0 == object->_referenceCount) {
         object->_deallocateCallback(object);
     }
-    
 }
 
-
-uint64_t TKAObjectGetReferenceCount(void *object) {
-    return (NULL == object) ? 0 : ((TKAObject *)object)->_referenceCount;
+uint64_t TKAObjectGetReferenceCount(void *voidObject) {
+    return (NULL != voidObject) ? ((TKAObject *)voidObject)->_referenceCount : 0;
 }
 
-extern
-void __TKAObjectDeallocate(void *object) {
-    free(object);
-}
+#pragma mark -
+#pragma mark Private Implementations

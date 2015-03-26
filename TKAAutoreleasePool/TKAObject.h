@@ -2,7 +2,7 @@
 //  TKAObject.h
 //  TKAAutoreleasePool
 //
-//  Created by Taisiya on 10.03.15.
+//  Created by Taisiya on 24.03.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
@@ -21,21 +21,21 @@ struct TKAObject {
 typedef struct TKAObject TKAObject;
 
 extern
-void *__TKAObjectCreate(size_t objectSize, TKADeallocateCallback deallocateCallback);
+void *__TKAObjectCreate(size_t size, TKADeallocateCallback deallocateCallback);
 
-#define TKAObjectCreate(type) \
-    __TKAObjectCreate(sizeof(type), (TKADeallocateCallback)__##type##Deallocate)
+#define TKAObjectCreate(type)\
+        __TKAObjectCreate(sizeof(type), (TKADeallocateCallback)__##type##Deallocate)
 
 extern
-void *TKAObjectRatain(void *object);
+void __TKAObjectDeallocate(void *object);
+
+extern
+void *TKAObjectRetain(void *object);
 
 extern
 void TKAObjectRelease(void *object);
 
 extern
 uint64_t TKAObjectGetReferenceCount(void *object);
-
-extern
-void __TKAObjectDeallocate(void *object);
 
 #endif /* defined(__TKAAutoreleasePool__TKAObject__) */
