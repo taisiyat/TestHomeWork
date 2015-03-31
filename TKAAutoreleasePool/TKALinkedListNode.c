@@ -7,7 +7,6 @@
 //
 
 #include "TKALinkedListNode.h"
-#include "TKAPropertySetter.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -17,7 +16,7 @@
 
 void TKALinkedListNodeSetNextNode(TKALinkedListNode *node, TKALinkedListNode *nextNode) {
     if (NULL != node && node != nextNode) {
-        TKARetainSetter((void **)&node->_nextNode, nextNode);
+        TKAPropertyRetainSet((void **)&node->_nextNode, nextNode);
     }
 }
 
@@ -27,7 +26,7 @@ TKALinkedListNode *TKALinkedListNodeGetNextNode(TKALinkedListNode *node) {
 
 void TKALinkedListNodeSetObject(TKALinkedListNode *node, void *object) {
     if (NULL != node && node != object) {
-        TKARetainSetter((void **)&node->_object, object);
+        TKAPropertyRetainSet((void **)&node->_object, object);
     }
 }
 
@@ -40,6 +39,18 @@ void __TKALinkedListNodeDeallocate(TKALinkedListNode *node) {
     TKALinkedListNodeSetObject(node, NULL);
     
     __TKAObjectDeallocate(node);
+}
+
+TKALinkedListNode *TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNode *nextNode, void *object) {
+    if (NULL != nextNode) {
+        TKALinkedListNode * node = TKAObjectCreate(TKALinkedListNode);
+        TKALinkedListNodeSetObject(node, object);
+        TKALinkedListNodeSetNextNode(node, nextNode);
+        
+        return node;
+    }
+    
+    return NULL;
 }
 
 #pragma mark -

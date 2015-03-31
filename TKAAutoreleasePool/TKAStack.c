@@ -23,11 +23,17 @@ size_t TKAStackGetSize(TKAStack *stack);
 static
 size_t TKAStackGetCurentSize(TKAStack *stack);
 
+static
+void TKAStackPopAllObjects(TKAStack *stack);
+
 #pragma mark -
 #pragma mark Public Implementations
 
 TKAStack *TKAStackCreateWithSize(size_t size) {
-    assert(0 != size);
+    if (0 == size) {
+        return NULL;
+    }
+    
     TKAStack *stack = TKAObjectCreate(TKAStack);
     TKAStackSetSize(stack, size);
         
@@ -35,51 +41,61 @@ TKAStack *TKAStackCreateWithSize(size_t size) {
 }
 
 void __TKAStackDeallocate(TKAStack *stack) {
-    TKAStackPopObjects(stack);
+    TKAStackPopAllObjects(stack);
     TKAStackSetSize(stack, 0);
     
     __TKAObjectDeallocate(stack);
 }
 
 bool TKAStackIsEmpty(TKAStack *stack) {
-    return (NULL != stack) ? (0 == TKAStackGetCurentSize(stack)) : false;
+    return (NULL != stack && 0 == TKAStackGetCurentSize(stack));
 }
 
 bool TKAStackIsFull(TKAStack *stack) {
-    return (NULL != stack) ? (TKAStackGetSize(stack) == TKAStackGetCurentSize(stack)) : false ;
+    return (NULL != stack && TKAStackGetSize(stack) == TKAStackGetCurentSize(stack));
 }
 
 void TKAStackPushObject(TKAStack *stack, void *object) {
     if (NULL != stack && !TKAStackIsFull(stack)) {
         void **head = TKAStackGetHead(stack);
         *head = object;
-        stack->_curentSize += sizeof(object);
+        stack->_currentSize += sizeof(object);
     }
 }
 
 TKAStackPopType TKAStackPopObject(TKAStack *stack) {
-    assert(NULL != stack && !TKAStackIsEmpty(stack));
-    stack->_curentSize -= sizeof(*stack->_data);
-    void **head = TKAStackGetHead(stack);
-    TKAStackPopType resultHead = (NULL != *head) ? TKAStackObjectPop : TKAStackObjectPop;
-    if (TKAStackObjectPop == resultHead) {
-        TKAObjectRelease(head);
-        *head = NULL;
-    }
+    if (NULL != stack && !TKAStackIsEmpty(stack)) {
+        stack->_currentSize -= sizeof(*stack->_data);
+        void **head = TKAStackGetHead(stack);
+
+        TKAStackPopType popTypeHead = (NULL != *head) ? TKAStackObjectPop : TKAStackNullPop;
     
-    return resultHead;
+        if (TKAStackObjectPop == popTypeHead) {
+            TKAObjectRelease(*head);
+            *head = NULL;
+        }
+    
+        return popTypeHead;
+    }
+        
+    return TKAStackNullPop;
 }
 
+
 TKAStackPopType TKAStackPopObjects(TKAStack *stack) {
-    assert(NULL != stack && !TKAStackIsEmpty(stack));
-    while (TKAStackObjectPop == TKAStackPopObject(stack)) {
-        if (TKAStackIsEmpty(stack)) {
-            return TKAStackObjectPop;
+    if (NULL != stack && !TKAStackIsEmpty(stack)) {
+        while (TKAStackObjectPop == TKAStackPopObject(stack)) {
+            if (TKAStackIsEmpty(stack)) {
+                return TKAStackObjectPop;
+            }
         }
+    
+        return TKAStackNullPop;
     }
     
     return TKAStackNullPop;
 }
+
 
 #pragma mark -
 #pragma mark Private Imlementations
@@ -87,7 +103,7 @@ TKAStackPopType TKAStackPopObjects(TKAStack *stack) {
 void TKAStackSetSize(TKAStack *stack, size_t size) {
     if (NULL != stack && stack->_size != size) {
         if (NULL != stack->_data) {
-            free(stack);
+            free(stack->_data);
             stack->_data = NULL;
         }
         
@@ -99,8 +115,14 @@ void TKAStackSetSize(TKAStack *stack, size_t size) {
     }
 }
 
+void TKAStackPopAllObjects(TKAStack *stack) {
+    while (!TKAStackIsEmpty(stack)) {
+        TKAStackPopObjects(stack);
+    }
+}
+
 void **TKAStackGetHead(TKAStack *stack) {
-    return (NULL != stack) ? (void *)((ptrdiff_t)(stack->_data) + TKAStackGetCurentSize(stack)) : NULL;
+    return (NULL != stack) ? (void **)((stack->_data) + (stack->_currentSize)) : NULL;
 }
 
 size_t TKAStackGetSize(TKAStack *stack) {
@@ -108,5 +130,5 @@ size_t TKAStackGetSize(TKAStack *stack) {
 }
 
 size_t TKAStackGetCurentSize(TKAStack *stack) {
-    return (NULL != stack) ? stack->_curentSize : 0;
+    return (NULL != stack) ? stack->_currentSize : 0;
 }

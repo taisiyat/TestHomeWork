@@ -24,7 +24,7 @@ struct TKAStack {
     TKAObject _superObject;
     
     void **_data;
-    size_t _curentSize;
+    size_t _currentSize;
     size_t _size;
 };
 typedef struct TKAStack TKAStack;

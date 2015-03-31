@@ -12,10 +12,11 @@
 #include <stdio.h>
 
 #include "TKAObject.h"
+#include "TKAPropertySetter.h"
 
 typedef struct TKALinkedListNode TKALinkedListNode;
 struct TKALinkedListNode {
-    TKAObject *_superObject;
+    TKAObject _superObject;
     
     TKALinkedListNode *_nextNode;
     void *_object;
@@ -35,5 +36,8 @@ void *TKALinkedListNodeGetObjct(TKALinkedListNode *node);
 
 extern
 void __TKALinkedListNodeDeallocate(TKALinkedListNode *node);
+
+extern
+TKALinkedListNode *TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNode *nextNode, void *object);
 
 #endif /* defined(__TKAAutoreleasePool__TKALinkedListNode__) */

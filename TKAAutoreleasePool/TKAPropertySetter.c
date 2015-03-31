@@ -16,13 +16,13 @@
 
 //void TKARetainSetterWithObject(void *object, void **field, void *objectToSet);
 
-void TKAAssignSetter(void **field, void *object) {
+void TKAProprtyAssignSet(void **field, void *object) {
     if (*field != object) {
         *field = object;
     }
 }
 
-void TKARetainSetter(void **field, void *object) {
+void TKAPropertyRetainSet(void **field, void *object) {
     if (*field != object) {
         if (NULL != object) {
             TKAObjectRetain(object);

@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-void *__TKAObjectCreate(size_t size, TKAObjectDeallocateCallback deallocateCallback) {
+void *__TKAObjectCreate(size_t size, TKADeallocateCallback deallocateCallback) {
     TKAObject *object = calloc(1, size);
     object->_referenceCount = 1;
     object->_deallocateCallback = deallocateCallback;
