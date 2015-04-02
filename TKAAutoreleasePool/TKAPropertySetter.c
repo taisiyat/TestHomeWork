@@ -14,8 +14,6 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-//void TKARetainSetterWithObject(void *object, void **field, void *objectToSet);
-
 void TKAProprtyAssignSet(void **field, void *object) {
     if (*field != object) {
         *field = object;

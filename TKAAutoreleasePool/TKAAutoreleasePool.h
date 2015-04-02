@@ -11,4 +11,21 @@
 
 #include <stdio.h>
 
+typedef struct TKALinkedList TKALinkedList;
+typedef struct TKAStack TKAStack;
+
+typedef struct TKAAutoreleasePool {
+    TKALinkedList *_list;
+    TKAStack *_stack;
+} TKAAutoreleasePool;
+
+extern
+void *TKAAutoreleasePoolCreateWithListAndStack();
+
+extern
+void TKAAutoreleasePoolAddObject(TKAAutoreleasePool *pool, void *object);
+
+extern
+void TKAAutoreleasePoolDrain(TKAAutoreleasePool *pool);
+
 #endif /* defined(__TKAAutoreleasePool__TKAAutoreleasePool__) */
