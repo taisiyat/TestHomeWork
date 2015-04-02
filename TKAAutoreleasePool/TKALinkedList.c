@@ -18,7 +18,7 @@ static
 void TKALinkedListMutate(TKALinkedList *list);
 
 static
-void TKALinkedListSetCount(TKALinkedList *list, int count);
+void TKALinkedListAddValueToCount(TKALinkedList *list, int count);
 
 #pragma mark -
 #pragma mark Public Implementations
@@ -42,25 +42,25 @@ void TKALinkedListAddObject(TKALinkedList *list, void *object) {
         TKAObjectRelease(node);
         
         TKALinkedListMutate(list);
-        TKALinkedListSetCount(list, 1);
+        TKALinkedListAddValueToCount(list, 1);
 
     }
 }
 
 void TKALinkedListRemoveObject(TKALinkedList *list, void *object) {
     if (NULL != list && NULL != object && 0 != TKALinkedListGetCount(list)) {
-        TKALinkedListContext context = TKALinkedListGetContextOfObject(list, object);
-        if (NULL == context._currentNode) {
+        TKALinkedListMutate(list);
+        
+        TKALinkedListContext context = TKALinkedListGetContextForObject(list, object);
+        if (NULL == context.currentNode) {
             return;
         }
 
-        if (TKALinkedListGetRootNode(list) == context._currentNode) {
+        if (TKALinkedListGetRootNode(list) == context.currentNode) {
             TKALinkedListRemoveFirstObject(list);
         } else {
-            TKALinkedListNodeSetNextNode(context._previousNode, TKALinkedListNodeGetNextNode(context._currentNode));
-        
-            TKALinkedListSetCount(list, -1);
-            TKALinkedListMutate(list);
+            TKALinkedListNodeSetNextNode(context.previousNode, TKALinkedListNodeGetNextNode(context.currentNode));
+            TKALinkedListAddValueToCount(list, -1);
         }
     }
 }
@@ -75,60 +75,54 @@ void TKALinkedListRemoveAllObjects(TKALinkedList *list) {
 
 void TKALinkedListRemoveFirstObject(TKALinkedList *list) {
     if (NULL != list && 0 != TKALinkedListGetCount(list)) {
+        TKALinkedListMutate(list);
+        
         TKALinkedListNode *rootNode = TKALinkedListGetRootNode(list);
         TKALinkedListNode *newRootNode = TKALinkedListNodeGetNextNode(rootNode);
         TKALinkedListSetRootNode(list, newRootNode);
 
-        TKALinkedListSetCount(list, -1);
-        TKALinkedListMutate(list);
+        TKALinkedListAddValueToCount(list, -1);
     }
 }
 
-void TKALinkedListInsertBeforObject(TKALinkedList *list, void *pointObject, void *insertedObject) {
+void TKALinkedListInsertBeforeObject(TKALinkedList *list, void *pointObject, void *insertedObject) {
     if (NULL != list && NULL != pointObject && NULL != insertedObject) {
-     
-        TKALinkedListContext context = TKALinkedListGetContextOfObject(list, pointObject);
-        if (NULL == context._currentNode) {
+        TKALinkedListMutate(list);
+        
+        TKALinkedListContext context = TKALinkedListGetContextForObject(list, pointObject);
+        if (NULL == context.currentNode) {
             return;
         }
         
-        if (TKALinkedListGetRootNode(list) == context._currentNode) {
+        if (TKALinkedListGetRootNode(list) == context.currentNode) {
             TKALinkedListAddObject(list,insertedObject);
         } else {
-            TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(context._currentNode,
+            TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(context.currentNode,
                                                                                            insertedObject);
-            TKALinkedListNodeSetNextNode(context._previousNode, insertedNode);
-            
+            TKALinkedListNodeSetNextNode(context.previousNode, insertedNode);
             TKAObjectRelease(insertedNode);
-            
-            TKALinkedListSetCount(list, 1);
-            TKALinkedListMutate(list);
+            TKALinkedListAddValueToCount(list, 1);
         }
-
     }
 }
 
 void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void *insertedObject) {
     if (NULL != list && NULL != pointObject && NULL != insertedObject) {
+        TKALinkedListMutate(list);
         
-        TKALinkedListContext context = TKALinkedListGetContextOfObject(list, pointObject);
-        if (NULL == context._currentNode) {
+        TKALinkedListContext context = TKALinkedListGetContextForObject(list, pointObject);
+        if (NULL == context.currentNode) {
             return;
         }
         
-        if (NULL != TKALinkedListNodeGetNextNode(context._currentNode)) {
-           TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNodeGetNextNode(context._currentNode),
+        if (NULL != TKALinkedListNodeGetNextNode(context.currentNode)) {
+           TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNodeGetNextNode(context.currentNode),
                                                                                           insertedObject);
-            TKALinkedListNodeSetNextNode(context._currentNode, insertedNode);
-            
+            TKALinkedListNodeSetNextNode(context.currentNode, insertedNode);
             TKAObjectRelease(insertedNode);
-            
-            TKALinkedListSetCount(list, 1);
-            TKALinkedListMutate(list);
+            TKALinkedListAddValueToCount(list, 1);
         }
-
     }
-
 }
 
 void TKALinkedListSetRootNode(TKALinkedList *list, TKALinkedListNode *node) {
@@ -154,15 +148,15 @@ uint64_t TKALinkedListGetMutationCount(TKALinkedList *list) {
 #pragma mark -
 #pragma mark Private Implementations
 
-TKALinkedListContext TKALinkedListGetContextOfObject(TKALinkedList *list, void *object) {
+TKALinkedListContext TKALinkedListGetContextForObject(TKALinkedList *list, void *object) {
     TKALinkedListContext context;
     memset(&context, 0, sizeof(context));
-    context._object = object;
-    context._currentNode = NULL;
-    context._previousNode = NULL;
+    context.object = object;
+    context.currentNode = NULL;
+    context.previousNode = NULL;
     
     if (NULL != list && NULL != object ) {
-        context._currentNode = TKALinkedListFindNodeOfObject(list,
+        context.currentNode = TKALinkedListFindNodeForObject(list,
                                                              &TKALinkedListNodeContainsObject,
                                                              &context);
     }
@@ -170,10 +164,10 @@ TKALinkedListContext TKALinkedListGetContextOfObject(TKALinkedList *list, void *
     return context;
 }
 
-TKALinkedListNode *TKALinkedListFindNodeOfObject(TKALinkedList *list,
+TKALinkedListNode *TKALinkedListFindNodeForObject(TKALinkedList *list,
                                                  TKALinkedListComparisonFunction  comparisonFunction,
-                                                 void *contextTest) {
-    if (NULL == list || NULL == contextTest || 0 == TKALinkedListGetCount(list)) {
+                                                 void *context) {
+    if (NULL == list || NULL == context || 0 == TKALinkedListGetCount(list)) {
         return NULL;
     }
     
@@ -181,12 +175,13 @@ TKALinkedListNode *TKALinkedListFindNodeOfObject(TKALinkedList *list,
     TKALinkedListNode *resultNode = NULL;
     
     while ((resultNode = TKALinkedListEnumeratorNextNode(enumerator))) {
-        if (comparisonFunction(resultNode, contextTest)) {
+        if (comparisonFunction(resultNode, context)) {
             break;
         }
     }
     
     TKAObjectRelease(enumerator);
+    
     return resultNode;
 }
 
@@ -196,10 +191,10 @@ bool TKALinkedListNodeContainsObject(void *node, void *contextTest) {
     }
     
     TKALinkedListContext *context = contextTest;
-    context->_previousNode = context->_currentNode;
-    context->_currentNode = node;
+    context->previousNode = context->currentNode;
+    context->currentNode = node;
     
-    return TKALinkedListNodeGetObject(node) == context->_object;
+    return TKALinkedListNodeGetObject(node) == context->object;
 }
 
 void TKALinkedListMutate(TKALinkedList *list) {
@@ -208,7 +203,7 @@ void TKALinkedListMutate(TKALinkedList *list) {
     }
 }
 
-void TKALinkedListSetCount(TKALinkedList *list, int count) {
+void TKALinkedListAddValueToCount(TKALinkedList *list, int count) {
     if (NULL == list) {
         return;
     }

@@ -16,19 +16,19 @@ typedef struct TKALinkedListEnumerator TKALinkedListEnumerator;
 typedef bool(*TKALinkedListComparisonFunction) (void *object, void *context);
 
 typedef struct TKALinkedListContext {
-    void *_object;
-    TKALinkedListNode *_previousNode;
-    TKALinkedListNode *_currentNode;
+    void *object;
+    TKALinkedListNode *previousNode;
+    TKALinkedListNode *currentNode;
 } TKALinkedListContext;
 
 #pragma mark -
 #pragma mark Private Declarations
 
 extern
-TKALinkedListContext TKALinkedListGetContextOfObject(TKALinkedList *list, void *object);
+TKALinkedListContext TKALinkedListGetContextForObject(TKALinkedList *list, void *object);
 
 extern
-TKALinkedListNode *TKALinkedListFindNodeOfObject(TKALinkedList *list,
+TKALinkedListNode *TKALinkedListFindNodeForObject(TKALinkedList *list,
                                                  TKALinkedListComparisonFunction comparisonFunction,
                                                  void *context);
 extern

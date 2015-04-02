@@ -47,7 +47,7 @@ extern
 void TKALinkedListRemoveFirstObject(TKALinkedList *list);
 
 extern
-void TKALinkedListInsertBeforObject(TKALinkedList *list, void *pointObject, void *insertedObject);
+void TKALinkedListInsertBeforeObject(TKALinkedList *list, void *pointObject, void *insertedObject);
 
 extern
 void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void *insertedObject);

@@ -136,7 +136,6 @@ void TKALinkedListEnumeratorSetNode(TKALinkedListEnumerator *enumerator, TKALink
     if (NULL != enumerator) {
         TKARetainSetter(&enumerator->_node, node);
     }
-    
 }
 
 TKALinkedListNode *TKALinkedListEnumeratorGetNode(TKALinkedListEnumerator *enumerator) {

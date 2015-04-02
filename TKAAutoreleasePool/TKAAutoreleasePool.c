@@ -41,6 +41,9 @@ void TKAAutoreleasePoolSetObject(TKAAutoreleasePool *pool, void *oject);
 static
 TKAStack  *TKAAutoreleasePoolGetObject(TKAAutoreleasePool *pool);
 
+static
+void TKAAutoreleasePoolDaflateIfNeeded(TKAAutoreleasePool *pool);
+
 #pragma mark -
 #pragma mark Public Implementations
 
@@ -78,10 +81,16 @@ void TKAAutoreleasePoolAddObject(TKAAutoreleasePool *pool, void *object) {
     }
 }
 
-void TKAAutoreleasePoolDrain(TKAAutoreleasePool *pool);
+void TKAAutoreleasePoolDrain(TKAAutoreleasePool *pool) {
+    
+}
 
 #pragma mark -
 #pragma mark Private Implementations
+
+void TKAAutoreleasePoolDaflateIfNeeded(TKAAutoreleasePool *pool) {
+    
+}
 
 void TKAAutoreleasePoolSet(TKAAutoreleasePool *pool) {
     __TKAAutoreleasePull = pool;
