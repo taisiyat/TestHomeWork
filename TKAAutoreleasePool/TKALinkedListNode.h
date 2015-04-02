@@ -32,7 +32,7 @@ extern
 void TKALinkedListNodeSetObject(TKALinkedListNode *node, void *object);
 
 extern
-void *TKALinkedListNodeGetObjct(TKALinkedListNode *node);
+void *TKALinkedListNodeGetObject(TKALinkedListNode *node);
 
 extern
 void __TKALinkedListNodeDeallocate(TKALinkedListNode *node);

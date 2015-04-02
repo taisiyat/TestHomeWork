@@ -32,6 +32,6 @@ TKALinkedListNode *TKALinkedListFindNodeOfObject(TKALinkedList *list,
                                                  TKALinkedListComparisonFunction comparisonFunction,
                                                  void *context);
 extern
-bool TKALinkedListNodeContainsObject(TKALinkedListNode *node, void *contextTest);
+bool TKALinkedListNodeContainsObject(void *node, void *contextTest);
 
 #endif

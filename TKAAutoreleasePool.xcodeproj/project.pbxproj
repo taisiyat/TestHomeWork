@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A558DB41ACD3FD800BF2EFC /* TKAAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */; };
+		8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */; };
 		8A72FADF1AC20F6C00C272E9 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FADE1AC20F6C00C272E9 /* main.c */; };
 		8A72FAE71AC20FB000C272E9 /* TKAObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FAE51AC20FB000C272E9 /* TKAObject.c */; };
 		8A72FAEA1AC20FEA00C272E9 /* TKAStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FAE81AC20FEA00C272E9 /* TKAStack.c */; };
@@ -34,6 +36,10 @@
 /* Begin PBXFileReference section */
 		8A4766D71AC94E94000FFFBE /* TKALinkedListPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKALinkedListPrivate.h; path = TKAAutoreleasePool/TKALinkedListPrivate.h; sourceTree = "<group>"; };
 		8A4766D81AC94F28000FFFBE /* TKALinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKALinkedListEnumeratorPrivate.h; path = TKAAutoreleasePool/TKALinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
+		8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAAutoreleasePool.c; path = TKAAutoreleasePool/TKAAutoreleasePool.c; sourceTree = "<group>"; };
+		8A558DB31ACD3FD800BF2EFC /* TKAAutoreleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAAutoreleasePool.h; path = TKAAutoreleasePool/TKAAutoreleasePool.h; sourceTree = "<group>"; };
+		8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAAutoreleasePoolTest.c; sourceTree = "<group>"; };
+		8A558DB71ACD406300BF2EFC /* TKAAutoreleasePoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAutoreleasePoolTest.h; sourceTree = "<group>"; };
 		8A72FADB1AC20F6C00C272E9 /* TKAAutoreleasePool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAAutoreleasePool; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A72FADE1AC20F6C00C272E9 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8A72FAE51AC20FB000C272E9 /* TKAObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAObject.c; sourceTree = "<group>"; };
@@ -67,6 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A558DB51ACD3FEC00BF2EFC /* TKAAutoreleasePool */ = {
+			isa = PBXGroup;
+			children = (
+				8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */,
+				8A558DB31ACD3FD800BF2EFC /* TKAAutoreleasePool.h */,
+			);
+			name = TKAAutoreleasePool;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		8A558DB91ACD407300BF2EFC /* TKAAutoreleasePoolTest */ = {
+			isa = PBXGroup;
+			children = (
+				8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */,
+				8A558DB71ACD406300BF2EFC /* TKAAutoreleasePoolTest.h */,
+			);
+			name = TKAAutoreleasePoolTest;
+			sourceTree = "<group>";
+		};
 		8A72FAD21AC20F6C00C272E9 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +176,7 @@
 				8A72FAEF1AC2108700C272E9 /* TKAStack */,
 				8A72FAF61AC2111400C272E9 /* TKALinkedListNode */,
 				8A72FAFA1AC2119600C272E9 /* TKALinkedList */,
+				8A558DB51ACD3FEC00BF2EFC /* TKAAutoreleasePool */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -188,6 +214,7 @@
 				8A72FB0C1AC2F72700C272E9 /* TKAObjectTest */,
 				8A72FB0A1AC2F70800C272E9 /* TKAStackTest */,
 				8A72FB081AC2F6D400C272E9 /* TKALinkedListTest */,
+				8A558DB91ACD407300BF2EFC /* TKAAutoreleasePoolTest */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -256,6 +283,8 @@
 				8A72FB071AC2F69400C272E9 /* TKALinkedListTest.c in Sources */,
 				8A72FAE71AC20FB000C272E9 /* TKAObject.c in Sources */,
 				8A72FAFD1AC211FC00C272E9 /* TKALinkedListEnumerator.c in Sources */,
+				8A558DB41ACD3FD800BF2EFC /* TKAAutoreleasePool.c in Sources */,
+				8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */,
 				8A72FB011AC2F64100C272E9 /* TKAObjectTest.c in Sources */,
 				8A72FB041AC2F66C00C272E9 /* TKAStackTest.c in Sources */,
 			);

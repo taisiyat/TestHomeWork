@@ -13,9 +13,9 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "TKALinkedListNode.h"
-#include "TKALinkedListEnumerator.h"
+#include "TKAObject.h"
 
+typedef struct TKALinkedListNode TKALinkedListNode;
 typedef struct TKALinkedListEnumerator TKALinkedListEnumerator;
 
 typedef struct TKALinkedList {
@@ -44,7 +44,7 @@ extern
 void TKALinkedListGetFirstObject(TKALinkedList *list, void *object);
 
 extern
-void TKALinkedListRemovetFirstObject(TKALinkedList *list);
+void TKALinkedListRemoveFirstObject(TKALinkedList *list);
 
 extern
 void TKALinkedListInsertBeforObject(TKALinkedList *list, void *pointObject, void *insertedObject);

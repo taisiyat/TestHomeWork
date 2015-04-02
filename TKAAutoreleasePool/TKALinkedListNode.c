@@ -25,7 +25,7 @@ TKALinkedListNode *TKALinkedListNodeGetNextNode(TKALinkedListNode *node) {
 }
 
 void TKALinkedListNodeSetObject(TKALinkedListNode *node, void *object) {
-    if (NULL != node && node != object) {
+    if (NULL != node) {
         TKAPropertyRetainSet((void **)&node->_object, object);
     }
 }

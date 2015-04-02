@@ -8,6 +8,8 @@
 
 #include "TKALinkedList.h"
 #include "TKALinkedListPrivate.h"
+#include "TKALinkedListNode.h"
+#include "TKALinkedListEnumerator.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -53,7 +55,7 @@ void TKALinkedListRemoveObject(TKALinkedList *list, void *object) {
         }
 
         if (TKALinkedListGetRootNode(list) == context._currentNode) {
-            TKALinkedListRemovetFirstObject(list);
+            TKALinkedListRemoveFirstObject(list);
         } else {
             TKALinkedListNodeSetNextNode(context._previousNode, TKALinkedListNodeGetNextNode(context._currentNode));
         
@@ -66,12 +68,12 @@ void TKALinkedListRemoveObject(TKALinkedList *list, void *object) {
 void TKALinkedListRemoveAllObjects(TKALinkedList *list) {
     if (NULL != list && 0 != TKALinkedListGetCount(list)) {
         while (TKALinkedListGetCount(list)) {
-            TKALinkedListRemovetFirstObject(list);
+            TKALinkedListRemoveFirstObject(list);
         }
     }
 }
 
-void TKALinkedListRemoveFirstObject(TKALinkedList *list, void *object) {
+void TKALinkedListRemoveFirstObject(TKALinkedList *list) {
     if (NULL != list && 0 != TKALinkedListGetCount(list)) {
         TKALinkedListNode *rootNode = TKALinkedListGetRootNode(list);
         TKALinkedListNode *newRootNode = TKALinkedListNodeGetNextNode(rootNode);
@@ -124,7 +126,7 @@ void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void
             TKALinkedListSetCount(list, 1);
             TKALinkedListMutate(list);
         }
-#warning if current node is on border
+
     }
 
 }
@@ -161,7 +163,7 @@ TKALinkedListContext TKALinkedListGetContextOfObject(TKALinkedList *list, void *
     
     if (NULL != list && NULL != object ) {
         context._currentNode = TKALinkedListFindNodeOfObject(list,
-                                                             TKALinkedListNodeContainsObject,
+                                                             &TKALinkedListNodeContainsObject,
                                                              &context);
     }
     
@@ -188,7 +190,7 @@ TKALinkedListNode *TKALinkedListFindNodeOfObject(TKALinkedList *list,
     return resultNode;
 }
 
-bool TKALinkedListNodeContainsObject(TKALinkedListNode *node, void *contextTest) {
+bool TKALinkedListNodeContainsObject(void *node, void *contextTest) {
     if (NULL == node || NULL == contextTest) {
         return false;
     }
@@ -197,7 +199,7 @@ bool TKALinkedListNodeContainsObject(TKALinkedListNode *node, void *contextTest)
     context->_previousNode = context->_currentNode;
     context->_currentNode = node;
     
-    return TKALinkedListNodeGetObjct(node) == context->_object;
+    return TKALinkedListNodeGetObject(node) == context->_object;
 }
 
 void TKALinkedListMutate(TKALinkedList *list) {

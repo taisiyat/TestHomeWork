@@ -122,7 +122,7 @@ void TKAStackPopAllObjects(TKAStack *stack) {
 }
 
 void **TKAStackGetHead(TKAStack *stack) {
-    return (NULL != stack) ? (void **)((stack->_data) + (stack->_currentSize)) : NULL;
+    return (NULL != stack) ? ((void **)(ptrdiff_t)stack->_data + stack->_currentSize) : NULL;
 }
 
 size_t TKAStackGetSize(TKAStack *stack) {
