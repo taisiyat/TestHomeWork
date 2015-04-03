@@ -71,7 +71,11 @@ TKAStackPopType TKAStackPopObject(TKAStack *stack) {
         TKAStackPopType popTypeHead = (NULL != *head) ? TKAStackObjectPop : TKAStackNullPop;
     
         if (TKAStackObjectPop == popTypeHead) {
+<<<<<<< HEAD
             TKAObjectRelease(head);
+=======
+            TKAObjectRelease(*head);
+>>>>>>> feature/AutoreleasePool
             *head = NULL;
         }
     
@@ -122,7 +126,11 @@ void TKAStackPopAllObjects(TKAStack *stack) {
 }
 
 void **TKAStackGetHead(TKAStack *stack) {
+<<<<<<< HEAD
     return (NULL != stack) ? (void **)((stack->_data) + (stack->_currentSize)) : NULL;
+=======
+    return (NULL != stack) ? ((void **)(ptrdiff_t)stack->_data + stack->_currentSize) : NULL;
+>>>>>>> feature/AutoreleasePool
 }
 
 size_t TKAStackGetSize(TKAStack *stack) {

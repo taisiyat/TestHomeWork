@@ -17,8 +17,13 @@ int main(int argc, const char * argv[]) {
     TKAObjectPerformTests();
     printf("TKAObject test is OK \n");
     
+<<<<<<< HEAD
     TKAStackPerformTest();
     printf("TKAStack test is OK \n");
+=======
+   // TKAStackPerformTest();
+   // printf("TKAStack test is OK \n");
+>>>>>>> feature/AutoreleasePool
     
     printf("Hello, World!\n");
     return 0;

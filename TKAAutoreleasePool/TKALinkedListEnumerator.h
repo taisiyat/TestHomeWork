@@ -10,5 +10,40 @@
 #define __TKAAutoreleasePool__TKALinkedListEnumerator__
 
 #include <stdio.h>
+<<<<<<< HEAD
+=======
+#include <stdbool.h>
+
+#include "TKAObject.h"
+
+typedef struct TKALinkedListNode TKALinkedListNode;
+typedef struct TKALinkedList TKALinkedList;
+
+typedef struct TKALinkedListEnumerator {
+    TKAObject _superObject;
+    
+    TKALinkedList *_list;
+    TKALinkedListNode *_node;
+    
+    uint64_t _mutationCount;
+    bool _isValid;
+    
+} TKALinkedListEnumerator;
+
+extern
+TKALinkedListEnumerator *TKALinkedLisEnumeratorCreateWithList(TKALinkedList *list);
+
+extern
+void __TKALinkedListEnumeratorDeallocate(TKALinkedListEnumerator *enumerator);
+
+extern
+TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enumerator);
+
+extern
+TKALinkedListNode *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator);
+
+extern
+bool TKALinkedListEnumeratorIsValid(TKALinkedListEnumerator *enumerator);
+>>>>>>> feature/AutoreleasePool
 
 #endif /* defined(__TKAAutoreleasePool__TKALinkedListEnumerator__) */
