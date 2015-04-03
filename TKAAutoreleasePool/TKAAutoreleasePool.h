@@ -12,11 +12,11 @@
 #include <stdio.h>
 
 typedef struct TKALinkedList TKALinkedList;
-typedef struct TKAStack TKAStack;
+typedef struct TKAAutoreleasingStack TKAAutoreleasingStack;
 
 typedef struct TKAAutoreleasePool {
     TKALinkedList *_list;
-    TKAStack *_stack;
+    TKAAutoreleasingStack *_stack;
 } TKAAutoreleasePool;
 
 extern

@@ -19,11 +19,6 @@ void TKARetainSetterWithObject(void *object, void **field, void *objectToSet);
 extern
 void TKAPropertyAssignSet(void **field, void *object);
 
-<<<<<<< HEAD
-extern
-void TKAPropertyRetainSet(void **field, void *object);
-
-=======
 #define TKAAssignSetter(field, object)\
         TKAPropertyAssignSet((void **)field, object);
 
@@ -34,5 +29,4 @@ void TKAPropertyRetainSet(void **field, void *object);
         TKAPropertyRetainSet((void **)field, object);
 
 
->>>>>>> feature/AutoreleasePool
 #endif /* defined(__TKAAutoreleasePool__TKAPropertySetter__) */

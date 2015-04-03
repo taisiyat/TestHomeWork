@@ -7,23 +7,13 @@
 //
 
 #include "TKALinkedList.h"
-<<<<<<< HEAD
-=======
 #include "TKALinkedListPrivate.h"
 #include "TKALinkedListNode.h"
 #include "TKALinkedListEnumerator.h"
->>>>>>> feature/AutoreleasePool
 
 #pragma mark -
 #pragma mark Private Declarations
 
-<<<<<<< HEAD
-#pragma mark -
-#pragma mark Public Implementations
-
-#pragma mark -
-#pragma mark Private Implementations
-=======
 static
 void TKALinkedListMutate(TKALinkedList *list);
 
@@ -155,6 +145,10 @@ uint64_t TKALinkedListGetMutationCount(TKALinkedList *list) {
     return (NULL != list) ? list->_mutationCount : 0;
 }
 
+void *TKALinkedListGetFirstObject(TKALinkedList *list) {
+    return (NULL != list) ? TKALinkedListNodeGetObject(TKALinkedListGetRootNode(list)) : NULL;
+}
+
 #pragma mark -
 #pragma mark Private Implementations
 
@@ -181,7 +175,7 @@ TKALinkedListNode *TKALinkedListFindNodeForObject(TKALinkedList *list,
         return NULL;
     }
     
-    TKALinkedListEnumerator *enumerator = TKALinkedLisEnumeratorCreateWithList(list);
+    TKALinkedListEnumerator *enumerator = TKALinkedListEnumeratorCreateWithList(list);
     TKALinkedListNode *resultNode = NULL;
     
     while ((resultNode = TKALinkedListEnumeratorNextNode(enumerator))) {
@@ -221,4 +215,3 @@ void TKALinkedListAddValueToCount(TKALinkedList *list, int count) {
     list->_count += count;
 }
 
->>>>>>> feature/AutoreleasePool

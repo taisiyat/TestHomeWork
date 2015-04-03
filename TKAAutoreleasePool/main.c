@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #include "TKAObjectTest.h"
-#include "TKAStackTest.h"
+#include "TKAAutoreleasingStackTest.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -17,13 +17,8 @@ int main(int argc, const char * argv[]) {
     TKAObjectPerformTests();
     printf("TKAObject test is OK \n");
     
-<<<<<<< HEAD
-    TKAStackPerformTest();
-    printf("TKAStack test is OK \n");
-=======
-   // TKAStackPerformTest();
-   // printf("TKAStack test is OK \n");
->>>>>>> feature/AutoreleasePool
+    TKAAutoreleasingStackPerformTest();
+    printf("TKAAutoreleasingStack test is OK \n");
     
     printf("Hello, World!\n");
     return 0;

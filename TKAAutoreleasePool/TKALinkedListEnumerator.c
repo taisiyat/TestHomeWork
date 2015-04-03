@@ -7,23 +7,13 @@
 //
 
 #include "TKALinkedListEnumerator.h"
-<<<<<<< HEAD
-=======
 #include "TKALinkedList.h"
 #include "TKALinkedListPrivate.h"
 #include "TKALinkedListNode.h"
->>>>>>> feature/AutoreleasePool
 
 #pragma mark -
 #pragma mark Private Declarations
 
-<<<<<<< HEAD
-#pragma mark -
-#pragma mark Public Implementations
-
-#pragma mark -
-#pragma mark Private Implementations
-=======
 static
 void TKALinkedListEnumeratorSetValid(TKALinkedListEnumerator *enumerator, bool valid);
 
@@ -51,7 +41,7 @@ void TKALinkedListEnumeratorCheckMutations(TKALinkedListEnumerator *enumerator);
 #pragma mark -
 #pragma mark Public Implementations
 
-TKALinkedListEnumerator *TKALinkedLisEnumeratorCreateWithList(TKALinkedList *list) {
+TKALinkedListEnumerator *TKALinkedListEnumeratorCreateWithList(TKALinkedList *list) {
     if (NULL == list) {
         return NULL;
     }
@@ -98,7 +88,7 @@ TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enum
     return node;
 }
 
-TKALinkedListNode *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator) {
+void *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator) {
     return (NULL != enumerator) ? TKALinkedListNodeGetObject(TKALinkedListEnumeratorNextNode(enumerator)) : NULL;
 }
 
@@ -117,6 +107,14 @@ void TKALinkedListEnumeratorCheckMutations(TKALinkedListEnumerator *enumerator) 
     }
 }
 
+void *TKALinkedListEnumeratorGetNextObject(TKALinkedListEnumerator *enumerator) {
+    if (NULL == enumerator) {
+        return NULL;
+    }
+    
+    return TKALinkedListNodeGetObject(TKALinkedListEnumeratorNextNode(enumerator));
+}
+
 #pragma mark -
 #pragma mark Private Implementations
 
@@ -129,8 +127,6 @@ void TKALinkedListEnumeratorSetMutationCount(TKALinkedListEnumerator *enumerator
         enumerator->_mutationCount = TKALinkedListGetMutationCount(TKALinkedListEnumeratorGetList(enumerator));
     }
 }
-
-void *TKALinkedListEnumeratorGetNextObject(TKALinkedListEnumerator *enumerator);
 
 void TKALinkedListEnumeratorSetList(TKALinkedListEnumerator *enumerator, TKALinkedList *list) {
     if (NULL != enumerator) {
@@ -150,6 +146,4 @@ void TKALinkedListEnumeratorSetNode(TKALinkedListEnumerator *enumerator, TKALink
 
 TKALinkedListNode *TKALinkedListEnumeratorGetNode(TKALinkedListEnumerator *enumerator) {
     return (NULL != enumerator) ? enumerator->_node : NULL;
-    
 }
->>>>>>> feature/AutoreleasePool

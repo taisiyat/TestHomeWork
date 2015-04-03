@@ -10,8 +10,6 @@
 #define __TKAAutoreleasePool__TKALinkedList__
 
 #include <stdio.h>
-<<<<<<< HEAD
-=======
 #include <stdbool.h>
 #include <string.h>
 
@@ -43,7 +41,7 @@ extern
 void TKALinkedListRemoveAllObjects(TKALinkedList *list);
 
 extern
-void TKALinkedListGetFirstObject(TKALinkedList *list, void *object);
+void *TKALinkedListGetFirstObject(TKALinkedList *list);
 
 extern
 void TKALinkedListRemoveFirstObject(TKALinkedList *list);
@@ -65,6 +63,5 @@ uint64_t TKALinkedListGetCount(TKALinkedList *list);
 
 extern
 uint64_t TKALinkedListGetMutationCount(TKALinkedList *list);
->>>>>>> feature/AutoreleasePool
 
 #endif /* defined(__TKAAutoreleasePool__TKALinkedList__) */

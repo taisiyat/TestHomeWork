@@ -14,11 +14,6 @@
 #pragma mark -
 #pragma mark Public Implementations
 
-<<<<<<< HEAD
-//void TKARetainSetterWithObject(void *object, void **field, void *objectToSet);
-
-=======
->>>>>>> feature/AutoreleasePool
 void TKAProprtyAssignSet(void **field, void *object) {
     if (*field != object) {
         *field = object;
