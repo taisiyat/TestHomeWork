@@ -31,7 +31,26 @@ extern
 TKALinkedListNode *TKALinkedListFindNodeForObject(TKALinkedList *list,
                                                  TKALinkedListComparisonFunction comparisonFunction,
                                                  void *context);
+
 extern
 bool TKALinkedListNodeContainsObject(void *node, void *contextTest);
+
+extern
+uint64_t TKALinkedListGetMutationCount(TKALinkedList *list);
+
+extern
+TKALinkedListNode *TKALinkedListGetRootNode(TKALinkedList *list);
+
+extern
+void TKALinkedListSetRootNode(TKALinkedList *list, TKALinkedListNode *node);
+
+extern
+void TKALinkedListMutate(TKALinkedList *list);
+
+extern
+void TKALinkedListAddValueToCount(TKALinkedList *list, int count);
+
+extern
+TKALinkedListNode *TKALinkedListGetNodeForObject(TKALinkedList *list, void *object);
 
 #endif

@@ -53,15 +53,8 @@ extern
 void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void *insertedObject);
 
 extern
-void TKALinkedListSetRootNode(TKALinkedList *list, TKALinkedListNode *node);
-
-extern
-TKALinkedListNode *TKALinkedListGetRootNode(TKALinkedList *list);
-
-extern
 uint64_t TKALinkedListGetCount(TKALinkedList *list);
 
 extern
-uint64_t TKALinkedListGetMutationCount(TKALinkedList *list);
-
+bool TKALinkedListContainsObject(TKALinkedList *list, void *object);
 #endif /* defined(__TKAAutoreleasePool__TKALinkedList__) */

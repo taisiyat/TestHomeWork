@@ -14,12 +14,6 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-static
-void TKALinkedListMutate(TKALinkedList *list);
-
-static
-void TKALinkedListAddValueToCount(TKALinkedList *list, int count);
-
 #pragma mark -
 #pragma mark Public Implementations
 
@@ -125,28 +119,16 @@ void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void
     }
 }
 
-void TKALinkedListSetRootNode(TKALinkedList *list, TKALinkedListNode *node) {
-    if (NULL == list) {
-        return;
-    }
-    
-    TKARetainSetter(&list->_rootNode, node);
-}
-
-TKALinkedListNode *TKALinkedListGetRootNode(TKALinkedList *list) {
-    return (NULL != list) ? list->_rootNode : NULL;
-}
-
 uint64_t TKALinkedListGetCount(TKALinkedList *list) {
     return (NULL != list) ? list->_count : 0;
 }
 
-uint64_t TKALinkedListGetMutationCount(TKALinkedList *list) {
-    return (NULL != list) ? list->_mutationCount : 0;
-}
-
 void *TKALinkedListGetFirstObject(TKALinkedList *list) {
     return (NULL != list) ? TKALinkedListNodeGetObject(TKALinkedListGetRootNode(list)) : NULL;
+}
+
+bool TKALinkedListContainsObject(TKALinkedList *list, void *object) {
+    return (NULL != list && NULL != TKALinkedListGetNodeForObject(list, object));
 }
 
 #pragma mark -
@@ -201,6 +183,16 @@ bool TKALinkedListNodeContainsObject(void *node, void *contextTest) {
     return TKALinkedListNodeGetObject(node) == context->object;
 }
 
+TKALinkedListNode *TKALinkedListGetNodeForObject(TKALinkedList *list, void *object) {
+    if (NULL == list) {
+        return NULL;
+    }
+    
+    TKALinkedListContext context = TKALinkedListGetContextForObject(list, object);
+    
+    return context.currentNode;
+}
+
 void TKALinkedListMutate(TKALinkedList *list) {
     if (NULL != list) {
         list->_mutationCount ++;
@@ -214,4 +206,21 @@ void TKALinkedListAddValueToCount(TKALinkedList *list, int count) {
     
     list->_count += count;
 }
+
+void TKALinkedListSetRootNode(TKALinkedList *list, TKALinkedListNode *node) {
+    if (NULL == list) {
+        return;
+    }
+    
+    TKARetainSetter(&list->_rootNode, node);
+}
+
+TKALinkedListNode *TKALinkedListGetRootNode(TKALinkedList *list) {
+    return (NULL != list) ? list->_rootNode : NULL;
+}
+
+uint64_t TKALinkedListGetMutationCount(TKALinkedList *list) {
+    return (NULL != list) ? list->_mutationCount : 0;
+}
+
 

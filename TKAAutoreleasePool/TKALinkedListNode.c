@@ -42,15 +42,11 @@ void __TKALinkedListNodeDeallocate(TKALinkedListNode *node) {
 }
 
 TKALinkedListNode *TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNode *nextNode, void *object) {
-    if (NULL != nextNode) {
         TKALinkedListNode * node = TKAObjectCreate(TKALinkedListNode);
         TKALinkedListNodeSetObject(node, object);
         TKALinkedListNodeSetNextNode(node, nextNode);
         
         return node;
-    }
-    
-    return NULL;
 }
 
 #pragma mark -

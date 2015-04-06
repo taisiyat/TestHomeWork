@@ -10,8 +10,9 @@
 #define __TKAAutoreleasePool__TKALinkedListTest__
 
 #include <stdio.h>
+#include <assert.h>
 
-#include "TKALinkedListTest.h"
+#include "TKALinkedList.h"
 
 extern
 void TKALinkedListPerformTest();

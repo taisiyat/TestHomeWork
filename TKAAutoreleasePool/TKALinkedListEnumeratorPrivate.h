@@ -9,5 +9,28 @@
 #ifndef TKAAutoreleasePool_Header_h
 #define TKAAutoreleasePool_Header_h
 
+extern
+void TKALinkedListEnumeratorSetValid(TKALinkedListEnumerator *enumerator, bool valid);
+
+extern
+void TKALinkedListEnumeratorSetList(TKALinkedListEnumerator *enumerator, TKALinkedList *list);
+
+extern
+TKALinkedList *TKALinkedListEnumeratorGetList(TKALinkedListEnumerator *enumerator);
+
+extern
+void TKALinkedListEnumeratorSetNode(TKALinkedListEnumerator *enumerator, TKALinkedListNode *node);
+
+extern
+TKALinkedListNode *TKALinkedListEnumeratorGetNode(TKALinkedListEnumerator *enumerator);
+
+extern
+void TKALinkedListEnumeratorSetMutationCount(TKALinkedListEnumerator *enumerator);
+
+extern
+uint64_t TKALinkedListEnumeratorGetMutationCount(TKALinkedListEnumerator *enumerator);
+
+extern
+void TKALinkedListEnumeratorCheckMutations(TKALinkedListEnumerator *enumerator);
 
 #endif
