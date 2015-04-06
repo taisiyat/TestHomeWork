@@ -30,3 +30,5 @@ void TKAPropertyRetainSet(void **field, void *object);
 
 
 #endif /* defined(__TKAAutoreleasePool__TKAPropertySetter__) */
+
+

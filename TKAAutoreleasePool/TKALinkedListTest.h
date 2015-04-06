@@ -11,4 +11,9 @@
 
 #include <stdio.h>
 
+#include "TKALinkedListTest.h"
+
+extern
+void TKALinkedListPerformTest();
+
 #endif /* defined(__TKAAutoreleasePool__TKALinkedListTest__) */

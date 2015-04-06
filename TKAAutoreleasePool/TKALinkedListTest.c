@@ -14,5 +14,9 @@
 #pragma mark -
 #pragma mark Public Implementations
 
+void TKALinkedListPerformTest() {
+    
+}
+
 #pragma mark -
 #pragma mark Private Implementations

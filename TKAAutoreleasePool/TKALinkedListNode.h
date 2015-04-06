@@ -41,3 +41,5 @@ extern
 TKALinkedListNode *TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNode *nextNode, void *object);
 
 #endif /* defined(__TKAAutoreleasePool__TKALinkedListNode__) */
+
+
