@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <assert.h>
 
 #include "TKAObject.h"
 
@@ -35,12 +36,12 @@ extern
 void __TKALinkedListEnumeratorDeallocate(TKALinkedListEnumerator *enumerator);
 
 extern
-TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enumerator);
-
-extern
 void *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator);
 
 extern
 bool TKALinkedListEnumeratorIsValid(TKALinkedListEnumerator *enumerator);
+
+extern
+TKALinkedListNode *TKALinkedListEnumeratorGetNextNode(TKALinkedListEnumerator *enumerator);
 
 #endif /* defined(__TKAAutoreleasePool__TKALinkedListEnumerator__) */

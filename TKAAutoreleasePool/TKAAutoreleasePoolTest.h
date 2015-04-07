@@ -10,7 +10,10 @@
 #define __TKAAutoreleasePool__TKAAutoreleasePoolTest__
 
 #include <stdio.h>
+#include <assert.h>
+
 #include "TKAAutoreleasePool.h"
+#include "TKAObject.h"
 
 extern
 void TKAAutoreleasePoolPerformTest();

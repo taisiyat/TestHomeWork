@@ -7,6 +7,7 @@
 //
 
 #include "TKALinkedListEnumerator.h"
+//#include "TKALinkedListEnumeratorPrivate.h"
 #include "TKALinkedList.h"
 #include "TKALinkedListPrivate.h"
 #include "TKALinkedListNode.h"
@@ -65,7 +66,18 @@ void __TKALinkedListEnumeratorDeallocate(TKALinkedListEnumerator *enumerator) {
     __TKAObjectDeallocate(enumerator);
 }
 
-TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enumerator) {
+void *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator) {
+    return (NULL != enumerator) ? TKALinkedListNodeGetObject(TKALinkedListEnumeratorGetNextNode(enumerator)) : NULL;
+}
+
+bool TKALinkedListEnumeratorIsValid(TKALinkedListEnumerator *enumerator) {
+    return (NULL != enumerator && NULL != TKALinkedListEnumeratorGetList(enumerator) && enumerator->_isValid);
+}
+
+#pragma mark -
+#pragma mark Private Implementations
+
+TKALinkedListNode *TKALinkedListEnumeratorGetNextNode(TKALinkedListEnumerator *enumerator) {
     TKALinkedListEnumeratorCheckMutations(enumerator);
     
     if (!TKALinkedListEnumeratorIsValid(enumerator)) {
@@ -89,35 +101,17 @@ TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enum
     return nextNode;
 }
 
-void *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator) {
-    return (NULL != enumerator) ? TKALinkedListNodeGetObject(TKALinkedListEnumeratorNextNode(enumerator)) : NULL;
-}
-
-bool TKALinkedListEnumeratorIsValid(TKALinkedListEnumerator *enumerator) {
-    return (NULL != enumerator && NULL != TKALinkedListEnumeratorGetList(enumerator) && enumerator->_isValid);
+void TKALinkedListEnumeratorCheckMutations(TKALinkedListEnumerator *enumerator) {
+    if (NULL != enumerator && NULL != TKALinkedListEnumeratorGetList(enumerator)) {
+        enumerator->_isValid = (TKALinkedListGetMutationCount(TKALinkedListEnumeratorGetList(enumerator))
+                                == TKALinkedListEnumeratorGetMutationCount(enumerator));
+        assert(enumerator->_isValid);
+    }
 }
 
 void TKALinkedListEnumeratorSetValid(TKALinkedListEnumerator *enumerator, bool valid) {
     enumerator->_isValid = (NULL != enumerator && valid);
 }
-
-void TKALinkedListEnumeratorCheckMutations(TKALinkedListEnumerator *enumerator) {
-    if (NULL != enumerator && NULL != TKALinkedListEnumeratorGetList(enumerator)) {
-        enumerator->_isValid = (TKALinkedListGetMutationCount(TKALinkedListEnumeratorGetList(enumerator))
-                                == TKALinkedListEnumeratorGetMutationCount(enumerator));
-    }
-}
-
-void *TKALinkedListEnumeratorGetNextObject(TKALinkedListEnumerator *enumerator) {
-    if (NULL == enumerator) {
-        return NULL;
-    }
-    
-    return TKALinkedListNodeGetObject(TKALinkedListEnumeratorNextNode(enumerator));
-}
-
-#pragma mark -
-#pragma mark Private Implementations
 
 uint64_t TKALinkedListEnumeratorGetMutationCount(TKALinkedListEnumerator *enumerator) {
     return (NULL != enumerator) ? enumerator->_mutationCount : 0;

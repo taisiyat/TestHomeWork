@@ -10,6 +10,7 @@
 #include "TKALinkedListPrivate.h"
 #include "TKALinkedListNode.h"
 #include "TKALinkedListEnumerator.h"
+//#include "TKALinkedListEnumeratorPrivate.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -158,7 +159,7 @@ TKALinkedListNode *TKALinkedListFindNodeForObject(TKALinkedList *list,
     TKALinkedListEnumerator *enumerator = TKALinkedListEnumeratorCreateWithList(list);
     TKALinkedListNode *resultNode = NULL;
     
-    while ((resultNode = TKALinkedListEnumeratorNextNode(enumerator))) {
+    while ((resultNode = TKALinkedListEnumeratorGetNextNode(enumerator))) {
         if (comparisonFunction(resultNode, context)) {
             break;
         }

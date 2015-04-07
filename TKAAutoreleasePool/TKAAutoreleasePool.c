@@ -39,10 +39,10 @@ static
 TKALinkedList *TKAAutoreleasePoolGetList(TKAAutoreleasePool *pool);
 
 static
-void TKAAutoreleasePoolSetObject(TKAAutoreleasePool *pool, void *oject);
+void TKAAutoreleasePoolSetStack(TKAAutoreleasePool *pool, void *oject);
 
 static
-TKAAutoreleasingStack  *TKAAutoreleasePoolGetObject(TKAAutoreleasePool *pool);
+TKAAutoreleasingStack  *TKAAutoreleasePoolGetStack(TKAAutoreleasePool *pool);
 
 static
 void TKAAutoreleasePoolDeflateIfNeeded(TKAAutoreleasePool *pool);
@@ -50,20 +50,23 @@ void TKAAutoreleasePoolDeflateIfNeeded(TKAAutoreleasePool *pool);
 static
 bool TKAAutoreleasePoolShouldDeflate(TKAAutoreleasePool *pool);
 
+static
+void TKAAutoreleasePoolInsertObject(TKAAutoreleasePool *pool, void *object);
+
 #pragma mark -
 #pragma mark Public Implementations
 
 void __TKAAutoreleasePoolDeallocate(TKAAutoreleasePool *pool) {
     if (NULL != pool) {
         TKAAutoreleasePoolSetList(pool, NULL);
-        TKAAutoreleasePoolSetObject(pool, NULL);
+        TKAAutoreleasePoolSetStack(pool, NULL);
         
         free(pool);
         TKAAutoreleasePoolSet(NULL);
     }
 }
 
-void *TKAAutoreleasePoolCreateWithListAndStack() {
+void *TKAAutoreleasePoolNew() {
     TKAAutoreleasePool *pool = TKAAutoreleasePoolGet();
     
     if (NULL == pool) {
@@ -76,24 +79,15 @@ void *TKAAutoreleasePoolCreateWithListAndStack() {
         TKAObjectRelease(list);
     }
     
-    TKAAutoreleasePoolSetObject(pool, NULL);
+    TKAAutoreleasePoolInsertObject(pool, NULL);
     
-    return __TKAAutoreleasePool;
+    return pool;
 }
 
 void TKAAutoreleasePoolAddObject(TKAAutoreleasePool *pool, void *object) {
-    if (NULL != pool) {
-        TKALinkedList *list = TKAAutoreleasePoolGetList(pool);
-        TKAAutoreleasingStack *stack = TKAAutoreleasePoolGetObject(pool);
+    if (NULL != pool && NULL != object) {
         
-        if (NULL != list && (NULL == stack || TKAAutoreleasingStackIsFull(stack))) {
-            TKAAutoreleasingStack *stack = TKAAutoreleasingStackCreateWithSize(TKAAutoreleasingStackSize);
-            TKAAutoreleasePoolSetObject(pool, stack);
-            TKAObjectRelease(stack);
-            TKALinkedListAddObject(list, stack);
-        }
-        
-        TKAAutoreleasingStackPushObject(stack, object);
+        TKAAutoreleasePoolInsertObject(pool, object);
     }
 }
 
@@ -103,7 +97,7 @@ void TKAAutoreleasePoolDrain(TKAAutoreleasePool *pool) {
     }
     
     TKALinkedList *list = TKAAutoreleasePoolGetList(pool);
-    TKAAutoreleasingStack *stack = TKAAutoreleasePoolGetObject(pool);
+    TKAAutoreleasingStack *stack = TKAAutoreleasePoolGetStack(pool);
     
     while (TKAAutoreleasingStackPopObject(stack) == TKAAutoreleasingStackObjectPop) {
         if (TKAAutoreleasingStackIsEmpty(stack)) {
@@ -119,7 +113,7 @@ void TKAAutoreleasePoolDrain(TKAAutoreleasePool *pool) {
             stack = TKALinkedListEnumeratorNextObject(enumerator);
             TKAObjectRelease(enumerator);
             
-            TKAAutoreleasePoolSetObject(pool, stack);
+            TKAAutoreleasePoolSetStack(pool, stack);
         }
     }
 }
@@ -136,7 +130,7 @@ void TKAAutoreleasePoolDeflateIfNeeded(TKAAutoreleasePool *pool) {
 bool TKAAutoreleasePoolShouldDeflate(TKAAutoreleasePool *pool) {
     if (NULL != pool) {
         TKALinkedList *list = TKAAutoreleasePoolGetList(pool);
-        TKAAutoreleasingStack *stack = TKAAutoreleasePoolGetObject(pool);
+        TKAAutoreleasingStack *stack = TKAAutoreleasePoolGetStack(pool);
 
         if (stack != TKALinkedListGetFirstObject(list)
             && TKACountOfStackToDeflation <= TKALinkedListGetCount(list))
@@ -167,6 +161,22 @@ bool TKAAutoreleasePoolShouldDeflate(TKAAutoreleasePool *pool) {
     return false;
 }
 
+void TKAAutoreleasePoolInsertObject(TKAAutoreleasePool *pool, void *object) {
+    if (NULL != pool) {
+        TKALinkedList *list = TKAAutoreleasePoolGetList(pool);
+        TKAAutoreleasingStack *stack = TKAAutoreleasePoolGetStack(pool);
+        
+        if (NULL != list && (NULL == stack || TKAAutoreleasingStackIsFull(stack))) {
+            TKAAutoreleasingStack *stack = TKAAutoreleasingStackCreateWithSize(TKAAutoreleasingStackSize);
+            TKAAutoreleasePoolSetStack(pool, stack);
+            TKAObjectRelease(stack);
+            TKALinkedListAddObject(list, stack);
+        }
+        
+        TKAAutoreleasingStackPushObject(stack, object);
+    }
+}
+
 void TKAAutoreleasePoolSet(TKAAutoreleasePool *pool) {
     __TKAAutoreleasePool = pool;
 }
@@ -185,12 +195,12 @@ TKALinkedList *TKAAutoreleasePoolGetList(TKAAutoreleasePool *pool) {
     return (NULL != pool) ? pool->_list : NULL;
 }
 
-void TKAAutoreleasePoolSetObject(TKAAutoreleasePool *pool, void *object) {
+void TKAAutoreleasePoolSetStack(TKAAutoreleasePool *pool, void *object) {
     if (NULL != pool) {
         TKARetainSetter(&pool->_stack, object);
     }
 }
 
-TKAAutoreleasingStack  *TKAAutoreleasePoolGetObject(TKAAutoreleasePool *pool) {
+TKAAutoreleasingStack  *TKAAutoreleasePoolGetStack(TKAAutoreleasePool *pool) {
     return (NULL != pool) ? pool->_stack : NULL;
 }

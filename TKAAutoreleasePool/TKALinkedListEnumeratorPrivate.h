@@ -9,6 +9,13 @@
 #ifndef TKAAutoreleasePool_Header_h
 #define TKAAutoreleasePool_Header_h
 
+typedef struct TKALinkedListNode TKALinkedListNode;
+typedef struct TKALinkedList TKALinkedList;
+typedef struct TKALinkedListEnumerator TKALinkedListEnumerator;
+
+extern
+TKALinkedListNode *TKALinkedListEnumeratorGetNextNode(TKALinkedListEnumerator *enumerator);
+
 extern
 void TKALinkedListEnumeratorSetValid(TKALinkedListEnumerator *enumerator, bool valid);
 

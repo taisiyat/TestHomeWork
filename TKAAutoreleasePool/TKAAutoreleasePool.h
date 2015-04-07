@@ -20,7 +20,7 @@ typedef struct TKAAutoreleasePool {
 } TKAAutoreleasePool;
 
 extern
-void *TKAAutoreleasePoolCreateWithListAndStack();
+void *TKAAutoreleasePoolNew();
 
 extern
 void TKAAutoreleasePoolAddObject(TKAAutoreleasePool *pool, void *object);
