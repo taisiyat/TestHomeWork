@@ -104,18 +104,16 @@ void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void
     if (NULL != list && NULL != pointObject && NULL != insertedObject) {
         TKALinkedListMutate(list);
         
-        TKALinkedListContext context = TKALinkedListGetContextForObject(list, pointObject);
-        if (NULL == context.currentNode) {
+        TKALinkedListNode *pointNode =TKALinkedListGetNodeForObject(list, pointObject);
+        if (NULL == pointNode) {
             return;
         }
         
-        if (NULL != TKALinkedListNodeGetNextNode(context.currentNode)) {
-           TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNodeGetNextNode(context.currentNode),
+        TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNodeGetNextNode(pointNode),
                                                                                           insertedObject);
-            TKALinkedListNodeSetNextNode(context.currentNode, insertedNode);
-            TKAObjectRelease(insertedNode);
-            TKALinkedListAddValueToCount(list, 1);
-        }
+        TKALinkedListNodeSetNextNode(pointNode, insertedNode);
+        TKAObjectRelease(insertedNode);
+        TKALinkedListAddValueToCount(list, 1);
     }
 }
 

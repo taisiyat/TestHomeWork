@@ -12,6 +12,7 @@
 #include "TKAAutoreleasingStackTest.h"
 #include "TKALinkedListNodeTest.h"
 #include "TKALinkedListTest.h"
+#include "TKAAutoreleasePoolTest.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -27,6 +28,9 @@ int main(int argc, const char * argv[]) {
     
     TKALinkedListPerformTest();
     printf("TKALinkedList test is OK \n");
+    
+    TKAAutoreleasePoolPerformTest();
+    printf("TKAAutoreleasePool test is OK \n");
     
     printf("Hello, World!\n");
     return 0;

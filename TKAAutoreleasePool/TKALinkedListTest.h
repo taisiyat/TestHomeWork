@@ -13,6 +13,7 @@
 #include <assert.h>
 
 #include "TKALinkedList.h"
+#include "TKALinkedListEnumerator.h"
 
 extern
 void TKALinkedListPerformTest();

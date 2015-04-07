@@ -76,6 +76,7 @@ TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enum
     if (NULL == node) {
         node = TKALinkedListGetRootNode(TKALinkedListEnumeratorGetList(enumerator));
         TKALinkedListEnumeratorSetNode(enumerator, node);
+        return node;
     }
     
     TKALinkedListNode *nextNode = TKALinkedListNodeGetNextNode(node);
@@ -85,7 +86,7 @@ TKALinkedListNode *TKALinkedListEnumeratorNextNode(TKALinkedListEnumerator *enum
     
     TKALinkedListEnumeratorSetNode(enumerator, nextNode);
     
-    return node;
+    return nextNode;
 }
 
 void *TKALinkedListEnumeratorNextObject(TKALinkedListEnumerator *enumerator) {
