@@ -26,6 +26,14 @@ void *__TKAObjectCreate(size_t size, TKADeallocateCallback deallocateCallback);
 #define TKAObjectCreate(type)\
         __TKAObjectCreate(sizeof(type), (TKADeallocateCallback)__##type##Deallocate)
 
+void *__TKAObjectAuto(size_t size, TKADeallocateCallback deallocateCallback);
+
+#define TKAObjectAuto(type)\
+__TKAObjectAuto(sizeof(type), (TKADeallocateCallback)__##type##Deallocate)
+
+extern
+void *TKAAutorelease(void *object);
+
 extern
 void __TKAObjectDeallocate(void *object);
 

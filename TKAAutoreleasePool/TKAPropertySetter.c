@@ -34,6 +34,11 @@ void TKAPropertyRetainSet(void **field, void *object) {
     }
 }
 
+void *TKAAutoreleaseGetter(void *object, void *data) {
+    return (NULL != object) ? TKAAutorelease(TKAObjectRetain(data)) : NULL;
+    
+}
+
 #pragma mark -
 #pragma mark Private Implementations
 

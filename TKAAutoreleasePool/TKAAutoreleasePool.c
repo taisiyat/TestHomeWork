@@ -26,9 +26,6 @@ static
 void TKAAutoreleasePoolSet(TKAAutoreleasePool *pool);
 
 static
-void *TKAAutoreleasePoolGet();
-
-static
 void TKAAutoreleasePoolSetList(TKAAutoreleasePool *pool, TKALinkedList *list);
 
 static

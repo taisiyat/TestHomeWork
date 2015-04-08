@@ -23,6 +23,9 @@ extern
 void *TKAAutoreleasePoolNew();
 
 extern
+void *TKAAutoreleasePoolGet(); 
+
+extern
 void TKAAutoreleasePoolAddObject(TKAAutoreleasePool *pool, void *object);
 
 extern

@@ -7,6 +7,8 @@
 //
 
 #include "TKAAutoreleasePoolTest.h"
+#include "TKAString.h"
+#include "TKAPropertySetter.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -17,12 +19,16 @@ void TKAAutoreleasePoolTestEasy();
 static
 void TKAAutoreleasePoolTest();
 
+static
+void TKAAutoreleasePoolAuto();
+
 #pragma mark -
 #pragma mark Public Implementations
 
 void TKAAutoreleasePoolPerformTest() {
     TKAAutoreleasePoolTestEasy();
     TKAAutoreleasePoolTest();
+    TKAAutoreleasePoolAuto();
 }
 
 #pragma mark -
@@ -168,4 +174,20 @@ void TKAAutoreleasePoolTest() {
     __TKAAutoreleasePoolDeallocate(pool);
 }
 
+
+void TKAAutoreleasePoolAuto() {
+    TKAAutoreleasePoolNew();
+    
+    TKAObject *testObject = TKAObjectAuto(TKAObject);
+    TKAString *testString = TKAObjectAuto(TKAString);
+    assert(1 == TKAObjectGetReferenceCount(testObject));
+    assert(1 == TKAObjectGetReferenceCount(testString));
+    
+    TKAAutorelease(testObject);
+    TKAAutorelease(testString);
+    assert(1 == TKAObjectGetReferenceCount(testObject));
+    assert(1 == TKAObjectGetReferenceCount(testString));
+    
+    TKAAutoreleasePoolDrain(TKAAutoreleasePoolGet());
+}
 
