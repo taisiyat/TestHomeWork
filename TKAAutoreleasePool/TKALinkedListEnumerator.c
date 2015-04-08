@@ -97,7 +97,7 @@ TKALinkedListNode *TKALinkedListEnumeratorGetNextNode(TKALinkedListEnumerator *e
     }
     
     TKALinkedListEnumeratorSetNode(enumerator, nextNode);
-    
+//    return node;
     return nextNode;
 }
 

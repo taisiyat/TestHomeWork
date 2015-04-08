@@ -28,4 +28,7 @@ void TKAAutoreleasePoolAddObject(TKAAutoreleasePool *pool, void *object);
 extern
 void TKAAutoreleasePoolDrain(TKAAutoreleasePool *pool);
 
+extern
+void __TKAAutoreleasePoolDeallocate(TKAAutoreleasePool *pool);
+
 #endif /* defined(__TKAAutoreleasePool__TKAAutoreleasePool__) */

@@ -285,7 +285,7 @@ void TKALinkedListInsertRemoveTest() {
     iter = 0;
     
     TKALinkedListEnumerator *enumerator2 = TKALinkedListEnumeratorCreateWithList(list);
-    while (TKALinkedListEnumeratorIsValid(enumerator1)
+    while (TKALinkedListEnumeratorIsValid(enumerator2)
            && (object = TKALinkedListEnumeratorNextObject(enumerator2))) {
         assert(objects2[iter] == object);
         iter++;

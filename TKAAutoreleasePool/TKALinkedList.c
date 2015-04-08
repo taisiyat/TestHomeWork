@@ -110,8 +110,9 @@ void TKALinkedListInsertAfterObject(TKALinkedList *list, void *pointObject, void
             return;
         }
         
-        TKALinkedListNode *insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNodeGetNextNode(pointNode),
-                                                                                          insertedObject);
+        TKALinkedListNode *insertedNode = NULL;
+
+        insertedNode = TKALinkedListNodeCreateWithNextNodeAndObject(TKALinkedListNodeGetNextNode(pointNode), insertedObject);
         TKALinkedListNodeSetNextNode(pointNode, insertedNode);
         TKAObjectRelease(insertedNode);
         TKALinkedListAddValueToCount(list, 1);
@@ -137,12 +138,10 @@ TKALinkedListContext TKALinkedListGetContextForObject(TKALinkedList *list, void 
     TKALinkedListContext context;
     memset(&context, 0, sizeof(context));
     context.object = object;
-    context.currentNode = NULL;
-    context.previousNode = NULL;
     
     if (NULL != list && NULL != object ) {
         context.currentNode = TKALinkedListFindNodeForObject(list,
-                                                             &TKALinkedListNodeContainsObject,
+                                                             TKALinkedListNodeContainsObject,
                                                              &context);
     }
     
@@ -164,6 +163,27 @@ TKALinkedListNode *TKALinkedListFindNodeForObject(TKALinkedList *list,
             break;
         }
     }
+    
+//    while ((resultNode = TKALinkedListEnumeratorGetNextNode(enumerator))) {
+//        if (comparisonFunction(resultNode, context)) {
+//            break;
+//        }
+//        if (!TKALinkedListEnumeratorIsValid(enumerator)) {
+//            resultNode = NULL;
+//            break;
+//        }        
+//    }
+    
+//    do {
+//        resultNode = TKALinkedListEnumeratorGetNextNode(enumerator);
+//        if (comparisonFunction(resultNode, context)) {
+//            break;
+//        }
+//        if (!TKALinkedListEnumeratorIsValid(enumerator)) {
+//            resultNode = NULL;
+//        }
+//        
+//    } while (TKALinkedListEnumeratorIsValid(enumerator) && NULL != resultNode);
     
     TKAObjectRelease(enumerator);
     
