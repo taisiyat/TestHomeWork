@@ -1,0 +1,261 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A49802B1AD65B5400F878E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A49802A1AD65B5400F878E8 /* main.m */; };
+		8A4980321AD6696E00F878E8 /* TKAStartObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4980311AD6696E00F878E8 /* TKAStartObjC.m */; };
+		8A4980351AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4980341AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.m */; };
+		8A49803A1AD6762000F878E8 /* TKAStart.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4980391AD6762000F878E8 /* TKAStart.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A4980251AD65B5400F878E8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8A4980271AD65B5400F878E8 /* TKAStartObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAStartObjC; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A49802A1AD65B5400F878E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8A4980311AD6696E00F878E8 /* TKAStartObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStartObjC.m; sourceTree = "<group>"; };
+		8A4980331AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKAStartObjC_TKACategory.h"; sourceTree = "<group>"; };
+		8A4980341AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKAStartObjC_TKACategory.m"; sourceTree = "<group>"; };
+		8A4980361AD66A7900F878E8 /* TKAStartObjCProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStartObjCProtocol.h; sourceTree = "<group>"; };
+		8A4980371AD66AFE00F878E8 /* NSObject_TKAStartObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObject_TKAStartObjC.h; sourceTree = "<group>"; };
+		8A4980381AD66BBE00F878E8 /* TKAStartObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStartObjC.h; sourceTree = "<group>"; };
+		8A4980391AD6762000F878E8 /* TKAStart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStart.m; sourceTree = "<group>"; };
+		8A49803C1AD6767500F878E8 /* TKAStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAStart.h; path = ../TKAStart.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A4980241AD65B5400F878E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A49801E1AD65B5300F878E8 = {
+			isa = PBXGroup;
+			children = (
+				8A4980291AD65B5400F878E8 /* TKAStartObjC */,
+				8A4980281AD65B5400F878E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8A4980281AD65B5400F878E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A4980271AD65B5400F878E8 /* TKAStartObjC */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A4980291AD65B5400F878E8 /* TKAStartObjC */ = {
+			isa = PBXGroup;
+			children = (
+				8A49802A1AD65B5400F878E8 /* main.m */,
+				8A4980391AD6762000F878E8 /* TKAStart.m */,
+				8A49803C1AD6767500F878E8 /* TKAStart.h */,
+				8A4980311AD6696E00F878E8 /* TKAStartObjC.m */,
+				8A4980381AD66BBE00F878E8 /* TKAStartObjC.h */,
+				8A4980361AD66A7900F878E8 /* TKAStartObjCProtocol.h */,
+				8A4980331AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.h */,
+				8A4980341AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.m */,
+				8A4980371AD66AFE00F878E8 /* NSObject_TKAStartObjC.h */,
+			);
+			path = TKAStartObjC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A4980261AD65B5400F878E8 /* TKAStartObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A49802E1AD65B5400F878E8 /* Build configuration list for PBXNativeTarget "TKAStartObjC" */;
+			buildPhases = (
+				8A4980231AD65B5400F878E8 /* Sources */,
+				8A4980241AD65B5400F878E8 /* Frameworks */,
+				8A4980251AD65B5400F878E8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKAStartObjC;
+			productName = TKAStartObjC;
+			productReference = 8A4980271AD65B5400F878E8 /* TKAStartObjC */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A49801F1AD65B5400F878E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = TKAHomeWork;
+				TargetAttributes = {
+					8A4980261AD65B5400F878E8 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 8A4980221AD65B5400F878E8 /* Build configuration list for PBXProject "TKAStartObjC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8A49801E1AD65B5300F878E8;
+			productRefGroup = 8A4980281AD65B5400F878E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A4980261AD65B5400F878E8 /* TKAStartObjC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A4980231AD65B5400F878E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A49802B1AD65B5400F878E8 /* main.m in Sources */,
+				8A4980321AD6696E00F878E8 /* TKAStartObjC.m in Sources */,
+				8A4980351AD66A0000F878E8 /* NSObject+TKAStartObjC_TKACategory.m in Sources */,
+				8A49803A1AD6762000F878E8 /* TKAStart.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8A49802C1AD65B5400F878E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8A49802D1AD65B5400F878E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8A49802F1AD65B5400F878E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8A4980301AD65B5400F878E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A4980221AD65B5400F878E8 /* Build configuration list for PBXProject "TKAStartObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A49802C1AD65B5400F878E8 /* Debug */,
+				8A49802D1AD65B5400F878E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A49802E1AD65B5400F878E8 /* Build configuration list for PBXNativeTarget "TKAStartObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A49802F1AD65B5400F878E8 /* Debug */,
+				8A4980301AD65B5400F878E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A49801F1AD65B5400F878E8 /* Project object */;
+}
