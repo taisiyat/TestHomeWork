@@ -13,8 +13,6 @@
 
 #include "TKAObject.h"
 
-extern
-void TKARetainSetterWithObject(void *object, void **field, void *objectToSet);
 
 extern
 void TKAPropertyAssignSet(void **field, void *object);
@@ -28,6 +26,8 @@ void TKAPropertyRetainSet(void **field, void *object);
 #define TKARetainSetter(field, object)\
         TKAPropertyRetainSet((void **)field, object);
 
+extern
+void *TKAAutoreleaseGetter(void *object, void *data);
 
 #endif /* defined(__TKAAutoreleasePool__TKAPropertySetter__) */
 

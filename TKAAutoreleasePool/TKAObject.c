@@ -7,6 +7,7 @@
 //
 
 #include "TKAObject.h"
+#include "TKAAutoreleasePool.h"
 
 #pragma mark -
 #pragma mark Private Declarations
@@ -18,6 +19,21 @@ void *__TKAObjectCreate(size_t size, TKADeallocateCallback deallocateCallback) {
     TKAObject *object = calloc(1, size);
     object->_referenceCount = 1;
     object->_deallocateCallback = deallocateCallback;
+    
+    return object;
+}
+
+void *__TKAObjectAuto(size_t size, TKADeallocateCallback deallocateCallback) {
+    
+    return TKAAutorelease(__TKAObjectCreate(size, deallocateCallback));
+}
+
+void *TKAAutorelease(void *object) {
+    if (NULL == object) {
+        return NULL;
+    }
+    
+    TKAAutoreleasePoolAddObject(TKAAutoreleasePoolGet(), object);
     
     return object;
 }

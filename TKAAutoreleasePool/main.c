@@ -13,6 +13,7 @@
 #include "TKALinkedListNodeTest.h"
 #include "TKALinkedListTest.h"
 #include "TKAAutoreleasePoolTest.h"
+#include "TKAStringTest.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -31,6 +32,9 @@ int main(int argc, const char * argv[]) {
     
     TKAAutoreleasePoolPerformTest();
     printf("TKAAutoreleasePool test is OK \n");
+    
+    TKAStringTest();
+    printf("TKAString test is OK \n");
     
     printf("Hello, World!\n");
     return 0;
