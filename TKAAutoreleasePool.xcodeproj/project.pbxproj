@@ -20,12 +20,22 @@
 		8A72FB011AC2F64100C272E9 /* TKAObjectTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FAFF1AC2F64100C272E9 /* TKAObjectTest.c */; };
 		8A72FB041AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB021AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c */; };
 		8A72FB071AC2F69400C272E9 /* TKALinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB051AC2F69400C272E9 /* TKALinkedListTest.c */; };
+		8A999A301ADCD34500EA5A08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A2F1ADCD34500EA5A08 /* main.m */; };
 		8AFAE7851AD55B6F00DEB812 /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7831AD55B6F00DEB812 /* TKAString.c */; };
 		8AFAE7881AD55B9600DEB812 /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8A72FAD91AC20F6C00C272E9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8A999A2B1ADCD34500EA5A08 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -65,6 +75,8 @@
 		8A72FB031AC2F66C00C272E9 /* TKAAutoreleasingStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAutoreleasingStackTest.h; sourceTree = "<group>"; };
 		8A72FB051AC2F69400C272E9 /* TKALinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKALinkedListTest.c; sourceTree = "<group>"; };
 		8A72FB061AC2F69400C272E9 /* TKALinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALinkedListTest.h; sourceTree = "<group>"; };
+		8A999A2D1ADCD34500EA5A08 /* TKAObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAObjC; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A999A2F1ADCD34500EA5A08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8AFAE7831AD55B6F00DEB812 /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAString.c; sourceTree = "<group>"; };
 		8AFAE7841AD55B6F00DEB812 /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAString.h; sourceTree = "<group>"; };
 		8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringTest.c; sourceTree = "<group>"; };
@@ -73,6 +85,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		8A72FAD81AC20F6C00C272E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A999A2A1ADCD34500EA5A08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,6 +134,7 @@
 			children = (
 				8A72FADD1AC20F6C00C272E9 /* TKAAutoreleasePool */,
 				8A72FADC1AC20F6C00C272E9 /* Products */,
+				8A999A2E1ADCD34500EA5A08 /* TKAObjC */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				8A72FADB1AC20F6C00C272E9 /* TKAAutoreleasePool */,
+				8A999A2D1ADCD34500EA5A08 /* TKAObjC */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +261,14 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		8A999A2E1ADCD34500EA5A08 /* TKAObjC */ = {
+			isa = PBXGroup;
+			children = (
+				8A999A2F1ADCD34500EA5A08 /* main.m */,
+			);
+			path = TKAObjC;
+			sourceTree = "<group>";
+		};
 		8AFAE7891AD55B9C00DEB812 /* TKAString */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +307,23 @@
 			productReference = 8A72FADB1AC20F6C00C272E9 /* TKAAutoreleasePool */;
 			productType = "com.apple.product-type.tool";
 		};
+		8A999A2C1ADCD34500EA5A08 /* TKAObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A999A311ADCD34500EA5A08 /* Build configuration list for PBXNativeTarget "TKAObjC" */;
+			buildPhases = (
+				8A999A291ADCD34500EA5A08 /* Sources */,
+				8A999A2A1ADCD34500EA5A08 /* Frameworks */,
+				8A999A2B1ADCD34500EA5A08 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKAObjC;
+			productName = TKAObjC;
+			productReference = 8A999A2D1ADCD34500EA5A08 /* TKAObjC */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -289,6 +335,9 @@
 				TargetAttributes = {
 					8A72FADA1AC20F6C00C272E9 = {
 						CreatedOnToolsVersion = 6.1.1;
+					};
+					8A999A2C1ADCD34500EA5A08 = {
+						CreatedOnToolsVersion = 6.2;
 					};
 				};
 			};
@@ -305,6 +354,7 @@
 			projectRoot = "";
 			targets = (
 				8A72FADA1AC20F6C00C272E9 /* TKAAutoreleasePool */,
+				8A999A2C1ADCD34500EA5A08 /* TKAObjC */,
 			);
 		};
 /* End PBXProject section */
@@ -329,6 +379,14 @@
 				8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */,
 				8A72FB011AC2F64100C272E9 /* TKAObjectTest.c in Sources */,
 				8A72FB041AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A999A291ADCD34500EA5A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A999A301ADCD34500EA5A08 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +481,27 @@
 			};
 			name = Release;
 		};
+		8A999A321ADCD34500EA5A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8A999A331ADCD34500EA5A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COPY_PHASE_STRIP = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,6 +522,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8A999A311ADCD34500EA5A08 /* Build configuration list for PBXNativeTarget "TKAObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A999A321ADCD34500EA5A08 /* Debug */,
+				8A999A331ADCD34500EA5A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
