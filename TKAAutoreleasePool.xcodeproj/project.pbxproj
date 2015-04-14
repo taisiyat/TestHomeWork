@@ -21,6 +21,8 @@
 		8A72FB041AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB021AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c */; };
 		8A72FB071AC2F69400C272E9 /* TKALinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB051AC2F69400C272E9 /* TKALinkedListTest.c */; };
 		8A999A301ADCD34500EA5A08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A2F1ADCD34500EA5A08 /* main.m */; };
+		8A999A381ADCE39900EA5A08 /* TKAHumanObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A371ADCE39900EA5A08 /* TKAHumanObj.m */; };
+		8A999A3A1ADD025400EA5A08 /* TKAHumanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A391ADD025400EA5A08 /* TKAHumanTest.m */; };
 		8AFAE7851AD55B6F00DEB812 /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7831AD55B6F00DEB812 /* TKAString.c */; };
 		8AFAE7881AD55B9600DEB812 /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,10 @@
 		8A72FB061AC2F69400C272E9 /* TKALinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALinkedListTest.h; sourceTree = "<group>"; };
 		8A999A2D1ADCD34500EA5A08 /* TKAObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A999A2F1ADCD34500EA5A08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8A999A361ADCE39900EA5A08 /* TKAHumanObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAHumanObj.h; sourceTree = "<group>"; };
+		8A999A371ADCE39900EA5A08 /* TKAHumanObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAHumanObj.m; sourceTree = "<group>"; };
+		8A999A391ADD025400EA5A08 /* TKAHumanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAHumanTest.m; sourceTree = "<group>"; };
+		8A999A3B1ADD03E200EA5A08 /* TKAHumanTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAHumanTest.h; sourceTree = "<group>"; };
 		8AFAE7831AD55B6F00DEB812 /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAString.c; sourceTree = "<group>"; };
 		8AFAE7841AD55B6F00DEB812 /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAString.h; sourceTree = "<group>"; };
 		8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringTest.c; sourceTree = "<group>"; };
@@ -265,6 +271,10 @@
 			isa = PBXGroup;
 			children = (
 				8A999A2F1ADCD34500EA5A08 /* main.m */,
+				8A999A3B1ADD03E200EA5A08 /* TKAHumanTest.h */,
+				8A999A391ADD025400EA5A08 /* TKAHumanTest.m */,
+				8A999A361ADCE39900EA5A08 /* TKAHumanObj.h */,
+				8A999A371ADCE39900EA5A08 /* TKAHumanObj.m */,
 			);
 			path = TKAObjC;
 			sourceTree = "<group>";
@@ -386,7 +396,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A999A381ADCE39900EA5A08 /* TKAHumanObj.m in Sources */,
 				8A999A301ADCD34500EA5A08 /* main.m in Sources */,
+				8A999A3A1ADD025400EA5A08 /* TKAHumanTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
