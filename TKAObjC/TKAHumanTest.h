@@ -8,7 +8,7 @@
 
 #ifndef TKAAutoreleasePool_TKAHumanTest_h
 #define TKAAutoreleasePool_TKAHumanTest_h
-#import "TKAHumanObj.h"
+#import "TKAHuman.h"
 
 extern
 void TKAHumanTask1Test();
