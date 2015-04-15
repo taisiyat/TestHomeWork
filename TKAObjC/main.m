@@ -13,6 +13,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         TKAHumanTask1Test();
+        TKACreatureTask2Test();
         NSLog(@"Hello, World!");
     }
     return 0;

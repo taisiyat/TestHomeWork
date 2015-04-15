@@ -8,6 +8,7 @@
 
 #import "TKAHuman.h"
 @interface TKAHuman ()
+@property (nonatomic, assign, readwrite) NSArray *children;
 
 - (void)sayWithString;
 
@@ -29,6 +30,7 @@
     TKAHuman *human = [[[self alloc] init] autorelease];
     human.name = name;
     human.gender = gender;
+    
     return human;
 }
 
@@ -54,9 +56,9 @@
 #pragma mark Acessors Methods
 
 //- (NSArray *)array {
-//    return [[[[[NSMutableArray alloc] initWithObjects:[[NSObject new] autorelease], nil] autorelease] copy] autorelease];
+////    return [[[[[NSMutableArray alloc] initWithObjects:[[NSObject new] autorelease], nil] autorelease] copy] autorelease];
+//    return [[[[[NSMutableArray alloc] init] autorelease] copy] autorelease];
 //}
-
 #pragma mark -
 #pragma mark Public Methods
 
@@ -71,19 +73,19 @@
 }
 
 - (void)addChild:(TKAHuman *)child {
-//        [[self children] addObject:child];
+        [[self children] addObject:child];
 //    NSMutableArray *mutableChildren = [NSMutableArray array];
-//    [mutableChildren setArray:self.array];
+//    [mutableChildren setArray:self.children];
 //    [mutableChildren addObject:child];
-//    [[self.array initWithArray:mutableChildren] autorelease];
+//    [[self.children initWithArray:mutableChildren] autorelease];
 }
 
 - (void)removeChild:(TKAHuman *)child {
 //    [[self children] removeObject:child];
-//    NSMutableArray *mutableChildren = [NSMutableArray array];
-//    [mutableChildren setArray:self.array];
-//    [mutableChildren removeObject:child];
-//    [[self.array initWithArray:mutableChildren] autorelease];
+    NSMutableArray *mutableChildren = [NSMutableArray array];
+    [mutableChildren setArray:self.children];
+    [mutableChildren removeObject:child];
+    [[self.children initWithArray:mutableChildren] autorelease];
 }
 
 - (void)sayHi {
@@ -112,7 +114,7 @@
 }
 
 - (void)output {
-    NSLog(@" name = %@", [self name]);
+    NSLog(@"name = %@", [[self name] description]);
     NSLog(@" weight = %lu", [self weight]);
     NSLog(@" age = %lu", [self age]);
     NSLog(@" gender = %u", [self gender]);

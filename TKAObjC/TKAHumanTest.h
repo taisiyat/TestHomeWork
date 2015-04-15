@@ -13,4 +13,7 @@
 extern
 void TKAHumanTask1Test();
 
+extern
+void TKACreatureTask2Test();
+
 #endif

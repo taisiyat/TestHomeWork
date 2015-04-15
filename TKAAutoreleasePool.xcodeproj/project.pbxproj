@@ -23,6 +23,8 @@
 		8A999A301ADCD34500EA5A08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A2F1ADCD34500EA5A08 /* main.m */; };
 		8A999A381ADCE39900EA5A08 /* TKAHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A371ADCE39900EA5A08 /* TKAHuman.m */; };
 		8A999A3A1ADD025400EA5A08 /* TKAHumanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A391ADD025400EA5A08 /* TKAHumanTest.m */; };
+		8AC245871ADE68E20027F362 /* TKACreature.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC245861ADE68E20027F362 /* TKACreature.m */; };
+		8AC2458A1ADE8CA30027F362 /* TKACreatuteHeir.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC245891ADE8CA30027F362 /* TKACreatuteHeir.m */; };
 		8AFAE7851AD55B6F00DEB812 /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7831AD55B6F00DEB812 /* TKAString.c */; };
 		8AFAE7881AD55B9600DEB812 /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,10 @@
 		8A999A371ADCE39900EA5A08 /* TKAHuman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAHuman.m; sourceTree = "<group>"; };
 		8A999A391ADD025400EA5A08 /* TKAHumanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAHumanTest.m; sourceTree = "<group>"; };
 		8A999A3B1ADD03E200EA5A08 /* TKAHumanTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAHumanTest.h; sourceTree = "<group>"; };
+		8AC245851ADE68E20027F362 /* TKACreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACreature.h; sourceTree = "<group>"; };
+		8AC245861ADE68E20027F362 /* TKACreature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACreature.m; sourceTree = "<group>"; };
+		8AC245881ADE8CA30027F362 /* TKACreatuteHeir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACreatuteHeir.h; sourceTree = "<group>"; };
+		8AC245891ADE8CA30027F362 /* TKACreatuteHeir.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACreatuteHeir.m; sourceTree = "<group>"; };
 		8AFAE7831AD55B6F00DEB812 /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAString.c; sourceTree = "<group>"; };
 		8AFAE7841AD55B6F00DEB812 /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAString.h; sourceTree = "<group>"; };
 		8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAStringTest.c; sourceTree = "<group>"; };
@@ -275,6 +281,10 @@
 				8A999A391ADD025400EA5A08 /* TKAHumanTest.m */,
 				8A999A361ADCE39900EA5A08 /* TKAHuman.h */,
 				8A999A371ADCE39900EA5A08 /* TKAHuman.m */,
+				8AC245851ADE68E20027F362 /* TKACreature.h */,
+				8AC245861ADE68E20027F362 /* TKACreature.m */,
+				8AC245881ADE8CA30027F362 /* TKACreatuteHeir.h */,
+				8AC245891ADE8CA30027F362 /* TKACreatuteHeir.m */,
 			);
 			path = TKAObjC;
 			sourceTree = "<group>";
@@ -397,8 +407,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A999A381ADCE39900EA5A08 /* TKAHuman.m in Sources */,
+				8AC245871ADE68E20027F362 /* TKACreature.m in Sources */,
 				8A999A301ADCD34500EA5A08 /* main.m in Sources */,
 				8A999A3A1ADD025400EA5A08 /* TKAHumanTest.m in Sources */,
+				8AC2458A1ADE8CA30027F362 /* TKACreatuteHeir.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +554,7 @@
 				8A999A331ADCD34500EA5A08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
