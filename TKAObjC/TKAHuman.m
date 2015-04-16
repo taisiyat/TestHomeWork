@@ -8,7 +8,7 @@
 
 #import "TKAHuman.h"
 @interface TKAHuman ()
-@property (nonatomic, assign, readwrite) NSArray *children;
+@property (nonatomic, readwrite) NSMutableArray *mutableChildren;
 
 - (void)sayWithString;
 
@@ -16,7 +16,7 @@
 
 @implementation TKAHuman
 
-//@dynamic children;
+@dynamic children;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -39,14 +39,15 @@
 
 -(void)dealloc {
     self.name = nil;
-
+    self.mutableChildren = nil;
+    
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-//        [self.children array];
+        self.mutableChildren = [[[NSMutableArray alloc] init] autorelease];
     }
     
     return self;
@@ -55,10 +56,10 @@
 #pragma mark - 
 #pragma mark Acessors Methods
 
-//- (NSArray *)array {
-////    return [[[[[NSMutableArray alloc] initWithObjects:[[NSObject new] autorelease], nil] autorelease] copy] autorelease];
-//    return [[[[[NSMutableArray alloc] init] autorelease] copy] autorelease];
-//}
+- (NSArray *)children {
+    return [[self.mutableChildren copy] autorelease];
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
@@ -73,29 +74,23 @@
 }
 
 - (void)addChild:(TKAHuman *)child {
-        [[self children] addObject:child];
-//    NSMutableArray *mutableChildren = [NSMutableArray array];
-//    [mutableChildren setArray:self.children];
-//    [mutableChildren addObject:child];
-//    [[self.children initWithArray:mutableChildren] autorelease];
+    [self.mutableChildren  addObject:child];
+    [self children];
 }
 
 - (void)removeChild:(TKAHuman *)child {
-//    [[self children] removeObject:child];
-    NSMutableArray *mutableChildren = [NSMutableArray array];
-    [mutableChildren setArray:self.children];
-    [mutableChildren removeObject:child];
-    [[self.children initWithArray:mutableChildren] autorelease];
+    [self.mutableChildren  removeObject:child];
+    [self children];
 }
 
 - (void)sayHi {
     [self sayWithString];
-    for (TKAHuman *child in [self children]) {
-        [child sayWithString];
+    for (TKAHuman *child in [self mutableChildren]) {
+        [child sayHi];
     }
 }
 
-- (void)checkGender {
+- (void)performGenderSpecificOperation {
     if (TKAMale == [self gender]) {
         [self fight];
     } else {
@@ -114,11 +109,13 @@
 }
 
 - (void)output {
-    NSLog(@"name = %@", [[self name] description]);
+    NSLog(@"name = %@", [self name] );
     NSLog(@" weight = %lu", [self weight]);
     NSLog(@" age = %lu", [self age]);
     NSLog(@" gender = %u", [self gender]);
-    NSLog(@" children = %@", [self children]);
+    for (TKAHuman *child in self.mutableChildren) {
+        NSLog(@"child = %@", [child name] );
+    }
 }
 
 #pragma mark -

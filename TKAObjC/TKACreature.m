@@ -7,19 +7,15 @@
 //
 
 #import "TKACreature.h"
+#import "NSObject+TKACategory.h"
 
 @implementation TKACreature
-
 
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)creature {
-    return [[[self alloc] init] autorelease];
-}
-
 + (instancetype)creatureWithName:(NSString *)name {
-    TKACreature *creature = [[[self alloc] init] autorelease];
+    TKACreature *creature = [self object];
     creature.name = name;
     
     return creature;
@@ -30,38 +26,35 @@
 
 -(void)dealloc {
     self.name = nil;
+    
     [super dealloc];
+}
+
+-(id)init {
+    [super init];
+    
+    return self;
 }
 
 #pragma mark -
 #pragma mark Acessors Methods
 
-
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)fight {
-    NSLog(@"man goes to war");
-}
-
-- (void)giveBirth {
-    NSLog(@"woman is giving birth");
-}
 
 - (void)sayHi {
     [self sayWithString];
 }
 
 - (void)performGenderSpecificOperation {
-    
+
 }
 
 - (void)output {
-    NSLog(@"%@", [[self name] description]);
-//    NSLog(@" name = %@", [self name]);
-//    NSLog(@" weight = %lu", [self weight]);
-//    NSLog(@" age = %lu", [self age]);
-//    NSLog(@" children = %@", [self children]);
+    NSLog(@" name = %@", [self name]);
+    NSLog(@" weight = %lu", [self weight]);
+    NSLog(@" age = %lu", [self age]);
 }
 
 #pragma mark -

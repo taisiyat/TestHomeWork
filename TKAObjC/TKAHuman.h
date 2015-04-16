@@ -31,7 +31,7 @@ typedef enum TKAGender {
 - (void)removeChild:(TKAHuman *)child;
 - (void)sayHi;
 
-- (void)checkGender;
+- (void)performGenderSpecificOperation;
 - (void)humanWriteNewbornName:(NSString *)string
                        weight:(NSUInteger)weight
                           age:(NSUInteger)age

@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "NSObject+TKACategory.h"
+
 @class TKACreature;
 
 @interface TKACreature : NSObject
-
 @property (nonatomic, retain)      NSString     *name;
 @property (nonatomic, assign)      NSUInteger   weight;
 @property (nonatomic, assign)      NSUInteger   age;
-@property (nonatomic, readonly)    NSArray      *children;
 
-+ (instancetype)creature;
 + (instancetype)creatureWithName:(NSString *)name;
 
 - (void)performGenderSpecificOperation;

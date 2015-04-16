@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TKAHumanTest.h"
+#import "TKACarBathTest.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        TKAHumanTask1Test();
-        TKACreatureTask2Test();
+        //TKAHumanTask1Test();
+        //TKACreatureTask2Test();
+        TKACarBathTask1();
         NSLog(@"Hello, World!");
     }
     return 0;
