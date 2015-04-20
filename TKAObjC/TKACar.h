@@ -11,15 +11,17 @@
 #include "TKAPerson.h"
 #include "TKAMoney.h"
 
+#include "NSObject+TKAExtension.h"
+
 @interface TKACar : NSObject
-@property (nonatomic, retain)   TKAPerson       *owner;
-@property (nonatomic, retain)   NSString        *stateNumber;
+//@property (nonatomic, retain)   TKAPerson       *owner;
+@property (nonatomic, copy)     NSString        *number;
 @property (nonatomic, assign)   TKACarCondition condition;
-@property (nonatomic, retain)   TKAMoney        *money;
+@property (nonatomic, retain)   TKAMoney        *moneyCar;
 
-+(instancetype)carWhithStateNumber:(NSString *)stateNumber
-                             owner:(TKAPerson *)owner;
++ (instancetype)carWhithStateNumber:(NSString *)number;
+                           // amount:(NSUInteger)anount;
 
-
+- (void)description;
 
 @end

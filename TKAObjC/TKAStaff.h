@@ -10,11 +10,9 @@
 #import "TKAMoney.h"
 
 @interface TKAStaff : TKAPerson
-@property(nonatomic, retain) NSString   *staffPosition;
-@property(nonatomic, assign) NSString   *duties;
-@property(nonatomic, assign) NSUInteger experience;
-@property(nonatomic, assign) NSUInteger salary;
-@property(nonatomic, assign) NSUInteger materiallyResponsible;//money
+@property(nonatomic, copy)      NSString   *staffPosition;
+@property(nonatomic, assign)    NSUInteger experience;
+@property(nonatomic, assign)    NSUInteger salary;
 
 +(instancetype)staffWhithPosition:(NSString *)staffPosition
                            salary:(NSUInteger) salary;

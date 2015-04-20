@@ -12,11 +12,6 @@
 
 @interface TKAAccountant : TKAStaff
 
-@property(nonatomic, retain) TKAStaff *staff;
-@property(nonatomic, retain) TKAPerson *person;
 @property(nonatomic, readonly) NSArray *money;//money
-
-+(instancetype)accountantWhithPerson:(TKAPerson *)person
-                               staff:(TKAStaff *)staff;
 
 @end

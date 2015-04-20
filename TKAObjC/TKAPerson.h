@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TKAPerson : NSObject
-@property(nonatomic, retain) NSString   *name;
-@property(nonatomic, assign) NSUInteger experience;
-@property(nonatomic, assign) NSUInteger idNumber;
+@property(nonatomic, copy)      NSString   *name;
 
-+(instancetype)personWhithName:(NSString *)name;
-
++ (instancetype)personWhithName:(NSString *)name;
 
 @end

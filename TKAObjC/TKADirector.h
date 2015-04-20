@@ -7,15 +7,10 @@
 //
 
 #import "TKAStaff.h"
-#import "TKAPerson.h"
 #import "TKAMoney.h"
 
 @interface TKADirector : TKAStaff
-@property(nonatomic, retain) TKAStaff *staff;
-@property(nonatomic, retain) TKAPerson *person;
-@property(nonatomic, readonly) NSArray *money;//money
 
-+(instancetype)directorWhithPerson:(TKAPerson *)person
-                             staff:(TKAStaff *)staff;
+@property(nonatomic, readonly) NSArray *bigMoney;//money
 
 @end

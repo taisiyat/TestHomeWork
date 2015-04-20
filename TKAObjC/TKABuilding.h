@@ -11,12 +11,9 @@
 #include "TKAPerson.h"
 #include "TKADirector.h"
 #include "TKAStaff.h"
-#include "TKAEnterprise.h"
 
 @interface TKABuilding : NSObject
-@property(nonatomic, retain) NSString *address;
-@property(nonatomic, retain) TKAEnterprise *enterprise;
-@property(nonatomic, retain) TKAPerson *owner;
+@property(nonatomic, copy) NSString *address;
 @property(nonatomic, readonly) NSArray *adminRooms;//AdminRoom
 @property(nonatomic, readonly) NSArray *carBathBoxes;//CarBathBox
 

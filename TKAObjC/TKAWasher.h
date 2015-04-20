@@ -13,12 +13,6 @@
 
 @interface TKAWasher : TKAStaff
 @property(nonatomic, retain) TKACar *car;
-@property(nonatomic, retain) TKAStaff *staff;
-@property(nonatomic, retain) TKAPerson *person;
-@property(nonatomic, readonly) TKAMoney *money;
-//@property NSArray *money;//money
-
-+(instancetype)washerWhithPerson:(TKAPerson *)person
-                           staff:(TKAStaff *)staff;
+@property(nonatomic, retain) TKAMoney *money;
 
 @end

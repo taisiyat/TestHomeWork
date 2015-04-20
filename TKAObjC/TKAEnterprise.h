@@ -15,18 +15,13 @@
 #include "TKAStaff.h"
 
 @interface TKAEnterprise : NSObject
-@property(nonatomic, retain) NSString *name;
-@property(nonatomic, retain) TKABuilding *building;
-@property(nonatomic, retain) TKADirector *director;
-@property(nonatomic, retain) TKAPerson *owner;
-@property(nonatomic, readonly) NSArray *staffPerson;//staff
-@property(nonatomic, readonly) NSArray *financialFlows;//money
-@property(nonatomic, assign) NSInteger allMoney;
-@property(nonatomic, readonly) NSArray *money;
+@property(nonatomic, copy)      NSString    *name;
+@property(nonatomic, retain)    TKABuilding *building;
+@property(nonatomic, retain)    TKADirector *director;
+@property(nonatomic, readonly)  NSArray *staffPerson;//staff
+@property(nonatomic, readonly)  NSArray *financialFlows;//money
 
 +(instancetype)enterpriseWhithName:(NSString *)name
-                          director:(TKADirector *)director
-                             owner:(TKAPerson *)owner
-                             money:(NSInteger)allMoney;
+                          director:(TKADirector *)director;
 
 @end

@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "TKAPerson.h"
 #include "TKACarBath.h"
 
+#include "NSObject+TKAExtension.h"
+
 @interface TKAMoney : NSObject
-@property(nonatomic, assign) NSUInteger sum;
-@property(nonatomic, assign) TKAMoneyPosition position;
-@property(nonatomic, retain) TKAPerson *havingPerson;//responsible;
+@property(nonatomic, assign)    NSUInteger  amount;
+@property(nonatomic, retain)    NSObject    *responsible;
 
-+(instancetype)moneyWhithSum:(NSUInteger)sum
-                havingPerson:(TKAPerson *)person;
++(instancetype)moneyWhithAmount:(NSUInteger)amount
+                    responsible:(NSObject *)responsible;
 
-
+- (void)description;
 
 @end

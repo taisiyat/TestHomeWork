@@ -13,6 +13,6 @@
 
 @interface TKACarBathBox : TKABuilding
 @property(nonatomic, retain) TKACar *car;
-@property(nonatomic, assign) NSArray *staffWashers;//washer
+@property(nonatomic, readonly) NSArray *staffWashers;//washer
 
 @end

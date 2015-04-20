@@ -10,16 +10,9 @@
 #define TKAAutoreleasePool_TKACarBath_h
 
 typedef enum {
-    TKACarDirty,
-    TKACarWashing,
-    TKACarClean,
+    TKADirtyCar,
+    TKAWashingCar,
+    TKACleanCar,
 } TKACarCondition;
-
-typedef enum {
-    TKAMoneyInCar,
-    TKAMoneyInWhasher,
-    TKAMoneyInAccountant,
-    TKAMoneyInDirector
-} TKAMoneyPosition;
 
 #endif
