@@ -2,17 +2,14 @@
 //  TKAWasher.h
 //  TKAAutoreleasePool
 //
-//  Created by Taisiya on 16.04.15.
+//  Created by Taisiya on 21.04.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAStaff.h"
-#import "TKAPerson.h"
+#import "TKAEmployee.h"
 #import "TKACar.h"
-#import "TKAMoney.h"
 
-@interface TKAWasher : TKAStaff
-@property(nonatomic, retain) TKACar *car;
-@property(nonatomic, retain) TKAMoney *money;
+@interface TKAWasher : TKAEmployee
+@property(nonatomic,retain) TKACar *car;
 
 @end

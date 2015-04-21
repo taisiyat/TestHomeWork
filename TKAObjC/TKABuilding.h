@@ -7,17 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "TKACarBath.h"
-#include "TKAPerson.h"
-#include "TKADirector.h"
-#include "TKAStaff.h"
+
+#import "TKADirector.h"
+#import "TKAEmployee.h"
 
 @interface TKABuilding : NSObject
 @property(nonatomic, copy) NSString *address;
-@property(nonatomic, readonly) NSArray *adminRooms;//AdminRoom
-@property(nonatomic, readonly) NSArray *carBathBoxes;//CarBathBox
+@property(nonatomic, readonly) NSArray *rooms;//AdminRoom //CarBathBox
 
-+(instancetype)buildingWhithAddress:(NSString *)address
-                              owner:(TKAPerson *)owner;
++ (instancetype)buildingWhithAddress:(NSString *)address;
+
+- (void)output;
 
 @end

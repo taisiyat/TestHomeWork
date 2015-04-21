@@ -6,20 +6,24 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#include "TKACarBath.h"
-#include "TKAPerson.h"
-#include "TKAMoney.h"
-#include "TKABuilding.h"
-#include "TKADirector.h"
-#include "TKAStaff.h"
+#import "TKAMoney.h"
+#import "TKABuilding.h"
+#import "TKADirector.h"
+#import "TKAEmployee.h"
+
+typedef enum {
+    TKADirtyCar,
+    TKAWashingCar,
+    TKACleanCar,
+} TKACarCondition;
 
 @interface TKAEnterprise : NSObject
 @property(nonatomic, copy)      NSString    *name;
-@property(nonatomic, retain)    TKABuilding *building;
+@property(nonatomic, retain)    TKABuilding *adminBuilding;
+@property(nonatomic, retain)    TKABuilding *boxesBuilding;
 @property(nonatomic, retain)    TKADirector *director;
-@property(nonatomic, readonly)  NSArray *staffPerson;//staff
-@property(nonatomic, readonly)  NSArray *financialFlows;//money
+@property(nonatomic, readonly)  NSArray *employees;
+//@property(nonatomic, readonly)  NSArray *financialFlows;//money
 
 +(instancetype)enterpriseWhithName:(NSString *)name
                           director:(TKADirector *)director;

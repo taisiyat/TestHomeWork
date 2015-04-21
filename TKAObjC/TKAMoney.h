@@ -6,18 +6,16 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#include "TKACarBath.h"
-
-#include "NSObject+TKAExtension.h"
+#import "NSObject+TKAExtension.h"
 
 @interface TKAMoney : NSObject
 @property(nonatomic, assign)    NSUInteger  amount;
 @property(nonatomic, retain)    NSObject    *responsible;
 
-+(instancetype)moneyWhithAmount:(NSUInteger)amount
++(instancetype)moneyWithAmount:(NSUInteger)amount
                     responsible:(NSObject *)responsible;
 
-- (void)description;
+- (void)output;
+- (void)giveMoney:(TKAMoney *)mony from:(id)from to:(id)to;
 
 @end

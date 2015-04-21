@@ -6,22 +6,19 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#include "TKACarBath.h"
-#include "TKAPerson.h"
-#include "TKAMoney.h"
+#import "TKAEnterprise.h"
+#import "TKAMoney.h"
 
-#include "NSObject+TKAExtension.h"
+#import "NSObject+TKAExtension.h"
 
 @interface TKACar : NSObject
-//@property (nonatomic, retain)   TKAPerson       *owner;
 @property (nonatomic, copy)     NSString        *number;
 @property (nonatomic, assign)   TKACarCondition condition;
-@property (nonatomic, retain)   TKAMoney        *moneyCar;
+@property (nonatomic, retain)   TKAMoney        *money;
 
-+ (instancetype)carWhithStateNumber:(NSString *)number;
-                           // amount:(NSUInteger)anount;
++ (instancetype)carWithNumber:(NSString *)number
+                            amount:(NSUInteger)anount;
 
-- (void)description;
+- (void)output;
 
 @end

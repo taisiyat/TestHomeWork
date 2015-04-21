@@ -8,12 +8,13 @@
 
 #ifndef TKAAutoreleasePool_TKACarBathTest_h
 #define TKAAutoreleasePool_TKACarBathTest_h
-#include "TKACar.h"
-#include "TKAPerson.h"
-#include "TKAMoney.h"
-#include "TKABuilding.h"
-#include "TKADirector.h"
-#include "TKAStaff.h"
+
+#import "TKAMoney.h"
+#import "TKABuilding.h"
+#import "TKADirector.h"
+#import "TKAEmployee.h"
+
+#import "NSObject+TKAExtension.h"
 
 extern
 void TKACarBathTask1();

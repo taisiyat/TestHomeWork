@@ -16,9 +16,9 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+(instancetype)moneyWhithAmount:(NSUInteger)amount
++(instancetype)moneyWithAmount:(NSUInteger)amount
                     responsible:(NSObject *)responsible {
-    TKAMoney *money = [self object];
+    TKAMoney *money = [TKAMoney object];
     money.amount = amount;
     money.responsible = responsible;
     
@@ -37,7 +37,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        //        self.money = [TKAMoney object];
+
     }
     
     return self;
@@ -49,9 +49,10 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)description {
-    NSLog(@" number = %lu", [self amount]);
-    NSLog(@" condition = %@", [self responsible]);
+- (void)output {
+    NSLog(@" Money : ");
+    NSLog(@" number = %lu", self.amount);
+    NSLog(@" condition = %@", self.responsible);
 }
 
 #pragma mark -

@@ -17,13 +17,13 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)carWithStateNumber:(NSString *)number {
-                           // amount:(NSUInteger)amount {
-    TKACar *car = [self object];
++ (instancetype)carWithNumber:(NSString *)number
+                            amount:(NSUInteger)amount {
+    TKACar *car = [TKACar object];
     car.number = number;
     car.condition = TKADirtyCar;
-//    [car.money moneyWhithAmount:amount responsible:car];
-                 
+    car.money = [TKAMoney moneyWithAmount:amount responsible:car];
+    
     return car;
 }
 
@@ -32,7 +32,7 @@
 
 - (void)dealloc {
     self.number = nil;
-    self.moneyCar = nil;
+    self.money = nil;
     
     [super dealloc];
 }
@@ -40,7 +40,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-//        self.money = [TKAMoney object];
+        self.money = [TKAMoney object];
     }
     
     return self;
@@ -52,10 +52,11 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)description {
-    NSLog(@" number = %@", [self number]);
-    NSLog(@" condition = %u", [self condition]);
-    NSLog(@" money = %lu", [[self money] amount]);
+- (void)output {
+    NSLog(@" Car : ");
+    NSLog(@" number = %@", self.number);
+    NSLog(@" condition = %u", self.condition);
+    [self.money output];
    
 }
 
