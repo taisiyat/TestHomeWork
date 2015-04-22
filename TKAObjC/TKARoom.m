@@ -14,8 +14,14 @@
 #pragma mark Class Methods
 
 + (instancetype)room {
-
     return [TKARoom object];
+}
+
++ (instancetype)roomWithName:(NSString *)name {
+    TKARoom *room = [TKARoom object];
+    room.name = name;
+    
+    return room;
 }
 
 
@@ -24,7 +30,8 @@
 
 - (void)dealloc {
     self.mutableEmployees = nil;
-    
+    self.name = nil;
+
     [super dealloc];
 }
 
@@ -45,9 +52,18 @@
 
 - (void)output {
     NSLog(@" Room : ");
-    //    for (TKAEmployee *employee in self.mutableEmployees) {
-    //        [employee output];
-    //    }
+    NSLog(@" name = %@ ", self.name);
+    for (TKAEmployee *employee in self.mutableEmployees) {
+        [employee output];
+    }
+}
+
+- (void)addEmployee:(TKAEmployee *)employee {
+    [self.mutableEmployees addObject:employee];
+}
+
+- (void)removeEmployee:(TKAEmployee *)employee {
+    [self.mutableEmployees removeObject:employee];
 }
 
 @end

@@ -12,4 +12,8 @@
 @interface TKAWasher : TKAEmployee
 @property(nonatomic,retain) TKACar *car;
 
+- (id)washerIsFree;
+- (void)takeMoney;
+- (void)washCar;
+
 @end

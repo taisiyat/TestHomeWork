@@ -16,6 +16,6 @@
                     responsible:(NSObject *)responsible;
 
 - (void)output;
-- (void)giveMoney:(TKAMoney *)mony from:(id)from to:(id)to;
+- (void)changeResponsible:(NSObject *)Responsible;
 
 @end

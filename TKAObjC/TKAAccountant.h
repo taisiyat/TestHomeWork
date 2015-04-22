@@ -10,4 +10,6 @@
 
 @interface TKAAccountant : TKAEmployee
 
+- (void)count;
+
 @end

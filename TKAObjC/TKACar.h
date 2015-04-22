@@ -20,5 +20,6 @@
                             amount:(NSUInteger)anount;
 
 - (void)output;
+- (id)carIsClean;
 
 @end

@@ -17,6 +17,9 @@
 
 +(instancetype)employeeWhithName:(NSString *)name staffPosition:(NSString *)staffPosition;
 
-+(void)output;
+-(void)output;
+
+-(void)addMoney:(TKAMoney *)money;
+-(void)removeMoney:(TKAMoney *)money;
 
 @end

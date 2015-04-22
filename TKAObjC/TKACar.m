@@ -60,6 +60,16 @@
    
 }
 
+- (id)carIsClean {
+    if (TKAWashingCar == [self condition] || TKACleanCar == [self condition]) {
+        [self setCondition:TKACleanCar];
+        
+        return true;
+    }
+    
+    return false;
+}
+
 #pragma mark -
 #pragma mark Private Methods
 

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TKADirector.h"
 #import "TKAEmployee.h"
+#import "TKARoom.h"
 
 @interface TKABuilding : NSObject
 @property(nonatomic, copy) NSString *address;
@@ -18,5 +18,7 @@
 + (instancetype)buildingWhithAddress:(NSString *)address;
 
 - (void)output;
+- (void)addRoom:(TKARoom *)room;
+- (void)removeRoom:(TKARoom *)room;
 
 @end

@@ -10,6 +10,10 @@
 #import "TKACar.h"
 
 @interface TKACarBox : TKARoom
-@property(nonatomic, retain) TKACar *car;
+@property(nonatomic,retain) TKACar *car;
+
+- (void)output;
+- (void)addCar:(TKACar *)car;
+- (void)removeCar:(TKACar *)car;
 
 @end

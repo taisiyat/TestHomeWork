@@ -16,6 +16,8 @@
 
 @implementation TKAEmployee
 
+@dynamic bigMoney;
+
 #pragma mark -
 #pragma mark Class Methods
 
@@ -52,6 +54,10 @@
 #pragma mark -
 #pragma mark Acessors Methods
 
+- (NSArray *)bigMoney {
+    return [[self.mutableBigMoney copy] autorelease];
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
@@ -64,6 +70,17 @@
     //        [money output];
     //    }
     
+}
+
+- (void)addMoney:(TKAMoney *)money {
+    [self.mutableBigMoney addObject:money];
+    [money setResponsible:self];
+    [self bigMoney];
+}
+
+- (void)removeMoney:(TKAMoney *)money {
+    [self.mutableBigMoney removeObject:money];
+    [self bigMoney];
 }
 
 #pragma mark -

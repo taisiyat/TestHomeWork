@@ -7,7 +7,10 @@
 //
 
 #import "TKAEmployee.h"
+#import "TKAAccountant.h"
 
 @interface TKADirector : TKAEmployee
+
+- (void)takeProfit;
 
 @end

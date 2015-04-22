@@ -9,7 +9,8 @@
 #import "TKAMoney.h"
 #import "TKABuilding.h"
 #import "TKADirector.h"
-#import "TKAEmployee.h"
+
+#import "TKAEmployee+TKAExtension.h"
 
 typedef enum {
     TKADirtyCar,
@@ -25,7 +26,21 @@ typedef enum {
 @property(nonatomic, readonly)  NSArray *employees;
 //@property(nonatomic, readonly)  NSArray *financialFlows;//money
 
-+(instancetype)enterpriseWhithName:(NSString *)name
-                          director:(TKADirector *)director;
++(instancetype)enterpriseWhithName:(NSString *)name;
+                        
+//+(instancetype)enterpriseWhithName:(NSString *)name
+//                          director:(TKADirector *)director;
+
+
+-(void)addEmployee:(TKAEmployee*)emploeey;
+-(void)removeEmployee:(TKAEmployee*)emploeey;
+
+- (void)fill;
+- (id)carCameWhithNumber:(NSString *)number amount:(NSUInteger)amount;
+
+- (id)foundDirector;
+- (id)foundAccountant;
+- (id)foundFreeWasher;
+- (id)foundFreeCarBox;
 
 @end

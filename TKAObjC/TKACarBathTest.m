@@ -13,30 +13,26 @@
 #import "TKAEnterprise.h"
 #import "TKABuilding.h"
 #import "TKADirector.h"
+#import "TKAAccountant.h"
+#import "TKAWasher.h"
+#import "TKAAdminRoom.h"
+#import "TKACarBox.h"
 
 
 void TKACarBathTask1() {
     @autoreleasepool {
+       
+        TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
+        [enterprise fill];
         
-        NSString *numberCar1 = @"AA2345";
-        NSString *numberCar2 = @"AA6789";
-        TKACar *firstCar = [TKACar carWithNumber:numberCar1 amount:50];
-        TKACar *secondCar = [TKACar carWithNumber:numberCar2 amount:100];
+        [enterprise output];
+        
+        TKACar *firstCar = [enterprise carCameWhithNumber:@"AA1234" amount:50];
+        TKACar *secondCar = [enterprise carCameWhithNumber:@"AA5678" amount:100];
         [firstCar output];
         [secondCar output];
-        NSString *positionDirector = @"director";
-        NSString *positionAccountant = @"accountant";
-        NSString *positionWasher = @"washer";
-        NSString *nameDirector = @"directorName";
-        NSString *nameAccountant = @"accountantName";
-        NSString *nameWasher1 = @"washerName1";
-        NSString *nameWasher2 = @"washerName2";
         
-        TKADirector *director = [TKADirector employeeWhithName:nameDirector staffPosition:positionDirector];
-        TKAEnterprise *enterprice = [TKAEnterprise enterpriseWhithName:@"CarBath" director:director];
-        [enterprice output];
-        
-//        TKAEnterprise *enterprice = [TKAEnterprise enterpriseWhithName:@"CarBath" director:nameDirector];
-//        [enterprice output];
+        [enterprise output];
+
     }
 }
