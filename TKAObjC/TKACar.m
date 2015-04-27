@@ -18,11 +18,11 @@
 #pragma mark Class Methods
 
 + (instancetype)carWithNumber:(NSString *)number
-                            amount:(NSUInteger)amount {
+                       amount:(NSUInteger)amount {
     TKACar *car = [TKACar object];
     car.number = number;
-    car.condition = TKADirtyCar;
-    car.money = [TKAMoney moneyWithAmount:amount responsible:car];
+    car.clean = false;
+    car.money = [TKAMoney moneyWithAmount:amount];
     
     return car;
 }
@@ -52,22 +52,14 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)output {
-    NSLog(@" Car : ");
-    NSLog(@" number = %@", self.number);
-    NSLog(@" condition = %u", self.condition);
-    [self.money output];
-   
-}
-
-- (id)carIsClean {
-    if (TKAWashingCar == [self condition] || TKACleanCar == [self condition]) {
-        [self setCondition:TKACleanCar];
-        
-        return true;
-    }
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n"];
+    [result appendFormat:@" Car number = %@", self.number];
+    [result appendFormat:@" condition = %u", self.clean];
+    [result appendFormat:@" money = %@", self.money];
     
-    return false;
+    return [[result copy] autorelease];
 }
 
 #pragma mark -

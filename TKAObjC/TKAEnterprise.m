@@ -24,6 +24,7 @@
 
 #pragma mark -
 #pragma mark Class Methods
+
 + (instancetype)enterpriseWhithName:(NSString *)name {
     TKAEnterprise *enterprise = [TKAEnterprise object];
     enterprise.name = name;
@@ -31,23 +32,11 @@
     return enterprise;
 }
 
-//+ (instancetype)enterpriseWhithName:(NSString *)name
-//                           director:(TKADirector *)director {
-//    TKAEnterprise *enterprise = [TKAEnterprise object];
-//    enterprise.name = name;
-//    enterprise.director = director;
-// //   enterprise.director = [TKADirector employeeWhithName:directorName staffPosition:@"director"];
-//    [enterprise.mutableEmployees addObject:director];
-//    
-//    return enterprise;
-//}
-
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
     self.name = nil;
-    self.director = nil;
     self.adminBuilding = nil;
     self.boxesBuilding = nil;
     self.mutableEmployees = nil;
@@ -74,19 +63,18 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)output {
-    NSLog(@" Enterprise : ");
-    NSLog(@" name = %@", self.name);
-    NSLog(@" adminBuilding = %@", self.adminBuilding);
-    [self.adminBuilding output];
-    NSLog(@" boxesBuilding = %@", self.boxesBuilding);
-    [self.boxesBuilding output];
-    for (TKAEmployee *employee in self.mutableEmployees) {
-        [employee output];
-    }
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n Enterprise : "];
+    [result appendFormat:@" name = %@", self.name];
+    [result appendFormat:@" adminBuilding = %@", [self.adminBuilding description]];
+    [result appendFormat:@" boxesBuilding = %@", [self.boxesBuilding description]];
+    [result appendFormat:@" Employees = %@\n", self.mutableEmployees];
+    
+    return [[result copy] autorelease];
 }
 
-// may be to director 2 metods;
+
 -(void)addEmployee:(TKAEmployee*)employee {
     if ([TKADirector class] == [employee class] || [TKAAccountant class] == [employee class]) {
         for (TKAAdminRoom *room in [self adminBuilding]) {
@@ -166,6 +154,27 @@
     }
 }
 
+- (void)financialFlows {
+    for (TKAAccountant *accountant in [self mutableEmployees]) {
+        
+    
+        for (TKAWasher *washer in [self mutableEmployees]) {
+            [washer giveMoney:accountant];
+        }
+        
+        [accountant count];
+        [accountant giveMoney:[self director]];
+        
+    }
+  //  [self.director takeProfit];
+}
+
+- (void)workingProcess {
+    TKACar *car = [self carCameWhithNumber:@"AA9876" amount:50];
+    [self washingCar:car];
+    [self financialFlows];
+}
+
 - (id)foundDirector {
     return [self director];
 }
@@ -180,28 +189,28 @@
     return nil;
 }
 
-- (id)foundFreeWasher {
-    for (TKAEmployee *employee in [self employees]) {
-        if ([TKAWasher class] == [employee class]) {
-            if ([employee washerIsFree]) {
-                
-                return employee;
-            }
-        }
-    }
-    return nil;
-}
-
-- (id)foundFreeCarBox {
-    for (TKACarBox *box in [self boxesBuilding]) {
-        if (nil == [box car]) {
-            
-            return box;
-        }
-    }
-    
-    return nil;
-}
+//- (id)foundFreeWasher {
+//    for (TKAEmployee *employee in [self employees]) {
+//        if ([TKAWasher class] == [employee class]) {
+//            if ([employee washerIsFree]) {
+//                
+//                return employee;
+//            }
+//        }
+//    }
+//    return nil;
+//}
+//
+//- (id)foundFreeCarBox {
+//    for (TKACarBox *box in [self boxesBuilding]) {
+//        if (nil == [box car]) {
+//            
+//            return box;
+//        }
+//    }
+//    
+//    return nil;
+//}
 
 #pragma mark -
 #pragma mark Private Methods

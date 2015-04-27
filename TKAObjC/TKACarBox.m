@@ -26,12 +26,24 @@
     NSLog(@" car = %@ ", self.car);
 }
 
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n"];
+    [result appendFormat:@" car = %@\n", self.car];
+    [result appendFormat:@" free = %u\n", self.free];
+    
+    return [[result copy] autorelease];
+}
+
+
 - (void)addCar:(TKACar *)car {
     self.car = car;
+    self.free = false;
 }
 
 - (void)removeCar:(TKACar *)car {
     self.car = nil;
+    self.free = true;
 }
 
 @end

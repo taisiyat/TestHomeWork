@@ -10,7 +10,7 @@
 
 @implementation NSObject (TKAExtension)
 
-- (id)object {
++ (id)object {
     return [[[self alloc] init] autorelease];
 }
 

@@ -10,14 +10,12 @@
 
 @implementation TKADirector
 
-- (void)takeProfit {
-    NSUInteger sum = 0;
+- (void)profit {
+    [self countMoney];
+
     for (TKAMoney *money in self.bigMoney) {
-        sum += [money amount];
-        [[self bigMoney] removeMoney:money];
+        money.amount = money.amount * 0.7;
     }
-    
-    TKAMoney *sumMoney = [TKAMoney moneyWithAmount:(sum*0.2) responsible:self];
-    [[self bigMoney] addMoney:sumMoney];
 }
+
 @end

@@ -50,12 +50,13 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)output {
-    NSLog(@" Room : ");
-    NSLog(@" name = %@ ", self.name);
-    for (TKAEmployee *employee in self.mutableEmployees) {
-        [employee output];
-    }
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n"];
+    [result appendFormat:@" Rooms name = %@\n", self.name];
+    [result appendFormat:@" Rooms : %@\n", self.mutableEmployees];
+    
+    return [[result copy] autorelease];
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {

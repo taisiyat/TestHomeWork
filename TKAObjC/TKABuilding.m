@@ -23,7 +23,7 @@
 +(instancetype)buildingWhithAddress:(NSString *)address {
     TKABuilding *building = [TKABuilding object];
     building.address = address;
-//    [building.mutableRooms addObject:[TKARoom room]];
+       
     return building;
 }
 
@@ -57,22 +57,22 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)output {
-    NSLog(@" Building : ");
-    NSLog(@" address = %@", self.address);
-    for (TKARoom *room in self.mutableRooms) {
-         [room output];
-    }
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n"];
+    [result appendFormat:@" Building address = %@\n", self.address];
+    [result appendFormat:@" Rooms : %@\n", self.mutableRooms];
+    
+    return [[result copy] autorelease];
 }
+
 
 - (void)addRoom:(TKARoom *)room {
     [self.mutableRooms addObject:room];
-    [self rooms];
  }
 
 - (void)removeRoom:(TKARoom *)room {
     [self.mutableRooms removeObject:room];
-    [self rooms];
 }
 
 

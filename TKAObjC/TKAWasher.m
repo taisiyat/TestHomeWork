@@ -13,18 +13,21 @@
 #pragma mark -
 #pragma mark Public Methods
 
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendFormat:@" car: %@\n", self.car];
+    
+    return [[result copy] autorelease];
+}
+
 - (void)washCar:(TKACar *)car {
     NSLog(@" WashingCar ");
 }
 
-- (id)washerIsFree {
-    return (nil == [self car]) ? true : false;
-}
-
 - (void)takeMoney {
-    [self addMoney:[[self car] money]];
-    [[self car] setMoney:nil];
-    [self setCar:nil];
+    [self addMoney:[self.car money]];
+    [self.car setMoney:nil];
+    self.car = nil;
 }
 
 #pragma mark -

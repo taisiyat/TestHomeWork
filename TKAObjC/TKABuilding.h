@@ -13,11 +13,12 @@
 
 @interface TKABuilding : NSObject
 @property(nonatomic, copy) NSString *address;
-@property(nonatomic, readonly) NSArray *rooms;//AdminRoom //CarBathBox
+@property(nonatomic, readonly) NSArray *rooms;
 
 + (instancetype)buildingWhithAddress:(NSString *)address;
 
-- (void)output;
+- (NSString *)description;
+
 - (void)addRoom:(TKARoom *)room;
 - (void)removeRoom:(TKARoom *)room;
 

@@ -10,6 +10,6 @@
 
 @interface NSObject (TKAExtension)
 
-- (id)object;
++ (id)object;
 
 @end

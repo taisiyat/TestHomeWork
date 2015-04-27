@@ -10,12 +10,9 @@
 
 @interface TKAMoney : NSObject
 @property(nonatomic, assign)    NSUInteger  amount;
-@property(nonatomic, retain)    NSObject    *responsible;
 
-+(instancetype)moneyWithAmount:(NSUInteger)amount
-                    responsible:(NSObject *)responsible;
++ (instancetype)moneyWithAmount:(NSUInteger)amount;
 
-- (void)output;
-- (void)changeResponsible:(NSObject *)Responsible;
+- (NSString *)description;
 
 @end

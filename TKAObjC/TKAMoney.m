@@ -16,11 +16,9 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+(instancetype)moneyWithAmount:(NSUInteger)amount
-                    responsible:(NSObject *)responsible {
++ (instancetype)moneyWithAmount:(NSUInteger)amount {
     TKAMoney *money = [TKAMoney object];
     money.amount = amount;
-    money.responsible = responsible;
     
     return money;
 }
@@ -28,20 +26,19 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)dealloc {
-    self.responsible = nil;
-    
-    [super dealloc];
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-
-    }
-    
-    return self;
-}
+//- (void)dealloc {
+//    
+//    [super dealloc];
+//}
+//
+//- (instancetype)init {
+//    self = [super init];
+//    if (self) {
+//
+//    }
+//    
+//    return self;
+//}
 
 #pragma mark -
 #pragma mark Acessors Methods
@@ -49,10 +46,12 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)output {
-    NSLog(@" Money : ");
-    NSLog(@" number = %lu", self.amount);
-    NSLog(@" condition = %@", self.responsible);
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n"];
+    [result appendFormat:@" money = %lu\n", self.amount];
+    
+    return [[result copy] autorelease];
 }
 
 #pragma mark -

@@ -8,7 +8,6 @@
 
 #import "TKAEmployee.h"
 
-
 @interface TKAEmployee ()
 @property(nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
 
@@ -21,22 +20,18 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+(instancetype)employeeWhithName:(NSString *)name
-                   staffPosition:(NSString *)staffPosition {
++(instancetype)employeeWithName:(NSString *)name {
         TKAEmployee *employee = [TKAEmployee object];
         employee.name = name;
-        employee.staffPosition = staffPosition;
     
     return employee;
 }
-
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
     self.name = nil;
-    self.staffPosition = nil;
     self.mutableBigMoney = nil;
     
     [super dealloc];
@@ -61,26 +56,35 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)output {
-    NSLog(@" %@ : ", self.staffPosition);
-    NSLog(@" name = %@", self.name);
-    NSLog(@" experience = %lu", self.experience);
-    NSLog(@" salary = %lu", self.salary);
-    //    for (TKAMoney *money in self.mutableBigMoney) {
-    //        [money output];
-    //    }
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    [result appendString:@"\n"];
+    [result appendFormat:@" Name: %@\n", self.name];
+    [result appendFormat:@" free = %hhd", self.free];
+    [result appendFormat:@" experience = %lu", self.experience];
+    [result appendFormat:@" salary = %lu", self.salary];
+    [result appendFormat:@" money: %@\n", self.mutableBigMoney];
     
+    return [[result copy] autorelease];
 }
 
 - (void)addMoney:(TKAMoney *)money {
     [self.mutableBigMoney addObject:money];
-    [money setResponsible:self];
-    [self bigMoney];
 }
 
 - (void)removeMoney:(TKAMoney *)money {
     [self.mutableBigMoney removeObject:money];
-    [self bigMoney];
+}
+
+-(void)countMoney {
+    NSUInteger sum = 0;
+    for (TKAMoney *money in self.mutableBigMoney) {
+        sum += [money amount];
+        [self.mutableBigMoney removeObject:money];
+    }
+    
+    TKAMoney *sumMoney = [TKAMoney moneyWithAmount:sum];
+    [self.mutableBigMoney addObject:sumMoney];
 }
 
 #pragma mark -

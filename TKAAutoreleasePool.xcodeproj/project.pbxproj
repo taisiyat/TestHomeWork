@@ -68,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A205F551AEE59C500FD76B4 /* TKAEmployeeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAEmployeeProtocol.h; sourceTree = "<group>"; };
 		8A4162261AE647A600C15E52 /* TKADirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKADirector.h; sourceTree = "<group>"; };
 		8A4162271AE647A600C15E52 /* TKADirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKADirector.m; sourceTree = "<group>"; };
 		8A4162291AE647EC00C15E52 /* TKAAccountant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAccountant.h; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 			children = (
 				8A7DEA9E1ADF9EDD007156C1 /* TKAEmployee.h */,
 				8A7DEA9F1ADF9EDD007156C1 /* TKAEmployee.m */,
+				8A205F551AEE59C500FD76B4 /* TKAEmployeeProtocol.h */,
 			);
 			name = TKAEmployee;
 			sourceTree = "<group>";

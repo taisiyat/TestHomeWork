@@ -8,18 +8,21 @@
 
 #import "TKAMoney.h"
 
-@interface TKAEmployee : NSObject
-@property(nonatomic, copy)      NSString   *name;
-@property(nonatomic, copy)      NSString   *staffPosition;
-@property(nonatomic, assign)    NSUInteger experience;
-@property(nonatomic, assign)    NSUInteger salary;
-@property(nonatomic, readonly)  NSArray *bigMoney;
+@protocol TKAEmployeeProtocol;
 
-+(instancetype)employeeWhithName:(NSString *)name staffPosition:(NSString *)staffPosition;
+@interface TKAEmployee : NSObject <TKAEmployeeProtocol>
+@property(nonatomic, copy)      NSString    *name;
+@property(nonatomic, assign)    NSUInteger  experience;
+@property(nonatomic, assign)    NSUInteger  salary;
+@property(nonatomic, readonly)  NSArray     *bigMoney;
+@property(nonatomic, assign, readwrite, getter=isFree, setter=setIsFree:)   BOOL   free;
 
--(void)output;
++ (instancetype)employeeWhithName:(NSString *)name;
 
--(void)addMoney:(TKAMoney *)money;
--(void)removeMoney:(TKAMoney *)money;
+- (NSString *)description;
+
+- (void)addMoney:(TKAMoney *)money;
+- (void)removeMoney:(TKAMoney *)money;
+- (void)countMoney;
 
 @end
