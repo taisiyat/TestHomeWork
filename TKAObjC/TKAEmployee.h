@@ -5,10 +5,13 @@
 //  Created by Taisiya on 16.04.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
 #import "TKAMoney.h"
 
-@protocol TKAEmployeeProtocol;
+#import "NSObject+TKAExtension.h"
+
+#import "TKAEmployeeProtocol.h"
 
 @interface TKAEmployee : NSObject <TKAEmployeeProtocol>
 @property(nonatomic, copy)      NSString    *name;
@@ -22,7 +25,7 @@
 - (NSString *)description;
 
 - (void)addMoney:(TKAMoney *)money;
-- (void)removeMoney:(TKAMoney *)money;
+//- (void)removeMoney:(TKAMoney *)money;
 - (void)countMoney;
 
 @end

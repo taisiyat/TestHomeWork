@@ -38,12 +38,12 @@
 
 - (void)addCar:(TKACar *)car {
     self.car = car;
-    self.free = false;
+    self.free = NO;
 }
 
 - (void)removeCar:(TKACar *)car {
     self.car = nil;
-    self.free = true;
+    self.free = YES;
 }
 
 @end

@@ -21,27 +21,23 @@ typedef enum {
 
 @interface TKAEnterprise : NSObject
 @property(nonatomic, copy)      NSString        *name;
-@property(nonatomic, retain)    TKABuilding     *adminBuilding;
-@property(nonatomic, retain)    TKABuilding     *boxesBuilding;
+@property(nonatomic, retain)    TKABuilding     *building;
 @property(nonatomic, readonly)  NSArray         *employees;
 
-+(instancetype)enterpriseWhithName:(NSString *)name;
++ (instancetype)enterpriseWhithName:(NSString *)name;
 
 - (NSString *)description;
 
--(void)addEmployee:(TKAEmployee*)emploeey;
--(void)removeEmployee:(TKAEmployee*)emploeey;
+-(void)addEmployee:(TKAEmployee *)emploeey;
+-(void)removeEmployee:(TKAEmployee *)emploeey;
 
-- (void)enterpriseFilling;
 - (id)carWhithNumber:(NSString *)number amount:(NSUInteger)amount;
 
-- (id)foundDirector;
-- (id)foundAccountant;
-- (id)foundFreeWasher;
+- (id)foundEmployeePosition:(Class)position;
+- (id)foundFreeEmployeePosition:(Class)position;
 - (id)foundFreeCarBox;
 
-- (void)washingCar:(TKACar *)car;
-
 - (void)workingProcess;
+- (void)washingCar:(TKACar *)car;
 - (void)financialFlows;
 @end

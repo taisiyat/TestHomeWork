@@ -7,6 +7,8 @@
 //
 
 #import "TKABuilding.h"
+#import "TKAAdminRoom.h"
+#import "TKACarBox.h"
 
 @interface TKABuilding ()
 @property(nonatomic, readwrite)  NSMutableArray *mutableRooms;
@@ -23,10 +25,11 @@
 +(instancetype)buildingWhithAddress:(NSString *)address {
     TKABuilding *building = [TKABuilding object];
     building.address = address;
-       
+    [building.mutableRooms addObject:[TKAAdminRoom roomWithName:@"AdminRoom1"]];
+    [building.mutableRooms addObject:[TKACarBox roomWithName:@"CarBox1"]];
+    
     return building;
 }
-
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -59,9 +62,9 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@"\n"];
-    [result appendFormat:@" Building address = %@\n", self.address];
-    [result appendFormat:@" Rooms : %@\n", self.mutableRooms];
+//    [result appendString:@"\n"];
+    [result appendFormat:@" address = %@ \n", self.address];
+    [result appendFormat:@" rooms : %@ \n", self.mutableRooms];
     
     return [[result copy] autorelease];
 }

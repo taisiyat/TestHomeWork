@@ -52,19 +52,19 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@"\n"];
-    [result appendFormat:@" Rooms name = %@\n", self.name];
-    [result appendFormat:@" Rooms : %@\n", self.mutableEmployees];
+//    [result appendString:@"\n"];
+    [result appendFormat:@" room name = %@", self.name];
+    [result appendFormat:@" employees : %@ \n", self.mutableEmployees];
     
     return [[result copy] autorelease];
 }
 
-- (void)addEmployee:(TKAEmployee *)employee {
-    [self.mutableEmployees addObject:employee];
-}
-
-- (void)removeEmployee:(TKAEmployee *)employee {
-    [self.mutableEmployees removeObject:employee];
-}
+//- (void)addEmployee:(TKAEmployee *)employee {
+//    [self.mutableEmployees addObject:employee];
+//}
+//
+//- (void)removeEmployee:(TKAEmployee *)employee {
+//    [self.mutableEmployees removeObject:employee];
+//}
 
 @end

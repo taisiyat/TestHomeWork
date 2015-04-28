@@ -8,9 +8,8 @@
 
 #import "TKAEmployee.h"
 #import "TKACar.h"
-#import "TKAEmployeeProtocol.h"
 
-@interface TKAWasher : TKAEmployee <TKAEmployeeProtocol>
+@interface TKAWasher : TKAEmployee 
 @property(nonatomic, retain) TKACar *car;
 
 - (NSString *)description;

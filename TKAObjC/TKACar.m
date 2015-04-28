@@ -21,7 +21,7 @@
                        amount:(NSUInteger)amount {
     TKACar *car = [TKACar object];
     car.number = number;
-    car.clean = false;
+    car.clean = NO;
     car.money = [TKAMoney moneyWithAmount:amount];
     
     return car;
@@ -57,7 +57,8 @@
     [result appendString:@"\n"];
     [result appendFormat:@" Car number = %@", self.number];
     [result appendFormat:@" condition = %u", self.clean];
-    [result appendFormat:@" money = %@", self.money];
+    [result appendFormat:@" money : %@", self.money];
+    [result appendString:@"\n"];
     
     return [[result copy] autorelease];
 }

@@ -9,11 +9,6 @@
 #ifndef TKAAutoreleasePool_TKACarBathTest_h
 #define TKAAutoreleasePool_TKACarBathTest_h
 
-#import "TKAMoney.h"
-#import "TKABuilding.h"
-#import "TKADirector.h"
-#import "TKAEmployee.h"
-
 #import "NSObject+TKAExtension.h"
 
 extern

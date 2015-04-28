@@ -22,9 +22,11 @@
 
 - (void)washCar:(TKACar *)car {
     NSLog(@" WashingCar ");
+    [self.car setIsClean:YES];
 }
 
 - (void)takeMoney {
+    //[self.bigMoney addObject:[self.car money]];
     [self addMoney:[self.car money]];
     [self.car setMoney:nil];
     self.car = nil;

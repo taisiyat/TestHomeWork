@@ -7,8 +7,7 @@
 //
 
 #import "TKAEmployee.h"
-#import "TKAEmployeeProtocol.h"
 
-@interface TKAAccountant : TKAEmployee <TKAEmployeeProtocol>
+@interface TKAAccountant : TKAEmployee 
 
 @end

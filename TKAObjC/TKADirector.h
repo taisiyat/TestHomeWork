@@ -7,11 +7,10 @@
 //
 
 #import "TKAEmployee.h"
-#import "TKAEmployeeProtocol.h"
 
 @class TKADirector;
 
-@interface TKADirector : TKAEmployee <TKAEmployeeProtocol>
+@interface TKADirector : TKAEmployee
 
 - (void)profit;
 

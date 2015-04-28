@@ -21,6 +21,4 @@
 
 - (NSString *)description;
 
-- (id)carIsClean;
-
 @end

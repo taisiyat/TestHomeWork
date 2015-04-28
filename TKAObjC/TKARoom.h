@@ -20,7 +20,7 @@
 
 - (NSString *)description;
 
-- (void)addEmployee:(TKAEmployee *)employee;
-- (void)removeEmployee:(TKAEmployee *)employee;
+//- (void)addEmployee:(TKAEmployee *)employee;
+//- (void)removeEmployee:(TKAEmployee *)employee;
 
 @end

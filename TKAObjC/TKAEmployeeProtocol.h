@@ -7,14 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TKAEmployee.h"
 
 @protocol TKAEmployeeProtocol <NSObject>
 
-- (void)moneyFlowEmployee:(TKAEmployee *)employeeTake employee:(TKAEmployee *)employeeGive;
+- (void)takeMoney:(id<TKAEmployeeProtocol>)employee;
 
-- (void)takeMoney:(TKAEmployee *)employee;
-
-- (void)giveMoney:(TKAEmployee *)employee;
+- (void)giveMoney:(id<TKAEmployeeProtocol>)employee;
 
 @end
