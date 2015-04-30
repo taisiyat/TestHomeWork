@@ -1,5 +1,5 @@
 //
-//  TKACreatureFemale.h
+//  TKACreatureMale.h
 //  TKAAutoreleasePool
 //
 //  Created by Taisiya on 16.04.15.
@@ -8,12 +8,12 @@
 
 #import "TKACreature.h"
 
-#import "NSObject+TKACategory.h"
+#import "NSObject+TKAExtension.h"
 
-@interface TKACreatureFemale : TKACreature
+@interface TKACreatureMale : TKACreature
 
-+(instancetype)creatureFemale;
++(instancetype)creatureMale;
 
-- (void)giveBirth;
+- (void)fight;
 
 @end

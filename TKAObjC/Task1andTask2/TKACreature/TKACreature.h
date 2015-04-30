@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NSObject+TKACategory.h"
+#import "NSObject+TKAExtension.h"
 
 @class TKACreature;
 

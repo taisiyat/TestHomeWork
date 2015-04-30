@@ -7,7 +7,7 @@
 //
 
 #import "TKACreature.h"
-#import "NSObject+TKACategory.h"
+#import "NSObject+TKAExtension.h"
 
 @implementation TKACreature
 
