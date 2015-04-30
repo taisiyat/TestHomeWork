@@ -7,9 +7,6 @@
 //
 
 #import "TKAMoney.h"
-@interface TKAMoney ()
-
-@end
 
 @implementation TKAMoney
 
@@ -25,20 +22,6 @@
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
-
-//- (void)dealloc {
-//    
-//    [super dealloc];
-//}
-//
-//- (instancetype)init {
-//    self = [super init];
-//    if (self) {
-//
-//    }
-//    
-//    return self;
-//}
 
 #pragma mark -
 #pragma mark Acessors Methods

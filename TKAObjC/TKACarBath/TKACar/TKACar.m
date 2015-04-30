@@ -8,10 +8,6 @@
 
 #import "TKACar.h"
 
-@interface TKACar ()
-
-@end
-
 @implementation TKACar
 
 #pragma mark -
@@ -54,11 +50,9 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@"\n"];
     [result appendFormat:@" Car number = %@", self.number];
     [result appendFormat:@" condition = %u", self.clean];
     [result appendFormat:@" money : %@", self.money];
-    [result appendString:@"\n"];
     
     return [[result copy] autorelease];
 }

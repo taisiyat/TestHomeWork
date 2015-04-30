@@ -5,7 +5,6 @@
 //  Created by Taisiya on 16.04.15.
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
-#import <Foundation/Foundation.h>
 
 #import "TKAMoney.h"
 
@@ -25,7 +24,7 @@
 - (NSString *)description;
 
 - (void)addMoney:(TKAMoney *)money;
-//- (void)removeMoney:(TKAMoney *)money;
+- (void)removeMoney:(TKAMoney *)money;
 - (void)countMoney;
 
 @end

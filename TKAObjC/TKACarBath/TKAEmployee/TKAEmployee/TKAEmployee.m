@@ -7,7 +7,6 @@
 //
 
 #import "TKAEmployee.h"
-#import "NSObject+TKAExtension.h"
 
 @interface TKAEmployee ()
 @property(nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
@@ -22,10 +21,6 @@
 #pragma mark Class Methods
 
 + (instancetype)employeeWithName:(NSString *)name {
-//    TKAEmployee *employee = [TKAEmployee object];
-//    employee.name = name;
-//    employee.free = YES;
-    
     return [[[self alloc] initWithName:name] autorelease];
 }
 
@@ -62,12 +57,11 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@" \n "];
+    [result appendString:@"\n"];
     [result appendFormat:@" name = %@ ", self.name];
     [result appendFormat:@" free = %hhd ", self.free];
     [result appendFormat:@" experience = %lu", self.experience];
     [result appendFormat:@" salary = %lu ", self.salary];
-    //[result appendString:@"\n"];
     [result appendFormat:@" money : %@", self.mutableBigMoney];
     
     return [[result copy] autorelease];
@@ -76,10 +70,10 @@
 - (void)addMoney:(TKAMoney *)money {
     [self.mutableBigMoney addObject:money];
 }
-//
-//- (void)removeMoney:(TKAMoney *)money {
-//    [self.mutableBigMoney removeObject:money];
-//}
+
+- (void)removeMoney:(TKAMoney *)money {
+    [self.mutableBigMoney removeObject:money];
+}
 
 -(void)countMoney {
     NSUInteger sum = 0;
@@ -92,18 +86,7 @@
     [self.mutableBigMoney addObject:sumMoney];
 }
 
-//- (void)moneyFlowEmployee:(TKAEmployee *)employeeGive employee:(TKAEmployee *)employeeTake {
-//    for (TKAMoney *money in [employeeGive bigMoney]) {
-//        [employeeTake addMoney:money];
-//        [money setResponsible:employeeTake];
-//    }
-//    
-//    for (TKAMoney *money in [employeeGive bigMoney]) {
-//        [employeeTake removeMoney:money];
-//    }
-//}
-
-- (void)takeMoney:(TKAEmployee *)employee {
+- (void)takeMoneyFromEmployee:(TKAEmployee *)employee {
     for (TKAMoney *money in employee.mutableBigMoney) {
         [self.mutableBigMoney addObject:money];
     }
@@ -111,10 +94,9 @@
     for (TKAMoney *money in employee.mutableBigMoney) {
         [employee.mutableBigMoney removeObject:money];
     }
-    
 }
 
-- (void)giveMoney:(TKAEmployee *)employee {
+- (void)giveMoneyToEmployee:(TKAEmployee *)employee {
     for (TKAMoney *money in self.mutableBigMoney) {
         [employee.mutableBigMoney addObject:money];
     }
@@ -123,7 +105,6 @@
         [self.mutableBigMoney removeObject:money];
     }
 }
-
 
 #pragma mark -
 #pragma mark Private Methods

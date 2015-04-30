@@ -67,9 +67,9 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-//    [result appendString:@"\n"];
-    [result appendFormat:@" address = %@ \n", self.address];
-    [result appendFormat:@" rooms : %@ \n", self.mutableRooms];
+    [result appendFormat:@" address = %@ ", self.address];
+    [result appendString:@"\n"];
+    [result appendFormat:@" rooms : %@ ", self.mutableRooms];
     
     return [[result copy] autorelease];
 }
@@ -84,7 +84,7 @@
 }
 
 - (id)foundFreeRoom:(Class)typeRoom {
-    for (TKACarBox *room in self.mutableRooms) {
+    for (TKARoom *room in self.mutableRooms) {
         if (typeRoom == [room class] && YES == room.free) {
             
             return room;
@@ -98,10 +98,15 @@
     if ([TKADirector class] == [employee class] || [TKAAccountant class] == [employee class]) {
         for (TKAAdminRoom *room in self.mutableRooms) {
             if ([TKAAdminRoom class] == [room class]) {
-                [room.mutableEmployees addObject:employee];
-                room.free = NO;
+                [room addEmployee:employee];
             }
         }
+    }
+}
+
+-(void)removeEmployee:(TKAEmployee*)employee {
+    for (TKARoom *room in self.mutableRooms) {
+        [room removeEmployee:employee];
     }
 }
 

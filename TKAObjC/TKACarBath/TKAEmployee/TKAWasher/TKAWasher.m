@@ -25,11 +25,19 @@
     [self.car setIsClean:YES];
 }
 
-- (void)takeMoney {
-    //[self.bigMoney addObject:[self.car money]];
+- (void)takeMoneyFromCar {
     [self addMoney:[self.car money]];
     [self.car setMoney:nil];
+}
+
+- (void)addCar:(TKACar *)car {
+    self.car = car;
+    self.free = NO;
+}
+
+- (void)removeCar:(TKACar *)car {
     self.car = nil;
+    self.free = YES;
 }
 
 #pragma mark -

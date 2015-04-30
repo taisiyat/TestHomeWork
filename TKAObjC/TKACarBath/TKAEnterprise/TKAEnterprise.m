@@ -80,39 +80,25 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-        [result appendString:@"\n"];
+    [result appendString:@"\n"];
     [result appendString:@" Enterprise : "];
     [result appendFormat:@" name = %@ ", self.name];
+    [result appendString:@"\n"];
     [result appendFormat:@" building : %@ ", [self.building description]];
-    [result appendFormat:@" employees : %@ n", self.mutableEmployees];
+    [result appendString:@"\n"];
+    [result appendFormat:@" employees : %@ ", self.mutableEmployees];
     
     return [[result copy] autorelease];
 }
 
 
--(void)addEmployee:(TKAEmployee *)employee {
-
+-(void)addEmployee:(TKAEmployee *)employee { //recruit
     [self.building addEmployee:employee];
     [self.mutableEmployees addObject:employee];
 }
 
--(void)removeEmployee:(TKAEmployee*)employee {
-    if ([TKADirector class] == [employee class] || [TKAAccountant class] == [employee class]) {
-        for (TKAAdminRoom *room in [self.building rooms]) {
-            for (employee in room.mutableEmployees)
-            [room.mutableEmployees removeObject:employee];
-        }
-    }
-    
-    if ([TKAWasher class] == [employee class]) {
-        for (TKACarBox *room in [self.building rooms]) {
-            for (employee in room.mutableEmployees) {
-                [room.mutableEmployees removeObject:employee];
-                room.free = YES;
-            }
-        }
-    }
-    
+-(void)removeEmployee:(TKAEmployee*)employee { //dismiss
+    [self.building removeEmployee:employee];
     [self.mutableEmployees removeObject:employee];
 }
 
@@ -126,17 +112,23 @@
 - (void)washingCar:(TKACar *)car {
     TKACarBox *carBox = [self.building foundFreeRoom:[TKACarBox class]];
     TKAWasher *washer = [self foundFreeEmployeePosition:[TKAWasher class]];
-
+    
+    if (nil == carBox || nil == washer) {
+        NSLog(@"wait");
+    }
+    
     if (NO == car.clean && [car.money amount] != 0 && nil != carBox && nil != washer) {
-        washer.car = car;
-        washer.free = NO;
+        [washer addCar:car];
+        
         [carBox addCar:car];
-        [carBox.mutableEmployees addObject:washer];
+        [carBox addEmployee:washer];
+
         [washer washCar];
         if (YES == car.clean) {
-            [washer takeMoney];
+            [washer takeMoneyFromCar];
+            [washer removeCar:car];
             [carBox removeCar:car];
-            [carBox.mutableEmployees removeObject:washer];
+            [carBox removeEmployee:washer];
         }
     }
 }
@@ -146,11 +138,11 @@
     TKADirector *director = [self foundEmployeePosition:[TKADirector class]];
 
     for (TKAWasher *washer in self.mutableEmployees) {
-        [washer giveMoney:accountant];
+        [washer giveMoneyToEmployee:accountant];
     }
 
     [accountant countMoney];
-    [accountant giveMoney:director];
+    [accountant giveMoneyToEmployee:director];
     [director profit];
 
 }
@@ -177,17 +169,6 @@
         if ([position class] == [employee class] && YES == employee.free) {
             
             return employee;
-        }
-    }
-    
-    return nil;
-}
-
-- (id)foundFreeCarBox {
-    for (TKACarBox *box in [self.building rooms]) {
-        if (YES == box.free) {
-            
-            return box;
         }
     }
     

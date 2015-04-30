@@ -8,7 +8,14 @@
 
 #import "TKARoom.h"
 
+@interface TKARoom ()
+@property(nonatomic, readwrite)  NSMutableArray *mutableEmployees;
+
+@end
+
 @implementation TKARoom
+
+@dynamic employees;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -20,7 +27,6 @@
 + (instancetype)roomWithName:(NSString *)name {
     return [[[self alloc] initWithName:name] autorelease];
 }
-
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -52,28 +58,32 @@
     return self;
 }
 
-
 #pragma mark -
 #pragma mark Acessors Methods
+
+- (NSArray *)employees {
+    return [[self.mutableEmployees copy] autorelease];
+}
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@" \n "];
+    [result appendString:@"\n"];
     [result appendFormat:@" room name = %@", self.name];
     [result appendFormat:@" employees : %@", self.mutableEmployees];
+    [result appendString:@"\n"];
     
     return [[result copy] autorelease];
 }
 
-//- (void)addEmployee:(TKAEmployee *)employee {
-//    [self.mutableEmployees addObject:employee];
-//}
-//
-//- (void)removeEmployee:(TKAEmployee *)employee {
-//    [self.mutableEmployees removeObject:employee];
-//}
+- (void)addEmployee:(TKAEmployee *)employee {
+    [self.mutableEmployees addObject:employee];
+}
+
+- (void)removeEmployee:(TKAEmployee *)employee {
+    [self.mutableEmployees removeObject:employee];
+}
 
 @end

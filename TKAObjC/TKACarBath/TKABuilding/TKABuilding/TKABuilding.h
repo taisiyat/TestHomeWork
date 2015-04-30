@@ -6,14 +6,12 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "TKAEmployee.h"
 #import "TKARoom.h"
 
 @interface TKABuilding : NSObject
-@property(nonatomic, copy) NSString *address;
-@property(nonatomic, readonly) NSArray *rooms;
+@property(nonatomic, copy)      NSString    *address;
+@property(nonatomic, readonly)  NSArray     *rooms;
 
 + (instancetype)buildingWhithAddress:(NSString *)address;
 
@@ -22,5 +20,7 @@
 - (void)addRoom:(TKARoom *)room;
 - (void)removeRoom:(TKARoom *)room;
 - (id)foundFreeRoom:(Class)typeRoom;
-- (void)addEmployee:(TKAEmployee *)employee ;
+- (void)addEmployee:(TKAEmployee *)employee;
+- (void)removeEmployee:(TKAEmployee*)employee;
+
 @end

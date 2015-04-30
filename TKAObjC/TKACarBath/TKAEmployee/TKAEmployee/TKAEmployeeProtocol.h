@@ -10,8 +10,8 @@
 
 @protocol TKAEmployeeProtocol <NSObject>
 
-- (void)takeMoney:(id<TKAEmployeeProtocol>)employee;
+- (void)takeMoneyFromEmployee:(id<TKAEmployeeProtocol>)employee;
 
-- (void)giveMoney:(id<TKAEmployeeProtocol>)employee;
+- (void)giveMoneyToEmployee:(id<TKAEmployeeProtocol>)employee;
 
 @end

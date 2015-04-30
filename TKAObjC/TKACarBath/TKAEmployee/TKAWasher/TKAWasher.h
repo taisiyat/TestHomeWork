@@ -14,7 +14,9 @@
 
 - (NSString *)description;
 
-- (void)takeMoney;
+- (void)takeMoneyFromCar;
 - (void)washCar;
+- (void)addCar:(TKACar *)car;
+- (void)removeCar:(TKACar *)car;
 
 @end

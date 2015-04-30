@@ -29,12 +29,10 @@ typedef enum {
 -(void)addEmployee:(TKAEmployee *)emploeey;
 -(void)removeEmployee:(TKAEmployee *)emploeey;
 
-//- (id)carWithNumber:(NSString *)number amount:(NSUInteger)amount;
-
 - (id)carArrivesWithNumber:(NSString *)number amount:(NSUInteger)amount;
 - (id)foundEmployeePosition:(Class)position;
 - (id)foundFreeEmployeePosition:(Class)position;
-- (id)foundFreeCarBox;
+//- (id)foundFreeCarBox;
 
 - (void)workingProcess;
 - (void)washingCar:(TKACar *)car;

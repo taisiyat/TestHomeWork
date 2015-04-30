@@ -8,8 +8,6 @@
 
 #import "TKAEmployee.h"
 
-@class TKADirector;
-
 @interface TKADirector : TKAEmployee
 
 - (void)profit;
