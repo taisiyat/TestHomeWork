@@ -9,6 +9,11 @@
 #import "TKABuilding.h"
 #import "TKAAdminRoom.h"
 #import "TKACarBox.h"
+@class TKAAdminRoom;
+@class TKACarBox;
+@class TKADirector;
+@class TKAWasher;
+@class TKAAccountant;
 
 @interface TKABuilding ()
 @property(nonatomic, readwrite)  NSMutableArray *mutableRooms;
@@ -78,5 +83,26 @@
     [self.mutableRooms removeObject:room];
 }
 
+- (id)foundFreeRoom:(Class)typeRoom {
+    for (TKACarBox *room in self.mutableRooms) {
+        if (typeRoom == [room class] && YES == room.free) {
+            
+            return room;
+        }
+    }
+    
+    return nil;
+}
+
+- (void)addEmployee:(TKAEmployee *)employee {
+    if ([TKADirector class] == [employee class] || [TKAAccountant class] == [employee class]) {
+        for (TKAAdminRoom *room in self.mutableRooms) {
+            if ([TKAAdminRoom class] == [room class]) {
+                [room.mutableEmployees addObject:employee];
+                room.free = NO;
+            }
+        }
+    }
+}
 
 @end

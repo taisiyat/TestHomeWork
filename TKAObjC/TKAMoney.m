@@ -48,7 +48,7 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendFormat:@" money = %lu\n", self.amount];
+    [result appendFormat:@" money = %lu", self.amount];
     
     return [[result copy] autorelease];
 }

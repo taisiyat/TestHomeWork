@@ -11,8 +11,6 @@
 #import "TKADirector.h"
 #import "TKACar.h"
 
-#import "TKAEmployee+TKAExtension.h"
-
 typedef enum {
     TKADirtyCar,
     TKAWashingCar,
@@ -31,8 +29,9 @@ typedef enum {
 -(void)addEmployee:(TKAEmployee *)emploeey;
 -(void)removeEmployee:(TKAEmployee *)emploeey;
 
-- (id)carWhithNumber:(NSString *)number amount:(NSUInteger)amount;
+//- (id)carWithNumber:(NSString *)number amount:(NSUInteger)amount;
 
+- (id)carArrivesWithNumber:(NSString *)number amount:(NSUInteger)amount;
 - (id)foundEmployeePosition:(Class)position;
 - (id)foundFreeEmployeePosition:(Class)position;
 - (id)foundFreeCarBox;

@@ -26,7 +26,7 @@
 //    employee.name = name;
 //    employee.free = YES;
     
-    return [[[self alloc] initWithName:name] autorelease];//employee;
+    return [[[self alloc] initWithName:name] autorelease];
 }
 
 #pragma mark -
@@ -62,12 +62,13 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-//    [result appendString:@"\n"];
+    [result appendString:@" \n "];
     [result appendFormat:@" name = %@ ", self.name];
-    [result appendFormat:@" free = %hhd \n", self.free];
+    [result appendFormat:@" free = %hhd ", self.free];
     [result appendFormat:@" experience = %lu", self.experience];
-    [result appendFormat:@" salary = %lu \n", self.salary];
-    [result appendFormat:@" money : %@\n", self.mutableBigMoney];
+    [result appendFormat:@" salary = %lu ", self.salary];
+    //[result appendString:@"\n"];
+    [result appendFormat:@" money : %@", self.mutableBigMoney];
     
     return [[result copy] autorelease];
 }
@@ -108,7 +109,7 @@
     }
     
     for (TKAMoney *money in employee.mutableBigMoney) {
-        [self.mutableBigMoney removeObject:money];
+        [employee.mutableBigMoney removeObject:money];
     }
     
 }
@@ -119,7 +120,7 @@
     }
     
     for (TKAMoney *money in self.mutableBigMoney) {
-        [employee.mutableBigMoney removeObject:money];
+        [self.mutableBigMoney removeObject:money];
     }
 }
 

@@ -14,6 +14,7 @@
 @interface TKARoom : NSObject
 @property(nonatomic, copy)      NSString    *name;
 @property(nonatomic, retain, readwrite)     NSMutableArray  *mutableEmployees;
+@property(nonatomic, assign, readwrite, getter=isFree, setter=setIsFree:)   BOOL    free;
 
 + (instancetype)room;
 + (instancetype)roomWithName:(NSString *)name;

@@ -20,7 +20,7 @@
     return [[result copy] autorelease];
 }
 
-- (void)washCar:(TKACar *)car {
+- (void)washCar{
     NSLog(@" WashingCar ");
     [self.car setIsClean:YES];
 }

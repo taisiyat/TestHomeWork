@@ -15,14 +15,11 @@ void TKACarBathTask1() {
     @autoreleasepool {
        
         TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
-//        TKADirector *director = [TKADirector employeeWhithName:@"director"];
-        
-//        NSLog(@"%@", [enterprise description]);
- //       NSLog(@"%@", [director description]);
+        NSLog(@"%@", [enterprise description]);
   
-//       [enterprise workingProcess];
+       [enterprise workingProcess];
         
-//         NSLog(@"%@", [enterprise description]);
+         NSLog(@"%@", [enterprise description]);
 
     }
 }

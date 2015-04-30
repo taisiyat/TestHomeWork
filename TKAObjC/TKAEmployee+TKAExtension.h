@@ -11,10 +11,10 @@
 
 @interface TKAEmployee (TKAExtension)
 
-- (void)moneyFlowEmployee:(TKAEmployee *)employeeTake employee:(TKAEmployee *)employeeGive;
-
-- (void)takeMoney:(TKAEmployee *)employee;
-
-- (void)giveMoney:(TKAEmployee *)employee;
+//- (void)moneyFlowEmployee:(TKAEmployee *)employeeTake employee:(TKAEmployee *)employeeGive;
+//
+//- (void)takeMoney:(TKAEmployee *)employee;
+//
+//- (void)giveMoney:(TKAEmployee *)employee;
 
 @end

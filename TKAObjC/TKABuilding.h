@@ -21,5 +21,6 @@
 
 - (void)addRoom:(TKARoom *)room;
 - (void)removeRoom:(TKARoom *)room;
-
+- (id)foundFreeRoom:(Class)typeRoom;
+- (void)addEmployee:(TKAEmployee *)employee ;
 @end

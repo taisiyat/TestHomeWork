@@ -50,7 +50,7 @@ void TKAHumanTask1Test() {
 
 void TKACreatureTask2Test() {
     @autoreleasepool {
-        TKACreature *god = [TKACreature creatureWithName:@"God"];
+//        TKACreature *god = [TKACreature creatureWithName:@"God"];
         TKACreatureMale *adam = [TKACreatureMale creatureWithName:@"Adam"];
         TKACreatureFemale *eve = [TKACreatureFemale creatureWithName:@"Eve"];
         NSArray *creatures = [NSArray arrayWithObjects:adam, eve, nil];

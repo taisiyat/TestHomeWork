@@ -14,14 +14,11 @@
 #pragma mark Class Methods
 
 + (instancetype)room {
-    return [TKARoom object];
+    return [self object];
 }
 
 + (instancetype)roomWithName:(NSString *)name {
-    TKARoom *room = [TKARoom object];
-    room.name = name;
-    
-    return room;
+    return [[[self alloc] initWithName:name] autorelease];
 }
 
 
@@ -44,6 +41,18 @@
     return self;
 }
 
+- (instancetype)initWithName:(NSString *)name {
+    self = [super init];
+    if (self) {
+        self.name = name;
+        self.free = YES;
+        self.mutableEmployees = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
+
 #pragma mark -
 #pragma mark Acessors Methods
 
@@ -52,9 +61,9 @@
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-//    [result appendString:@"\n"];
+    [result appendString:@" \n "];
     [result appendFormat:@" room name = %@", self.name];
-    [result appendFormat:@" employees : %@ \n", self.mutableEmployees];
+    [result appendFormat:@" employees : %@", self.mutableEmployees];
     
     return [[result copy] autorelease];
 }

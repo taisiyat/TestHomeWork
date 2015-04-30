@@ -11,7 +11,6 @@
 
 @interface TKACarBox : TKARoom
 @property(nonatomic, retain)    TKACar     *car;
-@property(nonatomic, assign, readwrite, getter=isFree, setter=setIsFree:)   BOOL    free;
 
 - (NSString *)description;
 

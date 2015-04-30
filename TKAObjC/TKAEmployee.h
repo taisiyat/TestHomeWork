@@ -20,7 +20,7 @@
 @property(nonatomic, readonly)  NSArray     *bigMoney;
 @property(nonatomic, assign, readwrite, getter=isFree, setter=setIsFree:)   BOOL   free;
 
-+ (instancetype)employeeWhithName:(NSString *)name;
++ (instancetype)employeeWithName:(NSString *)name;
 
 - (NSString *)description;
 
