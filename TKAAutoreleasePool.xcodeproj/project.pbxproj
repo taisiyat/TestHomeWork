@@ -50,6 +50,7 @@
 		8A271CA91AF3F828006BE4FE /* TKAEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C7E1AF3F828006BE4FE /* TKAEnterprise.m */; };
 		8A271CAA1AF3F828006BE4FE /* TKAMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C811AF3F828006BE4FE /* TKAMoney.m */; };
 		8A271CAB1AF3F828006BE4FE /* TKAMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C811AF3F828006BE4FE /* TKAMoney.m */; };
+		8A271CAD1AF3FC26006BE4FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C421AF3F828006BE4FE /* main.m */; };
 		8A558DB41ACD3FD800BF2EFC /* TKAAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */; };
 		8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */; };
 		8A6575B61AD2591A000ACDE0 /* TKALinkedListNodeTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A6575B41AD2591A000ACDE0 /* TKALinkedListNodeTest.c */; };
@@ -91,7 +92,6 @@
 /* Begin PBXFileReference section */
 		790B9AFFD5A39A5A017E5C7D /* Pods-TKAObjCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TKAObjCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TKAObjCTests/Pods-TKAObjCTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E41FE7AB4784DB323D9BB6C /* Pods-TKAObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TKAObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TKAObjCTests/Pods-TKAObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8A271C281AF3ED8B006BE4FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A271C311AF3F469006BE4FE /* TKAObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKAObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A271C341AF3F469006BE4FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A271C351AF3F469006BE4FE /* TKAObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKAObjCTests.m; sourceTree = "<group>"; };
@@ -206,14 +206,6 @@
 				790B9AFFD5A39A5A017E5C7D /* Pods-TKAObjCTests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		8A271C271AF3ED8B006BE4FE /* TKAObjCTests */ = {
-			isa = PBXGroup;
-			children = (
-				8A271C281AF3ED8B006BE4FE /* main.m */,
-			);
-			path = TKAObjCTests;
 			sourceTree = "<group>";
 		};
 		8A271C321AF3F469006BE4FE /* TKAObjCTests */ = {
@@ -499,7 +491,6 @@
 			children = (
 				8A72FADD1AC20F6C00C272E9 /* TKAAutoreleasePool */,
 				8A271C411AF3F828006BE4FE /* TKAObjC */,
-				8A271C271AF3ED8B006BE4FE /* TKAObjCTests */,
 				8A271C321AF3F469006BE4FE /* TKAObjCTests */,
 				8A72FADC1AC20F6C00C272E9 /* Products */,
 				86C14D20E1A45E9F375C34BB /* Pods */,
@@ -820,6 +811,7 @@
 				8A271CA31AF3F828006BE4FE /* TKADirector.m in Sources */,
 				8A271C931AF3F828006BE4FE /* TKAStringTest.m in Sources */,
 				8A271C8B1AF3F828006BE4FE /* TKACreatureMale.m in Sources */,
+				8A271CAD1AF3FC26006BE4FE /* main.m in Sources */,
 				8A271C871AF3F828006BE4FE /* TKACreature.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
