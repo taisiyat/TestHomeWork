@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A271C101AF39E2B006BE4FE /* NSObject+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C0F1AF39E2B006BE4FE /* NSObject+TKAExtension.m */; };
+		8A271C1A1AF3A830006BE4FE /* NSString+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C191AF3A830006BE4FE /* NSString+TKAExtension.m */; };
+		8A271C211AF3C615006BE4FE /* TKAStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C201AF3C615006BE4FE /* TKAStringTest.m */; };
 		8A558DB41ACD3FD800BF2EFC /* TKAAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */; };
 		8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */; };
 		8A6575B61AD2591A000ACDE0 /* TKALinkedListNodeTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A6575B41AD2591A000ACDE0 /* TKALinkedListNodeTest.c */; };
@@ -21,8 +24,6 @@
 		8A72FB041AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB021AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c */; };
 		8A72FB071AC2F69400C272E9 /* TKALinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB051AC2F69400C272E9 /* TKALinkedListTest.c */; };
 		8A999A301ADCD34500EA5A08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A999A2F1ADCD34500EA5A08 /* main.m */; };
-		8AC6A9A81AF23C690055F4E8 /* NSObject+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A96D1AF23C680055F4E8 /* NSObject+TKAExtension.m */; };
-		8AC6A9A91AF23C690055F4E8 /* NSString+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A9701AF23C680055F4E8 /* NSString+TKAExtension.m */; };
 		8AC6A9AA1AF23C690055F4E8 /* TKACreature.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A9741AF23C690055F4E8 /* TKACreature.m */; };
 		8AC6A9AB1AF23C690055F4E8 /* TKACreatureFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A9761AF23C690055F4E8 /* TKACreatureFemale.m */; };
 		8AC6A9AC1AF23C690055F4E8 /* TKACreatureMale.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A9781AF23C690055F4E8 /* TKACreatureMale.m */; };
@@ -66,6 +67,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A271C0E1AF39E2B006BE4FE /* NSObject+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKAExtension.h"; sourceTree = "<group>"; };
+		8A271C0F1AF39E2B006BE4FE /* NSObject+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKAExtension.m"; sourceTree = "<group>"; };
+		8A271C181AF3A830006BE4FE /* NSString+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKAExtension.h"; sourceTree = "<group>"; };
+		8A271C191AF3A830006BE4FE /* NSString+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKAExtension.m"; sourceTree = "<group>"; };
+		8A271C1F1AF3C615006BE4FE /* TKAStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringTest.h; sourceTree = "<group>"; };
+		8A271C201AF3C615006BE4FE /* TKAStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStringTest.m; sourceTree = "<group>"; };
 		8A4766D71AC94E94000FFFBE /* TKALinkedListPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKALinkedListPrivate.h; path = TKAAutoreleasePool/TKALinkedListPrivate.h; sourceTree = "<group>"; };
 		8A4766D81AC94F28000FFFBE /* TKALinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKALinkedListEnumeratorPrivate.h; path = TKAAutoreleasePool/TKALinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
 		8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAAutoreleasePool.c; path = TKAAutoreleasePool/TKAAutoreleasePool.c; sourceTree = "<group>"; };
@@ -96,10 +103,6 @@
 		8A72FB061AC2F69400C272E9 /* TKALinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALinkedListTest.h; sourceTree = "<group>"; };
 		8A999A2D1ADCD34500EA5A08 /* TKAObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A999A2F1ADCD34500EA5A08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8AC6A96C1AF23C680055F4E8 /* NSObject+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKAExtension.h"; sourceTree = "<group>"; };
-		8AC6A96D1AF23C680055F4E8 /* NSObject+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKAExtension.m"; sourceTree = "<group>"; };
-		8AC6A96F1AF23C680055F4E8 /* NSString+TKAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKAExtension.h"; sourceTree = "<group>"; };
-		8AC6A9701AF23C680055F4E8 /* NSString+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKAExtension.m"; sourceTree = "<group>"; };
 		8AC6A9731AF23C690055F4E8 /* TKACreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACreature.h; sourceTree = "<group>"; };
 		8AC6A9741AF23C690055F4E8 /* TKACreature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACreature.m; sourceTree = "<group>"; };
 		8AC6A9751AF23C690055F4E8 /* TKACreatureFemale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACreatureFemale.h; sourceTree = "<group>"; };
@@ -159,6 +162,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A271C0D1AF39E2B006BE4FE /* NSObject+TKAExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8A271C0E1AF39E2B006BE4FE /* NSObject+TKAExtension.h */,
+				8A271C0F1AF39E2B006BE4FE /* NSObject+TKAExtension.m */,
+			);
+			path = "NSObject+TKAExtension";
+			sourceTree = "<group>";
+		};
+		8A271C161AF39E61006BE4FE /* Task4andTask5 */ = {
+			isa = PBXGroup;
+			children = (
+				8A271C1E1AF3C615006BE4FE /* TKAStringTest */,
+				8A271C171AF39E61006BE4FE /* NSString+TKAExtension */,
+			);
+			path = Task4andTask5;
+			sourceTree = "<group>";
+		};
+		8A271C171AF39E61006BE4FE /* NSString+TKAExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8A271C181AF3A830006BE4FE /* NSString+TKAExtension.h */,
+				8A271C191AF3A830006BE4FE /* NSString+TKAExtension.m */,
+			);
+			path = "NSString+TKAExtension";
+			sourceTree = "<group>";
+		};
+		8A271C1E1AF3C615006BE4FE /* TKAStringTest */ = {
+			isa = PBXGroup;
+			children = (
+				8A271C1F1AF3C615006BE4FE /* TKAStringTest.h */,
+				8A271C201AF3C615006BE4FE /* TKAStringTest.m */,
+			);
+			path = TKAStringTest;
+			sourceTree = "<group>";
+		};
 		8A558DB51ACD3FEC00BF2EFC /* TKAAutoreleasePool */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,30 +362,12 @@
 			isa = PBXGroup;
 			children = (
 				8A999A2F1ADCD34500EA5A08 /* main.m */,
-				8AC6A96B1AF23C680055F4E8 /* NSObjectExtension */,
-				8AC6A96E1AF23C680055F4E8 /* NSStringExtension */,
+				8A271C161AF39E61006BE4FE /* Task4andTask5 */,
+				8A271C0D1AF39E2B006BE4FE /* NSObject+TKAExtension */,
 				8AC6A9711AF23C680055F4E8 /* Task1andTask2 */,
 				8AC6A97E1AF23C690055F4E8 /* TKACarBath */,
 			);
 			path = TKAObjC;
-			sourceTree = "<group>";
-		};
-		8AC6A96B1AF23C680055F4E8 /* NSObjectExtension */ = {
-			isa = PBXGroup;
-			children = (
-				8AC6A96C1AF23C680055F4E8 /* NSObject+TKAExtension.h */,
-				8AC6A96D1AF23C680055F4E8 /* NSObject+TKAExtension.m */,
-			);
-			path = NSObjectExtension;
-			sourceTree = "<group>";
-		};
-		8AC6A96E1AF23C680055F4E8 /* NSStringExtension */ = {
-			isa = PBXGroup;
-			children = (
-				8AC6A96F1AF23C680055F4E8 /* NSString+TKAExtension.h */,
-				8AC6A9701AF23C680055F4E8 /* NSString+TKAExtension.m */,
-			);
-			path = NSStringExtension;
 			sourceTree = "<group>";
 		};
 		8AC6A9711AF23C680055F4E8 /* Task1andTask2 */ = {
@@ -645,11 +666,10 @@
 			files = (
 				8AC6A9B51AF23C690055F4E8 /* TKAAccountant.m in Sources */,
 				8AC6A9B41AF23C690055F4E8 /* TKACarBathTest.m in Sources */,
-				8AC6A9A91AF23C690055F4E8 /* NSString+TKAExtension.m in Sources */,
+				8A271C1A1AF3A830006BE4FE /* NSString+TKAExtension.m in Sources */,
 				8AC6A9B21AF23C690055F4E8 /* TKARoom.m in Sources */,
 				8AC6A9B61AF23C690055F4E8 /* TKADirector.m in Sources */,
 				8AC6A9AF1AF23C690055F4E8 /* TKAAdminRoom.m in Sources */,
-				8AC6A9A81AF23C690055F4E8 /* NSObject+TKAExtension.m in Sources */,
 				8AC6A9AE1AF23C690055F4E8 /* TKAHumanTest.m in Sources */,
 				8AC6A9B01AF23C690055F4E8 /* TKABuilding.m in Sources */,
 				8AC6A9AB1AF23C690055F4E8 /* TKACreatureFemale.m in Sources */,
@@ -660,8 +680,10 @@
 				8AC6A9AC1AF23C690055F4E8 /* TKACreatureMale.m in Sources */,
 				8AC6A9B81AF23C690055F4E8 /* TKAEmployee.m in Sources */,
 				8AC6A9B91AF23C690055F4E8 /* TKAWasher.m in Sources */,
+				8A271C101AF39E2B006BE4FE /* NSObject+TKAExtension.m in Sources */,
 				8AC6A9BB1AF23C690055F4E8 /* TKAMoney.m in Sources */,
 				8AC6A9AA1AF23C690055F4E8 /* TKACreature.m in Sources */,
+				8A271C211AF3C615006BE4FE /* TKAStringTest.m in Sources */,
 				8AC6A9BA1AF23C690055F4E8 /* TKAEnterprise.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
