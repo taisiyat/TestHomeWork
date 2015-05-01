@@ -51,6 +51,7 @@
 		8A271CAA1AF3F828006BE4FE /* TKAMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C811AF3F828006BE4FE /* TKAMoney.m */; };
 		8A271CAB1AF3F828006BE4FE /* TKAMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C811AF3F828006BE4FE /* TKAMoney.m */; };
 		8A271CAD1AF3FC26006BE4FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C421AF3F828006BE4FE /* main.m */; };
+		8A271CAE1AF3FD6F006BE4FE /* TKAObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C351AF3F469006BE4FE /* TKAObjCTests.m */; };
 		8A558DB41ACD3FD800BF2EFC /* TKAAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */; };
 		8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */; };
 		8A6575B61AD2591A000ACDE0 /* TKALinkedListNodeTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A6575B41AD2591A000ACDE0 /* TKALinkedListNodeTest.c */; };
@@ -856,6 +857,7 @@
 				8A271CA01AF3F828006BE4FE /* TKAAccountant.m in Sources */,
 				8A271C821AF3F828006BE4FE /* main.m in Sources */,
 				8A271C8E1AF3F828006BE4FE /* TKAHumanTest.m in Sources */,
+				8A271CAE1AF3FD6F006BE4FE /* TKAObjCTests.m in Sources */,
 				8A271C9C1AF3F828006BE4FE /* TKACar.m in Sources */,
 				8A271C921AF3F828006BE4FE /* TKAStringTest.m in Sources */,
 				8A271CA41AF3F828006BE4FE /* TKAEmployee.m in Sources */,
