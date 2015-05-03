@@ -26,7 +26,7 @@ void TKAStringTest() {
         
         TKASimpleRandomString();
         TKAСomplicatedRandomString();
-        TKABlockTest();
+        //TKABlockTest();
         
     }
 }

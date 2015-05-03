@@ -21,5 +21,6 @@
 + (id)randomStringWithLength:(NSUInteger)length;
 + (id)randomStringWithLength:(NSUInteger)length alphabet:(NSString *)alphabet;
 
+- (NSArray *)symbols;
 @end
 
