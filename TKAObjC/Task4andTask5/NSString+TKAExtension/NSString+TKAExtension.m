@@ -57,4 +57,15 @@ const NSUInteger kArbitrarySrtingLength = 10;
     return [self stringWithString:result];
 }
 
+- (NSArray *)symbols {
+    NSUInteger length = [self length];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:length];
+    
+    for (NSUInteger index = 0; index < length; index++) {
+        [result addObject:[NSString stringWithFormat:@"%c",[self characterAtIndex:index]]];
+    }
+    
+    return [[result copy] autorelease];
+}
+
 @end

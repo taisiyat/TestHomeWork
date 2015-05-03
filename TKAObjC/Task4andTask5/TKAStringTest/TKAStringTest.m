@@ -18,11 +18,15 @@ void TKASimpleRandomString();
 static
 void TKAСomplicatedRandomString();
 
+static
+void TKABlockTest();
+
 void TKAStringTest() {
     @autoreleasepool {
         
         TKASimpleRandomString();
         TKAСomplicatedRandomString();
+        //TKABlockTest();
         
     }
 }
@@ -44,6 +48,35 @@ void TKASimpleRandomString() {
     NSLog(@"%@",resultString);
 }
 
+typedef void(^TKAOutputBlock)(NSString *);
+typedef NSString *(^TKAStringBlock)();
+
+void TKABlockTest(){
+    TKAOutputBlock outputBlock = ^(id string) {
+        NSLog(@"from block - %@",string);
+    };
+    
+    TKAStringBlock stringFromBlock = ^() {
+        return @" - string from block";
+    };
+    
+    outputBlock(stringFromBlock());
+    
+    __block NSUInteger value = 0;
+    
+    void(^blockWithValue)() = ^() {
+        value++;
+        NSLog(@"%lu",value);
+    };
+    
+    blockWithValue();
+    blockWithValue();
+    blockWithValue = [[blockWithValue copy] autorelease];
+    blockWithValue();
+//    blockWithValue = nil;
+    blockWithValue();
+}
+                   
 void TKAСomplicatedRandomString() {
     
 }
