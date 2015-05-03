@@ -95,14 +95,32 @@ NSRange TKAMakeRange(char firstValue, char secondValue) {
     return [[result copy] autorelease];
 }
 
+- (NSString *)objectAtIndexSubscript:(NSUInteger)index {
+    return [self stringsAtIndex:index];
+}
+
 #pragma mark -
 #pragma mark NSFastEnumeration
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
                                   objects:(id [])buffer
-                                    count:(NSUInteger)len
+                                    count:(NSUInteger)resultLength
 {
+    state->mutationsPtr = (NSUInteger *)self;
+    NSUInteger length = MIN(state->state + resultLength, [self count]);
+    resultLength = length - state->state;
     
+    if (0 != resultLength) {
+        for (NSUInteger index = 0; index < resultLength; index++) {
+//            buffer[index] = self[index + state->state];
+            buffer[index] = [self stringsAtIndex:(index + state->state)];
+        }
+    }
+    
+    state->itemsPtr = buffer;
+    state->state += resultLength;
+    
+    return resultLength;
 }
 
 @end
