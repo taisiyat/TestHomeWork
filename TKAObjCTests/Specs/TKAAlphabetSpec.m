@@ -6,48 +6,51 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <XCTest/XCTest.h>
 
 #import "Kiwi.h"
 
-SPEC_BEGIN(SpecName)
+#import "TKAAlphabet.h"
+#import "TKARangeAlphabet.h"
 
-describe(@"ClassName", ^{
-    registerMatchers(@"BG"); // Registers BGTangentMatcher, BGConvexMatcher, etc.
+SPEC_BEGIN(TKAAlphabetSpec)
+
+describe(@"TKAAlphabet", ^{
+    __strong __block TKAAlphabet *alphabet = nil;
     
-    context(@"a state the component is in", ^{
-//        let(variable, ^{
-//            return [MyClass instance];
+    afterAll(^{
+        alphabet = nil;
+    });
+    
+    context(@"when initialized with +alfabetWithRange: 'a'-'b'", ^{
+     
+        beforeAll(^{
+            alphabet = [TKAAlphabet alphabetWithRange:TKAMakeRange('a','b')];
         });
         
-        beforeAll(^{ // Occurs once
+//        afterAll(^{ // Occurs once
+//        });
+//        
+//        beforeEach(^{ // Occurs before each enclosed "it"
+//        });
+//        
+//        afterEach(^{ // Occurs after each enclosed "it"
+//        });
+        
+        it(@"should be of class TKARangeAlphabet", ^{
+            [[alphabet should] beKindOfClass:[TKARangeAlphabet class]];
         });
         
-        afterAll(^{ // Occurs once
-        });
+//        specify(^{
+////            [[variable shouldNot] beNil];
+//        });
         
-        beforeEach(^{ // Occurs before each enclosed "it"
-        });
-        
-        afterEach(^{ // Occurs after each enclosed "it"
-        });
-        
-        it(@"should do something", ^{
-//            [[variable should] meetSomeExpectation];
-        });
-        
-        specify(^{
-//            [[variable shouldNot] beNil];
-        });
-        
-        context(@"inner context", ^{
-            it(@"does another thing", ^{
-            });
-            
-            pending(@"something unimplemented", ^{
-            });
-        });
+//        context(@"inner context", ^{
+//            it(@"does another thing", ^{
+//            });
+//            
+//            pending(@"something unimplemented", ^{
+//            });
+//        });
     });
 });
 

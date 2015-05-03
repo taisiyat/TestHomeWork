@@ -48,6 +48,7 @@
         for (TKAAlphabet *alphabet in self.alphabets) {
             if (iterator >= index) {
                 return [alphabet stringsAtIndex:iteratedIndex];
+//                return alphabet[iteratedIndex];
             }
             
             iterator += [alphabet count];
