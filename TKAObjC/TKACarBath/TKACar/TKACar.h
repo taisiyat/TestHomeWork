@@ -9,15 +9,14 @@
 #import "TKAMoney.h"
 
 #import "NSObject+TKAExtension.h"
+#import "TKATransferMoneyProtocol.h"
 
-@interface TKACar : NSObject
-@property(nonatomic, copy)     NSString        *number;
-@property(nonatomic, retain)   TKAMoney        *money;
-@property(nonatomic, assign, readwrite, getter=isClean, setter=setIsClean:)   BOOL    clean;
+@interface TKACar : NSObject <TKATransferMoneyProtocol>
+@property (nonatomic,copy)     NSString        *number;
+@property (nonatomic,assign)   TKAMoney        *money;
+@property (nonatomic,assign, getter=isClean)    BOOL    clean;
 
 + (instancetype)carWithNumber:(NSString *)number
-                       amount:(NSUInteger)anount;
-
-- (NSString *)description;
+                  moneyAmount:(NSUInteger)moneyAmount;
 
 @end

@@ -10,21 +10,22 @@
 
 #import "NSObject+TKAExtension.h"
 
-#import "TKAEmployeeProtocol.h"
+#import "TKATransferMoneyProtocol.h"
 
-@interface TKAEmployee : NSObject <TKAEmployeeProtocol>
-@property(nonatomic, copy)      NSString    *name;
-@property(nonatomic, assign)    NSUInteger  experience;
-@property(nonatomic, assign)    NSUInteger  salary;
-@property(nonatomic, readonly)  NSArray     *bigMoney;
-@property(nonatomic, assign, readwrite, getter=isFree, setter=setIsFree:)   BOOL   free;
+@interface TKAEmployee : NSObject <TKATransferMoneyProtocol>
+@property (nonatomic,copy)      NSString    *name;
+@property (nonatomic,assign)    NSUInteger  experience;
+@property (nonatomic,assign)    NSUInteger  salary;
+@property (nonatomic,readonly)  NSArray     *bigMoney;
+@property (nonatomic,assign, getter=isFree)   BOOL   free;
 
 + (instancetype)employeeWithName:(NSString *)name;
-
-- (NSString *)description;
 
 - (void)addMoney:(TKAMoney *)money;
 - (void)removeMoney:(TKAMoney *)money;
 - (void)countMoney;
+- (BOOL)haveMoney;
 
+- (void)takeMoneyFromSomeone:(TKAEmployee *)employee;
+- (void)giveMoneyToSomeone:(TKAEmployee *)employee;
 @end

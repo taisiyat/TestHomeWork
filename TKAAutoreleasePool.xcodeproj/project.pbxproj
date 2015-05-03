@@ -117,7 +117,7 @@
 		8A271C741AF3F828006BE4FE /* TKADirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKADirector.m; sourceTree = "<group>"; };
 		8A271C761AF3F828006BE4FE /* TKAEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAEmployee.h; sourceTree = "<group>"; };
 		8A271C771AF3F828006BE4FE /* TKAEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAEmployee.m; sourceTree = "<group>"; };
-		8A271C781AF3F828006BE4FE /* TKAEmployeeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAEmployeeProtocol.h; sourceTree = "<group>"; };
+		8A271C781AF3F828006BE4FE /* TKATransferMoneyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKATransferMoneyProtocol.h; sourceTree = "<group>"; };
 		8A271C7A1AF3F828006BE4FE /* TKAWasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAWasher.h; sourceTree = "<group>"; };
 		8A271C7B1AF3F828006BE4FE /* TKAWasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAWasher.m; sourceTree = "<group>"; };
 		8A271C7D1AF3F828006BE4FE /* TKAEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAEnterprise.h; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 			children = (
 				8A271C761AF3F828006BE4FE /* TKAEmployee.h */,
 				8A271C771AF3F828006BE4FE /* TKAEmployee.m */,
-				8A271C781AF3F828006BE4FE /* TKAEmployeeProtocol.h */,
+				8A271C781AF3F828006BE4FE /* TKATransferMoneyProtocol.h */,
 			);
 			path = TKAEmployee;
 			sourceTree = "<group>";

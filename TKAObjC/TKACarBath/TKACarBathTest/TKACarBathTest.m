@@ -15,9 +15,10 @@ void TKACarBathTask1() {
     @autoreleasepool {
        
         TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
+        [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
   
-       [enterprise workingProcess];
+       [enterprise performWork];
         
          NSLog(@"%@", [enterprise description]);
 

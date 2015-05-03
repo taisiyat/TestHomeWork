@@ -16,7 +16,7 @@
 @class TKAAccountant;
 
 @interface TKABuilding ()
-@property(nonatomic, readwrite)  NSMutableArray *mutableRooms;
+@property (nonatomic, readwrite)  NSMutableArray *mutableRooms;
 
 @end
 
@@ -30,8 +30,6 @@
 +(instancetype)buildingWhithAddress:(NSString *)address {
     TKABuilding *building = [TKABuilding object];
     building.address = address;
-    [building.mutableRooms addObject:[TKAAdminRoom roomWithName:@"AdminRoom1"]];
-    [building.mutableRooms addObject:[TKACarBox roomWithName:@"CarBox1"]];
     
     return building;
 }
@@ -66,26 +64,26 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@" address = %@ ", self.address];
-    [result appendString:@"\n"];
-    [result appendFormat:@" rooms : %@ ", self.mutableRooms];
+    [result appendFormat:@"\n rooms : %@ ", self.mutableRooms];
     
     return [[result copy] autorelease];
 }
 
-
 - (void)addRoom:(TKARoom *)room {
-    [self.mutableRooms addObject:room];
- }
+    if (NO == [self.mutableRooms containsObject:room]) {
+        [self.mutableRooms addObject:room];
+    }
+}
 
 - (void)removeRoom:(TKARoom *)room {
     [self.mutableRooms removeObject:room];
 }
 
-- (id)foundFreeRoom:(Class)typeRoom {
+- (id)freeRoomOfClass:(Class)typeRoom {
     for (TKARoom *room in self.mutableRooms) {
-        if (typeRoom == [room class] && YES == room.free) {
+        if (typeRoom == [room class] && YES == [room isFree]) {
             
             return room;
         }
@@ -99,12 +97,13 @@
         for (TKAAdminRoom *room in self.mutableRooms) {
             if ([TKAAdminRoom class] == [room class]) {
                 [room addEmployee:employee];
+                break;
             }
         }
     }
 }
 
--(void)removeEmployee:(TKAEmployee*)employee {
+- (void)removeEmployee:(TKAEmployee*)employee {
     for (TKARoom *room in self.mutableRooms) {
         [room removeEmployee:employee];
     }

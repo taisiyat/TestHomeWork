@@ -16,17 +16,17 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.free = YES;
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Acessors Methods
+
+- (BOOL)isFree {
+    if ([super isFree] && nil == self.car) {
+        
+        return YES;
+    }
+    
+    return NO;
+}
 
 #pragma mark -
 #pragma mark Public Methods
@@ -34,19 +34,9 @@
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
     [result appendFormat:@" car = %@", self.car];
-    [result appendFormat:@" free = %u", self.free];
+    [result appendFormat:@" free = %u", [self isFree]];
     
     return [[result copy] autorelease];
-}
-
-- (void)addCar:(TKACar *)car {
-    self.car = car;
-    self.free = NO;
-}
-
-- (void)removeCar:(TKACar *)car {
-    self.car = nil;
-    self.free = YES;
 }
 
 @end

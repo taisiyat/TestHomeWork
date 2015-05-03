@@ -9,7 +9,7 @@
 #import "TKAEmployee.h"
 
 @interface TKAEmployee ()
-@property(nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
+@property (nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
 
 @end
 
@@ -56,13 +56,12 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@"\n"];
-    [result appendFormat:@" name = %@ ", self.name];
-    [result appendFormat:@" free = %hhd ", self.free];
-    [result appendFormat:@" experience = %lu", self.experience];
-    [result appendFormat:@" salary = %lu ", self.salary];
-    [result appendFormat:@" money : %@", self.mutableBigMoney];
+    NSMutableString *result = [NSMutableString stringWithString:@" "/*[super description]*/];
+    [result appendFormat:@"name = %@ ", self.name];
+    [result appendFormat:@"free = %hhd ", self.free];
+//    [result appendFormat:@"experience = %lu", self.experience];
+//    [result appendFormat:@"salary = %lu ", self.salary];
+    [result appendFormat:@"money : %@", self.mutableBigMoney];
     
     return [[result copy] autorelease];
 }
@@ -75,7 +74,23 @@
     [self.mutableBigMoney removeObject:money];
 }
 
--(void)countMoney {
+- (BOOL)haveMoney {
+    if (0 != [self.mutableBigMoney count]) {
+        NSUInteger count = 0;
+        for (TKAMoney *money in self.mutableBigMoney) {
+            count += money.amount;
+        }
+        
+        if (0 != count) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)countMoney {
+    self.free = NO;
     NSUInteger sum = 0;
     for (TKAMoney *money in self.mutableBigMoney) {
         sum += money.amount;
@@ -84,9 +99,15 @@
     
     TKAMoney *sumMoney = [TKAMoney moneyWithAmount:sum];
     [self.mutableBigMoney addObject:sumMoney];
+    self.free = YES;
 }
 
-- (void)takeMoneyFromEmployee:(TKAEmployee *)employee {
+//- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object {
+//    self.mutableBigMoney addObject:money
+//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object {
+
+
+- (void)takeMoneyFromSomeone:(TKAEmployee *)employee {
     for (TKAMoney *money in employee.mutableBigMoney) {
         [self.mutableBigMoney addObject:money];
     }
@@ -96,7 +117,7 @@
     }
 }
 
-- (void)giveMoneyToEmployee:(TKAEmployee *)employee {
+- (void)giveMoneyToSomeone:(TKAEmployee *)employee {
     for (TKAMoney *money in self.mutableBigMoney) {
         [employee.mutableBigMoney addObject:money];
     }

@@ -9,10 +9,8 @@
 #import "NSObject+TKAExtension.h"
 
 @interface TKAMoney : NSObject
-@property(nonatomic, assign)    NSUInteger  amount;
+@property (nonatomic, assign)    NSUInteger  amount;
 
 + (instancetype)moneyWithAmount:(NSUInteger)amount;
-
-- (NSString *)description;
 
 @end

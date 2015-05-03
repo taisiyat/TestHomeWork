@@ -14,11 +14,12 @@
 #pragma mark Class Methods
 
 + (instancetype)carWithNumber:(NSString *)number
-                       amount:(NSUInteger)amount {
+                  moneyAmount:(NSUInteger)moneyAmount
+{
     TKACar *car = [TKACar object];
     car.number = number;
     car.clean = NO;
-    car.money = [TKAMoney moneyWithAmount:amount];
+    car.money = [TKAMoney moneyWithAmount:moneyAmount];
     
     return car;
 }
@@ -33,15 +34,6 @@
     [super dealloc];
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.money = [TKAMoney object];
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Acessors Methods
 
@@ -49,10 +41,10 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@" Car number = %@", self.number];
     [result appendFormat:@" condition = %u", self.clean];
-    [result appendFormat:@" money : %@", self.money];
+    [result appendFormat:@" money : %lu", self.money.amount];
     
     return [[result copy] autorelease];
 }

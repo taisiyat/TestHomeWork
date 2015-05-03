@@ -11,30 +11,22 @@
 #import "TKADirector.h"
 #import "TKACar.h"
 
-typedef enum {
-    TKADirtyCar,
-    TKAWashingCar,
-    TKACleanCar,
-} TKACarCondition;
-
 @interface TKAEnterprise : NSObject
 @property(nonatomic, copy)      NSString        *name;
 @property(nonatomic, retain)    TKABuilding     *building;
 @property(nonatomic, readonly)  NSArray         *employees;
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
+- (void)prepare;
 
-- (NSString *)description;
-
--(void)addEmployee:(TKAEmployee *)emploeey;
--(void)removeEmployee:(TKAEmployee *)emploeey;
+- (void)addEmployee:(TKAEmployee *)emploeey;
+- (void)removeEmployee:(TKAEmployee *)emploeey;
 
 - (id)carArrivesWithNumber:(NSString *)number amount:(NSUInteger)amount;
-- (id)foundEmployeePosition:(Class)position;
-- (id)foundFreeEmployeePosition:(Class)position;
+
+- (id)freeEmployeeOfClass:(Class)classPosition;
 //- (id)foundFreeCarBox;
 
-- (void)workingProcess;
-- (void)washingCar:(TKACar *)car;
-- (void)financialFlows;
+- (void)performWork;
+
 @end

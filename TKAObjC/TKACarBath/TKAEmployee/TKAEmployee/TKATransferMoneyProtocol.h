@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TKAEmployeeProtocol <NSObject>
+@protocol TKATransferMoneyProtocol <NSObject>
 
-- (void)takeMoneyFromEmployee:(id<TKAEmployeeProtocol>)employee;
+- (void)takeMoneyFromSomeone:(id<TKATransferMoneyProtocol>)object;
 
-- (void)giveMoneyToEmployee:(id<TKAEmployeeProtocol>)employee;
+- (void)giveMoneyToSomeone:(id<TKATransferMoneyProtocol>)object;
 
 @end

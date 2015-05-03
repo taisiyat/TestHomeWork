@@ -30,8 +30,8 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendFormat:@" money = %lu", self.amount];
+    NSMutableString *result = [NSMutableString stringWithString:@""];
+    [result appendFormat:@" = %lu", self.amount];
     
     return [[result copy] autorelease];
 }
