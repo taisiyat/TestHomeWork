@@ -6,14 +6,13 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAMoney.h"
-
 #import "NSObject+TKAExtension.h"
+
 #import "TKATransferMoneyProtocol.h"
 
 @interface TKACar : NSObject <TKATransferMoneyProtocol>
 @property (nonatomic,copy)     NSString        *number;
-@property (nonatomic,assign)   TKAMoney        *money;
+@property (nonatomic,assign)   NSUInteger        money;
 @property (nonatomic,assign, getter=isClean)    BOOL    clean;
 
 + (instancetype)carWithNumber:(NSString *)number

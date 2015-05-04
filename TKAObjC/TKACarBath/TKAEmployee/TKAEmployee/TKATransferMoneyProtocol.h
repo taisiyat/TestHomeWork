@@ -10,8 +10,9 @@
 
 @protocol TKATransferMoneyProtocol <NSObject>
 
-- (void)takeMoneyFromSomeone:(id<TKATransferMoneyProtocol>)object;
-
-- (void)giveMoneyToSomeone:(id<TKATransferMoneyProtocol>)object;
-
+- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object;
+    
+//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object;
+    
 @end
+

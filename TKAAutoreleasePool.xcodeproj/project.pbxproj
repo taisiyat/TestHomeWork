@@ -28,7 +28,6 @@
 		8A271CA41AF3F828006BE4FE /* TKAEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C771AF3F828006BE4FE /* TKAEmployee.m */; };
 		8A271CA61AF3F828006BE4FE /* TKAWasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C7B1AF3F828006BE4FE /* TKAWasher.m */; };
 		8A271CA81AF3F828006BE4FE /* TKAEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C7E1AF3F828006BE4FE /* TKAEnterprise.m */; };
-		8A271CAA1AF3F828006BE4FE /* TKAMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C811AF3F828006BE4FE /* TKAMoney.m */; };
 		8A558DB41ACD3FD800BF2EFC /* TKAAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */; };
 		8A558DB81ACD406300BF2EFC /* TKAAutoreleasePoolTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A558DB61ACD406300BF2EFC /* TKAAutoreleasePoolTest.c */; };
 		8A6575B61AD2591A000ACDE0 /* TKALinkedListNodeTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A6575B41AD2591A000ACDE0 /* TKALinkedListNodeTest.c */; };
@@ -122,8 +121,6 @@
 		8A271C7B1AF3F828006BE4FE /* TKAWasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAWasher.m; sourceTree = "<group>"; };
 		8A271C7D1AF3F828006BE4FE /* TKAEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAEnterprise.h; sourceTree = "<group>"; };
 		8A271C7E1AF3F828006BE4FE /* TKAEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAEnterprise.m; sourceTree = "<group>"; };
-		8A271C801AF3F828006BE4FE /* TKAMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAMoney.h; sourceTree = "<group>"; };
-		8A271C811AF3F828006BE4FE /* TKAMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAMoney.m; sourceTree = "<group>"; };
 		8A4766D71AC94E94000FFFBE /* TKALinkedListPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKALinkedListPrivate.h; path = TKAAutoreleasePool/TKALinkedListPrivate.h; sourceTree = "<group>"; };
 		8A4766D81AC94F28000FFFBE /* TKALinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TKALinkedListEnumeratorPrivate.h; path = TKAAutoreleasePool/TKALinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
 		8A558DB21ACD3FD800BF2EFC /* TKAAutoreleasePool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TKAAutoreleasePool.c; path = TKAAutoreleasePool/TKAAutoreleasePool.c; sourceTree = "<group>"; };
@@ -312,7 +309,6 @@
 				8A271C6B1AF3F828006BE4FE /* TKACarBathTest */,
 				8A271C6E1AF3F828006BE4FE /* TKAEmployee */,
 				8A271C7C1AF3F828006BE4FE /* TKAEnterprise */,
-				8A271C7F1AF3F828006BE4FE /* TKAMoney */,
 			);
 			path = TKACarBath;
 			sourceTree = "<group>";
@@ -437,15 +433,6 @@
 				8A271C7E1AF3F828006BE4FE /* TKAEnterprise.m */,
 			);
 			path = TKAEnterprise;
-			sourceTree = "<group>";
-		};
-		8A271C7F1AF3F828006BE4FE /* TKAMoney */ = {
-			isa = PBXGroup;
-			children = (
-				8A271C801AF3F828006BE4FE /* TKAMoney.h */,
-				8A271C811AF3F828006BE4FE /* TKAMoney.m */,
-			);
-			path = TKAMoney;
 			sourceTree = "<group>";
 		};
 		8A271CAC1AF3FA7C006BE4FE /* Specs */ = {
@@ -892,7 +879,6 @@
 				8A94BA9B1AF69C7700561BB4 /* TKAStringsAlphabet.m in Sources */,
 				8A94BA991AF69C7700561BB4 /* TKARangeAlphabet.m in Sources */,
 				8A271CA61AF3F828006BE4FE /* TKAWasher.m in Sources */,
-				8A271CAA1AF3F828006BE4FE /* TKAMoney.m in Sources */,
 				8A271C881AF3F828006BE4FE /* TKACreatureFemale.m in Sources */,
 				8A271CA81AF3F828006BE4FE /* TKAEnterprise.m in Sources */,
 			);

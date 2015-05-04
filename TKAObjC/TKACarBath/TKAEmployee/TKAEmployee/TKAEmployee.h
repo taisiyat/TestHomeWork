@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAMoney.h"
-
 #import "NSObject+TKAExtension.h"
 
 #import "TKATransferMoneyProtocol.h"
@@ -16,13 +14,12 @@
 @property (nonatomic,copy)      NSString    *name;
 @property (nonatomic,assign)    NSUInteger  experience;
 @property (nonatomic,assign)    NSUInteger  salary;
-@property (nonatomic,readonly)  NSArray     *bigMoney;
+@property (nonatomic,assign)    NSUInteger  money;
+//@property (nonatomic,readonly)  NSArray     *bigMoney;
 @property (nonatomic,assign, getter=isFree)   BOOL   free;
 
 + (instancetype)employeeWithName:(NSString *)name;
 
-- (void)addMoney:(TKAMoney *)money;
-- (void)removeMoney:(TKAMoney *)money;
 - (void)countMoney;
 - (BOOL)haveMoney;
 

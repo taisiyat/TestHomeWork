@@ -118,11 +118,11 @@
         NSLog(@"Car is clean." );
     }
     
-    if (nil == car.money || 0 == car.money.amount) {
+    if (0 == car.money) {
         NSLog(@"Car hasnt money/" );
     }
     
-    if (NO == [car isClean] && 0 != car.money.amount && nil != carBox && nil != washer) {
+    if (NO == [car isClean] && 0 != car.money && nil != carBox && nil != washer) {
         [carBox addEmployee:washer];
         carBox.car = car;
         [washer washCar:car];

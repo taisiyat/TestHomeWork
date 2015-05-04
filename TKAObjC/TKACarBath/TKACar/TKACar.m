@@ -8,7 +8,7 @@
 
 #import "TKACar.h"
 
-@implementation TKACar
+@implementation TKACar 
 
 #pragma mark -
 #pragma mark Class Methods
@@ -19,7 +19,7 @@
     TKACar *car = [TKACar object];
     car.number = number;
     car.clean = NO;
-    car.money = [TKAMoney moneyWithAmount:moneyAmount];
+    car.money = moneyAmount;
     
     return car;
 }
@@ -29,7 +29,6 @@
 
 - (void)dealloc {
     self.number = nil;
-    self.money = nil;
     
     [super dealloc];
 }
@@ -44,7 +43,7 @@
     NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@" Car number = %@", self.number];
     [result appendFormat:@" condition = %u", self.clean];
-    [result appendFormat:@" money : %lu", self.money.amount];
+    [result appendFormat:@" money : %lu", self.money];
     
     return [[result copy] autorelease];
 }

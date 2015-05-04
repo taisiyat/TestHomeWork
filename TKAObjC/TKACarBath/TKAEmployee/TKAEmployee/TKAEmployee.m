@@ -9,13 +9,13 @@
 #import "TKAEmployee.h"
 
 @interface TKAEmployee ()
-@property (nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
+//@property (nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
 
 @end
 
 @implementation TKAEmployee
 
-@dynamic bigMoney;
+//@dynamic bigMoney;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -29,7 +29,7 @@
 
 - (void)dealloc {
     self.name = nil;
-    self.mutableBigMoney = nil;
+//    self.mutableBigMoney = nil;
     
     [super dealloc];
 }
@@ -39,7 +39,7 @@
     if (self) {
         self.name = name;
         self.free = YES;
-        self.mutableBigMoney = [NSMutableArray array];
+//        self.mutableBigMoney = [NSMutableArray array];
     }
     
     return self;
@@ -48,83 +48,69 @@
 #pragma mark -
 #pragma mark Acessors Methods
 
-- (NSArray *)bigMoney {
-    return [[self.mutableBigMoney copy] autorelease];
-}
+//- (NSArray *)bigMoney {
+//    return [[self.mutableBigMoney copy] autorelease];
+//}
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:@" "/*[super description]*/];
+    NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@"name = %@ ", self.name];
     [result appendFormat:@"free = %hhd ", self.free];
 //    [result appendFormat:@"experience = %lu", self.experience];
 //    [result appendFormat:@"salary = %lu ", self.salary];
-    [result appendFormat:@"money : %@", self.mutableBigMoney];
-    
+    [result appendFormat:@"money : %lu", self.money];
     return [[result copy] autorelease];
 }
 
-- (void)addMoney:(TKAMoney *)money {
-    [self.mutableBigMoney addObject:money];
-}
-
-- (void)removeMoney:(TKAMoney *)money {
-    [self.mutableBigMoney removeObject:money];
-}
-
 - (BOOL)haveMoney {
-    if (0 != [self.mutableBigMoney count]) {
-        NSUInteger count = 0;
-        for (TKAMoney *money in self.mutableBigMoney) {
-            count += money.amount;
-        }
-        
-        if (0 != count) {
-            return YES;
-        }
-    }
     
-    return NO;
+    return self.money;
 }
 
 - (void)countMoney {
     self.free = NO;
-    NSUInteger sum = 0;
-    for (TKAMoney *money in self.mutableBigMoney) {
-        sum += money.amount;
-        [self.mutableBigMoney removeObject:money];
-    }
-    
-    TKAMoney *sumMoney = [TKAMoney moneyWithAmount:sum];
-    [self.mutableBigMoney addObject:sumMoney];
+    NSLog(@"count money");
     self.free = YES;
 }
 
 //- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object {
-//    self.mutableBigMoney addObject:money
-//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object {
-
-
+//    if (object.money >= money) {
+//        self.money += money;
+//        object.money -= money;
+//    }
+//}
 - (void)takeMoneyFromSomeone:(TKAEmployee *)employee {
-    for (TKAMoney *money in employee.mutableBigMoney) {
-        [self.mutableBigMoney addObject:money];
-    }
-    
-    for (TKAMoney *money in employee.mutableBigMoney) {
-        [employee.mutableBigMoney removeObject:money];
-    }
+    self.money += employee.money;
+    employee.money = 0;
+//    for (TKAMoney *money in employee.mutableBigMoney) {
+//        [self.mutableBigMoney addObject:money];
+//    }
+//    
+//    for (TKAMoney *money in employee.mutableBigMoney) {
+//        [employee.mutableBigMoney removeObject:money];
+//    }
 }
 
+//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object {
+//    if (self.money >= money) {
+//        object.money += money;
+//        self.money -= money;
+//    }
+//}
 - (void)giveMoneyToSomeone:(TKAEmployee *)employee {
-    for (TKAMoney *money in self.mutableBigMoney) {
-        [employee.mutableBigMoney addObject:money];
-    }
-    
-    for (TKAMoney *money in self.mutableBigMoney) {
-        [self.mutableBigMoney removeObject:money];
-    }
+    employee.money += self.money;
+    self.money = 0;
+
+//    for (TKAMoney *money in self.mutableBigMoney) {
+//        [employee.mutableBigMoney addObject:money];
+//    }
+//    
+//    for (TKAMoney *money in self.mutableBigMoney) {
+//        [self.mutableBigMoney removeObject:money];
+//    }
 }
 
 #pragma mark -

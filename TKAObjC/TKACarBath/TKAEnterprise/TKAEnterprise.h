@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAMoney.h"
+//#import "NSUInteger.h"
 #import "TKABuilding.h"
 #import "TKADirector.h"
 #import "TKACar.h"
@@ -22,10 +22,7 @@
 - (void)addEmployee:(TKAEmployee *)emploeey;
 - (void)removeEmployee:(TKAEmployee *)emploeey;
 
-- (id)carArrivesWithNumber:(NSString *)number amount:(NSUInteger)amount;
-
 - (id)freeEmployeeOfClass:(Class)classPosition;
-//- (id)foundFreeCarBox;
 
 - (void)performWork;
 
