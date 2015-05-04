@@ -8,6 +8,8 @@
 
 #import "TKAEmployee.h"
 
+@class TKACar;
+
 @interface TKAEmployee ()
 //@property (nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
 
@@ -77,9 +79,10 @@
 }
 
 //- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object {
-//    if (object.money >= money) {
+//    NSUInteger moneyObject = [object money];
+//    if (moneyObject >= money) {
 //        self.money += money;
-//        object.money -= money;
+//        [object money] = moneyObject - money;
 //    }
 //}
 - (void)takeMoneyFromSomeone:(TKAEmployee *)employee {
@@ -100,6 +103,7 @@
 //        self.money -= money;
 //    }
 //}
+
 - (void)giveMoneyToSomeone:(TKAEmployee *)employee {
     employee.money += self.money;
     self.money = 0;

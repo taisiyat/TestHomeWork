@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKADelegatingObject : NSObject
+@class TKADelegatingObject;
+
+@protocol TKADellegatingObjectDelegate <NSObject>
+
+- (void)delagetingObject:(TKADelegatingObject *)object shuldGiveMoney:(NSUInteger)state;
+- (BOOL)delegatingObjectShoulGiveMoney:(TKADelegatingObject *)object;
+
+@end
+
+@interface TKADelegatingObject : NSObject  //washer - delegat car - delegatingObject isclean should takemoney
+@property (nonatomic,assign) NSUInteger  Money; //money
+@property (nonatomic,assign) BOOL  clean; //clean
 
 @end

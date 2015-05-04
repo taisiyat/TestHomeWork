@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class TKACar;
+@class TKAEmployee;
+
 @protocol TKATransferMoneyProtocol <NSObject>
 
 - (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object;
