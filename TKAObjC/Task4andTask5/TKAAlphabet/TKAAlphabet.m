@@ -12,7 +12,7 @@
 #import "TKAStringsAlphabet.h"
 #import "TKAClusterAlphabet.h"
 
-#import "NSString+TKAExtension.h"
+#import "NSString+TKAExtensionWithAlphabet.h"
 
 NSRange TKAMakeRange(char firstValue, char secondValue) {
     char minValue = MIN(firstValue, secondValue);
@@ -80,7 +80,7 @@ NSRange TKAMakeRange(char firstValue, char secondValue) {
     return 0;
 }
 
-- (NSString *)stringsAtIndex:(NSUInteger)index {
+- (NSString *)stringAtIndex:(NSUInteger)index {
     [self doesNotRecognizeSelector:_cmd];
     
     return nil;

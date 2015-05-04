@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "TKAStringTest.h"
-
+#import "TKAAlphabet.h"
 #import "NSString+TKAExtension.h"
+#import "NSString+TKAExtensionWithAlphabet.h"
 
 static
 void TKASimpleRandomString();
@@ -34,17 +35,17 @@ void TKAStringTest() {
 void TKASimpleRandomString() {
     NSMutableString *resultString = [NSMutableString string];
     
-    [resultString appendString:[NSString randomStringWithLength:1
-                                                       alphabet:[NSString capitalizedLetterAlphabet]]];
-    [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
-                                                              alphabet:[NSString lovercaseLetterAlphabet]]];
-    [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
-                                                              alphabet:[NSString lovercaseLetterAlphabet]]];
-    [resultString appendString:[NSString randomStringWithLength:7
-                                                       alphabet:[NSString lovercaseLetterAlphabet]]];
-    [resultString appendString:[NSString randomStringWithLength:1
-                                                       alphabet:[NSString punctuationMarkAlpabet]]];
-    
+//    [resultString appendString:[NSString randomStringWithLength:1
+//                                                       alphabet:[NSString capitalizedLetterAlphabet]]];
+//    [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
+//                                                              alphabet:[NSString lovercaseLetterAlphabet]]];
+//    [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
+//                                                              alphabet:[NSString lovercaseLetterAlphabet]]];
+//    [resultString appendString:[NSString randomStringWithLength:7
+//                                                       alphabet:[NSString lovercaseLetterAlphabet]]];
+//    [resultString appendString:[NSString randomStringWithLength:1
+//                                                       alphabet:[NSString punctuationMarkAlpabet]]];
+//    
     NSLog(@"%@",resultString);
 }
 
@@ -78,5 +79,21 @@ void TKABlockTest(){
 }
                    
 void TKAСomplicatedRandomString() {
-    
+        NSMutableString *resultString = [NSMutableString string];
+    NSRange rangeAlfabet = TKAMakeRange('a', 'z');
+        NSRange rangeCapitalizedAlfabet = TKAMakeRange('a', 'z');
+        
+        [resultString appendString:[NSString randomStringWithLength:1
+                                                           alphabet:[TKAAlphabet alphabetWithRange:rangeCapitalizedAlfabet]]];
+        [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
+                                                                  alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]]];
+        [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
+                                                                  alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]]];
+        [resultString appendString:[NSString randomStringWithLength:7
+                                                           alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]]];
+        [resultString appendString:[NSString randomStringWithLength:1
+                                                           alphabet:[TKAAlphabet alphabetWithSymbols:@".!?"]]];
+        
+        NSLog(@"%@",resultString);
+  
 }
