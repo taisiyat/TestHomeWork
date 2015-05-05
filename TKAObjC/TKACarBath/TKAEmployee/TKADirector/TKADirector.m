@@ -13,9 +13,7 @@
 - (void)profit {
     [self countMoney];
 
-    for (TKAMoney *money in self.bigMoney) {
-        money.amount = money.amount * 0.7;
-    }
+    self.money *= 0.7;
 }
 
 @end

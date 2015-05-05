@@ -6,18 +6,16 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import "TKAMoney.h"
-
 #import "NSObject+TKAExtension.h"
 
-@interface TKACar : NSObject
-@property(nonatomic, copy)     NSString        *number;
-@property(nonatomic, retain)   TKAMoney        *money;
-@property(nonatomic, assign, readwrite, getter=isClean, setter=setIsClean:)   BOOL    clean;
+#import "TKATransferMoneyProtocol.h"
+
+@interface TKACar : NSObject <TKATransferMoneyProtocol>
+@property (nonatomic,copy)     NSString        *number;
+@property (nonatomic,assign)   NSUInteger        money;
+@property (nonatomic,assign, getter=isClean)    BOOL    clean;
 
 + (instancetype)carWithNumber:(NSString *)number
-                       amount:(NSUInteger)anount;
-
-- (NSString *)description;
+                  moneyAmount:(NSUInteger)moneyAmount;
 
 @end

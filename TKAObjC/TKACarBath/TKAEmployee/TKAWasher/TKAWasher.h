@@ -12,11 +12,7 @@
 @interface TKAWasher : TKAEmployee 
 @property(nonatomic, retain) TKACar *car;
 
-- (NSString *)description;
-
 - (void)takeMoneyFromCar;
-- (void)washCar;
-- (void)addCar:(TKACar *)car;
-- (void)removeCar:(TKACar *)car;
+- (void)washCar:(TKACar *)car;
 
 @end

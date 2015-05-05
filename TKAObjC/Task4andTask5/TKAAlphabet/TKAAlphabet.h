@@ -23,7 +23,7 @@ NSRange TKAMakeRange(char firstValue, char secondValue);
 - (instancetype)initWithAlphabets:(NSArray *)alphabets;
 
 - (NSUInteger)count;
-- (NSString *)stringsAtIndex:(NSUInteger)index;
+- (NSString *)stringAtIndex:(NSUInteger)index;
 - (NSString *)string;
 - (NSString *)objectAtIndexSubscript:(NSUInteger)index;
 

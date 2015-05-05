@@ -9,7 +9,7 @@
 #import "TKARoom.h"
 
 @interface TKARoom ()
-@property(nonatomic, readwrite)  NSMutableArray *mutableEmployees;
+@property (nonatomic,readwrite)  NSMutableArray *mutableEmployees;
 
 @end
 
@@ -38,20 +38,10 @@
     [super dealloc];
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.mutableEmployees = [NSMutableArray array];
-    }
-    
-    return self;
-}
-
 - (instancetype)initWithName:(NSString *)name {
     self = [super init];
     if (self) {
         self.name = name;
-        self.free = YES;
         self.mutableEmployees = [NSMutableArray array];
     }
     
@@ -65,21 +55,30 @@
     return [[self.mutableEmployees copy] autorelease];
 }
 
+- (BOOL)isFree {
+//    if ( 0 == [self.mutableEmployees count]) {
+//         return YES;
+//    }
+//    
+//    return NO;
+    return ![self.mutableEmployees count];
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendString:@"\n"];
-    [result appendFormat:@" room name = %@", self.name];
-    [result appendFormat:@" employees : %@", self.mutableEmployees];
-    [result appendString:@"\n"];
-    
+    NSMutableString *result = [NSMutableString stringWithString:@" "];
+    [result appendFormat:@"room name = %@   ", self.name];
+    [result appendFormat:@"employees : %@", self.mutableEmployees];
+ 
     return [[result copy] autorelease];
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
-    [self.mutableEmployees addObject:employee];
+    if (NO == [self.mutableEmployees containsObject:employee]) {
+        [self.mutableEmployees addObject:employee];
+    }
 }
 
 - (void)removeEmployee:(TKAEmployee *)employee {
