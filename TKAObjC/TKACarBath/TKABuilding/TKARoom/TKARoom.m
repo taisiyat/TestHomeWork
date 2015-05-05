@@ -9,7 +9,7 @@
 #import "TKARoom.h"
 
 @interface TKARoom ()
-@property (nonatomic,readwrite)  NSMutableArray *mutableEmployees;
+@property (nonatomic, assign)  NSMutableArray *mutableEmployees;
 
 @end
 
@@ -56,12 +56,12 @@
 }
 
 - (BOOL)isFree {
-//    if ( 0 == [self.mutableEmployees count]) {
-//         return YES;
-//    }
-//    
-//    return NO;
+//    return 0 == [self.mutableEmployees count] ? YES : NO;
     return ![self.mutableEmployees count];
+}
+
+- (Class)classRoom {
+    return [self class];
 }
 
 #pragma mark -

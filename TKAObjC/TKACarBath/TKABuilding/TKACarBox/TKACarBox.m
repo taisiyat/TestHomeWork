@@ -20,12 +20,7 @@
 #pragma mark Acessors Methods
 
 - (BOOL)isFree {
-    if ([super isFree] && nil == self.car) {
-        
-        return YES;
-    }
-    
-    return NO;
+    return ([super isFree] && nil == self.car) ? YES : NO;
 }
 
 #pragma mark -

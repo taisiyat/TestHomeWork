@@ -11,12 +11,14 @@
 #import "NSObject+TKAExtension.h"
 
 @interface TKARoom : NSObject
-@property (nonatomic,copy)              NSString        *name;
-@property (nonatomic,readonly)          NSArray         *employees;
-@property (nonatomic,assign, getter=isFree)   BOOL      free;
+@property (nonatomic, copy)               NSString        *name;
+@property (nonatomic, readonly)           NSArray         *employees;
+@property (nonatomic, assign, getter=isFree)    BOOL      free;
 
 + (instancetype)room;
 + (instancetype)roomWithName:(NSString *)name;
+
+- (Class)classRoom;
 
 - (void)addEmployee:(TKAEmployee *)employee;
 - (void)removeEmployee:(TKAEmployee *)employee;

@@ -8,15 +8,14 @@
 
 #import "TKABuilding.h"
 #import "TKAAdminRoom.h"
-#import "TKACarBox.h"
+#import "TKADirector.h"
+#import "TKAAccountant.h"
 @class TKAAdminRoom;
-@class TKACarBox;
 @class TKADirector;
-@class TKAWasher;
 @class TKAAccountant;
 
 @interface TKABuilding ()
-@property (nonatomic, readwrite)  NSMutableArray *mutableRooms;
+@property (nonatomic, assign)  NSMutableArray *mutableRooms;
 
 @end
 
@@ -81,9 +80,9 @@
     [self.mutableRooms removeObject:room];
 }
 
-- (id)freeRoomOfClass:(Class)typeRoom {
+- (id)freeRoomOfClass:(Class)classRoom {
     for (TKARoom *room in self.mutableRooms) {
-        if (typeRoom == [room class] && YES == [room isFree]) {
+        if (classRoom == [room class] && YES == [room isFree]) {
             
             return room;
         }
@@ -93,7 +92,7 @@
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
-    if ([TKADirector class] == [employee class] || [TKAAccountant class] == [employee class]) {
+    if ([TKADirector class]  == [employee class] || [TKAAccountant class] == [employee class]) {
         for (TKAAdminRoom *room in self.mutableRooms) {
             if ([TKAAdminRoom class] == [room class]) {
                 [room addEmployee:employee];

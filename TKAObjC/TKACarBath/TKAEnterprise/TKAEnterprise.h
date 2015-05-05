@@ -23,7 +23,6 @@
 - (void)removeEmployee:(TKAEmployee *)emploeey;
 
 - (id)freeEmployeeOfClass:(Class)classPosition;
-
-- (void)performWork;
+- (void)workWithCar:(TKACar *)car;
 
 @end

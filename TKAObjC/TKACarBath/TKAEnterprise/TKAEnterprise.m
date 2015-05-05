@@ -100,8 +100,7 @@
     [self.mutableEmployees removeObject:employee];
 }
 
-- (void)performWork {
-    TKACar *car = [TKACar carWithNumber:@"AA1234" moneyAmount:50];
+- (void)workWithCar:(TKACar *)car {
     
     TKACarBox *carBox = [self.building freeRoomOfClass:[TKACarBox class]];
     TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
@@ -119,7 +118,7 @@
     }
     
     if (0 == car.money) {
-        NSLog(@"Car hasnt money/" );
+        NSLog(@"Car hasnt money." );
     }
     
     if (NO == [car isClean] && 0 != car.money && nil != carBox && nil != washer) {
@@ -134,16 +133,15 @@
     
     TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
  
-    [washer giveMoneyToSomeone:accountant];
+    [washer giveMoney:washer.money ToSomeone:accountant];
     washer.free = YES;
     [accountant countMoney];
 
     TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
 
-    [accountant giveMoneyToSomeone:director];
+    [accountant giveMoney:accountant.money ToSomeone:director];
     [director profit];
 }
-
 
 - (id)freeEmployeeOfClass:(Class)classPosition {
     for (TKAEmployee *employee in self.mutableEmployees) {

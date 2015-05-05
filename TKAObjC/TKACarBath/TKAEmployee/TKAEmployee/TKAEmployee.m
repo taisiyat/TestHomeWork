@@ -8,16 +8,7 @@
 
 #import "TKAEmployee.h"
 
-@class TKACar;
-
-@interface TKAEmployee ()
-//@property (nonatomic, readwrite)  NSMutableArray *mutableBigMoney;
-
-@end
-
 @implementation TKAEmployee
-
-//@dynamic bigMoney;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -31,8 +22,7 @@
 
 - (void)dealloc {
     self.name = nil;
-//    self.mutableBigMoney = nil;
-    
+ 
     [super dealloc];
 }
 
@@ -41,7 +31,6 @@
     if (self) {
         self.name = name;
         self.free = YES;
-//        self.mutableBigMoney = [NSMutableArray array];
     }
     
     return self;
@@ -50,9 +39,9 @@
 #pragma mark -
 #pragma mark Acessors Methods
 
-//- (NSArray *)bigMoney {
-//    return [[self.mutableBigMoney copy] autorelease];
-//}
+- (Class)classEmployee {
+    return [self class];
+}
 
 #pragma mark -
 #pragma mark Public Methods
@@ -67,55 +56,39 @@
     return [[result copy] autorelease];
 }
 
-- (BOOL)haveMoney {
-    
-    return self.money;
-}
-
 - (void)countMoney {
     self.free = NO;
     NSLog(@"count money");
     self.free = YES;
 }
 
-//- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object {
-//    NSUInteger moneyObject = [object money];
-//    if (moneyObject >= money) {
-//        self.money += money;
-//        [object money] = moneyObject - money;
-//    }
-//}
-- (void)takeMoneyFromSomeone:(TKAEmployee *)employee {
-    self.money += employee.money;
-    employee.money = 0;
-//    for (TKAMoney *money in employee.mutableBigMoney) {
-//        [self.mutableBigMoney addObject:money];
-//    }
-//    
-//    for (TKAMoney *money in employee.mutableBigMoney) {
-//        [employee.mutableBigMoney removeObject:money];
-//    }
+- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object {
+    if (object.money >= money) {
+        self.money += money;
+        object.money -= money;
+    }
+//    self.money += object.money;
+//    object.money = 0;
 }
 
-//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object {
-//    if (self.money >= money) {
-//        object.money += money;
-//        self.money -= money;
-//    }
+//- (void)takeMoneyFromSomeone:(TKAEmployee *)employee {
+//    self.money += employee.money;
+//    employee.money = 0;
 //}
 
-- (void)giveMoneyToSomeone:(TKAEmployee *)employee {
-    employee.money += self.money;
-    self.money = 0;
-
-//    for (TKAMoney *money in self.mutableBigMoney) {
-//        [employee.mutableBigMoney addObject:money];
-//    }
-//    
-//    for (TKAMoney *money in self.mutableBigMoney) {
-//        [self.mutableBigMoney removeObject:money];
-//    }
+- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object {
+    if (self.money >= money) {
+        object.money += money;
+        self.money -= money;
+    }
+//    object.money += self.money;
+//    self.money = 0;
 }
+
+//- (void)giveMoneyToSomeone:(TKAEmployee *)employee {
+//    employee.money += self.money;
+//    self.money = 0;
+//}
 
 #pragma mark -
 #pragma mark Private Methods

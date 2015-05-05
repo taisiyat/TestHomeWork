@@ -12,10 +12,11 @@
 @class TKAEmployee;
 
 @protocol TKATransferMoneyProtocol <NSObject>
+@property (nonatomic, assign)    NSUInteger     money;
 
+@optional
 - (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object;
-    
-//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object;
+- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object;
     
 @end
 

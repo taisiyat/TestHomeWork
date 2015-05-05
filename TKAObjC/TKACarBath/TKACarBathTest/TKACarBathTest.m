@@ -9,18 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "TKACarBathTest.h"
 #import "TKAEnterprise.h"
-#import "TKADirector.h"
 
 void TKACarBathTask1() {
     @autoreleasepool {
-       
+ 
         TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
-  
-       [enterprise performWork];
         
-         NSLog(@"%@", [enterprise description]);
+        TKACar *car = [TKACar carWithNumber:@"AA1234" moneyAmount:50];
+        [enterprise workWithCar:car];
+        NSLog(@"%@", [enterprise description]);
 
     }
 }

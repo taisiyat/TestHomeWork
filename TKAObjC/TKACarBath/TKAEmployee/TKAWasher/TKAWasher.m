@@ -14,7 +14,7 @@
 #pragma mark Acessors Methods
 
 - (BOOL)isFree {
-    if (nil == self.car && NO == [self haveMoney]) {
+    if (nil == self.car && 0 == self.money) {
         return YES;
     }
     
@@ -32,19 +32,18 @@
 }
 
 - (void)washCar:(TKACar *)car {
-    self.free = NO;
     self.car = car;
     NSLog(@" WashingCar ");
     self.car.clean = YES;
-    [self takeMoneyFromCar];
-//    [self takeMoney:self.car.money FromSomeone:car];
+//    [self takeMoneyFromCar];
+    [self takeMoney:self.car.money FromSomeone:car];
     self.car = nil;
 }
 
-- (void)takeMoneyFromCar {
-    self.money += self.car.money;
-    self.car.money = 0;
-}
+//- (void)takeMoneyFromCar {
+//    self.money += self.car.money;
+//    self.car.money = 0;
+//}
 
 #pragma mark -
 #pragma mark Private Methods

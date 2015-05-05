@@ -11,9 +11,9 @@
 #import "TKATransferMoneyProtocol.h"
 
 @interface TKACar : NSObject <TKATransferMoneyProtocol>
-@property (nonatomic,copy)     NSString        *number;
-@property (nonatomic,assign)   NSUInteger        money;
-@property (nonatomic,assign, getter=isClean)    BOOL    clean;
+@property (nonatomic, copy)                     NSString        *number;
+@property (nonatomic, assign)                   NSUInteger      money;
+@property (nonatomic, assign, getter=isClean)   BOOL            clean;
 
 + (instancetype)carWithNumber:(NSString *)number
                   moneyAmount:(NSUInteger)moneyAmount;

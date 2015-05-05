@@ -17,7 +17,7 @@
 
 - (void)addRoom:(TKARoom *)room;
 - (void)removeRoom:(TKARoom *)room;
-- (id)freeRoomOfClass:(Class)typeRoom;
+- (id)freeRoomOfClass:(Class)classRoom;
 - (void)addEmployee:(TKAEmployee *)employee;
 - (void)removeEmployee:(TKAEmployee*)employee;
 
