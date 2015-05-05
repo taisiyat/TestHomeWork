@@ -95,8 +95,8 @@ NSRange TKAMakeRange(char firstValue, char secondValue) {
     return [[result copy] autorelease];
 }
 
-- (NSString *)objectAtIndexSubscript:(NSUInteger)index {
-    return [self stringsAtIndex:index];
+- (NSString *)objectAtIndexedSubscript:(NSUInteger)index {
+    return [self stringAtIndex:index];
 }
 
 #pragma mark -
@@ -112,8 +112,8 @@ NSRange TKAMakeRange(char firstValue, char secondValue) {
     
     if (0 != resultLength) {
         for (NSUInteger index = 0; index < resultLength; index++) {
-//            buffer[index] = self[index + state->state];
-            buffer[index] = [self stringsAtIndex:(index + state->state)];
+            buffer[index] = self[index + state->state];
+//            buffer[index] = [self stringAtIndex:(index + state->state)];
         }
     }
     

@@ -9,7 +9,7 @@
 #import "TKAAlphabet.h"
 
 @interface TKAStringsAlphabet : TKAAlphabet
-@property (nonatomic,readonly)  NSArray     *strings;
+@property (nonatomic, readonly)  NSArray     *strings;
 
 - (instancetype)initWithStrings:(NSArray *)strings;
 

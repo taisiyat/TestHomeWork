@@ -16,38 +16,32 @@ const NSUInteger kArbitrarySrtingLength = 10;
 + (instancetype)lovercaseLetterAlphabet {
     NSRange rangeAlfabet = TKAMakeRange('a', 'z');
     
-    return [TKAAlphabet alphabetWithRange:rangeAlfabet];
+    return [[TKAAlphabet alphabetWithRange:rangeAlfabet] string];
 }
 
 + (instancetype)capitalizedLetterAlphabet {
-    NSRange rangeCapitalizedAlfabet = TKAMakeRange('a', 'z');
+    NSRange rangeCapitalizedAlfabet = TKAMakeRange('A', 'Z');
 
-    return [TKAAlphabet alphabetWithRange:rangeCapitalizedAlfabet];
+    return [[TKAAlphabet alphabetWithRange:rangeCapitalizedAlfabet] string];
 }
 
 + (instancetype)numericAlphabet {
-    return [TKAAlphabet alphabetWithStrings:[NSArray arrayWithObjects:@"1234",@"567890",nil]];
+    return [[TKAAlphabet alphabetWithStrings:[NSArray arrayWithObjects:@"1234",@"567890",nil]] string];
 }
 
 + (instancetype)punctuationMarkAlpabet {
-    return [TKAAlphabet alphabetWithSymbols:@".!?"];
+    return [[TKAAlphabet alphabetWithSymbols:@".!?"] string];
 };
 
-//+ (instancetype)alphabetWithRange:(NSRange)range {
-//    NSMutableString *result = [NSMutableString stringWithCapacity:range.length];
-//    for (char symbol = range.location; symbol < NSMaxRange(range); symbol++) {
-//        [result appendFormat:@"%c",symbol];
-//    }
-//    
-//    return [self stringWithString:result];
-//}
 
 + (instancetype)randomString {
     return [self randomStringWithLength:arc4random_uniform(kArbitrarySrtingLength)];
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length {
-    return [self randomStringWithLength:length alphabet:[self lovercaseLetterAlphabet]];
+    NSRange rangeAlfabet = TKAMakeRange('a', 'z');
+    
+    return [self randomStringWithLength:length alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]];
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length

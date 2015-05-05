@@ -25,6 +25,6 @@ NSRange TKAMakeRange(char firstValue, char secondValue);
 - (NSUInteger)count;
 - (NSString *)stringAtIndex:(NSUInteger)index;
 - (NSString *)string;
-- (NSString *)objectAtIndexSubscript:(NSUInteger)index;
+- (NSString *)objectAtIndexedSubscript:(NSUInteger)index;
 
 @end

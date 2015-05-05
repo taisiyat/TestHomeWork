@@ -10,7 +10,7 @@
 
 #import "TKAStringTest.h"
 #import "TKAAlphabet.h"
-#import "NSString+TKAExtension.h"
+//#import "NSString+TKAExtension.h"
 #import "NSString+TKAExtensionWithAlphabet.h"
 
 static
@@ -79,21 +79,21 @@ void TKABlockTest(){
 }
                    
 void TKAСomplicatedRandomString() {
-        NSMutableString *resultString = [NSMutableString string];
-    NSRange rangeAlfabet = TKAMakeRange('a', 'z');
-        NSRange rangeCapitalizedAlfabet = TKAMakeRange('a', 'z');
-        
-        [resultString appendString:[NSString randomStringWithLength:1
-                                                           alphabet:[TKAAlphabet alphabetWithRange:rangeCapitalizedAlfabet]]];
-        [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
-                                                                  alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]]];
-        [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
-                                                                  alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]]];
-        [resultString appendString:[NSString randomStringWithLength:7
-                                                           alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]]];
-        [resultString appendString:[NSString randomStringWithLength:1
-                                                           alphabet:[TKAAlphabet alphabetWithSymbols:@".!?"]]];
-        
-        NSLog(@"%@",resultString);
-  
+    NSMutableString *resultString = [NSMutableString string];
+    NSRange rangeCapitalizedAlphabet = TKAMakeRange('A', 'Z');
+    NSRange rangeAlphabet = TKAMakeRange('a', 'z');
+
+    [resultString appendString:[NSString randomStringWithLength:1
+                                                       alphabet:[TKAAlphabet alphabetWithRange:rangeCapitalizedAlphabet]]];
+    [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
+                                                              alphabet:[TKAAlphabet alphabetWithRange:rangeAlphabet]]];
+    [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
+                                                              alphabet:[TKAAlphabet alphabetWithRange:rangeAlphabet]]];
+    [resultString appendString:[NSString randomStringWithLength:7
+                                                       alphabet:[TKAAlphabet alphabetWithRange:rangeAlphabet]]];
+    [resultString appendString:[NSString randomStringWithLength:1
+                                                       alphabet:[TKAAlphabet alphabetWithSymbols:@".!?"]]];
+    
+    NSLog(@"%@",resultString);
+    NSLog(@"%@",[NSString numericAlphabet]);
 }

@@ -9,7 +9,7 @@
 #import "TKAClusterAlphabet.h"
 
 @interface TKAClusterAlphabet ()
-@property (nonatomic,assign)  NSArray     *alphabets;
+@property (nonatomic, retain)  NSArray     *alphabets;
 
 @end
 
@@ -47,8 +47,8 @@
         NSUInteger iteratedIndex = index;
         for (TKAAlphabet *alphabet in self.alphabets) {
             if (iterator >= index) {
-                return [alphabet stringsAtIndex:iteratedIndex];
-//                return alphabet[iteratedIndex];
+//                return [alphabet stringAtIndex:iteratedIndex];
+                return alphabet[iteratedIndex];
             }
             
             iterator += [alphabet count];

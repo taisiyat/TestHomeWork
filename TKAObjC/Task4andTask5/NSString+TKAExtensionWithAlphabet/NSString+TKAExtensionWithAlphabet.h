@@ -16,8 +16,6 @@
 + (instancetype)numericAlphabet;
 + (instancetype)punctuationMarkAlpabet;
 
-//+ (id)alphabetWithRange:(NSRange)range;
-
 + (instancetype)randomString;
 + (instancetype)randomStringWithLength:(NSUInteger)length;
 + (instancetype)randomStringWithLength:(NSUInteger)length alphabet:(TKAAlphabet *)alphabet;
