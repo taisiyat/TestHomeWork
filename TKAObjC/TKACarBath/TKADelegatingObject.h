@@ -12,13 +12,15 @@
 
 @protocol TKADellegatingObjectDelegate <NSObject>
 
-- (void)delagetingObject:(TKADelegatingObject *)object shuldGiveMoney:(NSUInteger)state;
-- (BOOL)delegatingObjectShoulGiveMoney:(TKADelegatingObject *)object;
+- (void)delagetingObject:(TKADelegatingObject *)object; //should give money
+            //shouldChangeSomething:(NSUInteger)money
+- (BOOL)delegatingObjectShouldChangeSomething:(TKADelegatingObject *)object; // if clean then YES
 
 @end
 
 @interface TKADelegatingObject : NSObject  //washer - delegat car - delegatingObject isclean should takemoney
-@property (nonatomic,assign) NSUInteger  Money; //money
-@property (nonatomic,assign) BOOL  clean; //clean
+@property (nonatomic, assign) NSUInteger  money; //money
+@property (nonatomic, assign) BOOL  clean;
+@property (nonatomic, assign) id<TKADellegatingObjectDelegate> delegate; //washer
 
 @end

@@ -37,11 +37,11 @@
 #pragma mark Public
 
 - (NSUInteger)count {
-    return [self countAllAlphabets];
+    return [self countWithAlphabets];
 }
 
 - (NSString *)stringAtIndex:(NSUInteger)index {
-    NSUInteger countAlphabets = [self countAllAlphabets];
+    NSUInteger countAlphabets = [self countWithAlphabets];
     if (index < countAlphabets) {
         NSUInteger iterator = 0;
         NSUInteger iteratedIndex = index;
@@ -61,7 +61,7 @@
 }
 
 - (NSString *)string {
-    NSMutableString *result = [NSMutableString stringWithCapacity:[self countAllAlphabets]];
+    NSMutableString *result = [NSMutableString stringWithCapacity:[self countWithAlphabets]];
     for (TKAAlphabet *alphabet in self.alphabets) {
         [result appendString:[alphabet string]];
     }
@@ -72,7 +72,7 @@
 #pragma mark -
 #pragma mark Private
 
-- (NSUInteger)countAllAlphabets {
+- (NSUInteger)countWithAlphabets {
     NSUInteger count = 0;
     for (TKAAlphabet *alphabet in self.alphabets) {
         count += [alphabet count];

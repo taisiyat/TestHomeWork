@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKADelegate : NSObject
+#import "TKADelegatingObject.h"
+
+@interface TKADelegate : NSObject <TKADellegatingObjectDelegate>
+@property (nonatomic, retain) TKADelegatingObject *delegatingObject;
 
 @end

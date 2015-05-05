@@ -14,19 +14,15 @@ const NSUInteger kArbitrarySrtingLength = 10;
 @implementation NSString (TKAExtensionWithAlphabet)
 
 + (instancetype)lovercaseLetterAlphabet {
-    NSRange rangeAlfabet = TKAMakeRange('a', 'z');
-    
-    return [[TKAAlphabet alphabetWithRange:rangeAlfabet] string];
+    return [[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')] string];
 }
 
 + (instancetype)capitalizedLetterAlphabet {
-    NSRange rangeCapitalizedAlfabet = TKAMakeRange('A', 'Z');
-
-    return [[TKAAlphabet alphabetWithRange:rangeCapitalizedAlfabet] string];
+    return [[TKAAlphabet alphabetWithRange:TKAMakeRange('A', 'Z')] string];
 }
 
 + (instancetype)numericAlphabet {
-    return [[TKAAlphabet alphabetWithStrings:[NSArray arrayWithObjects:@"1234",@"567890",nil]] string];
+    return [[TKAAlphabet alphabetWithStrings:@[@"1234", @"567", @"890"]] string];
 }
 
 + (instancetype)punctuationMarkAlpabet {
@@ -39,9 +35,8 @@ const NSUInteger kArbitrarySrtingLength = 10;
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length {
-    NSRange rangeAlfabet = TKAMakeRange('a', 'z');
-    
-    return [self randomStringWithLength:length alphabet:[TKAAlphabet alphabetWithRange:rangeAlfabet]];
+    return [self randomStringWithLength:length
+                               alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]];
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length

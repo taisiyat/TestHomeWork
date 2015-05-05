@@ -10,21 +10,17 @@
 
 @implementation TKADelegatingObject
 
-//- (void)changeState:(NSUInteger)state {
-//    BOOL clean = YES;
-//    id<TKADellegatingObjectDelegate> delegate = self.delegate;
-//
-//    if ([delegate respondsToSelector:@selector(delegatingObjectShoulGiveMoney:)]) {
-//        
-//    }
-//    
-//    if (clean) {
-//        
-//        
-//        [delegate delagetingObject:self shuldGiveMoney:money]
-//    }
-//}
+- (void)setMoney:(NSUInteger)money {
+    BOOL shouldChange = YES;
+    id<TKADellegatingObjectDelegate> delegate = self.delegate;
 
-
+    if ([delegate respondsToSelector:@selector(delegatingObjectShouldChangeSomething:)]) {
+        shouldChange = [delegate delegatingObjectShouldChangeSomething:self];
+    }
+    
+    if (shouldChange) {
+         [delegate delagetingObject:self];
+    }
+}
 
 @end

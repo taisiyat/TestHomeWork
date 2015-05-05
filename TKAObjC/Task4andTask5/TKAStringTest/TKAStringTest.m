@@ -80,17 +80,15 @@ void TKABlockTest(){
                    
 void TKAСomplicatedRandomString() {
     NSMutableString *resultString = [NSMutableString string];
-    NSRange rangeCapitalizedAlphabet = TKAMakeRange('A', 'Z');
-    NSRange rangeAlphabet = TKAMakeRange('a', 'z');
 
     [resultString appendString:[NSString randomStringWithLength:1
-                                                       alphabet:[TKAAlphabet alphabetWithRange:rangeCapitalizedAlphabet]]];
+                                                       alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('A', 'Z')]]];
     [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
-                                                              alphabet:[TKAAlphabet alphabetWithRange:rangeAlphabet]]];
+                                                              alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]]];
     [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
-                                                              alphabet:[TKAAlphabet alphabetWithRange:rangeAlphabet]]];
+                                                              alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]]];
     [resultString appendString:[NSString randomStringWithLength:7
-                                                       alphabet:[TKAAlphabet alphabetWithRange:rangeAlphabet]]];
+                                                       alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]]];
     [resultString appendString:[NSString randomStringWithLength:1
                                                        alphabet:[TKAAlphabet alphabetWithSymbols:@".!?"]]];
     
