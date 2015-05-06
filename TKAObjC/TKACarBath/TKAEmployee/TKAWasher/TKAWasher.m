@@ -35,8 +35,7 @@
     self.car = car;
     NSLog(@" WashingCar ");
     self.car.clean = YES;
-//    [self takeMoneyFromCar];
-    [self takeMoney:self.car.money FromSomeone:car];
+    [self takeMoneyFromSomeone:car];
     self.car = nil;
 }
 

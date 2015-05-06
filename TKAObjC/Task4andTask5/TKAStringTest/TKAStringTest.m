@@ -82,15 +82,15 @@ void TKAСomplicatedRandomString() {
     NSMutableString *resultString = [NSMutableString string];
 
     [resultString appendString:[NSString randomStringWithLength:1
-                                                       alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('A', 'Z')]]];
+                                                       alphabet:[TKAAlphabet capitalizedLetterAlphabet]]];
     [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:5
-                                                              alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]]];
+                                                              alphabet:[TKAAlphabet lovercaseLetterAlphabet]]];
     [resultString appendFormat:@"%@ ",[NSString randomStringWithLength:6
                                                               alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]]];
     [resultString appendString:[NSString randomStringWithLength:7
-                                                       alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]]];
+                                                       alphabet:[TKAAlphabet lovercaseLetterAlphabet]]];
     [resultString appendString:[NSString randomStringWithLength:1
-                                                       alphabet:[TKAAlphabet alphabetWithSymbols:@".!?"]]];
+                                                       alphabet:[TKAAlphabet punctuationMarkAlpabet]]];
     
     NSLog(@"%@",resultString);
     NSLog(@"%@",[NSString numericAlphabet]);

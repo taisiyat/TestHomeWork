@@ -26,6 +26,22 @@ NSRange TKAMakeRange(char firstValue, char secondValue) {
 #pragma mark -
 #pragma mark Class methods
 
++ (instancetype)lovercaseLetterAlphabet {
+    return [TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')];
+}
+
++ (instancetype)capitalizedLetterAlphabet {
+    return [TKAAlphabet alphabetWithRange:TKAMakeRange('A', 'Z')];
+}
+
++ (instancetype)numericAlphabet {
+    return [TKAAlphabet alphabetWithStrings:@[@"1234", @"567", @"890"]];
+}
+
++ (instancetype)punctuationMarkAlpabet {
+    return [TKAAlphabet alphabetWithSymbols:@".!?"];
+}
+
 + (instancetype)alphabetWithRange:(NSRange)range {
     return [[[TKARangeAlphabet alloc] initWithRange:range] autorelease];
 }

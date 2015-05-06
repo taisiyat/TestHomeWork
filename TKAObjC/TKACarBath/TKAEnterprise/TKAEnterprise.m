@@ -105,22 +105,6 @@
     TKACarBox *carBox = [self.building freeRoomOfClass:[TKACarBox class]];
     TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
     
-    if (nil == carBox) {
-        NSLog(@"Wait a free CarBox." );
-    }
-    
-    if (nil == carBox) {
-        NSLog(@"Wait a free Washer." );
-    }
-    
-    if ([car isClean]) {
-        NSLog(@"Car is clean." );
-    }
-    
-    if (0 == car.money) {
-        NSLog(@"Car hasnt money." );
-    }
-    
     if (NO == [car isClean] && 0 != car.money && nil != carBox && nil != washer) {
         [carBox addEmployee:washer];
         carBox.car = car;
@@ -133,13 +117,13 @@
     
     TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
  
-    [washer giveMoney:washer.money ToSomeone:accountant];
+    [accountant takeMoneyFromSomeone:washer];
     washer.free = YES;
     [accountant countMoney];
 
     TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
 
-    [accountant giveMoney:accountant.money ToSomeone:director];
+    [director takeMoneyFromSomeone:accountant];
     [director profit];
 }
 

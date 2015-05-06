@@ -9,34 +9,17 @@
 #import "NSString+TKAExtensionWithAlphabet.h"
 #import "TKAAlphabet.h"
 
-const NSUInteger kArbitrarySrtingLength = 10;
+const NSUInteger kArbitrarySrtingLengthWithAlphabet = 10;
 
 @implementation NSString (TKAExtensionWithAlphabet)
 
-+ (instancetype)lovercaseLetterAlphabet {
-    return [[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')] string];
-}
-
-+ (instancetype)capitalizedLetterAlphabet {
-    return [[TKAAlphabet alphabetWithRange:TKAMakeRange('A', 'Z')] string];
-}
-
-+ (instancetype)numericAlphabet {
-    return [[TKAAlphabet alphabetWithStrings:@[@"1234", @"567", @"890"]] string];
-}
-
-+ (instancetype)punctuationMarkAlpabet {
-    return [[TKAAlphabet alphabetWithSymbols:@".!?"] string];
-};
-
-
 + (instancetype)randomString {
-    return [self randomStringWithLength:arc4random_uniform(kArbitrarySrtingLength)];
+    return [self randomStringWithLength:arc4random_uniform(kArbitrarySrtingLengthWithAlphabet)];
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length {
     return [self randomStringWithLength:length
-                               alphabet:[TKAAlphabet alphabetWithRange:TKAMakeRange('a', 'z')]];
+                               alphabet:[TKAAlphabet lovercaseLetterAlphabet]];
 }
 
 + (instancetype)randomStringWithLength:(NSUInteger)length

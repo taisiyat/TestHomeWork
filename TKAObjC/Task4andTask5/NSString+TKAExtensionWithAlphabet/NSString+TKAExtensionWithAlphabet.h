@@ -11,10 +11,6 @@
 @class TKAAlphabet;
 
 @interface NSString (TKAExtensionWithAlphabet)
-+ (instancetype)lovercaseLetterAlphabet;
-+ (instancetype)capitalizedLetterAlphabet;
-+ (instancetype)numericAlphabet;
-+ (instancetype)punctuationMarkAlpabet;
 
 + (instancetype)randomString;
 + (instancetype)randomStringWithLength:(NSUInteger)length;

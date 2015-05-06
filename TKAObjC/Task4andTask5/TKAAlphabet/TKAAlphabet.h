@@ -12,6 +12,11 @@ extern
 NSRange TKAMakeRange(char firstValue, char secondValue);
 
 @interface TKAAlphabet : NSObject <NSFastEnumeration>
++ (instancetype)lovercaseLetterAlphabet;
++ (instancetype)capitalizedLetterAlphabet;
++ (instancetype)numericAlphabet;
++ (instancetype)punctuationMarkAlpabet;
+
 + (instancetype)alphabetWithRange:(NSRange)range;
 + (instancetype)alphabetWithStrings:(NSArray *)strings;
 + (instancetype)alphabetWithSymbols:(NSString *)string;
