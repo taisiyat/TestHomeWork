@@ -35,6 +35,20 @@
 
 #pragma mark -
 #pragma mark Acessors Methods
+//delegating method
+
+- (void)setIsClean:(BOOL)clean {
+    BOOL shouldChange = YES;
+    id<TKACarDelegate> delegate = self.delegate;
+
+    if ([delegate respondsToSelector:@selector(carShouldBeClean:)]) {
+        shouldChange = [delegate carShouldBeClean:self];
+    }
+
+    if (shouldChange) {
+        [delegate car:self shouldGiveMoney:self.money];
+    }
+}
 
 #pragma mark -
 #pragma mark Public Methods

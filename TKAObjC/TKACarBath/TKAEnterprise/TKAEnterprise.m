@@ -115,16 +115,16 @@
         }
     }
     
-    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
- 
-    [accountant takeMoneyFromSomeone:washer];
-    washer.free = YES;
-    [accountant countMoney];
-
-    TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
-
-    [director takeMoneyFromSomeone:accountant];
-    [director profit];
+//    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
+// 
+//    [accountant takeMoneyFromSomeone:washer];
+//    washer.free = YES;
+//    [accountant countMoney];
+//
+//    TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
+//
+//    [director takeMoneyFromSomeone:accountant];
+//    [director profit];
 }
 
 - (id)freeEmployeeOfClass:(Class)classPosition {

@@ -9,6 +9,14 @@
 #import "TKAWasher.h"
 
 @implementation TKAWasher
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.car = nil;
+    
+    [super dealloc];
+}
 
 #pragma mark -
 #pragma mark Acessors Methods
@@ -19,6 +27,16 @@
     }
     
     return NO;
+}
+
+- (void)setCar:(TKACar *)car {
+    if (_car != car) {
+        _car.delegate = nil;
+        [_car release];
+        
+        _car = [car retain];
+        _car.delegate = self;
+    }
 }
 
 #pragma mark -
@@ -33,9 +51,15 @@
 
 - (void)washCar:(TKACar *)car {
     self.car = car;
+    [self.car setIsClean:YES];
+
+    
+    //??
     NSLog(@" WashingCar ");
-    self.car.clean = YES;
-    [self takeMoneyFromSomeone:car];
+//    self.car.clean = YES;
+//    [self cardidCleanShouldGiveMoney:car];
+    
+//    [self takeMoneyFromSomeone:car];
     self.car = nil;
 }
 
@@ -43,6 +67,32 @@
 //    self.money += self.car.money;
 //    self.car.money = 0;
 //}
+
+#pragma mark -
+#pragma mark TKACarDelegate
+
+//- (void)carShouldGiveMoney:(TKACar *)object {
+//    [object.delegate takeMoneyFromSomeone:object];
+//}
+//
+//- (BOOL)carWhenCleanShouldGiveMoney:(TKACar *)object {
+//    if (YES == object.clean && 0 != object.money) {
+//        return YES;
+//    }
+//    
+//    return NO;
+//}
+- (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money {
+    [self takeMoneyFromSomeone:object];
+}
+
+- (BOOL)carShouldBeClean:(TKACar *)object {
+    if (YES == [object isClean]) {
+        return YES;
+    }
+    
+    return NO;
+}
 
 #pragma mark -
 #pragma mark Private Methods
