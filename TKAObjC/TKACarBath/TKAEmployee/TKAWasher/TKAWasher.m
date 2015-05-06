@@ -51,16 +51,10 @@
 
 - (void)washCar:(TKACar *)car {
     self.car = car;
-    [self.car setIsClean:YES];
-
-    
-    //??
     NSLog(@" WashingCar ");
-//    self.car.clean = YES;
-//    [self cardidCleanShouldGiveMoney:car];
-    
-//    [self takeMoneyFromSomeone:car];
-    self.car = nil;
+    self.car.clean = YES;
+    self.car.wash = YES;
+    NSLog(@" WashingCar ");
 }
 
 //- (void)takeMoneyFromCar {
@@ -71,19 +65,9 @@
 #pragma mark -
 #pragma mark TKACarDelegate
 
-//- (void)carShouldGiveMoney:(TKACar *)object {
-//    [object.delegate takeMoneyFromSomeone:object];
-//}
-//
-//- (BOOL)carWhenCleanShouldGiveMoney:(TKACar *)object {
-//    if (YES == object.clean && 0 != object.money) {
-//        return YES;
-//    }
-//    
-//    return NO;
-//}
 - (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money {
     [self takeMoneyFromSomeone:object];
+    self.car = nil;
 }
 
 - (BOOL)carShouldBeClean:(TKACar *)object {

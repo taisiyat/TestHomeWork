@@ -25,8 +25,9 @@
 @interface TKACar : NSObject <TKATransferMoneyProtocol, TKACarDelegate>
 @property (nonatomic, copy)                     NSString        *number;
 @property (nonatomic, assign)                   NSUInteger      money;
-@property (nonatomic, assign, getter=isClean, setter=setIsClean:)   BOOL            clean;
+@property (nonatomic, assign, getter=isClean, setter=setIsClean:)   BOOL     clean;
 @property (nonatomic, assign)                   id<TKACarDelegate>      delegate;
+@property (nonatomic, assign, getter=isWash, setter=setIsWash:)   BOOL     wash;
 
 + (instancetype)carWithNumber:(NSString *)number
                   moneyAmount:(NSUInteger)moneyAmount;

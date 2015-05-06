@@ -37,7 +37,8 @@
 #pragma mark Acessors Methods
 //delegating method
 
-- (void)setIsClean:(BOOL)clean {
+- (void)setIsWash:(BOOL)wassh {
+//    if (YES == clean) {
     BOOL shouldChange = YES;
     id<TKACarDelegate> delegate = self.delegate;
 
@@ -48,6 +49,7 @@
     if (shouldChange) {
         [delegate car:self shouldGiveMoney:self.money];
     }
+//    }
 }
 
 #pragma mark -
