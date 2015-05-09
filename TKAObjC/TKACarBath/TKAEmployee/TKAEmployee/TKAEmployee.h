@@ -15,7 +15,8 @@
 @protocol TKAEmployeeDelegate <NSObject>
 
 - (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money; //or - (void)shouldGiveMoneyEmployee:(TKAEmployee *)employee;
-- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee;
+- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee;
+//- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee;
 
 @end
 

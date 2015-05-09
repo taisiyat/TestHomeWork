@@ -54,11 +54,20 @@
     }
 }
 
-- (void)setFinishWork:(BOOL)finishWork {
-    _finishWork = finishWork;
+//- (void)setFinishWork:(BOOL)finishWork {
+//    _finishWork = finishWork;
+//    id<TKAEmployeeDelegate> delegate = self.delegate;
+//    
+//    if ([delegate employeeShouldFinishWork:self]) {
+//        [delegate employee:self shouldGiveMoney:self.money];
+//    }
+//}
+
+- (void)setMoney:(NSUInteger)money {
+    _money = money;
     id<TKAEmployeeDelegate> delegate = self.delegate;
     
-    if ([delegate employeeShouldFinishWork:self]) {
+    if ([delegate employeeShouldTakeMoney:self]) {
         [delegate employee:self shouldGiveMoney:self.money];
     }
 }
@@ -89,9 +98,13 @@
     [self takeMoneyFromSomeone:employee];
 }
 
-- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
-    return (employee.finishWork);
+- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee {
+    return (employee.money);
 }
+
+//- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
+//    return (employee.finishWork);
+//}
 
 #pragma mark -
 #pragma mark Private Methods
