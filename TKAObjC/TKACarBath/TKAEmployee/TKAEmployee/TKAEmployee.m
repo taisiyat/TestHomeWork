@@ -10,7 +10,7 @@
 
 @implementation TKAEmployee
 
-//@synthesize money = _money;
+@synthesize money = _money;
 
 #pragma mark -
 #pragma mark Class Methods

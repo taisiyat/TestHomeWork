@@ -40,16 +40,15 @@
     }
 }
 
-//- (void)setMoney:(NSUInteger)money {
-////    BOOL shouldChange = YES;
-//    id<TKAWasherDelegate> delegate = self.delegate;
-//
-//    if ([delegate washerShouldHaveMoney:self]) {
-////        _money = money;
-//        
-//        [delegate washer:self shouldGiveMoney:self.money];
-//    }
-//}
+- (void)setFinishWork:(BOOL)finishWork {
+    _finishWork = finishWork;
+    id<TKAWasherDelegate> delegate = self.delegate;
+
+    if ([delegate washerShouldFinishWork:self]) {
+    
+        [delegate washer:self shouldGiveMoney:self.money];
+    }
+}
 
 
 #pragma mark -
@@ -76,6 +75,7 @@
 - (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money {
     [self takeMoneyFromSomeone:object];
     self.car = nil;
+    self.finishWork = YES;
 }
 
 - (BOOL)carShouldBeClean:(TKACar *)object {

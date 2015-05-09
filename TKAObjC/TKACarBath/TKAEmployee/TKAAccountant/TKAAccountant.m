@@ -41,8 +41,8 @@
     object.free = YES;
 }
 
-- (BOOL)washerShouldHaveMoney:(TKAWasher *)object {
-    return (object.money);
+- (BOOL)washerShouldFinishWork:(TKAWasher *)object {
+    return (object.finishWork);
 }
 
 @end

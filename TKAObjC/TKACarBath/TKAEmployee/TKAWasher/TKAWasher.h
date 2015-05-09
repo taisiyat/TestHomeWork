@@ -14,13 +14,15 @@
 @protocol TKAWasherDelegate <NSObject>
 
 - (void)washer:(TKAWasher *)object shouldGiveMoney:(NSUInteger)money;
-- (BOOL)washerShouldHaveMoney:(TKAWasher *)object;
+- (BOOL)washerShouldFinishWork:(TKAWasher *)object;
 
 @end
 
 @interface TKAWasher : TKAEmployee <TKACarDelegate, TKAWasherDelegate>
 @property (nonatomic, retain) TKACar *car;
 @property (nonatomic, retain) id<TKAWasherDelegate> delegate;
+@property (nonatomic, assign) BOOL   finishWork;
+
 
 - (void)washCar:(TKACar *)car;
 
