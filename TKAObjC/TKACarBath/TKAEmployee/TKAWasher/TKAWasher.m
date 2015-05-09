@@ -40,16 +40,16 @@
     }
 }
 
-- (void)setMoney:(NSUInteger)money {
-//    BOOL shouldChange = YES;
-    id<TKAWasherDelegate> delegate = self.delegate;
-
-    if ([delegate washerShouldHaveMoney:self]) {
-//        _money = money;
-        
-        [delegate washer:self shouldGiveMoney:self.money];
-    }
-}
+//- (void)setMoney:(NSUInteger)money {
+////    BOOL shouldChange = YES;
+//    id<TKAWasherDelegate> delegate = self.delegate;
+//
+//    if ([delegate washerShouldHaveMoney:self]) {
+////        _money = money;
+//        
+//        [delegate washer:self shouldGiveMoney:self.money];
+//    }
+//}
 
 
 #pragma mark -
