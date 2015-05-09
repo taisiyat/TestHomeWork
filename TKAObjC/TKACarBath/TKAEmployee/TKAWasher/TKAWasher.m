@@ -14,7 +14,6 @@
 
 - (void)dealloc {
     self.car = nil;
-    self.delegate = nil;
     
     [super dealloc];
 }
@@ -23,11 +22,7 @@
 #pragma mark Acessors Methods
 
 - (BOOL)isFree {
-    if (nil == self.car && 0 == self.money) {
-        return YES;
-    }
-    
-    return NO;
+    return (nil == self.car && 0 == self.money);
 }
 
 - (void)setCar:(TKACar *)car {
@@ -40,33 +35,20 @@
     }
 }
 
-- (void)setFinishWork:(BOOL)finishWork {
-    _finishWork = finishWork;
-    id<TKAWasherDelegate> delegate = self.delegate;
-
-    if ([delegate washerShouldFinishWork:self]) {
-    
-        [delegate washer:self shouldGiveMoney:self.money];
-    }
-}
-
-
 #pragma mark -
 #pragma mark Public Methods
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:[super description]];
-    [result appendFormat:@" car: %@", self.car];
+    [result appendFormat:@" car : %@", self.car];
     
     return [[result copy] autorelease];
 }
 
 - (void)washCar:(TKACar *)car {
     self.car = car;
-    NSLog(@" WashingCar ");
+    NSLog(@"Washer wash car.");
     [self.car setClean:YES];
-
-    NSLog(@" WashingCar ");
 }
 
 #pragma mark -
@@ -79,11 +61,7 @@
 }
 
 - (BOOL)carShouldBeClean:(TKACar *)object {
-    if (YES == [object isClean]) {
-        return YES;
-    }
-    
-    return NO;
+    return object.clean;
 }
 
 #pragma mark -

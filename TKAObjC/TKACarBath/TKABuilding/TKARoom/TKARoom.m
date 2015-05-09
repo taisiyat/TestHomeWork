@@ -56,12 +56,7 @@
 }
 
 - (BOOL)isFree {
-//    return 0 == [self.mutableEmployees count] ? YES : NO;
     return ![self.mutableEmployees count];
-}
-
-- (Class)classRoom {
-    return [self class];
 }
 
 #pragma mark -

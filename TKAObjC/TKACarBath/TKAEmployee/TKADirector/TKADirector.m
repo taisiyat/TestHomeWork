@@ -11,9 +11,8 @@
 @implementation TKADirector
 
 - (void)profit {
-    [self countMoney];
-
     self.money *= 0.7;
+    NSLog(@"Director profit.");
 }
 
 @end

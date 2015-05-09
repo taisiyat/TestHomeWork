@@ -14,16 +14,15 @@
 
 @protocol TKACarDelegate <NSObject>
 
-- (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money;
+- (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money; //or - (void)shouldGiveMoneyCar:(TKACar *)object;
 - (BOOL)carShouldBeClean:(TKACar *)object;
 
 @end
 
 @interface TKACar : NSObject <TKATransferMoneyProtocol, TKACarDelegate>
-@property (nonatomic, copy)                     NSString        *number;
-@property (nonatomic, assign)                   NSUInteger      money;
-@property (nonatomic, assign, getter=isClean)   BOOL     clean;
-@property (nonatomic, assign)                   id<TKACarDelegate>      delegate;
+@property (nonatomic, copy)     NSString    *number;
+@property (nonatomic, assign)   BOOL        clean;
+@property (nonatomic, assign)   id<TKACarDelegate>      delegate;
 
 + (instancetype)carWithNumber:(NSString *)number
                   moneyAmount:(NSUInteger)moneyAmount;

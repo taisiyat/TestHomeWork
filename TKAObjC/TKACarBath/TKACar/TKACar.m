@@ -10,7 +10,8 @@
 
 @implementation TKACar
 
-//@synthesize money = _money;
+@synthesize money = _money;
+
 #pragma mark -
 #pragma mark Class Methods
 
@@ -29,13 +30,13 @@
 
 - (void)dealloc {
     self.number = nil;
+    self.delegate = nil;
     
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Acessors Methods
-//delegating method
 
 - (void)setClean:(BOOL)clean {
     _clean = clean;
@@ -53,7 +54,7 @@
     NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@" Car number = %@", self.number];
     [result appendFormat:@" condition = %u", self.clean];
-    [result appendFormat:@" money : %lu", self.money];
+    [result appendFormat:@" money = %lu", self.money];
     
     return [[result copy] autorelease];
 }

@@ -24,6 +24,8 @@
 
 - (void)dealloc {
     self.name = nil;
+    self.delegate = nil;
+    self.delegatingObject = nil;
  
     [super dealloc];
 }
@@ -41,28 +43,54 @@
 #pragma mark -
 #pragma mark Acessors Methods
 
+- (void)setDelegatingObject:(TKAEmployee *)delegatingObject {
+    if (_delegatingObject != delegatingObject) {
+        
+        _delegatingObject.delegate = nil;
+        [_delegatingObject release];
+        
+        _delegatingObject = [delegatingObject retain];
+        _delegatingObject.delegate = self;
+    }
+}
+
+- (void)setFinishWork:(BOOL)finishWork {
+    _finishWork = finishWork;
+    id<TKAEmployeeDelegate> delegate = self.delegate;
+    
+    if ([delegate employeeShouldFinishWork:self]) {
+        [delegate employee:self shouldGiveMoney:self.money];
+    }
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@"name = %@ ", self.name];
-    [result appendFormat:@"free = %hhd ", self.free];
+//    [result appendFormat:@"free = %hhd ", self.free];
 //    [result appendFormat:@"experience = %lu", self.experience];
 //    [result appendFormat:@"salary = %lu ", self.salary];
-    [result appendFormat:@"money : %lu", self.money];
+    [result appendFormat:@"money = %lu", self.money];
+    
     return [[result copy] autorelease];
-}
-
-- (void)countMoney {
-    self.free = NO;
-    NSLog(@"count money");
-    self.free = YES;
 }
 
 - (void)takeMoneyFromSomeone:(id<TKATransferMoneyProtocol>)object {
     self.money += object.money;
     object.money = 0;
+}
+
+#pragma mark -
+#pragma mark TKAWasherDelegate
+
+- (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money {
+    [self takeMoneyFromSomeone:employee];
+}
+
+- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
+    return (employee.finishWork);
 }
 
 #pragma mark -

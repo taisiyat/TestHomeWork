@@ -11,16 +11,14 @@
 #import "TKAAccountant.h"
 #import "TKADirector.h"
 #import "TKAWasher.h"
-#import "TKAAdminRoom.h"
 #import "TKACarBox.h"
 @class TKADirector;
 @class TKAWasher;
 @class TKAAccountant;
 @class TKACarBox;
-@class TKAAdminRoom;
 
 @interface TKAEnterprise ()
-@property(nonatomic, readwrite)  NSMutableArray *mutableEmployees;
+@property(nonatomic, assign)  NSMutableArray *mutableEmployees;
 
 @end
 
@@ -69,10 +67,10 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:[super description]];
+    NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendString:@"\n Enterprise : "];
     [result appendFormat:@" name = %@ ", self.name];
-    [result appendFormat:@"\n building : %@ ", self.building];
+    [result appendFormat:@"\n building %@ ", self.building];
     [result appendFormat:@"\n employees : %@ ", self.mutableEmployees];
     
     return [[result copy] autorelease];
@@ -80,7 +78,7 @@
 
 - (void)prepare {
     self.building = [TKABuilding buildingWhithAddress:@"Street"];
-    [self.building addRoom:[TKAAdminRoom roomWithName:@"AdminRoom1"]];
+    [self.building addRoom:[TKARoom roomWithName:@"AdminRoom1"]];
     [self.building addRoom:[TKACarBox roomWithName:@"CarBox1"]];
 
     [self addEmployee:[TKADirector employeeWithName:@"directorName"]];
@@ -88,7 +86,7 @@
     [self addEmployee:[TKAWasher employeeWithName:@"washerName1"]];
 }
 
-- (void)addEmployee:(TKAEmployee *)employee { //recruit
+- (void)addEmployee:(TKAEmployee *)employee {
     if (NO == [self.mutableEmployees containsObject:employee]) {
         [self.building addEmployee:employee];
         [self.mutableEmployees addObject:employee];
@@ -104,28 +102,31 @@
     
     TKACarBox *carBox = [self.building freeRoomOfClass:[TKACarBox class]];
     TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
-    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
-    accountant.delegatingObject = washer;
+  
+    if (NO == car.clean && 0 != car.money && nil != carBox && nil != washer) {
+        TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
+        accountant.delegatingObject = washer;
+        TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
+        director.delegatingObject = accountant;
 
-    
-    if (NO == [car isClean] && 0 != car.money && nil != carBox && nil != washer) {
         [carBox addEmployee:washer];
         carBox.car = car;
         [washer washCar:car];
-        if (YES == [car isClean]) {
+        if (YES == car.clean) {
             carBox.car = nil;
             [carBox removeEmployee:washer];
         }
+        
+        [accountant countMoney];
+        [director profit];
     }
     
 //    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
-//
 //    [accountant takeMoneyFromSomeone:washer];
 //    washer.free = YES;
 //    [accountant countMoney];
 //
 //    TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
-//
 //    [director takeMoneyFromSomeone:accountant];
 //    [director profit];
 }
@@ -133,7 +134,6 @@
 - (id)freeEmployeeOfClass:(Class)classPosition {
     for (TKAEmployee *employee in self.mutableEmployees) {
         if ([classPosition class] == [employee class] && YES == [employee isFree]) {
-            
             return employee;
         }
     }

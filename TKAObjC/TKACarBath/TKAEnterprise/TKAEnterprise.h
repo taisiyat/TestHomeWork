@@ -7,13 +7,13 @@
 //
 
 #import "TKABuilding.h"
-#import "TKADirector.h"
-#import "TKACar.h"
+
+@class TKACar;
 
 @interface TKAEnterprise : NSObject
-@property(nonatomic, copy)      NSString        *name;
-@property(nonatomic, retain)    TKABuilding     *building;
-@property(nonatomic, readonly)  NSArray         *employees;
+@property (nonatomic, copy)      NSString        *name;
+@property (nonatomic, retain)    TKABuilding     *building;
+@property (nonatomic, readonly)  NSArray         *employees;
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;

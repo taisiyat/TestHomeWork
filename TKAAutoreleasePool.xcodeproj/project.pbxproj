@@ -21,7 +21,6 @@
 		8A271C8E1AF3F828006BE4FE /* TKAHumanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C521AF3F828006BE4FE /* TKAHumanTest.m */; };
 		8A271C901AF3F828006BE4FE /* NSString+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C561AF3F828006BE4FE /* NSString+TKAExtension.m */; };
 		8A271C921AF3F828006BE4FE /* TKAStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C591AF3F828006BE4FE /* TKAStringTest.m */; };
-		8A271C941AF3F828006BE4FE /* TKAAdminRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C5E1AF3F828006BE4FE /* TKAAdminRoom.m */; };
 		8A271C961AF3F828006BE4FE /* TKABuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C611AF3F828006BE4FE /* TKABuilding.m */; };
 		8A271C981AF3F828006BE4FE /* TKACarBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C641AF3F828006BE4FE /* TKACarBox.m */; };
 		8A271C9A1AF3F828006BE4FE /* TKARoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C671AF3F828006BE4FE /* TKARoom.m */; };
@@ -111,8 +110,6 @@
 		8A271C561AF3F828006BE4FE /* NSString+TKAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKAExtension.m"; sourceTree = "<group>"; };
 		8A271C581AF3F828006BE4FE /* TKAStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAStringTest.h; sourceTree = "<group>"; };
 		8A271C591AF3F828006BE4FE /* TKAStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAStringTest.m; sourceTree = "<group>"; };
-		8A271C5D1AF3F828006BE4FE /* TKAAdminRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAdminRoom.h; sourceTree = "<group>"; };
-		8A271C5E1AF3F828006BE4FE /* TKAAdminRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAAdminRoom.m; sourceTree = "<group>"; };
 		8A271C601AF3F828006BE4FE /* TKABuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKABuilding.h; sourceTree = "<group>"; };
 		8A271C611AF3F828006BE4FE /* TKABuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKABuilding.m; sourceTree = "<group>"; };
 		8A271C631AF3F828006BE4FE /* TKACarBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACarBox.h; sourceTree = "<group>"; };
@@ -334,21 +331,11 @@
 		8A271C5B1AF3F828006BE4FE /* TKABuilding */ = {
 			isa = PBXGroup;
 			children = (
-				8A271C5C1AF3F828006BE4FE /* TKAAdminRoom */,
 				8A271C5F1AF3F828006BE4FE /* TKABuilding */,
 				8A271C621AF3F828006BE4FE /* TKACarBox */,
 				8A271C651AF3F828006BE4FE /* TKARoom */,
 			);
 			path = TKABuilding;
-			sourceTree = "<group>";
-		};
-		8A271C5C1AF3F828006BE4FE /* TKAAdminRoom */ = {
-			isa = PBXGroup;
-			children = (
-				8A271C5D1AF3F828006BE4FE /* TKAAdminRoom.h */,
-				8A271C5E1AF3F828006BE4FE /* TKAAdminRoom.m */,
-			);
-			path = TKAAdminRoom;
 			sourceTree = "<group>";
 		};
 		8A271C5F1AF3F828006BE4FE /* TKABuilding */ = {
@@ -921,7 +908,6 @@
 				8A90DBE91AF8BA8000CB186A /* TKAStringsAlphabet.m in Sources */,
 				8A271C9A1AF3F828006BE4FE /* TKARoom.m in Sources */,
 				8A271C841AF3F828006BE4FE /* NSObject+TKAExtension.m in Sources */,
-				8A271C941AF3F828006BE4FE /* TKAAdminRoom.m in Sources */,
 				8A271CA01AF3F828006BE4FE /* TKAAccountant.m in Sources */,
 				8A271C821AF3F828006BE4FE /* main.m in Sources */,
 				8A271C8E1AF3F828006BE4FE /* TKAHumanTest.m in Sources */,

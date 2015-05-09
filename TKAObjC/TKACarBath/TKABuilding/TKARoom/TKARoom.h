@@ -18,8 +18,6 @@
 + (instancetype)room;
 + (instancetype)roomWithName:(NSString *)name;
 
-- (Class)classRoom;
-
 - (void)addEmployee:(TKAEmployee *)employee;
 - (void)removeEmployee:(TKAEmployee *)employee;
 
