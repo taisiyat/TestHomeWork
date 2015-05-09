@@ -10,7 +10,7 @@
 
 @implementation TKAEmployee
 
-@synthesize money = _money;
+//@synthesize money = _money;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -41,10 +41,6 @@
 #pragma mark -
 #pragma mark Acessors Methods
 
-- (Class)classEmployee {
-    return [self class];
-}
-
 #pragma mark -
 #pragma mark Public Methods
 
@@ -64,35 +60,10 @@
     self.free = YES;
 }
 
-//- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object {
-//    if (object.money >= money) {
-//        self.money += money;
-//        object.money -= money;
-//    }
-//}
 - (void)takeMoneyFromSomeone:(id<TKATransferMoneyProtocol>)object {
     self.money += object.money;
     object.money = 0;
 }
-
-//- (void)takeMoneyFromSomeone:(TKAEmployee *)employee {
-//    self.money += employee.money;
-//    employee.money = 0;
-//}
-
-//- (void)giveMoney:(NSUInteger)money ToSomeone:(id<TKATransferMoneyProtocol>)object {
-////    if (self.money >= money) {
-////        object.money += money;
-////        self.money -= money;
-////    }
-//    object.money += self.money;
-//    self.money = 0;
-//}
-
-//- (void)giveMoneyToSomeone:(TKAEmployee *)employee {
-//    employee.money += self.money;
-//    self.money = 0;
-//}
 
 #pragma mark -
 #pragma mark Private Methods

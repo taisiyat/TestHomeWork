@@ -8,6 +8,17 @@
 
 #import "TKAEmployee.h"
 
-@interface TKAAccountant : TKAEmployee 
+#import "TKAWasher.h"
+
+//@protocol TKADelegatingObject <NSObject>
+//
+//- (void)delegatingObject:(TKAEmployee *)object shouldGiveMoney:(NSUInteger)money;
+//- (BOOL)delegatingObjectShouldHaveMoney:(TKAEmployee *)object;
+//
+//@end
+
+
+@interface TKAAccountant : TKAEmployee <TKAWasherDelegate>
+@property (nonatomic, retain) TKAWasher *delegatingObject;
 
 @end

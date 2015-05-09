@@ -9,10 +9,19 @@
 #import "TKAEmployee.h"
 #import "TKACar.h"
 
-@interface TKAWasher : TKAEmployee <TKACarDelegate>
-@property (nonatomic, retain) TKACar *car;
+@class TKAWasher;
 
-//- (void)takeMoneyFromCar;
+@protocol TKAWasherDelegate <NSObject>
+
+- (void)washer:(TKAWasher *)object shouldGiveMoney:(NSUInteger)money;
+- (BOOL)washerShouldHaveMoney:(TKAWasher *)object;
+
+@end
+
+@interface TKAWasher : TKAEmployee <TKACarDelegate, TKAWasherDelegate>
+@property (nonatomic, retain) TKACar *car;
+@property (nonatomic, retain) id<TKAWasherDelegate> delegate;
+
 - (void)washCar:(TKACar *)car;
 
 @end

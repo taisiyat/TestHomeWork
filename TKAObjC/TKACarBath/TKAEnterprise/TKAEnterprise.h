@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-//#import "NSUInteger.h"
 #import "TKABuilding.h"
 #import "TKADirector.h"
 #import "TKACar.h"

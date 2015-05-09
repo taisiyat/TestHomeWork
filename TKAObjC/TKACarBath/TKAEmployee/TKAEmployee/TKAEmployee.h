@@ -12,17 +12,13 @@
 
 @interface TKAEmployee : NSObject <TKATransferMoneyProtocol>
 @property (nonatomic, copy)                 NSString    *name;
+@property (nonatomic, assign)               NSUInteger  money;
 @property (nonatomic, assign)               NSUInteger  experience;
 @property (nonatomic, assign)               NSUInteger  salary;
-//@property (nonatomic,assign)              NSUInteger  money;
 @property (nonatomic, assign, getter=isFree)     BOOL   free;
 
 + (instancetype)employeeWithName:(NSString *)name;
 
-- (Class)classEmployee;
-
 - (void)countMoney;
 
-//- (void)takeMoneyFromSomeone:(TKAEmployee *)employee;
-//- (void)giveMoneyToSomeone:(TKAEmployee *)employee;
 @end

@@ -14,6 +14,7 @@
 
 - (void)dealloc {
     self.car = nil;
+    self.delegate = nil;
     
     [super dealloc];
 }
@@ -39,6 +40,18 @@
     }
 }
 
+- (void)setMoney:(NSUInteger)money {
+//    BOOL shouldChange = YES;
+    id<TKAWasherDelegate> delegate = self.delegate;
+
+    if ([delegate washerShouldHaveMoney:self]) {
+//        _money = money;
+        
+        [delegate washer:self shouldGiveMoney:self.money];
+    }
+}
+
+
 #pragma mark -
 #pragma mark Public Methods
 
@@ -52,15 +65,10 @@
 - (void)washCar:(TKACar *)car {
     self.car = car;
     NSLog(@" WashingCar ");
-    self.car.clean = YES;
-    self.car.wash = YES;
+    [self.car setClean:YES];
+
     NSLog(@" WashingCar ");
 }
-
-//- (void)takeMoneyFromCar {
-//    self.money += self.car.money;
-//    self.car.money = 0;
-//}
 
 #pragma mark -
 #pragma mark TKACarDelegate

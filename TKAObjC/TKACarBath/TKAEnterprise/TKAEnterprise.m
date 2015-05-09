@@ -104,19 +104,22 @@
     
     TKACarBox *carBox = [self.building freeRoomOfClass:[TKACarBox class]];
     TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
+    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
+    accountant.delegatingObject = washer;
+
     
     if (NO == [car isClean] && 0 != car.money && nil != carBox && nil != washer) {
         [carBox addEmployee:washer];
         carBox.car = car;
         [washer washCar:car];
         if (YES == [car isClean]) {
-             carBox.car = nil;
+            carBox.car = nil;
             [carBox removeEmployee:washer];
         }
     }
     
 //    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
-// 
+//
 //    [accountant takeMoneyFromSomeone:washer];
 //    washer.free = YES;
 //    [accountant countMoney];

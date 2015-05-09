@@ -8,8 +8,9 @@
 
 #import "TKACar.h"
 
-@implementation TKACar 
+@implementation TKACar
 
+//@synthesize money = _money;
 #pragma mark -
 #pragma mark Class Methods
 
@@ -18,7 +19,6 @@
 {
     TKACar *car = [TKACar object];
     car.number = number;
-    car.clean = NO;
     car.money = moneyAmount;
     
     return car;
@@ -37,19 +37,13 @@
 #pragma mark Acessors Methods
 //delegating method
 
-- (void)setIsWash:(BOOL)wassh {
-//    if (YES == clean) {
-    BOOL shouldChange = YES;
+- (void)setClean:(BOOL)clean {
+    _clean = clean;
     id<TKACarDelegate> delegate = self.delegate;
 
-    if ([delegate respondsToSelector:@selector(carShouldBeClean:)]) {
-        shouldChange = [delegate carShouldBeClean:self];
-    }
-
-    if (shouldChange) {
+    if ([delegate carShouldBeClean:self]) {
         [delegate car:self shouldGiveMoney:self.money];
     }
-//    }
 }
 
 #pragma mark -
