@@ -8,12 +8,15 @@
 
 #import "TKABuilding.h"
 
+#import "TKAWasher.h"
+
 @class TKACar;
 
-@interface TKAEnterprise : NSObject
-@property (nonatomic, copy)      NSString        *name;
-@property (nonatomic, retain)    TKABuilding     *building;
-@property (nonatomic, readonly)  NSArray         *employees;
+@interface TKAEnterprise : NSObject <TKAWashObserver>
+@property (nonatomic, copy)         NSString        *name;
+@property (nonatomic, retain)       TKABuilding     *building;
+@property (nonatomic, readonly)     NSArray         *employees;
+@property (nonatomic, retain)       TKAWasher       *washer;  //------
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;

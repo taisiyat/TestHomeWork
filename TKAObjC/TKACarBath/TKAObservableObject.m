@@ -8,6 +8,21 @@
 
 #import "TKAObservableObject.h"
 
-@implementation TKAObservableObject
+@interface TKAObservableObject ()
+@property (nonatomic, retain)     NSMutableSet       *mutableObserverSet;
 
 @end
+
+@implementation TKAObservableObject
+
+@dynamic observerSet;
+
+- (void)setState:(NSUInteger)state;
+- (void)addObserver:(id)observer;
+- (void)removeObserver:(id)observer;
+- (void)isObservedObject:(id)observer;
+
+- (SEL)selectorForState:(NSUInteger)state;
+
+@end
+

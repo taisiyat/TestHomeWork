@@ -18,7 +18,7 @@
 @class TKACarBox;
 
 @interface TKAEnterprise ()
-@property(nonatomic, assign)  NSMutableArray *mutableEmployees;
+@property(nonatomic, retain)  NSMutableArray *mutableEmployees;
 
 @end
 
@@ -43,6 +43,7 @@
     self.name = nil;
     self.building = nil;
     self.mutableEmployees = nil;
+    self.washer = nil;  //-----
 
     [super dealloc];
 }
@@ -61,6 +62,16 @@
 
 - (NSArray *)employees {
     return [[self.mutableEmployees copy] autorelease];
+}
+
+- (void)setWasher:(TKAWasher *)washer {
+    if (_washer != washer) {
+        [_washer removeObserver:self];
+        [_washer release];
+  
+        _washer = [washer retain];
+        [washer addObserver:self];
+    }
 }
 
 #pragma mark -
@@ -90,6 +101,9 @@
     if (NO == [self.mutableEmployees containsObject:employee]) {
         [self.building addEmployee:employee];
         [self.mutableEmployees addObject:employee];
+        if ([TKAWasher class] == employee) {
+            self.washer = employee;
+        }
     }
 }
 
@@ -139,6 +153,20 @@
     }
     
     return nil;
+}
+
+#pragma mark -
+#pragma mark TKAWasherObserver
+
+- (void)washerBecomeReadyToWork:(TKAWasher *)washer {
+    if (self.washer == washer) {
+        NSLog(@"ADD NEW CAR");
+    }
+}
+- (void)washerPerformWorkNow:(TKAWasher *)washer {
+    if (self.washer == washer) {
+        NSLog(@"washer perform work");
+    }
 }
 
 #pragma mark -
