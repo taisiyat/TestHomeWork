@@ -7,13 +7,17 @@
 //
 
 #import "TKABuilding.h"
+#import "TKAWasher.h"
+
+#import "TKAObservableObject.h"
 
 @class TKACar;
 
-@interface TKAEnterprise : NSObject
-@property (nonatomic, copy)      NSString        *name;
-@property (nonatomic, retain)    TKABuilding     *building;
-@property (nonatomic, readonly)  NSArray         *employees;
+@interface TKAEnterprise : NSObject <TKAEmployeeObserver>
+@property (nonatomic, copy)         NSString        *name;
+@property (nonatomic, retain)       TKABuilding     *building;
+@property (nonatomic, readonly)     NSArray         *employees;
+@property (nonatomic, retain)       TKAWasher       *washer;  //------
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;
@@ -22,6 +26,7 @@
 - (void)removeEmployee:(TKAEmployee *)emploeey;
 
 - (id)freeEmployeeOfClass:(Class)classPosition;
+- (void)performWork;
 - (void)workWithCar:(TKACar *)car;
 
 @end

@@ -17,8 +17,7 @@ void TKACarBathTask1() {
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
         
-        TKACar *car = [TKACar carWithNumber:@"AA1234" moneyAmount:50];
-        [enterprise workWithCar:car];
+        [enterprise performWork];
         NSLog(@"%@", [enterprise description]);
 
     }

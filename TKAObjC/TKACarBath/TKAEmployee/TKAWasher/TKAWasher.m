@@ -9,6 +9,9 @@
 #import "TKAWasher.h"
 
 @implementation TKAWasher
+
+@synthesize money = _money;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -25,6 +28,14 @@
     return (nil == self.car && 0 == self.money);
 }
 
+//- (void)setMoney:(NSUInteger)money {
+//    if (money != _money) {
+//        _money = money;
+//        
+//        self.observableState = (0 == money && nil == self.car) ? TKAReadyToWork : TKAPerformWork;
+//    }
+//}
+
 - (void)setCar:(TKACar *)car {
     if (_car != car) {
         _car.delegate = nil;
@@ -32,6 +43,7 @@
         
         _car = [car retain];
         _car.delegate = self;
+        self.observableState = (0 == self.money && nil == car) ? TKAReadyToWork : TKAPerformWork;
     }
 }
 

@@ -12,13 +12,17 @@
 #import "TKADirector.h"
 #import "TKAWasher.h"
 #import "TKACarBox.h"
+#import "TKAAlphabet.h"
+
+#import "NSString+TKAExtensionWithAlphabet.h"
+
 @class TKADirector;
 @class TKAWasher;
 @class TKAAccountant;
 @class TKACarBox;
 
 @interface TKAEnterprise ()
-@property(nonatomic, assign)  NSMutableArray *mutableEmployees;
+@property(nonatomic, retain)  NSMutableArray *mutableEmployees;
 
 @end
 
@@ -43,6 +47,7 @@
     self.name = nil;
     self.building = nil;
     self.mutableEmployees = nil;
+    self.washer = nil;  //-----
 
     [super dealloc];
 }
@@ -63,6 +68,16 @@
     return [[self.mutableEmployees copy] autorelease];
 }
 
+- (void)setWasher:(TKAWasher *)washer {
+    if (_washer != washer) {
+        [_washer removeObserver:self];
+        [_washer release];
+  
+        _washer = [washer retain];
+        [washer addObserver:self];
+    }
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
@@ -81,21 +96,51 @@
     [self.building addRoom:[TKARoom roomWithName:@"AdminRoom1"]];
     [self.building addRoom:[TKACarBox roomWithName:@"CarBox1"]];
 
-    [self addEmployee:[TKADirector employeeWithName:@"directorName"]];
-    [self addEmployee:[TKAAccountant employeeWithName:@"accountantName"]];
-    [self addEmployee:[TKAWasher employeeWithName:@"washerName1"]];
+    [self addEmployee:[TKADirector employeeWithName:@"director"]];
+    [self addEmployee:[TKAAccountant employeeWithName:@"accountant"]];
+    NSMutableString *name = [NSMutableString string];
+    for (NSUInteger iter = 1; iter < 6; iter++) {
+        [name setString:@"washer"];
+        [name appendFormat:@"%lu", iter];
+        [self addEmployee:[TKAWasher employeeWithName:name]];
+    }
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
     if (NO == [self.mutableEmployees containsObject:employee]) {
         [self.building addEmployee:employee];
         [self.mutableEmployees addObject:employee];
+        if ([TKAWasher class] == employee) {
+            self.washer = employee;
+        }
     }
 }
 
 - (void)removeEmployee:(TKAEmployee*)employee { //dismiss
     [self.building removeEmployee:employee];
     [self.mutableEmployees removeObject:employee];
+}
+
+- (void)performWork {
+    TKACar *car = [TKACar carWithNumber:@"AA1234" moneyAmount:50];
+    NSMutableArray *cars = [NSMutableArray array];
+    NSMutableString *number = [NSMutableString string];
+    for (NSUInteger iter = 1; iter < 4; iter++) {
+        [number setString:@"AA"];
+        [number appendFormat:@"%lu", iter];
+        [number appendString:[NSString randomStringWithLength:3 alphabet:[TKAAlphabet numericAlphabet]]];
+        [cars addObject:[TKACar carWithNumber:number moneyAmount:20*iter]];
+    }
+
+    [self workWithCar:car];
+    [self workWithCar:[cars objectAtIndex:0]];
+    [self workWithCar:[cars objectAtIndex:1]];
+    
+    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
+    TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
+    director.delegatingObject = accountant;
+    [accountant countMoney];
+    [director profit];
 }
 
 - (void)workWithCar:(TKACar *)car {
@@ -106,8 +151,6 @@
     if (NO == car.clean && 0 != car.money && nil != carBox && nil != washer) {
         TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
         accountant.delegatingObject = washer;
-        TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
-        director.delegatingObject = accountant;
 
         [carBox addEmployee:washer];
         carBox.car = car;
@@ -116,9 +159,6 @@
             carBox.car = nil;
             [carBox removeEmployee:washer];
         }
-        
-        [accountant countMoney];
-        [director profit];
     }
     
 //    TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
@@ -139,6 +179,20 @@
     }
     
     return nil;
+}
+
+#pragma mark -
+#pragma mark TKAWasherObserver
+
+- (void)employeeBecomeReadyToWork:(TKAEmployee *)employee {
+    if (self.washer == employee) {
+        NSLog(@"ADD NEW CAR");
+    }
+}
+- (void)employeePerformWorkNow:(TKAEmployee *)employee {
+    if (self.washer == employee) {
+        NSLog(@"washer perform work");
+    }
 }
 
 #pragma mark -

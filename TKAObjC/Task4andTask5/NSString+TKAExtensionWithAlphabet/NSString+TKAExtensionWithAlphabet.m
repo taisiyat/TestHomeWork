@@ -9,7 +9,7 @@
 #import "NSString+TKAExtensionWithAlphabet.h"
 #import "TKAAlphabet.h"
 
-const NSUInteger kArbitrarySrtingLengthWithAlphabet = 10;
+static const NSUInteger kArbitrarySrtingLengthWithAlphabet = 10;
 
 @implementation NSString (TKAExtensionWithAlphabet)
 

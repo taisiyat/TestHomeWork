@@ -9,5 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface TKAObservableObject : NSObject
+@property (nonatomic, readonly)     NSSet       *observerSet;
+@property (nonatomic, assign)       NSUInteger  state;
+
+- (void)setState:(NSUInteger)state;
+- (void)addObserver:(id)observer;
+- (void)removeObserver:(id)observer;
+- (BOOL)isObservedObject:(id)observer;
+
+- (SEL)selectorForState:(NSUInteger)state;
 
 @end

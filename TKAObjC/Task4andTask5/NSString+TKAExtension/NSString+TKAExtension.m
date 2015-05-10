@@ -7,7 +7,7 @@
 //
 
 #import "NSString+TKAExtension.h"
-const NSUInteger kArbitrarySrtingLength = 10;
+static const NSUInteger kArbitrarySrtingLength = 10;
 
 @implementation NSString (TKAExtension)
 
