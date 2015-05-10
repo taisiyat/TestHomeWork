@@ -22,8 +22,8 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 
 @protocol TKAEmployeeDelegate <NSObject>
 
-- (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money; //or - (void)shouldGiveMoneyEmployee:(TKAEmployee *)employee;
-//- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee;
+- (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money;
+//or - (void)shouldGiveMoneyEmployee:(TKAEmployee *)employee;
 - (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee;
 
 @end

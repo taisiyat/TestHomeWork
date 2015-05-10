@@ -28,6 +28,7 @@
 
 - (void)setCar:(TKACar *)car {
     if (_car != car) {
+        
         _car.delegate = nil;
         [_car release];
         
@@ -64,8 +65,5 @@
 - (BOOL)carShouldBeClean:(TKACar *)object {
     return object.clean;
 }
-
-#pragma mark -
-#pragma mark Private Methods
 
 @end

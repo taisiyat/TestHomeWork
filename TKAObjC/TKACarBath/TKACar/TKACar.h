@@ -14,7 +14,8 @@
 
 @protocol TKACarDelegate <NSObject>
 
-- (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money; //or - (void)shouldGiveMoneyCar:(TKACar *)object;
+- (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money;
+//or - (void)shouldGiveMoneyCar:(TKACar *)object;
 - (BOOL)carShouldBeClean:(TKACar *)object;
 
 @end

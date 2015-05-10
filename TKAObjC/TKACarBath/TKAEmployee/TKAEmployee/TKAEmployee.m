@@ -65,17 +65,9 @@
     }
 }
 
-//- (void)setMoney:(NSUInteger)money {
-//    _money = money;
-//    id<TKAEmployeeDelegate> delegate = self.delegate;
-//    
-//    if ([delegate employeeShouldTakeMoney:self]) {
-//        [delegate employee:self shouldGiveMoney:self.money];
-//    }
-//}
-
 - (void)setMoney:(NSUInteger)money {
     _money = money;
+    
     if ([TKAWasher class] == [self class]) {
         self.state = (0 == money) ? TKAReadyToWash : TKAPerformWork;
     } else {
@@ -110,10 +102,6 @@
     employee.free = YES;
 }
 
-//- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee {
-//    return (employee.money);
-//}
-
 - (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
     return (employee.finishWork);
 }
@@ -126,15 +114,14 @@
     {
         case TKAReadyToWash:
             return @selector(employeeBecomeReadyToWash:);
+            
         case TKAReadyToWork:
             return @selector(employeeBecomeReadyToWork:);
+        
         default:
             return @selector(employeePerformWorkNow:);
     }
 }
-
-#pragma mark -
-#pragma mark Private Methods
 
 @end
 

@@ -17,13 +17,37 @@
 
 @implementation TKAAccountant
 
+@synthesize delegatingObject = _delegatingObject;
+
 @dynamic delegatingObjects;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (void)dealloc {
+    self.mutableDelegatingObjects = nil;
+    
+    [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.mutableDelegatingObjects = [NSMutableSet set];
+    }
+    
+    return self;
+}
+
 #pragma mark -
 #pragma mark Accessors
+
+- (void)setDelegatingObject:(TKAEmployee *)delegatingObject {
+    _delegatingObject = nil;
+
+    [self.mutableDelegatingObjects addObject:delegatingObject];
+    delegatingObject.delegate = self;
+}
 
 #pragma mark -
 #pragma mark Public Methods

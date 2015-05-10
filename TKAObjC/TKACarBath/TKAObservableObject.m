@@ -69,7 +69,6 @@
 #pragma mark -
 #pragma mark Private
 
-
 - (SEL)selectorForState:(NSUInteger)state {
     [self doesNotRecognizeSelector:_cmd];
     
@@ -83,7 +82,6 @@
             [observer performSelector:selector withObject:self];
         }
     }
-    
 }
 
 @end

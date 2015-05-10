@@ -18,17 +18,15 @@
 @property (nonatomic, retain)       TKABuilding     *building;
 @property (nonatomic, readonly)     NSArray         *employees;
 @property (nonatomic, retain)       TKAEmployee     *observableEmployee;  //------
-//@property (nonatomic, readonly)     NSSet           *observableEmployees;
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;
 
 - (void)addEmployee:(TKAEmployee *)emploeey;
 - (void)removeEmployee:(TKAEmployee *)emploeey;
-
 - (id)freeEmployeeOfClass:(Class)classPosition;
+
 - (void)performWork;
-//- (void)workWithCar:(TKACar *)car;
 - (void)performWorkWasher:(TKAWasher *)washer withCar:(TKACar *)car;
 
 @end
