@@ -35,7 +35,7 @@ NSRange TKAMakeRange(char firstValue, char secondValue) {
 }
 
 + (instancetype)numericAlphabet {
-    return [TKAAlphabet alphabetWithStrings:@[@"1234", @"567", @"890"]];
+    return [TKAAlphabet alphabetWithRange:TKAMakeRange('0', '9')];
 }
 
 + (instancetype)punctuationMarkAlpabet {

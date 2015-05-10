@@ -54,23 +54,23 @@
     }
 }
 
-//- (void)setFinishWork:(BOOL)finishWork {
-//    _finishWork = finishWork;
-//    id<TKAEmployeeDelegate> delegate = self.delegate;
-//    
-//    if ([delegate employeeShouldFinishWork:self]) {
-//        [delegate employee:self shouldGiveMoney:self.money];
-//    }
-//}
-
-- (void)setMoney:(NSUInteger)money {
-    _money = money;
+- (void)setFinishWork:(BOOL)finishWork {
+    _finishWork = finishWork;
     id<TKAEmployeeDelegate> delegate = self.delegate;
     
-    if ([delegate employeeShouldTakeMoney:self]) {
+    if ([delegate employeeShouldFinishWork:self]) {
         [delegate employee:self shouldGiveMoney:self.money];
     }
 }
+
+//- (void)setMoney:(NSUInteger)money {
+//    _money = money;
+//    id<TKAEmployeeDelegate> delegate = self.delegate;
+//    
+//    if ([delegate employeeShouldTakeMoney:self]) {
+//        [delegate employee:self shouldGiveMoney:self.money];
+//    }
+//}
 
 #pragma mark -
 #pragma mark Public Methods
@@ -92,19 +92,31 @@
 }
 
 #pragma mark -
-#pragma mark TKAWasherDelegate
+#pragma mark TKAEmployeeDelegate
 
 - (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money {
     [self takeMoneyFromSomeone:employee];
 }
 
-- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee {
-    return (employee.money);
+//- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee {
+//    return (employee.money);
+//}
+
+- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
+    return (employee.finishWork);
 }
 
-//- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
-//    return (employee.finishWork);
-//}
+#pragma mark -
+#pragma mark Overloaded Methods
+
+- (SEL)selectorForState:(NSUInteger)state {
+    if (TKAReadyToWork) {
+        return @selector(employeeBecomeReadyToWork:);
+    }
+    
+    return @selector(employeePerformWorkNow:);
+}
+
 
 #pragma mark -
 #pragma mark Private Methods
