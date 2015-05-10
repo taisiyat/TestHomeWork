@@ -80,7 +80,7 @@
     NSMutableSet *observerSet = self.mutableObserverSet;
     for (id observer in observerSet) {
         if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector whithObject:self];
+            [observer performSelector:selector withObject:self];
         }
     }
     

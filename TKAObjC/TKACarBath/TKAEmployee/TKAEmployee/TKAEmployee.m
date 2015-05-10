@@ -8,6 +8,8 @@
 
 #import "TKAEmployee.h"
 
+@class TKAWasher;
+
 @implementation TKAEmployee
 
 @synthesize money = _money;
@@ -72,6 +74,15 @@
 //    }
 //}
 
+- (void)setMoney:(NSUInteger)money {
+    _money = money;
+    if ([TKAWasher class] == [self class]) {
+        self.state = (0 == money) ? TKAReadyToWash : TKAPerformWork;
+    } else {
+        self.state = (0 == money) ? TKAReadyToWork : TKAPerformWork;
+    }
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
@@ -96,6 +107,7 @@
 
 - (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money {
     [self takeMoneyFromSomeone:employee];
+    employee.free = YES;
 }
 
 //- (BOOL)employeeShouldTakeMoney:(TKAEmployee *)employee {
@@ -110,13 +122,16 @@
 #pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
-    if (TKAReadyToWork) {
-        return @selector(employeeBecomeReadyToWork:);
+    switch (state)
+    {
+        case TKAReadyToWash:
+            return @selector(employeeBecomeReadyToWash:);
+        case TKAReadyToWork:
+            return @selector(employeeBecomeReadyToWork:);
+        default:
+            return @selector(employeePerformWorkNow:);
     }
-    
-    return @selector(employeePerformWorkNow:);
 }
-
 
 #pragma mark -
 #pragma mark Private Methods

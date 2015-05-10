@@ -8,7 +8,16 @@
 
 #import "TKAAccountant.h"
 
+@class TKAAccountant;
+
+@interface TKAAccountant ()
+@property (nonatomic, assign) NSMutableSet *mutableDelegatingObjects;
+
+@end
+
 @implementation TKAAccountant
+
+@dynamic delegatingObjects;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations

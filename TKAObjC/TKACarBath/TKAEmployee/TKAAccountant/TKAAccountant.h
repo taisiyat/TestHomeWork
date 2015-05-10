@@ -9,6 +9,7 @@
 #import "TKAEmployee.h"
 
 @interface TKAAccountant : TKAEmployee
+@property (nonatomic ,readonly) NSSet *delegatingObjects;
 
 - (void)countMoney;
 
