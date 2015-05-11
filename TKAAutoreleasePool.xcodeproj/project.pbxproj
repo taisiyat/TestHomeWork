@@ -10,6 +10,7 @@
 		26E40D47BD8C2CEE4C216220 /* libPods-TKAObjCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D18628B00EA9E4AE9870CD52 /* libPods-TKAObjCTests.a */; };
 		8A0DBA2C1AF7980C0025369F /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */; };
 		8A0DBA2D1AF7980C0025369F /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8A0EF96B1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */; };
 		8A271C821AF3F828006BE4FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C421AF3F828006BE4FE /* main.m */; };
 		8A271C841AF3F828006BE4FE /* NSObject+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C451AF3F828006BE4FE /* NSObject+TKAExtension.m */; };
 		8A271C861AF3F828006BE4FE /* TKACreature.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C491AF3F828006BE4FE /* TKACreature.m */; };
@@ -86,6 +87,10 @@
 		7E41FE7AB4784DB323D9BB6C /* Pods-TKAObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TKAObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TKAObjCTests/Pods-TKAObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A0DBA2A1AF7980C0025369F /* TKAObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAObservableObject.h; sourceTree = "<group>"; };
 		8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAObservableObject.m; sourceTree = "<group>"; };
+		8A0EF9691B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPBlockAsyncRaiseIterativeMatcher.h; sourceTree = "<group>"; };
+		8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPBlockAsyncRaiseIterativeMatcher.m; sourceTree = "<group>"; };
+		8A0EF96C1B00DA3100129A78 /* ObjC_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjC_prefix.pch; sourceTree = "<group>"; };
+		8A0EF96D1B00DD3400129A78 /* ObjCTests_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCTests_prefix.pch; sourceTree = "<group>"; };
 		8A271C311AF3F469006BE4FE /* TKAObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKAObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A271C341AF3F469006BE4FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A271C421AF3F828006BE4FE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -209,11 +214,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8A0EF9681B00D62600129A78 /* Matchers */ = {
+			isa = PBXGroup;
+			children = (
+				8A0EF9691B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.h */,
+				8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */,
+			);
+			path = Matchers;
+			sourceTree = "<group>";
+		};
 		8A271C321AF3F469006BE4FE /* TKAObjCTests */ = {
 			isa = PBXGroup;
 			children = (
+				8A0EF9681B00D62600129A78 /* Matchers */,
 				8A271CAC1AF3FA7C006BE4FE /* Specs */,
 				8A271C331AF3F469006BE4FE /* Supporting Files */,
+				8A0EF96D1B00DD3400129A78 /* ObjCTests_prefix.pch */,
 			);
 			path = TKAObjCTests;
 			sourceTree = "<group>";
@@ -234,6 +250,7 @@
 				8A271C461AF3F828006BE4FE /* Task1andTask2 */,
 				8A271C531AF3F828006BE4FE /* Task4andTask5 */,
 				8A271C5A1AF3F828006BE4FE /* TKACarBath */,
+				8A0EF96C1B00DA3100129A78 /* ObjC_prefix.pch */,
 			);
 			path = TKAObjC;
 			sourceTree = "<group>";
@@ -842,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AC60FF71AF77CD500E2B128 /* NSString+TKAExtensionWithAlphabet.m in Sources */,
+				8A0EF96B1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m in Sources */,
 				8ACC58481AFFD56F0082CA3A /* TKACarBathSpec.m in Sources */,
 				8A90DBE61AF8BA8000CB186A /* TKAClusterAlphabet.m in Sources */,
 				8AC60FF81AF77CE700E2B128 /* TKAStringTest.m in Sources */,
@@ -920,6 +938,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = TKAObjCTests/ObjCTests_prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -940,6 +959,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = TKAObjCTests/ObjCTests_prefix.pch;
 				INFOPLIST_FILE = TKAObjCTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1038,6 +1058,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PREFIX_HEADER = TKAObjC/ObjC_prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1051,6 +1072,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
+				GCC_PREFIX_HEADER = TKAObjC/ObjC_prefix.pch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

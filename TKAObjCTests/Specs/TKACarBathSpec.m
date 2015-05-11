@@ -10,9 +10,15 @@
 #import <XCTest/XCTest.h>
 
 #import "Kiwi.h"
+
+#import "IDPBlockAsyncRaiseIterativeMatcher.h"
+
 #import "TKAEnterprise.h"
 
 SPEC_BEGIN(TKACarBathSpec)
+
+registerMatchers(@"IDP");
+registerMatchers(@"KW");
 
 describe(@"ClassName", ^{
     registerMatchers(@"BG"); // Registers BGTangentMatcher, BGConvexMatcher, etc.
