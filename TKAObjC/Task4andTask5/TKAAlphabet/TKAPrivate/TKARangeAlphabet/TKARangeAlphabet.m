@@ -35,7 +35,7 @@
 }
 
 - (NSString *)stringAtIndex:(NSUInteger)index {
-    return index < self.range.length ? [NSString stringWithFormat:@"%c",(char)(self.range.location + index)] : nil;
+    return index < self.range.length ? [NSString stringWithFormat:@"%c",(unichar)(self.range.location + index)] : nil;
 }
 
 @end

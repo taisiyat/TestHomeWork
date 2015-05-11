@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern
-NSRange TKAMakeRange(char firstValue, char secondValue);
+NSRange TKAMakeRange(unichar firstValue, unichar secondValue);
 
 @interface TKAAlphabet : NSObject <NSFastEnumeration>
 + (instancetype)lovercaseLetterAlphabet;

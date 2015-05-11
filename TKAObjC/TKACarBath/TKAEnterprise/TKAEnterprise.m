@@ -99,6 +99,10 @@ static const NSUInteger kTKACountWasher = 3;
     }
 }
 
+- (void)addEmployeeWithName:(NSString *)name andClass:(Class)typeClass {
+   [self addEmployee:[[typeClass class] employeeWithName:name]];
+}
+
 - (void)addEmployee:(TKAEmployee *)employee {
     if (NO == [self.mutableEmployees containsObject:employee]) {
         [self.building addEmployee:employee];

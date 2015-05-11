@@ -10,7 +10,7 @@
 
 #import "TKAStringTest.h"
 #import "TKAAlphabet.h"
-//#import "NSString+TKAExtension.h"
+#import "NSString+TKAExtension.h"
 #import "NSString+TKAExtensionWithAlphabet.h"
 
 static

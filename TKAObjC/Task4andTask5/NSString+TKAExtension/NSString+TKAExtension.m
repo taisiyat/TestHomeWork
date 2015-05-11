@@ -29,7 +29,7 @@ static const NSUInteger kArbitrarySrtingLength = 10;
 
 + (id)alphabetWithRange:(NSRange)range {
     NSMutableString *result = [NSMutableString stringWithCapacity:range.length];
-    for (char symbol = range.location; symbol < NSMaxRange(range); symbol++) {
+    for (unichar symbol = range.location; symbol < NSMaxRange(range); symbol++) {
         [result appendFormat:@"%c",symbol];
     }
     
@@ -50,7 +50,7 @@ static const NSUInteger kArbitrarySrtingLength = 10;
     NSMutableString *result = [NSMutableString stringWithCapacity:length];
     
     for (NSUInteger index = 0; index < length; index++) {
-        char symbol = [alphabet characterAtIndex:arc4random_uniform((uint32_t)[alphabet length])];
+        unichar symbol = [alphabet characterAtIndex:arc4random_uniform((uint32_t)[alphabet length])];
         [result appendFormat:@"%c",symbol];
     }
     

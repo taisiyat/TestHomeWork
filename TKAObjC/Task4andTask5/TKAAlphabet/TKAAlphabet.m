@@ -14,9 +14,9 @@
 
 #import "NSString+TKAExtensionWithAlphabet.h"
 
-NSRange TKAMakeRange(char firstValue, char secondValue) {
-    char minValue = MIN(firstValue, secondValue);
-    char maxValue = MAX(firstValue, secondValue);
+NSRange TKAMakeRange(unichar firstValue, unichar secondValue) {
+    unichar minValue = MIN(firstValue, secondValue);
+    unichar maxValue = MAX(firstValue, secondValue);
    
     return NSMakeRange(minValue, maxValue - minValue);
 }

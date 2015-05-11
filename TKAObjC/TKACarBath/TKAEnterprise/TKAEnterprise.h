@@ -22,6 +22,7 @@
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;
 
+- (void)addEmployeeWithName:(NSString *)name andClass:(Class)typeClass;
 - (void)addEmployee:(TKAEmployee *)emploeey;
 - (void)removeEmployee:(TKAEmployee *)emploeey;
 - (id)freeEmployeeOfClass:(Class)classPosition;
