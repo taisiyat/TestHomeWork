@@ -10,20 +10,9 @@
 
 #import "TKATransferMoneyProtocol.h"
 
-@class TKACar;
-
-@protocol TKACarDelegate <NSObject>
-
-- (void)car:(TKACar *)object shouldGiveMoney:(NSUInteger)money;
-//or - (void)shouldGiveMoneyCar:(TKACar *)object;
-- (BOOL)carShouldBeClean:(TKACar *)object;
-
-@end
-
-@interface TKACar : NSObject <TKATransferMoneyProtocol, TKACarDelegate>
+@interface TKACar : NSObject <TKATransferMoneyProtocol>
 @property (nonatomic, copy)     NSString    *number;
 @property (nonatomic, assign)   BOOL        clean;
-@property (nonatomic, assign)   id<TKACarDelegate>      delegate;
 
 + (instancetype)carWithNumber:(NSString *)number
                   moneyAmount:(NSUInteger)moneyAmount;

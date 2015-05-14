@@ -27,8 +27,6 @@
 - (void)dealloc {
     self.name = nil;
     self.delegate = nil;
-    self.delegatingObject = nil;
- 
     [super dealloc];
 }
 
@@ -36,7 +34,6 @@
     self = [super init];
     if (self) {
         self.name = name;
-        self.free = YES;
     }
     
     return self;
@@ -45,34 +42,17 @@
 #pragma mark -
 #pragma mark Acessors Methods
 
-- (void)setDelegatingObject:(TKAEmployee *)delegatingObject {
-    if (_delegatingObject != delegatingObject) {
-        
-        _delegatingObject.delegate = nil;
-        [_delegatingObject release];
-        
-        _delegatingObject = [delegatingObject retain];
-        _delegatingObject.delegate = self;
-    }
-}
-
 - (void)setFinishWork:(BOOL)finishWork {
     _finishWork = finishWork;
-    id<TKAEmployeeDelegate> delegate = self.delegate;
-    
-    if ([delegate employeeShouldFinishWork:self]) {
-        [delegate employee:self shouldGiveMoney:self.money];
+       
+    if (finishWork) {
+        [self.delegate employeeShouldFinishWork:self];
     }
 }
 
 - (void)setMoney:(NSUInteger)money {
     _money = money;
-    
-    if ([TKAWasher class] == [self class]) {
-        self.state = (0 == money) ? TKAReadyToWash : TKAPerformWork;
-    } else {
-        self.state = (0 == money) ? TKAReadyToWork : TKAPerformWork;
-    }
+        self.state = (0 == money) ? TKAEmployeeReadyToWork : TKAEmployeePerformWork;
 }
 
 #pragma mark -
@@ -89,7 +69,16 @@
     return [[result copy] autorelease];
 }
 
-- (void)takeMoneyFromSomeone:(id<TKATransferMoneyProtocol>)object {
+- (void)performWorkWithObject:(id)object {
+//    self.state = TKAEmployeePerformWork;
+    [self processWithObject:object];
+//    self.state = TKAEmployeeReadyToWork;
+}
+
+#pragma mark -
+#pragma mark TKATransferMoneyProtocol
+
+- (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
     self.money += object.money;
     object.money = 0;
 }
@@ -97,29 +86,19 @@
 #pragma mark -
 #pragma mark TKAEmployeeDelegate
 
-- (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money {
-    [self takeMoneyFromSomeone:employee];
-    employee.free = YES;
-}
-
-- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee {
-    return (employee.finishWork);
+- (void)employeeShouldFinishWork:(TKAEmployee *)employee {
+    [self performWorkWithObject:employee];
 }
 
 #pragma mark -
 #pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
-    switch (state)
-    {
-        case TKAReadyToWash:
-            return @selector(employeeBecomeReadyToWash:);
-            
-        case TKAReadyToWork:
-            return @selector(employeeBecomeReadyToWork:);
-        
+    switch (state) {
+        case TKAEmployeeReadyToWork:
+            return @selector(employeeDidBecomeReadyToWork:);
         default:
-            return @selector(employeePerformWorkNow:);
+            return @selector(employeeDidPerformWork:);
     }
 }
 

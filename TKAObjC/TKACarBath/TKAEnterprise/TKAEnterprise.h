@@ -15,9 +15,9 @@
 
 @interface TKAEnterprise : NSObject <TKAEmployeeObserver>
 @property (nonatomic, copy)         NSString        *name;
-@property (nonatomic, retain)       TKABuilding     *building;
+//@property (nonatomic, retain)       TKABuilding     *building;
 @property (nonatomic, readonly)     NSArray         *employees;
-@property (nonatomic, retain)       TKAEmployee     *observableEmployee;  //------
+//@property (nonatomic, retain)       TKAEmployee     *observableEmployee;  //------
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;

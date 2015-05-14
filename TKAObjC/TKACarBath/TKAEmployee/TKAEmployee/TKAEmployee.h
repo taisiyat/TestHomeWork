@@ -15,25 +15,21 @@
 @class TKAEmployee;
 
 typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
-    TKAReadyToWash,
-    TKAReadyToWork,
-    TKAPerformWork
+    TKAEmployeeReadyToWork,
+    TKAEmployeePerformWork
 };
 
 @protocol TKAEmployeeDelegate <NSObject>
 
-- (void)employee:(TKAEmployee *)employee shouldGiveMoney:(NSUInteger)money;
-//or - (void)shouldGiveMoneyEmployee:(TKAEmployee *)employee;
-- (BOOL)employeeShouldFinishWork:(TKAEmployee *)employee;
+- (void)employeeShouldFinishWork:(TKAEmployee *)employee;
 
 @end
 
 @protocol TKAEmployeeObserver <NSObject>
 
 @optional
-- (void)employeeBecomeReadyToWash:(TKAEmployee *)employee;
-- (void)employeeBecomeReadyToWork:(TKAEmployee *)employee;
-- (void)employeePerformWorkNow:(TKAEmployee *)employee;
+- (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee;
+- (void)employeeDidPerformWork:(TKAEmployee *)employee;
 
 @end
 
@@ -41,11 +37,12 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 @property (nonatomic, copy)         NSString        *name;
 @property (nonatomic, assign)       NSUInteger      experience;
 @property (nonatomic, assign)       NSUInteger      salary;
-@property (nonatomic, retain)       TKAEmployee     *delegatingObject;
 @property (nonatomic, assign)       BOOL            finishWork;
-@property (nonatomic, assign, getter=isFree) BOOL   free;
 @property (nonatomic, assign)   id<TKAEmployeeDelegate>     delegate;
 
 + (instancetype)employeeWithName:(NSString *)name;
+
+- (void)processWithObject:(id)object;
+- (void)performWorkWithObject:(id)object;
 
 @end

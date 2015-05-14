@@ -13,8 +13,7 @@
 
 @optional
 
-- (void)takeMoneyFromSomeone:(id<TKATransferMoneyProtocol>)object;
-//- (void)takeMoney:(NSUInteger)money FromSomeone:(id<TKATransferMoneyProtocol>)object;
+- (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object;
 
 @end
 

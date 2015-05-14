@@ -10,8 +10,9 @@
 
 @implementation TKADirector
 
-- (void)profit {
-    self.money *= 0.5;
+- (void)processWithObject:(TKAEmployee *)object {
+    [self takeMoneyFromObject:object];
+//    self.money *= 0.5;
     NSLog(@"Director profit.");
 }
 

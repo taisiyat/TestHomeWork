@@ -10,6 +10,4 @@
 
 @interface TKADirector : TKAEmployee
 
-- (void)profit;
-
 @end

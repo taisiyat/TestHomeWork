@@ -30,22 +30,12 @@
 
 - (void)dealloc {
     self.number = nil;
-    self.delegate = nil;
     
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Acessors Methods
-
-- (void)setClean:(BOOL)clean {
-    _clean = clean;
-    id<TKACarDelegate> delegate = self.delegate;
-
-    if ([delegate carShouldBeClean:self]) {
-        [delegate car:self shouldGiveMoney:self.money];
-    }
-}
 
 #pragma mark -
 #pragma mark Public Methods

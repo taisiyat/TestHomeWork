@@ -9,9 +9,6 @@
 #import "TKAEmployee.h"
 #import "TKACar.h"
 
-@interface TKAWasher : TKAEmployee <TKACarDelegate>
-@property (nonatomic, retain) TKACar *car;
-
-- (void)washCar:(TKACar *)car;
+@interface TKAWasher : TKAEmployee
 
 @end
