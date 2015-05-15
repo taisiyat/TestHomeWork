@@ -10,14 +10,16 @@
 #import "TKAHumanTest.h"
 #import "TKACarBathTest.h"
 #import "TKAStringTest.h"
+#import "TKAThreadTest.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         //TKAHumanTask1Test();
         //TKACreatureTask2Test();
-        TKACarBathTask1();
+        //TKACarBathTask1();
         //TKAStringTest();
+        TKAThreadTestFirst();
         NSLog(@"Hello, World!");
     }
     return 0;
