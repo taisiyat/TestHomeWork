@@ -16,29 +16,23 @@
 
 typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
     TKAEmployeeReadyToWork,
-    TKAEmployeePerformWork
+    TKAEmployeePerformWork,
+    TKAEmployeeReadyToProcessing
 };
-
-@protocol TKAEmployeeDelegate <NSObject>
-
-- (void)employeeShouldFinishWork:(TKAEmployee *)employee;
-
-@end
 
 @protocol TKAEmployeeObserver <NSObject>
 
 @optional
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee;
+- (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee;
 - (void)employeeDidPerformWork:(TKAEmployee *)employee;
 
 @end
 
-@interface TKAEmployee : TKAObservableObject <TKATransferMoneyProtocol, TKAEmployeeDelegate, TKAEmployeeObserver>
+@interface TKAEmployee : TKAObservableObject <TKATransferMoneyProtocol, TKAEmployeeObserver>
 @property (nonatomic, copy)         NSString        *name;
 @property (nonatomic, assign)       NSUInteger      experience;
 @property (nonatomic, assign)       NSUInteger      salary;
-@property (nonatomic, assign)       BOOL            finishWork;
-@property (nonatomic, assign)   id<TKAEmployeeDelegate>     delegate;
 
 + (instancetype)employeeWithName:(NSString *)name;
 

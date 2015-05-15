@@ -22,7 +22,7 @@
 - (void)processWithObject:(TKAEmployee *)object {
     [self takeMoneyFromObject:object];
     NSLog(@"Accountant count money.");
-    self.finishWork = YES;
+    self.state = TKAEmployeeReadyToProcessing;
 }
 
 @end

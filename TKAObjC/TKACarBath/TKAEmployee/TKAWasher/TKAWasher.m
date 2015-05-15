@@ -23,7 +23,7 @@
     NSLog(@"%@ wash %@ ", self.name, [object description]);
     object.clean = YES;
     [self takeMoneyFromObject:object];
-    self.finishWork = YES;
+    self.state = TKAEmployeeReadyToProcessing;
 }
 
 @end

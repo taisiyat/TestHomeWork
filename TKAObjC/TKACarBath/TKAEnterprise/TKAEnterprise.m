@@ -113,12 +113,13 @@ static const NSUInteger kTKACountWasher = 3;
 - (void)performWork {
     TKAAccountant *accountant = [self freeEmployeeOfClass:[TKAAccountant class]];
     TKADirector *director = [self freeEmployeeOfClass:[TKADirector class]];
+
     for (TKAEmployee *employee in self.employees) {
         if ([employee isKindOfClass:[TKAWasher class]]) {
-            employee.delegate = accountant;
+            [employee  addObserver:accountant];
         }
         if ([employee isKindOfClass:[TKAAccountant class]]) {
-            employee.delegate = director;
+            [employee  addObserver:director];
         }
     }
     

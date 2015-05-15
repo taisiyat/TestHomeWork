@@ -26,7 +26,7 @@
 
 - (void)dealloc {
     self.name = nil;
-    self.delegate = nil;
+    
     [super dealloc];
 }
 
@@ -41,19 +41,6 @@
 
 #pragma mark -
 #pragma mark Acessors Methods
-
-- (void)setFinishWork:(BOOL)finishWork {
-    _finishWork = finishWork;
-       
-    if (finishWork) {
-        [self.delegate employeeShouldFinishWork:self];
-    }
-}
-
-- (void)setMoney:(NSUInteger)money {
-    _money = money;
-        self.state = (0 == money) ? TKAEmployeeReadyToWork : TKAEmployeePerformWork;
-}
 
 #pragma mark -
 #pragma mark Public Methods
@@ -70,9 +57,13 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-//    self.state = TKAEmployeePerformWork;
+    self.state = TKAEmployeePerformWork;
     [self processWithObject:object];
-//    self.state = TKAEmployeeReadyToWork;
+    self.state = TKAEmployeeReadyToWork;
+}
+
+- (void)processWithObject:(id)object {
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 #pragma mark -
@@ -84,22 +75,25 @@
 }
 
 #pragma mark -
-#pragma mark TKAEmployeeDelegate
-
-- (void)employeeShouldFinishWork:(TKAEmployee *)employee {
-    [self performWorkWithObject:employee];
-}
-
-#pragma mark -
 #pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case TKAEmployeeReadyToWork:
             return @selector(employeeDidBecomeReadyToWork:);
+        case TKAEmployeeReadyToProcessing:
+            return @selector(employeeDidBecomeReadyToProcessing:);
         default:
             return @selector(employeeDidPerformWork:);
     }
+}
+
+#pragma mark -
+#pragma mark TKAEmployeeObserver
+
+- (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee{
+    NSLog(@"%@ ready to processing", employee.name);
+    [self performWorkWithObject:employee];
 }
 
 @end
