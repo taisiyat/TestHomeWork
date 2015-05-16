@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 TKAHomeWork. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <XCTest/XCTest.h>
+//#import <Cocoa/Cocoa.h>
+//#import <XCTest/XCTest.h>
 
 #import "Kiwi.h"
 

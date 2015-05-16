@@ -87,7 +87,7 @@
         NSLog(@"wake up");
         if (_value != value) {
             [NSException raise:NSGenericException format:nil];
-            NSLog(@"Exception");
+            NSLog(@"Exception %@", NSStringFromSelector(_cmd));
         }
     }
     

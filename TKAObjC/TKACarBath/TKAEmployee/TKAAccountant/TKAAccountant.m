@@ -22,6 +22,7 @@
 - (void)processWithObject:(TKAEmployee *)object {
     [self takeMoneyFromObject:object];
     NSLog(@"Accountant count money.");
+    usleep(10000*arc4random_uniform(10));
     self.state = TKAEmployeeReadyToProcessing;
 }
 

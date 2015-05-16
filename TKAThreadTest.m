@@ -23,8 +23,8 @@ void TKAThreadTestFirst() {
             [testObject performSelectorInBackground:@selector(setValue:) withObject:[[NSObject new] autorelease]];
         }
         
-        while (true) {
-            
-        }
+//        while (true) {
+//            
+//        }
     }
 }

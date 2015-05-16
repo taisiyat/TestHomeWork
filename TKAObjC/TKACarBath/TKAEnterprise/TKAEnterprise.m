@@ -20,7 +20,7 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger kTKACountCar = 3;
+static const NSUInteger kTKACountCar = 4;
 static const NSUInteger kTKACountWasher = 3;
 
 @interface TKAEnterprise ()
@@ -123,31 +123,20 @@ static const NSUInteger kTKACountWasher = 3;
         }
     }
     
-    TKACar *car = [TKACar carWithNumber:@"AA1234" moneyAmount:10];
-    [self performWorkWasher:nil withCar:car];
-    
-    for (NSUInteger iter = 1; iter < kTKACountCar; iter++) {
-        [self performWorkWasher:nil withCar:nil];
-        NSLog(@"----------------------------------------");
-    }
-    
-}
-
-- (void)performWorkWasher:(TKAWasher *)washer withCar:(TKACar *)car {
-    if (nil == car) {
+    NSMutableArray *cars = [NSMutableArray array];
+    for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
         NSMutableString *number = [NSMutableString string];
         [number setString:@"AB"];
         [number appendString:[NSString randomStringWithLength:4 alphabet:[TKAAlphabet numericAlphabet]]];
         
-        car = [TKACar carWithNumber:number moneyAmount:20];
+        [cars addObject:[TKACar carWithNumber:number moneyAmount:20]];
     }
     
-    if (nil == washer) {
-        washer = [self freeEmployeeOfClass:[TKAWasher class]];
-    }
-
-    if (NO == car.clean && 0 != car.money && nil != washer) {
-        [washer performWorkWithObject:car];
+    TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
+    for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
+//        [washer performWorkWithObject:[cars objectAtIndex:iter]];
+        [washer performWorkInBackgroundWithObject:[cars objectAtIndex:iter]];
+        NSLog(@"----------------------------------------");
     }
 }
 
@@ -167,7 +156,7 @@ static const NSUInteger kTKACountWasher = 3;
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
     NSLog(@"%@ ready to work", employee.name);
     if ([employee isKindOfClass:[TKAWasher class]]) {
-//        [self performWorkWasher:employee withCar:nil];
+        [employee performWorkWithObject:[cars objectAtIndex:iter]];
     }
 }
 

@@ -17,9 +17,9 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         //TKAHumanTask1Test();
         //TKACreatureTask2Test();
-        //TKACarBathTask1();
+        TKACarBathTask1();
         //TKAStringTest();
-        TKAThreadTestFirst();
+        //TKAThreadTestFirst();
         NSLog(@"Hello, World!");
     }
     return 0;
