@@ -17,8 +17,7 @@
 @property (nonatomic, copy)         NSString        *name;
 //@property (nonatomic, retain)       TKABuilding     *building;
 @property (nonatomic, readonly)     NSArray         *employees;
-//@property (nonatomic, retain)       TKAEmployee     *observableEmployee;  //------
-@property (nonatomic, assign)       NSMutableArray  *cars;
+@property (nonatomic, readonly)       NSArray         *cars;
 
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;
@@ -28,6 +27,7 @@
 - (void)removeEmployee:(TKAEmployee *)emploeey;
 - (id)freeEmployeeOfClass:(Class)classPosition;
 
+- (void)startPerformWork;
 - (void)performWork;
 
 @end

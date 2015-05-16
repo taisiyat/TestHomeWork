@@ -76,15 +76,15 @@
 }
 
 - (void)notifyOfStateChangeWhithSelector:(SEL)selector {
-//    @synchronized (self){
-    NSMutableSet *observerSet = self.mutableObserverSet;
-    for (id observer in observerSet) {
-        if ([observer respondsToSelector:selector]) {
-            //[observer performSelector:selector withObject:self];
-            [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:YES];
+    @synchronized (self){
+        NSMutableSet *observerSet = self.mutableObserverSet;
+        for (id observer in observerSet) {
+            if ([observer respondsToSelector:selector]) {
+                //[observer performSelector:selector withObject:self];
+                [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:YES];
+            }
         }
     }
-//    }
 }
 
 @end

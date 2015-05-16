@@ -13,6 +13,7 @@
 - (void)processWithObject:(TKAEmployee *)object {
     [self takeMoneyFromObject:object];
 //    self.money *= 0.5;
+    usleep(100*arc4random_uniform(10));
     NSLog(@"Director profit.");
 }
 

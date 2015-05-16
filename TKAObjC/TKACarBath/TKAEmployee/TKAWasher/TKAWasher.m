@@ -21,7 +21,7 @@
 
 - (void)processWithObject:(TKACar *)object {
     NSLog(@"%@ wash %@ ", self.name, [object description]);
-    usleep(10000*arc4random_uniform(10));
+//    usleep(100*arc4random_uniform(10));
     object.clean = YES;
     [self takeMoneyFromObject:object];
     self.state = TKAEmployeeReadyToProcessing;
