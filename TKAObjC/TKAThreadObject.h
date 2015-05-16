@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface TKAThreadObject : NSObject
-@property (nonatomic, retain) id value;
-@property (nonatomic, assign) NSUInteger callCount;
+//@property (nonatomic, retain)   NSLock      *lock;
+@property (nonatomic, retain)   id<NSLocking>      lock;
+@property (nonatomic, retain)   id          value;
+@property (nonatomic, assign)   NSUInteger  callCount;
+
+-(void)print;
 
 @end

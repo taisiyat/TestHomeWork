@@ -15,51 +15,65 @@
 
 #import "TKAThreadObject.h"
 
-SPEC_BEGIN(TKACarBathSpec)
+SPEC_BEGIN(TKAThreadSpec)
 
 registerMatchers(@"IDP");
 registerMatchers(@"KW");
 
+static const NSUInteger iterCount = 100;
+
+//describe(@"TKAThreadObject", ^{
+//    registerMatchers(@"BG"); // Registers BGTangentMatcher, BGConvexMatcher, etc.
+//    __block TKAThreadObject *testObject = nil;
+//    
+//    beforeEach(^{
+//        testObject = [TKAThreadObject new];
+//    });
+//    
+//    context(@"when modified from one thread", ^{
+//        it(@"shouldn't raise", ^{
+//            [[theBlock(^{
+//                for (NSUInteger iter = 0; iter < iterCount; iter++) {
+//                    testObject.value = [NSObject new];
+//                }
+//            }) shouldNot] raise];
+//            
+//        });
+//    });
+//    
+////    context(@"when modified from multiple threads", ^{
+////        it(@"should raise", ^{
+////            [[theBlock(^{
+////                testObject.value = [NSObject new];
+////            }) should] raiseWithIterationCount:iterCount];
+////        });
+////    });
+//    
+////    context(@"when modified from multiple threads", ^{
+////        it(@"shouldnt raise", ^{
+////            [[theBlock(^{
+////                testObject.value = [NSObject new];
+////            }) shouldNot] raise];
+////        });
+////    });
+//});
+
 describe(@"TKAThreadObject", ^{
     registerMatchers(@"BG"); // Registers BGTangentMatcher, BGConvexMatcher, etc.
     __block TKAThreadObject *testObject = nil;
-    
+
     beforeEach(^{
-        testObject = [TKAThreadObject ]
+        testObject = [TKAThreadObject new];
     });
-    context(@"a state the component is in", ^{
-        //        let(variable, ^{
-        //            return [MyClass instance];
-        //        });
-        
-        beforeAll(^{ // Occurs once
-        });
-        
-        afterAll(^{ // Occurs once
-        });
-        
-        beforeEach(^{ // Occurs before each enclosed "it"
-        });
-        
-        afterEach(^{ // Occurs after each enclosed "it"
-        });
-        
-        //        it(@"should do something", ^{
-        //            [[variable should] meetSomeExpectation];
-        //        });
-        
-        //        specify(^{
-        //            [[variable shouldNot] beNil];
-        //        });
-        
-        context(@"inner context", ^{
-            it(@"does another thing", ^{
-            });
-            
-            //            pending(@"something unimplemented", ^{
-            //            });
+
+    context(@"when modified from multiple threads", ^{
+        it(@"shouldnt raise", ^{
+            [[theBlock(^{
+                testObject.value = [NSObject new];
+            }) shouldNot] raiseWithIterationCount:iterCount];
         });
     });
 });
+
 
 SPEC_END

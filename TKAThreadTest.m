@@ -16,8 +16,15 @@ static const NSUInteger kTKAExecuteCount    = 100;
 void TKAThreadTestFirst() {
     @autoreleasepool {
         TKAThreadObject *testObject = [TKAThreadObject object];
+//        for (NSUInteger iter = 0; iter < kTKAExecuteCount; iter++) {
+//            testObject.value = [[NSObject new] autorelease];
+//        }
         for (NSUInteger iter = 0; iter < kTKAExecuteCount; iter++) {
-            testObject.value = [[NSObject new] autorelease];
+            [testObject performSelectorInBackground:@selector(setValue:) withObject:[[NSObject new] autorelease]];
+        }
+        
+        while (true) {
+            
         }
     }
 }
