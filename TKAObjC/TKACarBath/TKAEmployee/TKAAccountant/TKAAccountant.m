@@ -20,10 +20,13 @@
 #pragma mark Public Methods
 
 - (void)processWithObject:(TKAEmployee *)object {
-    [self takeMoneyFromObject:object];
-    NSLog(@"Accountant count money.");
-    usleep(10*arc4random_uniform(10));
-    self.state = TKAEmployeeReadyToProcessing;
+    @synchronized (self) {
+        [self takeMoneyFromObject:object];
+        NSLog(@"Accountant count money %@", object.name);
+        //usleep(100*arc4random_uniform(10));
+        usleep(100);
+        self.state = TKAEmployeeReadyToProcessing;
+    }
 }
 
 @end

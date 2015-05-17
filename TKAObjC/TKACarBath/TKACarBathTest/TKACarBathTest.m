@@ -19,6 +19,7 @@ void TKACarBathTask1() {
             NSLog(@"%@", [enterprise description]);
             
             //[enterprise performWork];
+            //[enterprise performSelectorOnMainThread:@selector(startPerformWork) withObject:enterprise waitUntilDone:YES];
             [enterprise startPerformWork];
             NSLog(@"%@", [enterprise description]);
         }

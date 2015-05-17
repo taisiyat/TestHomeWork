@@ -20,11 +20,14 @@
 #pragma mark Public Methods
 
 - (void)processWithObject:(TKACar *)object {
-    NSLog(@"%@ wash %@ ", self.name, [object description]);
-//    usleep(100*arc4random_uniform(10));
-    object.clean = YES;
-    [self takeMoneyFromObject:object];
-    self.state = TKAEmployeeReadyToProcessing;
+    @synchronized (self) {
+        NSLog(@"%@ wash %@ ", self.name, [object description]);
+        object.clean = YES;
+        [self takeMoneyFromObject:object];
+        //usleep(10000*arc4random_uniform(10));
+        usleep(1000);
+        self.state = TKAEmployeeReadyToProcessing;
+    }
 }
 
 @end
