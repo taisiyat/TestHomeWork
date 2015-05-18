@@ -124,14 +124,12 @@ static NSUInteger realCountCar = 0;
 }
 
 - (void)startPerformWork {
-//    @synchronized (self) {
         for (TKAEmployee *employee in self.mutableEmployees) {
             if ([employee isKindOfClass:[TKAWasher class]]) {
                 employee.state = TKAEmployeePerformWork;
                 employee.state = TKAEmployeeReadyToWork;
             }
         }
-//    }
 }
 
 - (void)performWorkWithWasher:(TKAEmployee *)washer {
@@ -157,12 +155,12 @@ static NSUInteger realCountCar = 0;
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
 //    NSLog(@"%@ ready to work", employee.name);
         if ([employee isKindOfClass:[TKAWasher class]]) {
- //           @synchronized (employee) {
+            @synchronized (employee) {
                 TKACar *car = [TKACar generateCar];
-//                [employee performSelectorInBackground:@selector(performWorkWithObject:) withObject:car];
-                [employee performWorkWithObject:car];
+                [employee performSelectorInBackground:@selector(performWorkWithObject:) withObject:car];
+//                [employee performWorkWithObject:car];
                 NSLog(@"----------%@",car.description);
-//            }
+            }
         }
     
 //    [self performWorkWithWasher:employee];

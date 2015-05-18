@@ -79,7 +79,7 @@
         for (id observer in observerSet) {
             if ([observer respondsToSelector:selector]) {
                [observer performSelector:selector withObject:self];
-//                [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:YES];
+               // [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:NO];
             }
     }
 }

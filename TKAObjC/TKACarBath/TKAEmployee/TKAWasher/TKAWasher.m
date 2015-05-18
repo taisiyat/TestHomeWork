@@ -25,7 +25,7 @@
         object.clean = YES;
         [self takeMoneyFromObject:object];
         //usleep(10000*arc4random_uniform(10));
-        usleep(1000);
+        usleep(10000);
         self.state = TKAEmployeeReadyToProcessing;
     }
 }
