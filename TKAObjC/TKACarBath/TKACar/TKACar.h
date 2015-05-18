@@ -17,4 +17,6 @@
 + (instancetype)carWithNumber:(NSString *)number
                   moneyAmount:(NSUInteger)moneyAmount;
 
++ (instancetype)generateCar;
+
 @end
