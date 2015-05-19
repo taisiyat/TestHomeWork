@@ -28,6 +28,6 @@
 
 - (void)startPerformWork;
 - (void)performWork;
-- (void)performWorkWithObject:(TKAEmployee *)washer;
+- (void)performWorkEmployee:(TKAEmployee *)employee;
 
 @end

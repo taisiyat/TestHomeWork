@@ -10,7 +10,7 @@
 
 @implementation TKADirector
 
-- (void)processWithObject:(TKAEmployee *)object {
+- (void)processingObject:(TKAEmployee *)object {
     @synchronized (self) {
         [self takeMoneyFromObject:object];
     //    self.money *= 0.5;
@@ -21,10 +21,7 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-//    @synchronized (self) {
-        [self processWithObject:object];
-//        [self performSelectorInBackground:@selector(processWithObject:) withObject:object];
-//    }
+    [self processingObject:object];
 }
 
 @end

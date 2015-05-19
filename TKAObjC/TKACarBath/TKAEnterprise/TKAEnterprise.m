@@ -20,9 +20,8 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger kTKACountCar = 4;
+static const NSUInteger kTKACountCar = 6;
 static const NSUInteger kTKACountWasher = 3;
-static NSUInteger realCountCar = 0;
 
 @interface TKAEnterprise ()
 @property (nonatomic, assign)       NSMutableArray  *mutableEmployees;
@@ -160,6 +159,7 @@ static NSUInteger realCountCar = 0;
 //}
 
 - (void)performWorkEmployee:(TKAEmployee *)employee {
+    @synchronized (self) {
         for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
             if (nil != [self.mutableCars objectAtIndex:iter] && NO == [[self.mutableCars objectAtIndex:iter] clean]) {
                 [employee performWorkWithObject:[self.mutableCars objectAtIndex:iter]];
@@ -168,6 +168,7 @@ static NSUInteger realCountCar = 0;
                 break;
             }
         }
+    }
 }
 
 - (id)freeEmployeeOfClass:(Class)classPosition {
@@ -195,7 +196,7 @@ static NSUInteger realCountCar = 0;
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
 //    NSLog(@"%@ ready to work", employee.name);
         [self performWorkEmployee:employee];
-//        [self performSelectorInBackground:@selector(performWorkEmployee:) withObject:employee];
+//       [self performSelectorInBackground:@selector(performWorkEmployee:) withObject:employee];
 }
 
 

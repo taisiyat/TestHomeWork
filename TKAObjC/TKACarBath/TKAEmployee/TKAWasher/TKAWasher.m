@@ -19,7 +19,7 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)processWithObject:(TKACar *)object {
+- (void)processingObject:(TKACar *)object {
     @synchronized (self) {
         NSLog(@"%@ wash %@ ", self.name, [object description]);
         object.clean = YES;

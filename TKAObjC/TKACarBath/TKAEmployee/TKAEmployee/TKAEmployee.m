@@ -58,11 +58,11 @@
 
 - (void)performWorkWithObject:(id)object {
         self.state = TKAEmployeePerformWork;
-        [self processWithObject:object];
-        self.state = TKAEmployeeReadyToProcessing;
+        [self processingObject:object];
+        self.state = TKAEmployeeReadyForProcessing;
 }
 
-- (void)processWithObject:(id)object {
+- (void)processingObject:(id)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 
@@ -81,7 +81,7 @@
     switch (state) {
         case TKAEmployeeReadyToWork:
             return @selector(employeeDidBecomeReadyToWork:);
-        case TKAEmployeeReadyToProcessing:
+        case TKAEmployeeReadyForProcessing:
             return @selector(employeeDidBecomeReadyToProcessing:);
         case TKAEmployeePerformWork:
             return @selector(employeeDidPerformWork:);
@@ -95,11 +95,11 @@
 
 - (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee{
 //        NSLog(@"%@ ready to processing", employee.name);
-    [self performWorkWithObject:employee];
-//    @synchronized (self) {
+     @synchronized (self) {
+        [self performWorkWithObject:employee];
 //        [self performSelectorInBackground:@selector(performWorkWithObject:) withObject:employee];
-//        employee.state = TKAEmployeeReadyToWork;
-//    }
+        employee.state = TKAEmployeeReadyToWork;
+    }
 }
 
 @end

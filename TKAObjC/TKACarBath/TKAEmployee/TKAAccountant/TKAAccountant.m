@@ -19,7 +19,7 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)processWithObject:(TKAEmployee *)object {
+- (void)processingObject:(TKAEmployee *)object {
     @synchronized (self) {
         [self takeMoneyFromObject:object];
         NSLog(@"Accountant count money %@", object.name);

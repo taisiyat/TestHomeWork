@@ -17,7 +17,7 @@
 typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
     TKAEmployeeReadyToWork,
     TKAEmployeePerformWork,
-    TKAEmployeeReadyToProcessing
+    TKAEmployeeReadyForProcessing
 };
 
 @protocol TKAEmployeeObserver <NSObject>
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 
 + (instancetype)employeeWithName:(NSString *)name;
 
-- (void)processWithObject:(id)object;
+- (void)processingObject:(id)object;
 - (void)performWorkWithObject:(id)object;
 
 @end
