@@ -20,4 +20,11 @@
     }
 }
 
+- (void)performWorkWithObject:(id)object {
+//    @synchronized (self) {
+        [self processWithObject:object];
+//        [self performSelectorInBackground:@selector(processWithObject:) withObject:object];
+//    }
+}
+
 @end

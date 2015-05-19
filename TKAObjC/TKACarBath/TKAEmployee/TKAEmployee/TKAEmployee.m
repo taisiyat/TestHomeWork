@@ -57,12 +57,12 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-    @synchronized (self) {
+//    @synchronized (self) {
         self.state = TKAEmployeePerformWork;
         [self processWithObject:object];
 //        [self performSelectorInBackground:@selector(processWithObject:) withObject:object];
-        self.state = TKAEmployeeReadyToWork;
-    }
+        self.state = TKAEmployeeReadyToProcessing;
+//    }
 }
 
 - (void)processWithObject:(id)object {
@@ -86,8 +86,10 @@
             return @selector(employeeDidBecomeReadyToWork:);
         case TKAEmployeeReadyToProcessing:
             return @selector(employeeDidBecomeReadyToProcessing:);
-        default:
+        case TKAEmployeePerformWork:
             return @selector(employeeDidPerformWork:);
+        default:
+            return nil;
     }
 }
 
@@ -96,8 +98,10 @@
 
 - (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee{
 //        NSLog(@"%@ ready to processing", employee.name);
- //       [self performWorkWithObject:employee];
-        [self performSelectorInBackground:@selector(performWorkWithObject:) withObject:employee];
+//    @synchronized (self) {
+    [self performWorkWithObject:employee];
+    employee.state = TKAEmployeeReadyToWork;
+//    }
 }
 
 @end

@@ -114,27 +114,32 @@ static NSUInteger realCountCar = 0;
 - (void)addEmployee:(TKAEmployee *)employee {
     if (NO == [self.mutableEmployees containsObject:employee]) {
         [self.mutableEmployees addObject:employee];
-        [employee addObserver:self];
+            if ([employee isKindOfClass:[TKAWasher class]]) {
+                [employee addObserver:self];
+            }
     }
 }
 
 - (void)removeEmployee:(TKAEmployee*)employee { //dismiss
     [self.mutableEmployees removeObject:employee];
-    [employee removeObserver:self];
+        if ([employee isKindOfClass:[TKAWasher class]]) {
+            [employee removeObserver:self];
+        }
 }
 
 - (void)startPerformWork {
+    @synchronized (self) {
         for (TKAEmployee *employee in self.mutableEmployees) {
             if ([employee isKindOfClass:[TKAWasher class]]) {
                 employee.state = TKAEmployeePerformWork;
                 employee.state = TKAEmployeeReadyToWork;
             }
         }
+    }
 }
 
 - (void)performWorkWithWasher:(TKAEmployee *)washer {
     TKACar *car = [TKACar generateCar];
-//    [washer performSelectorInBackground:@selector(performWorkWithObject:) withObject:car];
     [washer performWorkWithObject:car];
     NSLog(@"----------%@",car.description);
 }
@@ -154,17 +159,11 @@ static NSUInteger realCountCar = 0;
 
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
 //    NSLog(@"%@ ready to work", employee.name);
+//    @synchronized (self) {
         if ([employee isKindOfClass:[TKAWasher class]]) {
-            @synchronized (employee) {
-                TKACar *car = [TKACar generateCar];
-                [employee performSelectorInBackground:@selector(performWorkWithObject:) withObject:car];
-//                [employee performWorkWithObject:car];
-                NSLog(@"----------%@",car.description);
-            }
+             [self performWorkWithWasher:employee];
         }
-    
-//    [self performWorkWithWasher:employee];
-//    [self performSelectorInBackground:@selector(performWorkWithWasher:) withObject:employee];
+//    }
 }
 
 - (void)employeeDidPerformWork:(TKAEmployee *)employee {

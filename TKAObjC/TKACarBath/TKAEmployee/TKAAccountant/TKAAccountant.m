@@ -25,7 +25,6 @@
         NSLog(@"Accountant count money %@", object.name);
         //usleep(100*arc4random_uniform(10));
         usleep(100);
-        self.state = TKAEmployeeReadyToProcessing;
     }
 }
 
