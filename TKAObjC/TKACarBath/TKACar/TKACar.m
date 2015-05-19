@@ -7,6 +7,9 @@
 //
 
 #import "TKACar.h"
+#import "TKAAlphabet.h"
+
+#import "NSString+TKAExtensionWithAlphabet.h"
 
 @implementation TKACar
 
@@ -47,6 +50,14 @@
     [result appendFormat:@" money = %lu", self.money];
     
     return [[result copy] autorelease];
+}
+
++ (instancetype)generateCar {
+    NSMutableString *number = [NSMutableString string];
+    [number setString:@"AB"];
+    [number appendString:[NSString randomStringWithLength:4 alphabet:[TKAAlphabet numericAlphabet]]];
+    
+    return [TKACar carWithNumber:number moneyAmount:20];
 }
 
 #pragma mark -

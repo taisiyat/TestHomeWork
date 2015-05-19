@@ -57,16 +57,12 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-    @synchronized(self) {
+    @synchronized (self) {
         self.state = TKAEmployeePerformWork;
-//        [self processWithObject:object];
-        [self performSelectorInBackground:@selector(processWithObject:) withObject:object];
+        [self processWithObject:object];
+//        [self performSelectorInBackground:@selector(processWithObject:) withObject:object];
         self.state = TKAEmployeeReadyToWork;
     }
-}
-
-- (void)performWorkInBackgroundWithObject:(id)object {
-    [self performSelectorInBackground:@selector(performWorkWithObject:) withObject:object];
 }
 
 - (void)processWithObject:(id)object {
@@ -99,11 +95,9 @@
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee{
-    @synchronized(self) {
-        NSLog(@"%@ ready to processing", employee.name);
-    //    [self performWorkWithObject:employee];
+//        NSLog(@"%@ ready to processing", employee.name);
+ //       [self performWorkWithObject:employee];
         [self performSelectorInBackground:@selector(performWorkWithObject:) withObject:employee];
-    }
 }
 
 @end
