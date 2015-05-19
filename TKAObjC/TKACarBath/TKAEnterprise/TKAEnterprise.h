@@ -27,6 +27,7 @@
 - (id)freeEmployeeOfClass:(Class)classPosition;
 
 - (void)startPerformWork;
-- (void)performWorkWithWasher:(TKAEmployee *)washer;
+- (void)performWork;
+- (void)performWorkWithObject:(TKAEmployee *)washer;
 
 @end

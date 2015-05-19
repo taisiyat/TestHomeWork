@@ -26,6 +26,7 @@ static NSUInteger realCountCar = 0;
 
 @interface TKAEnterprise ()
 @property (nonatomic, assign)       NSMutableArray  *mutableEmployees;
+@property (nonatomic, assign)       NSMutableArray  *mutableCars;
 
 @end
 
@@ -50,7 +51,8 @@ static NSUInteger realCountCar = 0;
     self.name = nil;
 //    self.building = nil;
     self.mutableEmployees = nil;
-
+    self.mutableCars = nil;
+    
     [super dealloc];
 }
 
@@ -58,6 +60,7 @@ static NSUInteger realCountCar = 0;
     self = [super init];
     if (self) {
         self.mutableEmployees = [NSMutableArray array];
+        self.mutableCars = [NSMutableArray array];
     }
     
     return self;
@@ -105,6 +108,11 @@ static NSUInteger realCountCar = 0;
             [employee  addObserver:director];
         }
     }
+    
+    for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
+        TKACar *car = [TKACar generateCar];
+        [self.mutableCars addObject:car];
+    }
 }
 
 - (void)addEmployeeWithName:(NSString *)name andClass:(Class)typeClass {
@@ -114,34 +122,52 @@ static NSUInteger realCountCar = 0;
 - (void)addEmployee:(TKAEmployee *)employee {
     if (NO == [self.mutableEmployees containsObject:employee]) {
         [self.mutableEmployees addObject:employee];
-            if ([employee isKindOfClass:[TKAWasher class]]) {
-                [employee addObserver:self];
-            }
+        
+        if ([employee isKindOfClass:[TKAWasher class]]) {
+            [employee addObserver:self];
+        }
     }
 }
 
 - (void)removeEmployee:(TKAEmployee*)employee { //dismiss
     [self.mutableEmployees removeObject:employee];
-        if ([employee isKindOfClass:[TKAWasher class]]) {
-            [employee removeObserver:self];
-        }
+    
+    if ([employee isKindOfClass:[TKAWasher class]]) {
+        [employee removeObserver:self];
+    }
 }
 
 - (void)startPerformWork {
-    @synchronized (self) {
-        for (TKAEmployee *employee in self.mutableEmployees) {
-            if ([employee isKindOfClass:[TKAWasher class]]) {
-                employee.state = TKAEmployeePerformWork;
-                employee.state = TKAEmployeeReadyToWork;
-            }
+    for (TKAEmployee *employee in self.mutableEmployees) {
+        if ([employee isKindOfClass:[TKAWasher class]]) {
+            employee.state = TKAEmployeePerformWork;
+            employee.state = TKAEmployeeReadyToWork;
         }
     }
 }
 
-- (void)performWorkWithWasher:(TKAEmployee *)washer {
-    TKACar *car = [TKACar generateCar];
-    [washer performWorkWithObject:car];
-    NSLog(@"----------%@",car.description);
+//- (void)startPerformWork {
+//    @synchronized (self) {
+//        TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
+//        [self performWorkEmployee:washer];
+//    }
+//}
+
+//- (void)performWorkWithObject:(TKAEmployee *)washer {
+//    TKACar *car = [TKACar generateCar];
+//    [washer performWorkWithObject:car];
+//    NSLog(@"----------%@",car.description);
+//}
+
+- (void)performWorkEmployee:(TKAEmployee *)employee {
+        for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
+            if (nil != [self.mutableCars objectAtIndex:iter] && NO == [[self.mutableCars objectAtIndex:iter] clean]) {
+                [employee performWorkWithObject:[self.mutableCars objectAtIndex:iter]];
+                //[employee performSelectorInBackground:@selector(performWorkWithObject) withObject:[self.mutableCars objectAtIndex:iter]];
+                NSLog(@"----------%@", [[self.mutableCars objectAtIndex:iter] description]);
+                break;
+            }
+        }
 }
 
 - (id)freeEmployeeOfClass:(Class)classPosition {
@@ -157,14 +183,21 @@ static NSUInteger realCountCar = 0;
 #pragma mark -
 #pragma mark TKAEmployeeObserver
 
+//- (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
+////    NSLog(@"%@ ready to work", employee.name);
+////    @synchronized (self) {
+//        if ([employee isKindOfClass:[TKAWasher class]]) {
+//             [self performWorkWithObject:employee];
+//        }
+////    }
+//}
+
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
 //    NSLog(@"%@ ready to work", employee.name);
-//    @synchronized (self) {
-        if ([employee isKindOfClass:[TKAWasher class]]) {
-             [self performWorkWithWasher:employee];
-        }
-//    }
+        [self performWorkEmployee:employee];
+//        [self performSelectorInBackground:@selector(performWorkEmployee:) withObject:employee];
 }
+
 
 - (void)employeeDidPerformWork:(TKAEmployee *)employee {
 //    NSLog(@"%@ perform work", employee.name);
