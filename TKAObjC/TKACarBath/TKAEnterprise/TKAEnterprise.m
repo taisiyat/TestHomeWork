@@ -49,15 +49,23 @@ static const NSUInteger kTKACountWasher = 3;
 - (void)dealloc {
     self.name = nil;
 //    self.building = nil;
-    for (TKAEmployee *employee in self.mutableEmployees) {
-        for (TKAEmployee *otherEmployee in self.mutableEmployees) {
-            for (TKAEmployee *moreOtherEmployee in otherEmployee.observerSet) {
-                if (employee == moreOtherEmployee) {
-                    [otherEmployee removeObserver:employee];
-                }
-            }
-        }
-    }
+//    for (TKAEmployee *employee in self.mutableEmployees) {
+//        for (TKAEmployee *otherEmployee in self.mutableEmployees) {
+//            for (TKAEmployee *moreOtherEmployee in otherEmployee.observerSet) {
+//                if (employee == moreOtherEmployee) {
+//                    [otherEmployee removeObserver:employee];
+//                }
+//            }
+//        }
+//    }
+//    for (TKAEmployee *employee in self.mutableEmployees) {
+//        for (TKAEmployee *otherEmployee in employee.observerSet) {
+//            [employee removeObserver:otherEmployee];
+//        }
+//    }
+//    for (TKAEmployee *employee in self.mutableEmployees) {
+//        [self removeEmployee:employee];
+//    }
     self.mutableEmployees = nil;
     self.mutableCars = nil;
     
