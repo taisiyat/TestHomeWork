@@ -45,11 +45,9 @@
 - (void)setState:(NSUInteger)state {
     if (state != _state) {
         _state = state;
-//        [self notifyOfStateChangeWithSelector:[self selectorForState:state]];
-        [self notifyOfStateChangeWithSelector];
-//        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-//                               withObject:nil
-//                            waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+                               withObject:nil
+                            waitUntilDone:NO];
     }
 }
 
@@ -78,11 +76,14 @@
 }
 
 - (void)notifyOfStateChangeWithSelector {
+    @synchronized (self) {
         NSMutableSet *observerSet = self.mutableObserverSet;
+        SEL selector = [self selectorForState:self.state];
         for (id observer in observerSet) {
-            if ([observer respondsToSelector:[self selectorForState:self.state]]) {
-               [observer performSelector:[self selectorForState:self.state] withObject:self];
+            if ([observer respondsToSelector:selector]) {
+               [observer performSelector:selector withObject:self];
             }
+        }
     }
 }
 //- (void)notifyOfStateChangeWithSelector:(SEL)selector {

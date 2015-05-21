@@ -12,15 +12,13 @@
 
 void TKACarBathTask1() {
     @autoreleasepool {
-
             TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
-        @synchronized (enterprise) {
             [enterprise prepare];
             NSLog(@"%@", [enterprise description]);
-            
-            //[enterprise performWork];
-            [enterprise startPerformWork];
+            [enterprise workWithCar:[enterprise nextCarFromQueue]];
             NSLog(@"%@", [enterprise description]);
-       }
+            
+            NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
+            [runLoop run];
     }
 }

@@ -48,7 +48,6 @@
 - (NSString *)description {
     NSMutableString *result = [NSMutableString stringWithString:@" "];
     [result appendFormat:@"name = %@ ", self.name];
-//    [result appendFormat:@"free = %hhd ", self.free];
 //    [result appendFormat:@"experience = %lu", self.experience];
 //    [result appendFormat:@"salary = %lu ", self.salary];
     [result appendFormat:@"money = %lu", self.money];
@@ -57,12 +56,15 @@
 }
 
 - (void)performWorkWithObject:(id)object {
+    if (object) {
         self.state = TKAEmployeePerformWork;
-        [self processingObject:object];
+        //[self processObject:object];
+        [self performSelectorInBackground:@selector(processObject:) withObject:object];
         self.state = TKAEmployeeReadyForProcessing;
+    }
 }
 
-- (void)processingObject:(id)object {
+- (void)processObject:(id)object {
     [self doesNotRecognizeSelector:_cmd];
 }
 
@@ -70,8 +72,10 @@
 #pragma mark TKATransferMoneyProtocol
 
 - (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
-    self.money += object.money;
-    object.money = 0;
+    @synchronized (self) {
+        self.money += object.money;
+        object.money = 0;
+    }
 }
 
 #pragma mark -
@@ -86,7 +90,7 @@
         case TKAEmployeePerformWork:
             return @selector(employeeDidPerformWork:);
         default:
-            return nil;
+            return NULL;
     }
 }
 
@@ -97,7 +101,6 @@
 //        NSLog(@"%@ ready to processing", employee.name);
      @synchronized (self) {
         [self performWorkWithObject:employee];
-//        [self performSelectorInBackground:@selector(performWorkWithObject:) withObject:employee];
         employee.state = TKAEmployeeReadyToWork;
     }
 }

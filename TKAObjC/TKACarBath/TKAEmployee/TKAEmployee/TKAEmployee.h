@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 
 + (instancetype)employeeWithName:(NSString *)name;
 
-- (void)processingObject:(id)object;
+- (void)processObject:(id)object;
 - (void)performWorkWithObject:(id)object;
 
 @end

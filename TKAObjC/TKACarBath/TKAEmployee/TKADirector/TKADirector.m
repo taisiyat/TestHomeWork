@@ -10,18 +10,18 @@
 
 @implementation TKADirector
 
-- (void)processingObject:(TKAEmployee *)object {
+- (void)processObject:(TKAEmployee *)object {
     @synchronized (self) {
         [self takeMoneyFromObject:object];
     //    self.money *= 0.5;
         //usleep(100*arc4random_uniform(10));
-        usleep(100);
         NSLog(@"Director profit.");
     }
 }
 
 - (void)performWorkWithObject:(id)object {
-    [self processingObject:object];
+//    [self processObject:object];
+    [self performSelectorInBackground:@selector(processObject:) withObject:object];
 }
 
 @end
