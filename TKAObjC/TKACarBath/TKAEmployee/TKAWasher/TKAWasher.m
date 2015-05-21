@@ -28,4 +28,8 @@
     }
 }
 
+- (void)workOnMainThread:(id)object {
+
+}
+
 @end

@@ -59,9 +59,8 @@
     @synchronized (self) {
         if (object) {
             self.state = TKAEmployeePerformWork;
-            [self processObject:object];
-//            [self performWorkWithObjectInBackground:object];
-            self.state = TKAEmployeeReadyForProcessing;
+//            [self processObject:object];
+            [self performWorkWithObjectInBackground:object];
         }
     }
 }
@@ -70,13 +69,18 @@
     self.processedObject = object;
     [self performSelectorInBackground:@selector(processObject:) withObject:object];
      self.processedObject = nil;
-    [self setStateOnMainThread];
+    [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
+                           withObject:object
+                        waitUntilDone:NO];
 }
 
-- (void)setStateOnMainThread {
-    [self performSelectorOnMainThread:@selector(setState:)
-                           withObject:TKAEmployeeReadyForProcessing
-                        waitUntilDone:YES];
+- (void)workWithObjectOnMainThread:(id)object{
+     self.state = TKAEmployeeReadyForProcessing;
+    [self workOnMainThread:object];
+}
+
+- (void)workOnMainThread:(TKAEmployee *)object {
+    object.state = TKAEmployeeReadyToWork;
 }
 
 - (void)processObject:(id)object {
@@ -116,7 +120,6 @@
 //        NSLog(@"%@ ready to processing", employee.name);
      @synchronized (self) {
         [self performWorkWithObject:employee];
-        employee.state = TKAEmployeeReadyToWork;
     }
 }
 
