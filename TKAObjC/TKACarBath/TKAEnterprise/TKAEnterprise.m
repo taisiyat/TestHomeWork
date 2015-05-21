@@ -119,18 +119,18 @@ static const NSUInteger kTKACountWasher = 3;
     [self.mutableEmployees removeObject:employee];
 }
 
-- (void)workWithCar:(TKACar *)car {
+- (void)washCar:(TKACar *)car {
     if (car) {
         @synchronized (self) {
             TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
             if (washer) {
-                [washer performWorkWithObject:[self nextCarFromQueue]];
+                [washer performWorkWithObject:[self nextCarInQueue]];
             }
         }
     }
 }
 
-- (TKACar *)nextCarFromQueue {
+- (TKACar *)nextCarInQueue {
     @synchronized (self) {
         NSMutableArray *cars = self.mutableCars;
         TKACar *result = [[[cars firstObject] retain] autorelease];
@@ -186,7 +186,7 @@ static const NSUInteger kTKACountWasher = 3;
 
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
 //    NSLog(@"%@ ready to work", employee.name);
-    [employee performWorkWithObject:[self nextCarFromQueue]];
+    [employee performWorkWithObject:[self nextCarInQueue]];
 }
 
 - (void)employeeDidPerformWork:(TKAEmployee *)employee {

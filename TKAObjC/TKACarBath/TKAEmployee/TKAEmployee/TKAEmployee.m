@@ -56,12 +56,27 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-    if (object) {
-        self.state = TKAEmployeePerformWork;
-        //[self processObject:object];
-        [self performSelectorInBackground:@selector(processObject:) withObject:object];
-        self.state = TKAEmployeeReadyForProcessing;
+    @synchronized (self) {
+        if (object) {
+            self.state = TKAEmployeePerformWork;
+            [self processObject:object];
+//            [self performWorkWithObjectInBackground:object];
+            self.state = TKAEmployeeReadyForProcessing;
+        }
     }
+}
+
+- (void)performWorkWithObjectInBackground:(id)object {
+    self.processedObject = object;
+    [self performSelectorInBackground:@selector(processObject:) withObject:object];
+     self.processedObject = nil;
+    [self setStateOnMainThread];
+}
+
+- (void)setStateOnMainThread {
+    [self performSelectorOnMainThread:@selector(setState:)
+                           withObject:TKAEmployeeReadyForProcessing
+                        waitUntilDone:YES];
 }
 
 - (void)processObject:(id)object {

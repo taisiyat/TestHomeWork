@@ -15,7 +15,7 @@ void TKACarBathTask1() {
             TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
             [enterprise prepare];
             NSLog(@"%@", [enterprise description]);
-            [enterprise workWithCar:[enterprise nextCarFromQueue]];
+            [enterprise washCar:[enterprise nextCarInQueue]];
             NSLog(@"%@", [enterprise description]);
             
             NSRunLoop *runLoop = [NSRunLoop mainRunLoop];

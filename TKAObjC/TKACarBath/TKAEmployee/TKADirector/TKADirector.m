@@ -20,8 +20,8 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-//    [self processObject:object];
-    [self performSelectorInBackground:@selector(processObject:) withObject:object];
+    [self processObject:object];
+//    [self performSelectorInBackground:@selector(processObject:) withObject:object];
 }
 
 @end

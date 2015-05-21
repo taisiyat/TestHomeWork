@@ -17,7 +17,7 @@
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;
 
-- (void)workWithCar:(TKACar *)car;
-- (TKACar *)nextCarFromQueue;
+- (void)washCar:(TKACar *)car;
+- (TKACar *)nextCarInQueue;
 
 @end

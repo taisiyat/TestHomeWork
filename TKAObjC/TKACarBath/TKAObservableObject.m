@@ -45,9 +45,10 @@
 - (void)setState:(NSUInteger)state {
     if (state != _state) {
         _state = state;
-        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-                               withObject:nil
-                            waitUntilDone:NO];
+        [self notifyOfStateChangeWithSelector];
+//        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+//                               withObject:nil
+//                            waitUntilDone:NO];
     }
 }
 
