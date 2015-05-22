@@ -50,6 +50,7 @@
     [result appendFormat:@"name = %@ ", self.name];
 //    [result appendFormat:@"experience = %lu", self.experience];
 //    [result appendFormat:@"salary = %lu ", self.salary];
+    [result appendFormat:@"state = %lu ", self.state];
     [result appendFormat:@"money = %lu", self.money];
     
     return [[result copy] autorelease];
@@ -59,24 +60,27 @@
     @synchronized (self) {
         if (object) {
             self.state = TKAEmployeePerformWork;
-//            [self processObject:object];
-            [self performWorkWithObjectInBackground:object];
+            [self performWorkInBackgroundWithObject:object];
         }
     }
 }
 
-- (void)performWorkWithObjectInBackground:(id)object {
-    self.processedObject = object;
-    [self performSelectorInBackground:@selector(processObject:) withObject:object];
-     self.processedObject = nil;
-    [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
-                           withObject:object
-                        waitUntilDone:NO];
+- (void)performWorkInBackgroundWithObject:(id)object {
+    @synchronized (self) {
+        self.processedObject = object;
+        [self performSelectorInBackground:@selector(processObject:) withObject:object];
+        self.processedObject = nil;
+        [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
+                               withObject:object
+                            waitUntilDone:NO];
+    }
 }
 
 - (void)workWithObjectOnMainThread:(id)object{
-     self.state = TKAEmployeeReadyForProcessing;
-    [self workOnMainThread:object];
+    @synchronized (self) {
+         self.state = TKAEmployeeReadyForProcessing;
+        [self workOnMainThread:object];
+    }
 }
 
 - (void)workOnMainThread:(TKAEmployee *)object {

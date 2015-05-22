@@ -18,6 +18,5 @@
 - (void)prepare;
 
 - (void)washCar:(TKACar *)car;
-- (TKACar *)nextCarInQueue;
 
 @end

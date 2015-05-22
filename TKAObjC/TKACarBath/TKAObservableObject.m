@@ -44,11 +44,13 @@
 
 - (void)setState:(NSUInteger)state {
     if (state != _state) {
-        _state = state;
-        [self notifyOfStateChangeWithSelector];
-//        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-//                               withObject:nil
-//                            waitUntilDone:NO];
+        @synchronized (self) {
+            _state = state;
+    //        [self notifyOfStateChangeWithSelector];
+            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+                                   withObject:nil
+                                waitUntilDone:NO];
+        }
     }
 }
 

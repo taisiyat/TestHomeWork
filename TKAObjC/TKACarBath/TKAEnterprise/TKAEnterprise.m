@@ -20,8 +20,8 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger kTKACountCar = 6;
-static const NSUInteger kTKACountWasher = 3;
+static const NSUInteger kTKACountCar        = 4;
+static const NSUInteger kTKACountWasher     = 3;
 
 @interface TKAEnterprise ()
 @property (nonatomic, assign)       NSMutableArray  *mutableEmployees;
@@ -47,7 +47,7 @@ static const NSUInteger kTKACountWasher = 3;
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-//    [self removeObservers];
+    [self removeObservers];
     self.name = nil;
     self.mutableEmployees = nil;
     self.mutableCars = nil;
@@ -85,19 +85,16 @@ static const NSUInteger kTKACountWasher = 3;
 }
 
 - (void)prepare {
-    TKADirector *director = [TKADirector employeeWithName:@"director"];
-    TKAAccountant *accountant = [TKAAccountant employeeWithName:@"accountant"];
-    [self addEmployee:director];
-    [self addEmployee:accountant];
-    [accountant  addObserver:director];
+    [self addEmployee:[TKADirector employeeWithName:@"director"]];
+    [self addEmployee:[TKAAccountant employeeWithName:@"accountant"]];
+//    [accountant  addObserver:director];
     
     NSMutableString *name = [NSMutableString string];
     for (NSUInteger iter = 1; iter <= kTKACountWasher; iter++) {
         [name setString:@"washer"];
         [name appendFormat:@"%lu", iter];
-        TKAWasher *washer = [TKAWasher employeeWithName:name];
-        [self addEmployee:washer];
-        [washer addObserver:accountant];
+        [self addEmployee:[TKAWasher employeeWithName:name]];
+//        [washer addObserver:accountant];
     }
     
     for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
@@ -106,25 +103,40 @@ static const NSUInteger kTKACountWasher = 3;
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
-    if (NO == [self.mutableEmployees containsObject:employee]) {
-        [self.mutableEmployees addObject:employee];
-        
-        if ([employee isKindOfClass:[TKAWasher class]]) {
-            [employee addObserver:self];
+    @synchronized (self) {
+        if (NO == [self.mutableEmployees containsObject:employee]) {
+            [self.mutableEmployees addObject:employee];
+            
+            if ([employee isKindOfClass:[TKAWasher class]]) {
+                [employee addObserver:self];
+                [employee addObserver:[[self employeesOfClass:[TKAAccountant class]] anyObject]];
+            }
+            if ([employee isKindOfClass:[TKAAccountant class]]) {
+                [employee addObserver:[[self employeesOfClass:[TKADirector class]] anyObject]];
+            }
         }
     }
 }
 
 - (void)removeEmployee:(TKAEmployee*)employee { //dismiss
-    [self.mutableEmployees removeObject:employee];
+    @synchronized (self) {
+        [self.mutableEmployees removeObject:employee];
+    }
 }
 
 - (void)washCar:(TKACar *)car {
     if (car) {
         @synchronized (self) {
+//            NSMutableSet *employees = [self employeesOfClass:[TKAWasher class]];
+//            for (TKAEmployee *employee in employees) {
+//                if (TKAEmployeeReadyToWork == employee.state) {
+//                    employee.state = TKAEmployeePerformWork;
+//                    employee.state = TKAEmployeeReadyToWork;
+//                }
+//            }
             TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
             if (washer) {
-                [washer performWorkWithObject:[self nextCarInQueue]];
+                [washer performWorkWithObject:car];
             }
         }
     }
@@ -136,6 +148,11 @@ static const NSUInteger kTKACountWasher = 3;
         TKACar *result = [[[cars firstObject] retain] autorelease];
         if (result) {
             [cars removeObject:result];
+        } else {
+//            for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
+//                [self.mutableCars addObject:[TKACar generateCar]];
+//            }
+//            result = [self nextCarInQueue];
         }
         
         return result;
@@ -144,37 +161,38 @@ static const NSUInteger kTKACountWasher = 3;
 
 - (id)freeEmployeeOfClass:(Class)classPosition {
     @synchronized (self) {
-        for (TKAEmployee *employee in self.mutableEmployees) {
-            if ([employee isKindOfClass:classPosition] && TKAEmployeeReadyToWork == employee.state) {
-                return employee;
+        NSMutableSet *employees = [self employeesOfClass:classPosition];
+        for (TKAEmployee *employee in employees) {
+            if (TKAEmployeeReadyToWork != employee.state) {
+                [employees removeObject:employee];
             }
         }
         
-        return nil;
+        return [employees anyObject];
     }
 }
 
-- (NSMutableArray *)employeesOfClass:(Class)classPosition {
+- (NSMutableSet *)employeesOfClass:(Class)classPosition {
     @synchronized (self) {
-        NSMutableArray *result = [NSMutableArray array];
+        NSMutableSet *result = [NSMutableSet set];
         for (TKAEmployee *employee in self.mutableEmployees) {
             if ([employee isKindOfClass:classPosition]) {
                 [result addObject:employee];
             }
         }
         
-        return result;
+        return [[result mutableCopy] autorelease];
     }
 }
 
 - (void)removeObservers {
-    TKADirector *director = [[self employeesOfClass:[TKADirector class]] firstObject];
-    TKAAccountant *accountant = [[self employeesOfClass:[TKAAccountant class]] firstObject];
+    TKADirector *director = [[self employeesOfClass:[TKADirector class]] anyObject];
+    TKAAccountant *accountant = [[self employeesOfClass:[TKAAccountant class]] anyObject];
     if (accountant && director) {
         [accountant removeObserver:director];
     }
 
-    NSMutableArray *washers = [self employeesOfClass:[TKAWasher class]];
+    NSSet *washers = [self employeesOfClass:[TKAWasher class]];
     for (TKAEmployee *empoyee in washers) {
         [empoyee removeObserver:accountant];
         [empoyee removeObserver:self];

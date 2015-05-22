@@ -9,18 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "TKACarBathTest.h"
 #import "TKAEnterprise.h"
+#import "TKACar.h"
 
 void TKACarBathTask1() {
     @autoreleasepool {
-            TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
-        @synchronized (enterprise) {
-            [enterprise prepare];
-            NSLog(@"%@", [enterprise description]);
-            [enterprise washCar:[enterprise nextCarInQueue]];
-            NSLog(@"%@", [enterprise description]);
+        TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
         
-            NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
-            [runLoop run];
-        }
+        [enterprise prepare];
+        NSLog(@"%@", [enterprise description]);
+        
+        [enterprise washCar:[TKACar generateCar]];
+        
+        NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
+        [runLoop run];
+
+        NSLog(@"%@", [enterprise description]);
+        
     }
 }
