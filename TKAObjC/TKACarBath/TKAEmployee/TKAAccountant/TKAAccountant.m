@@ -23,7 +23,7 @@
     @synchronized (self) {
         [self takeMoneyFromObject:object];
         NSLog(@"Accountant count money %@", object.name);
-        //usleep(100*arc4random_uniform(10));
+        usleep(10000*arc4random_uniform(10));
     }
 }
 

@@ -33,7 +33,6 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 @property (nonatomic, copy)         NSString        *name;
 @property (nonatomic, assign)       NSUInteger      experience;
 @property (nonatomic, assign)       NSUInteger      salary;
-@property (nonatomic, assign)       id              processedObject;
 
 + (instancetype)employeeWithName:(NSString *)name;
 

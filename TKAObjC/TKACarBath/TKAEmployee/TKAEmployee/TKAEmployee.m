@@ -10,6 +10,11 @@
 
 @class TKAWasher;
 
+@interface TKAEmployee ()
+@property (nonatomic, assign)       id     processedObject;
+
+@end
+
 @implementation TKAEmployee
 
 @synthesize money = _money;
@@ -60,12 +65,12 @@
     @synchronized (self) {
         if (object) {
             self.state = TKAEmployeePerformWork;
-            [self performWorkInBackgroundWithObject:object];
+            [self performWorkWithObjectInBackground:object];
         }
     }
 }
 
-- (void)performWorkInBackgroundWithObject:(id)object {
+- (void)performWorkWithObjectInBackground:(id)object {
     @synchronized (self) {
         self.processedObject = object;
         [self performSelectorInBackground:@selector(processObject:) withObject:object];
@@ -76,7 +81,7 @@
     }
 }
 
-- (void)workWithObjectOnMainThread:(id)object{
+- (void)workWithObjectOnMainThread:(id)object {
     @synchronized (self) {
          self.state = TKAEmployeeReadyForProcessing;
         [self workOnMainThread:object];
@@ -84,7 +89,9 @@
 }
 
 - (void)workOnMainThread:(TKAEmployee *)object {
-    object.state = TKAEmployeeReadyToWork;
+    @synchronized (self) {
+        object.state = TKAEmployeeReadyToWork;
+    }
 }
 
 - (void)processObject:(id)object {

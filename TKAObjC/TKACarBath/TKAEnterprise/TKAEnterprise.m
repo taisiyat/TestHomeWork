@@ -20,7 +20,7 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger kTKACountCar        = 4;
+static const NSUInteger kTKACountCar        = 10;
 static const NSUInteger kTKACountWasher     = 3;
 
 @interface TKAEnterprise ()
@@ -127,17 +127,19 @@ static const NSUInteger kTKACountWasher     = 3;
 - (void)washCar:(TKACar *)car {
     if (car) {
         @synchronized (self) {
-//            NSMutableSet *employees = [self employeesOfClass:[TKAWasher class]];
-//            for (TKAEmployee *employee in employees) {
-//                if (TKAEmployeeReadyToWork == employee.state) {
-//                    employee.state = TKAEmployeePerformWork;
-//                    employee.state = TKAEmployeeReadyToWork;
-//                }
-//            }
             TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
             if (washer) {
                 [washer performWorkWithObject:car];
             }
+            
+            NSMutableSet *employees = [self employeesOfClass:[TKAWasher class]];
+            for (TKAEmployee *employee in employees) {
+                if (TKAEmployeeReadyToWork == employee.state) {
+                    employee.state = TKAEmployeePerformWork;
+                    employee.state = TKAEmployeeReadyToWork;
+                }
+            }
+
         }
     }
 }

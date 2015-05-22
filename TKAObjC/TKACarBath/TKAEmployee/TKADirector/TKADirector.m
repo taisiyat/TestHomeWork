@@ -13,15 +13,20 @@
 - (void)processObject:(TKAEmployee *)object {
     @synchronized (self) {
         [self takeMoneyFromObject:object];
-    //    self.money *= 0.5;
-        //usleep(100*arc4random_uniform(10));
         NSLog(@"Director profit.");
     }
 }
 
-- (void)performWorkWithObject:(id)object {
-    [self processObject:object];
-//    [self performSelectorInBackground:@selector(processObject:) withObject:object];
+//- (void)performWorkWithObject:(id)object {
+//    [self processObject:object];
+////    [self performSelectorInBackground:@selector(processObject:) withObject:object];
+//}
+
+- (void)workWithObjectOnMainThread:(id)object {
+    @synchronized (self) {
+        [super workWithObjectOnMainThread:object];
+        self.state = TKAEmployeeReadyToWork;
+    }
 }
 
 @end

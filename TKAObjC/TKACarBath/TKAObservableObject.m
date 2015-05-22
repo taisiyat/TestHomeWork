@@ -58,15 +58,21 @@
 #pragma mark Pablic
 
 - (void)addObserver:(id)observer {
-    [self.mutableObserverSet addObject:observer];
+    @synchronized (self) {
+        [self.mutableObserverSet addObject:observer];
+    }
 }
 
 - (void)removeObserver:(id)observer {
-    [self.mutableObserverSet removeObject:observer];
+    @synchronized (self) {
+        [self.mutableObserverSet removeObject:observer];
+    }
 }
 
 - (BOOL)isObservedObject:(id)observer {
-    return [self.mutableObserverSet containsObject:observer];
+    @synchronized (self) {
+        return [self.mutableObserverSet containsObject:observer];
+    }
 }
 
 #pragma mark -
@@ -89,14 +95,7 @@
         }
     }
 }
-//- (void)notifyOfStateChangeWithSelector:(SEL)selector {
-//    NSMutableSet *observerSet = self.mutableObserverSet;
-//    for (id observer in observerSet) {
-//        if ([observer respondsToSelector:selector]) {
-//            [observer performSelector:selector withObject:self];
-//        }
-//    }
-//}
+
 @end
 
 

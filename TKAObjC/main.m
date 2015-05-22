@@ -30,13 +30,11 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@", [enterprise description]);
         
         [enterprise washCar:[TKACar generateCar]];
-        
+
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
         
-        NSLog(@"%@", [enterprise description]);
- 
-        
+     
         NSLog(@"Hello, World!");
     }
     return 0;
