@@ -151,10 +151,10 @@ static const NSUInteger kTKACountWasher     = 3;
         if (result) {
             [cars removeObject:result];
         } else {
-//            for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-//                [self.mutableCars addObject:[TKACar generateCar]];
-//            }
-//            result = [self nextCarInQueue];
+            for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
+                [self.mutableCars addObject:[TKACar generateCar]];
+            }
+            result = [self nextCarInQueue];
         }
         
         return result;

@@ -65,7 +65,7 @@
     @synchronized (self) {
         if (object) {
             self.state = TKAEmployeePerformWork;
-            [self performWorkWithObjectInBackground:object];
+            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:) withObject:object];
         }
     }
 }
@@ -73,7 +73,7 @@
 - (void)performWorkWithObjectInBackground:(id)object {
     @synchronized (self) {
         self.processedObject = object;
-        [self performSelectorInBackground:@selector(processObject:) withObject:object];
+        [self processObject:object];
         self.processedObject = nil;
         [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
                                withObject:object

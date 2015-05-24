@@ -53,9 +53,9 @@
 - (void)setState:(NSUInteger)state {
     if (state != _state) {
         @synchronized (self) {
-//            _state = state;
-//            [self notifyOfStateChangeWithSelector];
-            [self notifyOfStateChangeOnMainThread:state];
+            _state = state;
+
+            [self performSelectorOnMainThread:@selector(notifyOfStateChangeOnMainThread) withObject:nil waitUntilDone:NO];
         }
     }
 }
@@ -88,12 +88,9 @@
     return NULL;
 }
 
-- (void)notifyOfStateChangeOnMainThread:(NSUInteger)state {
+- (void)notifyOfStateChangeOnMainThread {
     @synchronized (self) {
-        _state = state;
-        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-                               withObject:nil
-                            waitUntilDone:NO];
+        [self notifyOfStateChangeWithSelector];
     }
 }
 
