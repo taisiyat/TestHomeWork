@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		26E40D47BD8C2CEE4C216220 /* libPods-TKAObjCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D18628B00EA9E4AE9870CD52 /* libPods-TKAObjCTests.a */; };
-		8A0DBA2C1AF7980C0025369F /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */; };
-		8A0DBA2D1AF7980C0025369F /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8A0EF96B1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */; };
 		8A271C821AF3F828006BE4FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C421AF3F828006BE4FE /* main.m */; };
 		8A271C841AF3F828006BE4FE /* NSObject+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C451AF3F828006BE4FE /* NSObject+TKAExtension.m */; };
@@ -43,9 +41,6 @@
 		8A72FB011AC2F64100C272E9 /* TKAObjectTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FAFF1AC2F64100C272E9 /* TKAObjectTest.c */; };
 		8A72FB041AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB021AC2F66C00C272E9 /* TKAAutoreleasingStackTest.c */; };
 		8A72FB071AC2F69400C272E9 /* TKALinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72FB051AC2F69400C272E9 /* TKALinkedListTest.c */; };
-		8A791E711B061680005B6931 /* TKAThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A791E701B061680005B6931 /* TKAThreadObject.m */; };
-		8A791E721B061680005B6931 /* TKAThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A791E701B061680005B6931 /* TKAThreadObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		8A791E741B061892005B6931 /* TKAThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A791E731B061892005B6931 /* TKAThreadTest.m */; };
 		8A791E7B1B06250B005B6931 /* TKAThreadSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A791E791B06250B005B6931 /* TKAThreadSpec.m */; };
 		8A90DBE51AF8BA8000CB186A /* TKAClusterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A90DBDE1AF8BA7F00CB186A /* TKAClusterAlphabet.m */; };
 		8A90DBE61AF8BA8000CB186A /* TKAClusterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A90DBDE1AF8BA7F00CB186A /* TKAClusterAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -60,6 +55,16 @@
 		8AC60FF51AF76ECF00E2B128 /* NSString+TKAExtensionWithAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC60FF41AF76ECF00E2B128 /* NSString+TKAExtensionWithAlphabet.m */; };
 		8AC60FF71AF77CD500E2B128 /* NSString+TKAExtensionWithAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC60FF41AF76ECF00E2B128 /* NSString+TKAExtensionWithAlphabet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8AC60FF81AF77CE700E2B128 /* TKAStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C591AF3F828006BE4FE /* TKAStringTest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8AC6A3BA1B126A18002C87B8 /* TKAThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3B61B126A18002C87B8 /* TKAThreadObject.m */; };
+		8AC6A3BB1B126A18002C87B8 /* TKAThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3B61B126A18002C87B8 /* TKAThreadObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8AC6A3BC1B126A18002C87B8 /* TKAThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3B91B126A18002C87B8 /* TKAThreadTest.m */; };
+		8AC6A3BD1B126A18002C87B8 /* TKAThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3B91B126A18002C87B8 /* TKAThreadTest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8AC6A3C71B126B06002C87B8 /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3C01B126B06002C87B8 /* TKAObservableObject.m */; };
+		8AC6A3C81B126B06002C87B8 /* TKAObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3C01B126B06002C87B8 /* TKAObservableObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8AC6A3C91B126B06002C87B8 /* TKAAssignReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3C41B126B06002C87B8 /* TKAAssignReference.m */; };
+		8AC6A3CA1B126B06002C87B8 /* TKAAssignReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3C41B126B06002C87B8 /* TKAAssignReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8AC6A3CB1B126B06002C87B8 /* TKAReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3C61B126B06002C87B8 /* TKAReference.m */; };
+		8AC6A3CC1B126B06002C87B8 /* TKAReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6A3C61B126B06002C87B8 /* TKAReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8ACC58481AFFD56F0082CA3A /* TKACarBathSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC58461AFFD56F0082CA3A /* TKACarBathSpec.m */; };
 		8AFAE7851AD55B6F00DEB812 /* TKAString.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7831AD55B6F00DEB812 /* TKAString.c */; };
 		8AFAE7881AD55B9600DEB812 /* TKAStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE7861AD55B9600DEB812 /* TKAStringTest.c */; };
@@ -89,8 +94,6 @@
 /* Begin PBXFileReference section */
 		790B9AFFD5A39A5A017E5C7D /* Pods-TKAObjCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TKAObjCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TKAObjCTests/Pods-TKAObjCTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E41FE7AB4784DB323D9BB6C /* Pods-TKAObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TKAObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TKAObjCTests/Pods-TKAObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8A0DBA2A1AF7980C0025369F /* TKAObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAObservableObject.h; sourceTree = "<group>"; };
-		8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAObservableObject.m; sourceTree = "<group>"; };
 		8A0EF9691B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPBlockAsyncRaiseIterativeMatcher.h; sourceTree = "<group>"; };
 		8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPBlockAsyncRaiseIterativeMatcher.m; sourceTree = "<group>"; };
 		8A0EF96C1B00DA3100129A78 /* ObjC_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjC_prefix.pch; sourceTree = "<group>"; };
@@ -163,10 +166,6 @@
 		8A72FB031AC2F66C00C272E9 /* TKAAutoreleasingStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAutoreleasingStackTest.h; sourceTree = "<group>"; };
 		8A72FB051AC2F69400C272E9 /* TKALinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKALinkedListTest.c; sourceTree = "<group>"; };
 		8A72FB061AC2F69400C272E9 /* TKALinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKALinkedListTest.h; sourceTree = "<group>"; };
-		8A791E6F1B061680005B6931 /* TKAThreadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKAThreadObject.h; path = TKAObjC/TKAThreadObject.h; sourceTree = SOURCE_ROOT; };
-		8A791E701B061680005B6931 /* TKAThreadObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKAThreadObject.m; path = TKAObjC/TKAThreadObject.m; sourceTree = SOURCE_ROOT; };
-		8A791E731B061892005B6931 /* TKAThreadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAThreadTest.m; sourceTree = SOURCE_ROOT; };
-		8A791E771B061A2A005B6931 /* TKAThreadTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAThreadTest.h; sourceTree = "<group>"; };
 		8A791E791B06250B005B6931 /* TKAThreadSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAThreadSpec.m; sourceTree = "<group>"; };
 		8A90DBDD1AF8BA7F00CB186A /* TKAClusterAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAClusterAlphabet.h; sourceTree = "<group>"; };
 		8A90DBDE1AF8BA7F00CB186A /* TKAClusterAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAClusterAlphabet.m; sourceTree = "<group>"; };
@@ -180,6 +179,16 @@
 		8A999A2D1ADCD34500EA5A08 /* TKAObjC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TKAObjC; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC60FF31AF76ECF00E2B128 /* NSString+TKAExtensionWithAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKAExtensionWithAlphabet.h"; sourceTree = "<group>"; };
 		8AC60FF41AF76ECF00E2B128 /* NSString+TKAExtensionWithAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKAExtensionWithAlphabet.m"; sourceTree = "<group>"; };
+		8AC6A3B51B126A18002C87B8 /* TKAThreadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAThreadObject.h; sourceTree = "<group>"; };
+		8AC6A3B61B126A18002C87B8 /* TKAThreadObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAThreadObject.m; sourceTree = "<group>"; };
+		8AC6A3B81B126A18002C87B8 /* TKAThreadTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAThreadTest.h; sourceTree = "<group>"; };
+		8AC6A3B91B126A18002C87B8 /* TKAThreadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAThreadTest.m; sourceTree = "<group>"; };
+		8AC6A3BF1B126B06002C87B8 /* TKAObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAObservableObject.h; sourceTree = "<group>"; };
+		8AC6A3C01B126B06002C87B8 /* TKAObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAObservableObject.m; sourceTree = "<group>"; };
+		8AC6A3C31B126B06002C87B8 /* TKAAssignReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAAssignReference.h; sourceTree = "<group>"; };
+		8AC6A3C41B126B06002C87B8 /* TKAAssignReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAAssignReference.m; sourceTree = "<group>"; };
+		8AC6A3C51B126B06002C87B8 /* TKAReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAReference.h; sourceTree = "<group>"; };
+		8AC6A3C61B126B06002C87B8 /* TKAReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAReference.m; sourceTree = "<group>"; };
 		8ACC58461AFFD56F0082CA3A /* TKACarBathSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACarBathSpec.m; sourceTree = "<group>"; };
 		8AFAE7831AD55B6F00DEB812 /* TKAString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TKAString.c; sourceTree = "<group>"; };
 		8AFAE7841AD55B6F00DEB812 /* TKAString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAString.h; sourceTree = "<group>"; };
@@ -259,6 +268,7 @@
 				8A271C431AF3F828006BE4FE /* NSObject+TKAExtension */,
 				8A271C461AF3F828006BE4FE /* Task1andTask2 */,
 				8A271C531AF3F828006BE4FE /* Task4andTask5 */,
+				8AC6A3B31B126A18002C87B8 /* TKAThread */,
 				8A271C5A1AF3F828006BE4FE /* TKACarBath */,
 				8A0EF96C1B00DA3100129A78 /* ObjC_prefix.pch */,
 			);
@@ -339,7 +349,8 @@
 		8A271C5A1AF3F828006BE4FE /* TKACarBath */ = {
 			isa = PBXGroup;
 			children = (
-				8AC60FF91AF7842200E2B128 /* TKAObservation */,
+				8AC6A3BE1B126B06002C87B8 /* TKAObservableObject */,
+				8AC6A3C11B126B06002C87B8 /* TKAReference */,
 				8A271C5B1AF3F828006BE4FE /* TKABuilding */,
 				8A271C681AF3F828006BE4FE /* TKACar */,
 				8A271C6B1AF3F828006BE4FE /* TKACarBathTest */,
@@ -638,10 +649,6 @@
 		8A791E6A1B0615C9005B6931 /* TKAThread */ = {
 			isa = PBXGroup;
 			children = (
-				8A791E6F1B061680005B6931 /* TKAThreadObject.h */,
-				8A791E701B061680005B6931 /* TKAThreadObject.m */,
-				8A791E771B061A2A005B6931 /* TKAThreadTest.h */,
-				8A791E731B061892005B6931 /* TKAThreadTest.m */,
 			);
 			path = TKAThread;
 			sourceTree = "<group>";
@@ -702,13 +709,59 @@
 			path = "NSString+TKAExtensionWithAlphabet";
 			sourceTree = "<group>";
 		};
-		8AC60FF91AF7842200E2B128 /* TKAObservation */ = {
+		8AC6A3B31B126A18002C87B8 /* TKAThread */ = {
 			isa = PBXGroup;
 			children = (
-				8A0DBA2A1AF7980C0025369F /* TKAObservableObject.h */,
-				8A0DBA2B1AF7980C0025369F /* TKAObservableObject.m */,
+				8AC6A3B41B126A18002C87B8 /* TKAThreadObject */,
+				8AC6A3B71B126A18002C87B8 /* TKAThreadTest */,
 			);
-			name = TKAObservation;
+			path = TKAThread;
+			sourceTree = "<group>";
+		};
+		8AC6A3B41B126A18002C87B8 /* TKAThreadObject */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6A3B51B126A18002C87B8 /* TKAThreadObject.h */,
+				8AC6A3B61B126A18002C87B8 /* TKAThreadObject.m */,
+			);
+			path = TKAThreadObject;
+			sourceTree = "<group>";
+		};
+		8AC6A3B71B126A18002C87B8 /* TKAThreadTest */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6A3B81B126A18002C87B8 /* TKAThreadTest.h */,
+				8AC6A3B91B126A18002C87B8 /* TKAThreadTest.m */,
+			);
+			path = TKAThreadTest;
+			sourceTree = "<group>";
+		};
+		8AC6A3BE1B126B06002C87B8 /* TKAObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6A3BF1B126B06002C87B8 /* TKAObservableObject.h */,
+				8AC6A3C01B126B06002C87B8 /* TKAObservableObject.m */,
+			);
+			path = TKAObservableObject;
+			sourceTree = "<group>";
+		};
+		8AC6A3C11B126B06002C87B8 /* TKAReference */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6A3C21B126B06002C87B8 /* TKAAssignReference */,
+				8AC6A3C51B126B06002C87B8 /* TKAReference.h */,
+				8AC6A3C61B126B06002C87B8 /* TKAReference.m */,
+			);
+			path = TKAReference;
+			sourceTree = "<group>";
+		};
+		8AC6A3C21B126B06002C87B8 /* TKAAssignReference */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6A3C31B126B06002C87B8 /* TKAAssignReference.h */,
+				8AC6A3C41B126B06002C87B8 /* TKAAssignReference.m */,
+			);
+			path = TKAAssignReference;
 			sourceTree = "<group>";
 		};
 		8AFAE7891AD55B9C00DEB812 /* TKAString */ = {
@@ -882,17 +935,20 @@
 			files = (
 				8AC60FF71AF77CD500E2B128 /* NSString+TKAExtensionWithAlphabet.m in Sources */,
 				8A0EF96B1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m in Sources */,
+				8AC6A3CA1B126B06002C87B8 /* TKAAssignReference.m in Sources */,
+				8AC6A3BD1B126A18002C87B8 /* TKAThreadTest.m in Sources */,
 				8ACC58481AFFD56F0082CA3A /* TKACarBathSpec.m in Sources */,
 				8A90DBE61AF8BA8000CB186A /* TKAClusterAlphabet.m in Sources */,
 				8A791E7B1B06250B005B6931 /* TKAThreadSpec.m in Sources */,
 				8AC60FF81AF77CE700E2B128 /* TKAStringTest.m in Sources */,
+				8AC6A3CC1B126B06002C87B8 /* TKAReference.m in Sources */,
 				8A90DBEA1AF8BA8000CB186A /* TKAStringsAlphabet.m in Sources */,
+				8AC6A3C81B126B06002C87B8 /* TKAObservableObject.m in Sources */,
 				8A90DBE81AF8BA8000CB186A /* TKARangeAlphabet.m in Sources */,
+				8AC6A3BB1B126A18002C87B8 /* TKAThreadObject.m in Sources */,
 				8A90DBEE1AF8BB3D00CB186A /* TKAAlphabet.m in Sources */,
 				8A94BA8D1AF6969C00561BB4 /* NSString+TKAExtension.m in Sources */,
 				8A94BA7A1AF6324200561BB4 /* TKAAlphabetSpec.m in Sources */,
-				8A0DBA2D1AF7980C0025369F /* TKAObservableObject.m in Sources */,
-				8A791E721B061680005B6931 /* TKAThreadObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,12 +978,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AC6A3CB1B126B06002C87B8 /* TKAReference.m in Sources */,
 				8A271C861AF3F828006BE4FE /* TKACreature.m in Sources */,
 				8A271C9E1AF3F828006BE4FE /* TKACarBathTest.m in Sources */,
 				8A271C8A1AF3F828006BE4FE /* TKACreatureMale.m in Sources */,
-				8A0DBA2C1AF7980C0025369F /* TKAObservableObject.m in Sources */,
+				8AC6A3C71B126B06002C87B8 /* TKAObservableObject.m in Sources */,
+				8AC6A3BC1B126A18002C87B8 /* TKAThreadTest.m in Sources */,
 				8A271C901AF3F828006BE4FE /* NSString+TKAExtension.m in Sources */,
 				8A271C8C1AF3F828006BE4FE /* TKAHuman.m in Sources */,
+				8AC6A3C91B126B06002C87B8 /* TKAAssignReference.m in Sources */,
 				8A271C961AF3F828006BE4FE /* TKABuilding.m in Sources */,
 				8A90DBE51AF8BA8000CB186A /* TKAClusterAlphabet.m in Sources */,
 				8A90DBED1AF8BB3D00CB186A /* TKAAlphabet.m in Sources */,
@@ -940,12 +999,11 @@
 				8A271C841AF3F828006BE4FE /* NSObject+TKAExtension.m in Sources */,
 				8A271CA01AF3F828006BE4FE /* TKAAccountant.m in Sources */,
 				8A271C821AF3F828006BE4FE /* main.m in Sources */,
+				8AC6A3BA1B126A18002C87B8 /* TKAThreadObject.m in Sources */,
 				8A271C8E1AF3F828006BE4FE /* TKAHumanTest.m in Sources */,
-				8A791E711B061680005B6931 /* TKAThreadObject.m in Sources */,
 				8A271C9C1AF3F828006BE4FE /* TKACar.m in Sources */,
 				8A271C921AF3F828006BE4FE /* TKAStringTest.m in Sources */,
 				8A271CA41AF3F828006BE4FE /* TKAEmployee.m in Sources */,
-				8A791E741B061892005B6931 /* TKAThreadTest.m in Sources */,
 				8A271CA61AF3F828006BE4FE /* TKAWasher.m in Sources */,
 				8A271C881AF3F828006BE4FE /* TKACreatureFemale.m in Sources */,
 				8A271CA81AF3F828006BE4FE /* TKAEnterprise.m in Sources */,
