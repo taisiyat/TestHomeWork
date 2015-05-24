@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TKAReference : NSObject
+@property (nonatomic, readonly)     id  target;
+
++ (instancetype)referenceWithTarget:(id)target;
 
 @end

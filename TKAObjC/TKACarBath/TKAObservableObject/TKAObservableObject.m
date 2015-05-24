@@ -7,6 +7,7 @@
 //
 
 #import "TKAObservableObject.h"
+#import "TKAAssignReference.h"
 
 @interface TKAObservableObject ()
 @property (nonatomic, retain)     NSMutableSet       *mutableObserverSet;
@@ -39,17 +40,22 @@
 #pragma mark Accesssors
 
 - (NSSet *)observerSet {
-    return [[self.mutableObserverSet copy] autorelease];
+    //return [[self.mutableObserverSet copy] autorelease];
+    NSMutableSet *observerSet = self.mutableObserverSet;
+    NSMutableSet *result = [NSMutableSet setWithCapacity:[observerSet count]];
+    for (TKAReference *reference in observerSet) {
+        [result addObject:reference.target];
+    }
+    
+    return [[result copy] autorelease];
 }
 
 - (void)setState:(NSUInteger)state {
     if (state != _state) {
         @synchronized (self) {
-            _state = state;
-    //        [self notifyOfStateChangeWithSelector];
-            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-                                   withObject:nil
-                                waitUntilDone:NO];
+//            _state = state;
+//            [self notifyOfStateChangeWithSelector];
+            [self notifyOfStateChangeOnMainThread:state];
         }
     }
 }
@@ -59,19 +65,17 @@
 
 - (void)addObserver:(id)observer {
     @synchronized (self) {
+//        [self.mutableObserverSet addObject:[TKAAssignReference referenceWithTarget:observer]];
         [self.mutableObserverSet addObject:observer];
+
     }
 }
 
 - (void)removeObserver:(id)observer {
     @synchronized (self) {
+//        [self.mutableObserverSet removeObject:[TKAAssignReference referenceWithTarget:observer]];
         [self.mutableObserverSet removeObject:observer];
-    }
-}
 
-- (BOOL)isObservedObject:(id)observer {
-    @synchronized (self) {
-        return [self.mutableObserverSet containsObject:observer];
     }
 }
 
@@ -82,6 +86,15 @@
     [self doesNotRecognizeSelector:_cmd];
     
     return NULL;
+}
+
+- (void)notifyOfStateChangeOnMainThread:(NSUInteger)state {
+    @synchronized (self) {
+        _state = state;
+        [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+                               withObject:nil
+                            waitUntilDone:NO];
+    }
 }
 
 - (void)notifyOfStateChangeWithSelector {

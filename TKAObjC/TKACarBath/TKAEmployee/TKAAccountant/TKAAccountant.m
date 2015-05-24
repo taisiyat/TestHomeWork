@@ -22,8 +22,8 @@
 - (void)processObject:(TKAEmployee *)object {
     @synchronized (self) {
         [self takeMoneyFromObject:object];
-        NSLog(@"Accountant count money %@", object.name);
         usleep(10000*arc4random_uniform(10));
+        NSLog(@"Accountant count money %@", object.name);
     }
 }
 
