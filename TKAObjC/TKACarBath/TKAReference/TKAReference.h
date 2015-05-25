@@ -13,4 +13,8 @@
 
 + (instancetype)referenceWithTarget:(id)target;
 
+- (NSUInteger)hash;
+- (BOOL)isEqual:(id)other;
+- (BOOL)isEqualToReference:(TKAReference *)reference;
+
 @end
