@@ -17,6 +17,6 @@
 + (instancetype)enterpriseWhithName:(NSString *)name;
 - (void)prepare;
 
-- (void)washCar:(TKACar *)car;
+- (void)washCar:(NSMutableArray *)cars;
 
 @end
