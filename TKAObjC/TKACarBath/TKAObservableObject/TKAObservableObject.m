@@ -43,7 +43,7 @@
     //return [[self.mutableObserverSet copy] autorelease];
     NSMutableSet *observerSet = self.mutableObserverSet;
     NSMutableSet *result = [NSMutableSet setWithCapacity:[observerSet count]];
-    for (TKAReference *reference in observerSet) {
+    for (TKAAssignReference *reference in observerSet) {
         [result addObject:reference.target];
     }
     

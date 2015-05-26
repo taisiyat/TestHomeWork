@@ -20,13 +20,14 @@ void TKACarBathTask1() {
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
         
-        NSMutableArray *cars = [NSMutableArray array];
         for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-            [cars addObject:[TKACar generateCar]];
+            [enterprise.mutableCars addObject:[TKACar generateCar]];
         }
         
-        [enterprise washCar:cars];
-        
+        for (TKACar *car in enterprise.mutableCars) {
+            [enterprise washCar:car];
+        }
+       
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
 

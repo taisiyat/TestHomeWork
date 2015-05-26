@@ -13,7 +13,7 @@
 - (void)processObject:(TKAEmployee *)object {
     @synchronized (self) {
         [self takeMoneyFromObject:object];
-        NSLog(@"Director profit.");
+        NSLog(@"Director profit = %lu", self.money);
     }
 }
 
