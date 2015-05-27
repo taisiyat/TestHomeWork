@@ -28,6 +28,14 @@
     return car;
 }
 
++ (instancetype)carRegister {
+    NSMutableString *number = [NSMutableString string];
+    [number setString:@"AB"];
+    [number appendString:[NSString randomStringWithLength:4 alphabet:[TKAAlphabet numericAlphabet]]];
+    
+    return [TKACar carWithNumber:number moneyAmount:20];
+}
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -50,14 +58,6 @@
     [result appendFormat:@" money = %lu", self.money];
     
     return [[result copy] autorelease];
-}
-
-+ (instancetype)generateCar {
-    NSMutableString *number = [NSMutableString string];
-    [number setString:@"AB"];
-    [number appendString:[NSString randomStringWithLength:4 alphabet:[TKAAlphabet numericAlphabet]]];
-    
-    return [TKACar carWithNumber:number moneyAmount:20];
 }
 
 #pragma mark -

@@ -65,33 +65,28 @@
     @synchronized (self) {
         if (object) {
             self.state = TKAEmployeePerformWork;
+            self.processedObject = object;
             [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:) withObject:object];
         }
     }
 }
 
 - (void)performWorkWithObjectInBackground:(id)object {
-    @synchronized (self) {
-        self.processedObject = object;
         [self processObject:object];
-        self.processedObject = nil;
+        usleep(100*arc4random_uniform(10));
         [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
                                withObject:object
                             waitUntilDone:NO];
-    }
 }
 
 - (void)workWithObjectOnMainThread:(id)object {
-    @synchronized (self) {
-         self.state = TKAEmployeeReadyForProcessing;
+        self.state = TKAEmployeeReadyForProcessing;
         [self workOnMainThread:object];
-    }
+        self.processedObject = nil;
 }
 
 - (void)workOnMainThread:(TKAEmployee *)object {
-    @synchronized (self) {
         object.state = TKAEmployeeReadyToWork;
-    }
 }
 
 - (void)processObject:(id)object {
@@ -112,6 +107,7 @@
 #pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
+    @synchronized (self) {
     switch (state) {
         case TKAEmployeeReadyToWork:
             return @selector(employeeDidBecomeReadyToWork:);
@@ -122,16 +118,14 @@
         default:
             return NULL;
     }
+    }
 }
 
 #pragma mark -
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee{
-//        NSLog(@"%@ ready to processing", employee.name);
-     @synchronized (self) {
         [self performWorkWithObject:employee];
-    }
 }
 
 @end

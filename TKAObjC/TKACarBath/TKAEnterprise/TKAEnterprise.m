@@ -20,8 +20,8 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-//static const NSUInteger kTKACountCar        = 10;
-static const NSUInteger kTKACountWasher     = 3;
+static const NSUInteger kTKACountAllCars        = 100;
+static const NSUInteger kTKACountWasher         = 3;
 
 @interface TKAEnterprise ()
 @property (nonatomic, assign)       NSMutableArray  *mutableEmployees;
@@ -94,9 +94,9 @@ static const NSUInteger kTKACountWasher     = 3;
         [self addEmployee:[TKAWasher employeeWithName:name]];
     }
     
-//    for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-//        [self.mutableCars addObject:[TKACar generateCar]];
-//    }
+    for (NSUInteger iter = 0; iter < kTKACountAllCars; iter++) {
+        [self.mutableCars addObject:[TKACar carRegister]];
+    }
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
@@ -126,19 +126,12 @@ static const NSUInteger kTKACountWasher     = 3;
         @synchronized (self) {
             TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
             if (washer) {
+                [[car retain] autorelease];
+                [self.mutableCars removeObject:car];
                 [washer performWorkWithObject:car];
             } else {
-                [self.mutableCars addObject:car];
             }
             
-//            NSMutableSet *employees = [self employeesOfClass:[TKAWasher class]];
-//            for (TKAEmployee *employee in employees) {
-//                if (TKAEmployeeReadyToWork == employee.state) {
-//                    employee.state = TKAEmployeePerformWork;
-//                    employee.state = TKAEmployeeReadyToWork;
-//                }
-//            }
-
         }
     }
 }
@@ -158,13 +151,14 @@ static const NSUInteger kTKACountWasher     = 3;
 - (id)freeEmployeeOfClass:(Class)classPosition {
     @synchronized (self) {
         NSMutableSet *employees = [self employeesOfClass:classPosition];
+        NSMutableSet *freeEmployees = [NSMutableSet set];
         for (TKAEmployee *employee in employees) {
-            if (TKAEmployeeReadyToWork != employee.state) {
-                [employees removeObject:employee];
+            if (TKAEmployeeReadyToWork == employee.state) {
+                [freeEmployees addObject:employee];
             }
         }
         
-        return [employees anyObject];
+        return [freeEmployees anyObject];
     }
 }
 

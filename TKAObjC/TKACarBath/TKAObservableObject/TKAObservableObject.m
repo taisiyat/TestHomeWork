@@ -41,21 +41,25 @@
 
 - (NSSet *)observerSet {
     //return [[self.mutableObserverSet copy] autorelease];
-    NSMutableSet *observerSet = self.mutableObserverSet;
-    NSMutableSet *result = [NSMutableSet setWithCapacity:[observerSet count]];
-    for (TKAAssignReference *reference in observerSet) {
-        [result addObject:reference.target];
+    @synchronized (self) {
+        NSMutableSet *observerSet = self.mutableObserverSet;
+        NSMutableSet *result = [NSMutableSet setWithCapacity:[observerSet count]];
+        for (TKAReference *reference in observerSet) {
+            [result addObject:reference.target];
+        }
+        
+        return [[result copy] autorelease];
     }
-    
-    return [[result copy] autorelease];
 }
 
 - (void)setState:(NSUInteger)state {
-    if (state != _state) {
-        @synchronized (self) {
+    @synchronized (self) {
+        if (state != _state) {
             _state = state;
-
-            [self performSelectorOnMainThread:@selector(notifyOfStateChangeOnMainThread) withObject:nil waitUntilDone:NO];
+            [self notifyOfStateChangeWithSelector];
+//            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+//                                   withObject:nil
+//                                waitUntilDone:NO];
         }
     }
 }
@@ -65,16 +69,16 @@
 
 - (void)addObserver:(id)observer {
     @synchronized (self) {
-//        [self.mutableObserverSet addObject:[TKAAssignReference referenceWithTarget:observer]];
-        [self.mutableObserverSet addObject:observer];
+        [self.mutableObserverSet addObject:[TKAAssignReference referenceWithTarget:observer]];
+//        [self.mutableObserverSet addObject:observer];
 
     }
 }
 
 - (void)removeObserver:(id)observer {
     @synchronized (self) {
-//        [self.mutableObserverSet removeObject:[TKAAssignReference referenceWithTarget:observer]];
-        [self.mutableObserverSet removeObject:observer];
+        [self.mutableObserverSet removeObject:[TKAAssignReference referenceWithTarget:observer]];
+//        [self.mutableObserverSet removeObject:observer];
 
     }
 }
@@ -88,19 +92,13 @@
     return NULL;
 }
 
-- (void)notifyOfStateChangeOnMainThread {
-    @synchronized (self) {
-        [self notifyOfStateChangeWithSelector];
-    }
-}
-
 - (void)notifyOfStateChangeWithSelector {
     @synchronized (self) {
         NSMutableSet *observerSet = self.mutableObserverSet;
         SEL selector = [self selectorForState:self.state];
-        for (id observer in observerSet) {
-            if ([observer respondsToSelector:selector]) {
-               [observer performSelector:selector withObject:self];
+        for (TKAReference *reference in observerSet) {
+            if ([reference.target respondsToSelector:selector]) {
+               [reference.target performSelector:selector withObject:self];
             }
         }
     }

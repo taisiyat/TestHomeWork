@@ -11,10 +11,8 @@
 @implementation TKADirector
 
 - (void)processObject:(TKAEmployee *)object {
-    @synchronized (self) {
         [self takeMoneyFromObject:object];
         NSLog(@"Director profit = %lu", self.money);
-    }
 }
 
 //- (void)performWorkWithObject:(id)object {
@@ -23,10 +21,8 @@
 //}
 
 - (void)workWithObjectOnMainThread:(id)object {
-    @synchronized (self) {
         [super workWithObjectOnMainThread:object];
         self.state = TKAEmployeeReadyToWork;
-    }
 }
 
 @end
