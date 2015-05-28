@@ -94,9 +94,9 @@ static const NSUInteger kTKACountWasher         = 3;
         [self addEmployee:[TKAWasher employeeWithName:name]];
     }
     
-    for (NSUInteger iter = 0; iter < kTKACountAllCars; iter++) {
-        [self.mutableCars addObject:[TKACar carRegister]];
-    }
+//    for (NSUInteger iter = 0; iter < kTKACountAllCars; iter++) {
+//        [self.mutableCars addObject:[TKACar carRegister]];
+//    }
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
@@ -126,10 +126,9 @@ static const NSUInteger kTKACountWasher         = 3;
         @synchronized (self) {
             TKAWasher *washer = [self freeEmployeeOfClass:[TKAWasher class]];
             if (washer) {
-                [[car retain] autorelease];
-                [self.mutableCars removeObject:car];
                 [washer performWorkWithObject:car];
             } else {
+                [self.mutableCars addObject:car];
             }
             
         }

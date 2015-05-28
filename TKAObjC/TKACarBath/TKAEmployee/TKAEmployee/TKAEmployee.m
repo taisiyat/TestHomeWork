@@ -97,9 +97,14 @@
 #pragma mark TKATransferMoneyProtocol
 
 - (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
-    @synchronized (self) {
-        self.money += object.money;
+    NSUInteger bablo = 0;
+    @synchronized (object) {
+        bablo = object.money;
         object.money = 0;
+    }
+
+    @synchronized (self) {
+        self.money += bablo;
     }
 }
 

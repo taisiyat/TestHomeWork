@@ -11,7 +11,7 @@
 #import "TKAEnterprise.h"
 #import "TKACar.h"
 
-static const NSUInteger kTKACountCar        = 5;
+static const NSUInteger kTKACountCar        = 100;
 
 void TKACarBathTask1() {
     @autoreleasepool {
@@ -19,13 +19,9 @@ void TKACarBathTask1() {
         
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
-        
-//        for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-//            [enterprise.mutableCars addObject:[TKACar carRegister]];
-//        }
-        
+       
         for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-            [enterprise washCar:[enterprise.mutableCars firstObject]];
+            [enterprise washCar:[TKACar car]];
         }
        
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];

@@ -28,7 +28,7 @@
     return car;
 }
 
-+ (instancetype)carRegister {
++ (instancetype)car {
     NSMutableString *number = [NSMutableString string];
     [number setString:@"AB"];
     [number appendString:[NSString randomStringWithLength:4 alphabet:[TKAAlphabet numericAlphabet]]];

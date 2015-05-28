@@ -17,6 +17,6 @@
 + (instancetype)carWithNumber:(NSString *)number
                   moneyAmount:(NSUInteger)moneyAmount;
 
-+ (instancetype)carRegister;
++ (instancetype)car;
 
 @end
