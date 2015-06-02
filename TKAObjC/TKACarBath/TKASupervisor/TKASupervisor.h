@@ -16,4 +16,11 @@
 @property (nonatomic, readonly)     TKAQueue    *objectsForProcessing;
 @property (nonatomic, readonly)     NSArray     *processors;
 
++ (instancetype)supervisor;
+
+- (void)workWithObject:(id)object;
+- (id)freeProcessor;
+- (void)addProcessorObjects:(id)objects;
+
 @end
+

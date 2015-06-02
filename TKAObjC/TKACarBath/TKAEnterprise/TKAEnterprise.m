@@ -13,6 +13,7 @@
 #import "TKAWasher.h"
 #import "TKACarBox.h"
 #import "TKAAlphabet.h"
+#import "TKASupervisor.h"
 
 #import "NSString+TKAExtensionWithAlphabet.h"
 
@@ -20,11 +21,12 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger kTKACountAllCars        = 100;
 static const NSUInteger kTKACountWasher         = 3;
+static const NSUInteger kTKACountAccountant     = 2;
 
 @interface TKAEnterprise ()
 @property (nonatomic, assign)       NSMutableArray  *mutableEmployees;
+@property (nonatomic, assign)       TKASupervisor   *supervisorWasherAccountant;
 
 @end
 
@@ -50,6 +52,7 @@ static const NSUInteger kTKACountWasher         = 3;
     self.name = nil;
     self.mutableEmployees = nil;
     self.mutableCars = nil;
+    self.supervisorWasherAccountant = nil;
     
     [super dealloc];
 }
@@ -59,6 +62,7 @@ static const NSUInteger kTKACountWasher         = 3;
     if (self) {
         self.mutableEmployees = [NSMutableArray array];
         self.mutableCars = [NSMutableArray array];
+        self.supervisorWasherAccountant = [TKASupervisor supervisor];
     }
     
     return self;
@@ -79,14 +83,22 @@ static const NSUInteger kTKACountWasher         = 3;
     [result appendString:@"\n Enterprise : "];
     [result appendFormat:@" name = %@ ", self.name];
     [result appendFormat:@"\n employees : %@ ", self.mutableEmployees];
+    [result appendFormat:@"\n  : %@ ", self.supervisorWasherAccountant];
     
     return [[result copy] autorelease];
 }
 
 - (void)prepare {
     [self addEmployee:[TKADirector employeeWithName:@"director"]];
-    [self addEmployee:[TKAAccountant employeeWithName:@"accountant"]];
+//    [self addEmployee:[TKAAccountant employeeWithName:@"accountant"]];
 
+    NSMutableString *nameAccountant = [NSMutableString string];
+    for (NSUInteger iter = 1; iter <= kTKACountAccountant; iter++) {
+        [nameAccountant setString:@"accountant"];
+        [nameAccountant appendFormat:@"%lu", iter];
+        [self addEmployee:[TKAAccountant employeeWithName:nameAccountant]];
+    }
+    
     NSMutableString *name = [NSMutableString string];
     for (NSUInteger iter = 1; iter <= kTKACountWasher; iter++) {
         [name setString:@"washer"];
@@ -94,9 +106,13 @@ static const NSUInteger kTKACountWasher         = 3;
         [self addEmployee:[TKAWasher employeeWithName:name]];
     }
     
-//    for (NSUInteger iter = 0; iter < kTKACountAllCars; iter++) {
-//        [self.mutableCars addObject:[TKACar carRegister]];
-//    }
+    [self addSupervisorWasherAccountant];
+}
+
+- (void)addSupervisorWasherAccountant {
+    @synchronized (self) {
+        [self.supervisorWasherAccountant addProcessorObjects:[self employeesOfClass:[TKAAccountant class]]];
+    }
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
@@ -107,9 +123,12 @@ static const NSUInteger kTKACountWasher         = 3;
             if ([employee isKindOfClass:[TKAWasher class]]) {
                 [employee addObserver:self];
                 [employee addObserver:[[self employeesOfClass:[TKAAccountant class]] anyObject]];
+//                [employee addObserver:self.supervisorWasherAccountant];
             }
+            
             if ([employee isKindOfClass:[TKAAccountant class]]) {
                 [employee addObserver:[[self employeesOfClass:[TKADirector class]] anyObject]];
+                [employee addObserver:self.supervisorWasherAccountant];
             }
         }
     }
@@ -176,15 +195,21 @@ static const NSUInteger kTKACountWasher         = 3;
 
 - (void)removeObservers {
     TKADirector *director = [[self employeesOfClass:[TKADirector class]] anyObject];
-    TKAAccountant *accountant = [[self employeesOfClass:[TKAAccountant class]] anyObject];
-    if (accountant && director) {
-        [accountant removeObserver:director];
+//    TKAAccountant *accountant = [[self employeesOfClass:[TKAAccountant class]] anyObject];
+//    if (accountant && director) {
+//        [accountant removeObserver:director];
+//    }
+    NSSet *accountants = [self employeesOfClass:[TKAAccountant class]];
+    for (TKAEmployee *empoyee in accountants) {
+        [empoyee removeObserver:director];
+        [empoyee removeObserver:self.supervisorWasherAccountant];
     }
 
     NSSet *washers = [self employeesOfClass:[TKAWasher class]];
     for (TKAEmployee *empoyee in washers) {
-        [empoyee removeObserver:accountant];
+//        [empoyee removeObserver:accountant];
         [empoyee removeObserver:self];
+//        [empoyee removeObserver:self.supervisorWasherAccountant];
     }
 }
     

@@ -64,6 +64,21 @@
 #pragma mark -
 #pragma mark Public Methods
 
+- (NSString *)description {
+    NSMutableString *result = [NSMutableString stringWithString:@" "];
+    [result appendString:@"\n Supervisor : "];
+    [result appendFormat:@"\n  : %@ ", self.objectsInQueue];
+    [result appendFormat:@"\n  : %@ ", self.mutableProcessors];
+    
+    return [[result copy] autorelease];
+}
+
+- (void)addProcessorObjects:(id)objects {
+    @synchronized (self) {
+        self.mutableProcessors = objects;
+    }
+}
+
 - (void)workWithObject:(id)object {
     if (object) {
         @synchronized (self) {
