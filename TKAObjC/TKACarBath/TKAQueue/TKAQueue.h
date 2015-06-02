@@ -10,4 +10,10 @@
 
 @interface TKAQueue : NSObject
 
++ (instancetype)queue;
+
+- (void)addObject:(id)object;
+- (void)removeObject:(id)object;
+- (id)nextObjectQueue;
+
 @end

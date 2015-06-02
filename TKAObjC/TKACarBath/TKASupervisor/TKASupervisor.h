@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKASupervisor : NSObject
+#import "TKAEmployee.h"
+
+@class TKAQueue;
+
+@interface TKASupervisor : NSObject <TKAEmployeeObserver>
+@property (nonatomic, readonly)     TKAQueue    *objectsForProcessing;
+@property (nonatomic, readonly)     NSArray     *processors;
 
 @end
