@@ -65,11 +65,11 @@
 
 - (void)performWorkWithObject:(id)object {
     @synchronized (self) {
-//        if (TKAEmployeeReadyToWork == self.state) {
+        if (TKAEmployeeReadyToWork == self.state) {
             self.state = TKAEmployeePerformWork;
             self.processedObject = object;
             [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:) withObject:object];
-//        }
+        }
     }
 }
 
@@ -131,7 +131,7 @@
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee {
     if (self != employee) {
-        @synchronized (employee) {
+        @synchronized (self) {
             if (TKAEmployeeReadyForProcessing == employee.state) {
                 [self performWorkWithObject:employee];
             }

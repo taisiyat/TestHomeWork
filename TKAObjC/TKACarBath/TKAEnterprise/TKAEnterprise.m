@@ -206,7 +206,7 @@ static const NSString   *kTKANameAccountant      = @"Accountant";
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee{
-    @synchronized (employee) {
+    @synchronized (self) {
         if (TKAEmployeeReadyForProcessing == employee.state) {
             [self.supervisorAccountant workWithObject:employee];
         }

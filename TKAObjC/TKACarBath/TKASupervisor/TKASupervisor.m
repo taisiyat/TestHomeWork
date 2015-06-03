@@ -105,7 +105,7 @@
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
-    @ synchronized (employee) {
+    @ synchronized (self) {
         if (TKAEmployeeReadyToWork == employee.state ) {
             id objectForProcessing = [self.processingQueue nextObjectQueue];
             if (objectForProcessing)  {

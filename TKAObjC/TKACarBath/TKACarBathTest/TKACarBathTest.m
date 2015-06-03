@@ -21,7 +21,8 @@ void TKACarBathTask1() {
         NSLog(@"%@", [enterprise description]);
        
         for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-            [enterprise washCar:[TKACar car]];
+        //    [enterprise washCar:[TKACar car]];
+            [enterprise performSelectorInBackground:@selector(washCar:) withObject:[TKACar car]];
         }
        
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
