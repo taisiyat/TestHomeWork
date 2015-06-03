@@ -15,7 +15,7 @@ static const NSUInteger kTKACountCar        = 100;
 
 void TKACarBathTask1() {
     @autoreleasepool {
-        TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
+        TKAEnterprise *enterprise = [TKAEnterprise enterpriseWithName:@"CarBath"];
         
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);

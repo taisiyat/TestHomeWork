@@ -13,14 +13,13 @@
 @class TKAQueue;
 
 @interface TKASupervisor : NSObject <TKAEmployeeObserver>
-@property (nonatomic, readonly)     TKAQueue    *objectsForProcessing;
-@property (nonatomic, readonly)     NSArray     *processors;
 
 + (instancetype)supervisor;
 
 - (void)workWithObject:(id)object;
-- (id)freeProcessor;
-- (void)addProcessorObjects:(id)objects;
+
+- (void)addProcessorObject:(id)object;
+- (void)removeProcessorObject:(id)object;
 
 @end
 

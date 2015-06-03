@@ -12,7 +12,7 @@
 
 - (void)processObject:(TKAEmployee *)object {
         [self takeMoneyFromObject:object];
-        NSLog(@"Director profit = %lu", self.money);
+        NSLog(@"Director profit = %lu %@", self.money, object.name);
 }
 
 //- (void)performWorkWithObject:(id)object {

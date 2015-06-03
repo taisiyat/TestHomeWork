@@ -30,6 +30,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
+    [self removeObserver:self];
     self.name = nil;
     
     [super dealloc];
@@ -39,6 +40,7 @@
     self = [super init];
     if (self) {
         self.name = name;
+        [self addObserver:self];
     }
     
     return self;
@@ -63,17 +65,15 @@
 
 - (void)performWorkWithObject:(id)object {
     @synchronized (self) {
-        if (object) {
             self.state = TKAEmployeePerformWork;
             self.processedObject = object;
             [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:) withObject:object];
         }
-    }
 }
 
 - (void)performWorkWithObjectInBackground:(id)object {
         [self processObject:object];
-        usleep(100*arc4random_uniform(10));
+        usleep(1000*arc4random_uniform(10));
         [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
                                withObject:object
                             waitUntilDone:NO];
@@ -97,14 +97,14 @@
 #pragma mark TKATransferMoneyProtocol
 
 - (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
-    NSUInteger bablo = 0;
+    NSUInteger cash = 0;
     @synchronized (object) {
-        bablo = object.money;
+        cash = object.money;
         object.money = 0;
     }
 
     @synchronized (self) {
-        self.money += bablo;
+        self.money += cash;
     }
 }
 
@@ -112,25 +112,29 @@
 #pragma mark Overloaded Methods
 
 - (SEL)selectorForState:(NSUInteger)state {
-    @synchronized (self) {
     switch (state) {
         case TKAEmployeeReadyToWork:
             return @selector(employeeDidBecomeReadyToWork:);
         case TKAEmployeeReadyForProcessing:
-            return @selector(employeeDidBecomeReadyToProcessing:);
+            return @selector(employeeDidBecomeReadyForProcessing:);
         case TKAEmployeePerformWork:
             return @selector(employeeDidPerformWork:);
         default:
-            return NULL;
-    }
+            return [super selectorForState:state];
     }
 }
 
 #pragma mark -
 #pragma mark TKAEmployeeObserver
 
-- (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee{
-        [self performWorkWithObject:employee];
+- (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee {
+    if (self != employee) {
+        @synchronized (employee) {
+            if (TKAEmployeeReadyForProcessing == employee.state) {
+                [self performWorkWithObject:employee];
+            }
+        }
+    }
 }
 
 @end

@@ -87,7 +87,7 @@
 #pragma mark Private
 
 - (SEL)selectorForState:(NSUInteger)state {
-    [self doesNotRecognizeSelector:_cmd];
+//    [self doesNotRecognizeSelector:_cmd];
     
     return NULL;
 }
