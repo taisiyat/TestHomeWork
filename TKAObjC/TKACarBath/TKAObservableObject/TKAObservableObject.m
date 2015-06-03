@@ -56,10 +56,13 @@
     @synchronized (self) {
         if (state != _state) {
             _state = state;
-            [self notifyOfStateChangeWithSelector];
-//            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-//                                   withObject:nil
-//                                waitUntilDone:NO];
+            if ([NSThread isMainThread]) {
+                [self notifyOfStateChangeWithSelector];
+            } else {
+            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+                                   withObject:nil
+                                waitUntilDone:YES];
+            }
         }
     }
 }
@@ -87,8 +90,6 @@
 #pragma mark Private
 
 - (SEL)selectorForState:(NSUInteger)state {
-//    [self doesNotRecognizeSelector:_cmd];
-    
     return NULL;
 }
 

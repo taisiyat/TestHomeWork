@@ -65,10 +65,12 @@
 
 - (void)performWorkWithObject:(id)object {
     @synchronized (self) {
+//        if (TKAEmployeeReadyToWork == self.state) {
             self.state = TKAEmployeePerformWork;
             self.processedObject = object;
             [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:) withObject:object];
-        }
+//        }
+    }
 }
 
 - (void)performWorkWithObjectInBackground:(id)object {

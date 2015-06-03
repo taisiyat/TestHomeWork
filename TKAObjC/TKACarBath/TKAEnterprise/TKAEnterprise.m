@@ -21,8 +21,10 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger kTKACountWasher         = 3;
-static const NSUInteger kTKACountAccountant     = 2;
+static const NSUInteger  kTKACountWasher         = 3;
+static const NSUInteger  kTKACountAccountant     = 2;
+static const NSString   *kTKANameWasher          = @"Washer";
+static const NSString   *kTKANameAccountant      = @"Accountant";
 
 @interface TKAEnterprise ()
 @property (nonatomic, retain)       NSMutableArray  *mutableEmployees;
@@ -95,20 +97,8 @@ static const NSUInteger kTKACountAccountant     = 2;
 
 - (void)prepare {
     [self addEmployee:[TKADirector employeeWithName:@"director"]];
-
-    NSMutableString *nameAccountant = [NSMutableString string];
-    for (NSUInteger iter = 0; iter < kTKACountAccountant; iter++) {
-        [nameAccountant setString:@"accountant"];
-        [nameAccountant appendFormat:@"%lu", iter];
-        [self addEmployee:[TKAAccountant employeeWithName:nameAccountant]];
-    }
-    
-    NSMutableString *name = [NSMutableString string];
-    for (NSUInteger iter = 0; iter < kTKACountWasher; iter++) {
-        [name setString:@"washer"];
-        [name appendFormat:@"%lu", iter];
-        [self addEmployee:[TKAWasher employeeWithName:name]];
-    }
+    [self employeesWithClass:[TKAAccountant class] count:kTKACountAccountant name:@"Accountant"];
+    [self employeesWithClass:[TKAWasher class] count:kTKACountWasher name:@"Washer"];
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {
@@ -199,12 +189,24 @@ static const NSUInteger kTKACountAccountant     = 2;
         [empoyee removeObserver:self.supervisorWasher];
     }
 }
-    
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)employeesWithClass:(Class)class count:(NSUInteger)count name:(NSString *)name {
+    NSMutableString *nameEmployee = [NSMutableString string];
+    for (NSUInteger iter = 0; iter < count; iter++) {
+        [nameEmployee setString:name];
+        [nameEmployee appendFormat:@"%lu", iter];
+        [self addEmployee:[class employeeWithName:nameEmployee]];
+    }
+}
+
 #pragma mark -
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee{
-    @synchronized (self) {
+    @synchronized (employee) {
         if (TKAEmployeeReadyForProcessing == employee.state) {
             [self.supervisorAccountant workWithObject:employee];
         }

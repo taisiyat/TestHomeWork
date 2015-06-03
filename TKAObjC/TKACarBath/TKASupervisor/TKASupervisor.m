@@ -87,6 +87,9 @@
         }
 }
 
+#pragma mark -
+#pragma mark Privat Methods
+
 - (id)freeProcessor {
     @synchronized (self) {
         for (TKAEmployee *employee in self.mutableProcessors) {
@@ -102,7 +105,7 @@
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
-    @ synchronized (self) {
+    @ synchronized (employee) {
         if (TKAEmployeeReadyToWork == employee.state ) {
             id objectForProcessing = [self.processingQueue nextObjectQueue];
             if (objectForProcessing)  {
