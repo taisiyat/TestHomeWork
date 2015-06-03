@@ -64,6 +64,18 @@
 }
 
 - (void)performWorkWithObject:(id)object {
+//    @synchronized (self) {
+        if ([NSThread isMainThread]) {
+            [self performWorkWithObjectOnMainThread:object];
+        } else {
+            [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMainThread:)
+                                   withObject:object
+                                waitUntilDone:NO];
+        }
+//    }
+}
+
+- (void)performWorkWithObjectOnMainThread:(id)object {
     @synchronized (self) {
         if (TKAEmployeeReadyToWork == self.state) {
             self.state = TKAEmployeePerformWork;
