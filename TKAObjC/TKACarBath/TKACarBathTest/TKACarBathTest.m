@@ -15,13 +15,14 @@ static const NSUInteger kTKACountCar        = 100;
 
 void TKACarBathTask1() {
     @autoreleasepool {
-        TKAEnterprise *enterprise = [TKAEnterprise enterpriseWhithName:@"CarBath"];
+        TKAEnterprise *enterprise = [TKAEnterprise enterpriseWithName:@"CarBath"];
         
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
        
         for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
             [enterprise washCar:[TKACar car]];
+        //    [enterprise performSelectorInBackground:@selector(washCar:) withObject:[TKACar car]];
         }
        
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];

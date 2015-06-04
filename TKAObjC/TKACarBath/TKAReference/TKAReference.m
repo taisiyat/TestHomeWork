@@ -34,7 +34,7 @@
 }
 
 - (instancetype)initWithTarget:(id)target {
-    [super init];
+    self = [super init];
     if (self) {
         self.target = target;
     }

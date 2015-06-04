@@ -12,17 +12,14 @@
 
 - (void)processObject:(TKAEmployee *)object {
         [self takeMoneyFromObject:object];
-        NSLog(@"Director profit = %lu", self.money);
+        NSLog(@"Director profit = %lu %@", self.money, object.name);
+        object.state = TKAEmployeeReadyToWork;
 }
 
-//- (void)performWorkWithObject:(id)object {
-//    [self processObject:object];
-////    [self performSelectorInBackground:@selector(processObject:) withObject:object];
-//}
-
-- (void)workWithObjectOnMainThread:(id)object {
-        [super workWithObjectOnMainThread:object];
-        self.state = TKAEmployeeReadyToWork;
+- (void)performWorkWithObject:(id)object {
+    @synchronized (self) {
+        [self processObject:object];
+    }
 }
 
 @end

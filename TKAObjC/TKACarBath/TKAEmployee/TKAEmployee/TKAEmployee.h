@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 
 @optional
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee;
-- (void)employeeDidBecomeReadyToProcessing:(TKAEmployee *)employee;
+- (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee;
 - (void)employeeDidPerformWork:(TKAEmployee *)employee;
 
 @end

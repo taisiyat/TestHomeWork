@@ -15,7 +15,7 @@
 @property (nonatomic, readonly)     NSArray         *employees;
 @property (nonatomic, assign)       NSMutableArray  *mutableCars;
 
-+ (instancetype)enterpriseWhithName:(NSString *)name;
++ (instancetype)enterpriseWithName:(NSString *)name;
 - (void)prepare;
 
 - (void)washCar:(TKACar *)car;
