@@ -131,9 +131,7 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)washCar:(TKACar *)car {
     if (car) {
-        @synchronized (self) {
             [self.supervisorWasher workWithObject:car];
-        }
     }
 }
 

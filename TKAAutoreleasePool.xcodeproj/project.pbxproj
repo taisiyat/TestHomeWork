@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		26E40D47BD8C2CEE4C216220 /* libPods-TKAObjCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D18628B00EA9E4AE9870CD52 /* libPods-TKAObjCTests.a */; };
 		8A0EF96B1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */; };
+		8A2064261B205E8300897D22 /* TKAGCDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2064251B205E8300897D22 /* TKAGCDObject.m */; };
+		8A2064271B205E8300897D22 /* TKAGCDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2064251B205E8300897D22 /* TKAGCDObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8A271C821AF3F828006BE4FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C421AF3F828006BE4FE /* main.m */; };
 		8A271C841AF3F828006BE4FE /* NSObject+TKAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C451AF3F828006BE4FE /* NSObject+TKAExtension.m */; };
 		8A271C861AF3F828006BE4FE /* TKACreature.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A271C491AF3F828006BE4FE /* TKACreature.m */; };
@@ -102,6 +104,8 @@
 		8A0EF96A1B00D62600129A78 /* IDPBlockAsyncRaiseIterativeMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPBlockAsyncRaiseIterativeMatcher.m; sourceTree = "<group>"; };
 		8A0EF96C1B00DA3100129A78 /* ObjC_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjC_prefix.pch; sourceTree = "<group>"; };
 		8A0EF96D1B00DD3400129A78 /* ObjCTests_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCTests_prefix.pch; sourceTree = "<group>"; };
+		8A2064241B205E8300897D22 /* TKAGCDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAGCDObject.h; sourceTree = "<group>"; };
+		8A2064251B205E8300897D22 /* TKAGCDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAGCDObject.m; sourceTree = "<group>"; };
 		8A271C311AF3F469006BE4FE /* TKAObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKAObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A271C341AF3F469006BE4FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A271C421AF3F828006BE4FE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -249,6 +253,15 @@
 			path = Matchers;
 			sourceTree = "<group>";
 		};
+		8A2064231B205E8300897D22 /* TKAGCDObject */ = {
+			isa = PBXGroup;
+			children = (
+				8A2064241B205E8300897D22 /* TKAGCDObject.h */,
+				8A2064251B205E8300897D22 /* TKAGCDObject.m */,
+			);
+			path = TKAGCDObject;
+			sourceTree = "<group>";
+		};
 		8A271C321AF3F469006BE4FE /* TKAObjCTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +370,7 @@
 		8A271C5A1AF3F828006BE4FE /* TKACarBath */ = {
 			isa = PBXGroup;
 			children = (
+				8A2064231B205E8300897D22 /* TKAGCDObject */,
 				8AC6E2941B1DE4910029EF15 /* TKAReference */,
 				8ADFA5201B16E613000DD0A8 /* TKASupervisor */,
 				8ADFA5111B16E5D1000DD0A8 /* TKAQueue */,
@@ -973,6 +987,7 @@
 				8AC6A3C81B126B06002C87B8 /* TKAObservableObject.m in Sources */,
 				8A90DBE81AF8BA8000CB186A /* TKARangeAlphabet.m in Sources */,
 				8ADFA51B1B16E5D1000DD0A8 /* TKAQueue.m in Sources */,
+				8A2064271B205E8300897D22 /* TKAGCDObject.m in Sources */,
 				8AC6A3BB1B126A18002C87B8 /* TKAThreadObject.m in Sources */,
 				8A90DBEE1AF8BB3D00CB186A /* TKAAlphabet.m in Sources */,
 				8ADFA5241B16E613000DD0A8 /* TKASupervisor.m in Sources */,
@@ -1022,6 +1037,7 @@
 				8A90DBE71AF8BA8000CB186A /* TKARangeAlphabet.m in Sources */,
 				8A271C981AF3F828006BE4FE /* TKACarBox.m in Sources */,
 				8A271CA21AF3F828006BE4FE /* TKADirector.m in Sources */,
+				8A2064261B205E8300897D22 /* TKAGCDObject.m in Sources */,
 				8AC6E29C1B1DE5440029EF15 /* TKAAssignReference.m in Sources */,
 				8AC60FF51AF76ECF00E2B128 /* NSString+TKAExtensionWithAlphabet.m in Sources */,
 				8A90DBE91AF8BA8000CB186A /* TKAStringsAlphabet.m in Sources */,
