@@ -51,12 +51,14 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:@" "];
-    [result appendString:@"\n Supervisor : "];
-    [result appendFormat:@"\n %@ ", self.processingQueue];
-    [result appendFormat:@"\n %@ ", self.mutableProcessors];
-    
-    return [[result copy] autorelease];
+    @synchronized (self) {
+        NSMutableString *result = [NSMutableString stringWithString:@" "];
+        [result appendString:@"\n Supervisor : "];
+        [result appendFormat:@"\n %@ ", self.processingQueue];
+        [result appendFormat:@"\n %@ ", self.mutableProcessors];
+        
+        return [[result copy] autorelease];
+    }
 }
 
 - (void)processorObjects:(id)objects {
@@ -105,7 +107,7 @@
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
-    @ synchronized (self) {
+    @synchronized (self) {
         if (TKAEmployeeReadyToWork == employee.state ) {
             id objectForProcessing = [self.processingQueue nextObjectQueue];
             if (objectForProcessing)  {

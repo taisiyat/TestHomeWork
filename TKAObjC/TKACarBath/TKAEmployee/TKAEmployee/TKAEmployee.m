@@ -53,26 +53,26 @@
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:@" "];
-    [result appendFormat:@"name = %@ ", self.name];
-//    [result appendFormat:@"experience = %lu", self.experience];
-//    [result appendFormat:@"salary = %lu ", self.salary];
-    [result appendFormat:@"state = %lu ", self.state];
-    [result appendFormat:@"money = %lu", self.money];
-    
-    return [[result copy] autorelease];
+    @synchronized (self) {
+        NSMutableString *result = [NSMutableString stringWithString:@" "];
+        [result appendFormat:@"name = %@ ", self.name];
+        //    [result appendFormat:@"experience = %lu", self.experience];
+        //    [result appendFormat:@"salary = %lu ", self.salary];
+        [result appendFormat:@"state = %lu ", self.state];
+        [result appendFormat:@"money = %lu", self.money];
+        
+        return [[result copy] autorelease];
+    }
 }
 
 - (void)performWorkWithObject:(id)object {
-//    @synchronized (self) {
-        if ([NSThread isMainThread]) {
-            [self performWorkWithObjectOnMainThread:object];
-        } else {
-            [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMainThread:)
-                                   withObject:object
-                                waitUntilDone:NO];
-        }
-//    }
+    if ([NSThread isMainThread]) {
+        [self performWorkWithObjectOnMainThread:object];
+    } else {
+        [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMainThread:)
+                               withObject:object
+                            waitUntilDone:NO];
+    }
 }
 
 - (void)performWorkWithObjectOnMainThread:(id)object {
@@ -80,27 +80,33 @@
         if (TKAEmployeeReadyToWork == self.state) {
             self.state = TKAEmployeePerformWork;
             self.processedObject = object;
-            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:) withObject:object];
+            
+            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+                                   withObject:object];
         }
     }
 }
 
 - (void)performWorkWithObjectInBackground:(id)object {
-        [self processObject:object];
-        usleep(1000*arc4random_uniform(10));
-        [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
+    [self processObject:object];
+    
+    usleep(1000 * arc4random_uniform(10));
+    
+    [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
                                withObject:object
                             waitUntilDone:NO];
 }
 
 - (void)workWithObjectOnMainThread:(id)object {
-        self.state = TKAEmployeeReadyForProcessing;
-        [self workOnMainThread:object];
-        self.processedObject = nil;
+    self.state = TKAEmployeeReadyForProcessing;
+    
+    [self workOnMainThread:object];
+    
+    self.processedObject = nil;
 }
 
 - (void)workOnMainThread:(TKAEmployee *)object {
-        object.state = TKAEmployeeReadyToWork;
+    object.state = TKAEmployeeReadyToWork;
 }
 
 - (void)processObject:(id)object {
@@ -111,12 +117,20 @@
 #pragma mark TKATransferMoneyProtocol
 
 - (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
-    NSUInteger cash = 0;
-    @synchronized (object) {
-        cash = object.money;
-        object.money = 0;
-    }
+    NSUInteger cash = [self takeAllMoneyFromObject:object];;
+    [self giveMoney:cash ];
+}
 
+- (NSUInteger)takeAllMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
+    @synchronized (object) {
+        NSUInteger cash = object.money;
+        object.money = 0;
+        
+        return cash;
+    }
+}
+
+- (void)giveMoney:(NSUInteger)cash {
     @synchronized (self) {
         self.money += cash;
     }

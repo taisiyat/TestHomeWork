@@ -21,10 +21,10 @@
 @class TKAWasher;
 @class TKAAccountant;
 
-static const NSUInteger  kTKACountWasher         = 3;
-static const NSUInteger  kTKACountAccountant     = 2;
-static const NSString   *kTKANameWasher          = @"Washer";
-static const NSString   *kTKANameAccountant      = @"Accountant";
+static const NSUInteger kTKACountWasher         = 3;
+static const NSUInteger kTKACountAccountant     = 2;
+static NSString * const kTKANameWasher          = @"Washer";
+static NSString * const kTKANameAccountant      = @"Accountant";
 
 @interface TKAEnterprise ()
 @property (nonatomic, retain)       NSMutableArray  *mutableEmployees;
@@ -85,20 +85,22 @@ static const NSString   *kTKANameAccountant      = @"Accountant";
 #pragma mark Public Methods
 
 - (NSString *)description {
-    NSMutableString *result = [NSMutableString stringWithString:@" "];
-    [result appendString:@"\n Enterprise : "];
-    [result appendFormat:@" name = %@ ", self.name];
-    [result appendFormat:@"\n employees : %@ ", self.mutableEmployees];
-    [result appendFormat:@"%@ ", self.supervisorWasher];
-    [result appendFormat:@"%@ ", self.supervisorAccountant];
-    
-    return [[result copy] autorelease];
+    @synchronized (self) {
+        NSMutableString *result = [NSMutableString stringWithString:@" "];
+        [result appendString:@"\n Enterprise : "];
+        [result appendFormat:@" name = %@ ", self.name];
+        [result appendFormat:@"\n employees : %@ ", self.mutableEmployees];
+        [result appendFormat:@"%@ ", self.supervisorWasher];
+        [result appendFormat:@"%@ ", self.supervisorAccountant];
+        
+        return [[result copy] autorelease];
+    }
 }
 
 - (void)prepare {
     [self addEmployee:[TKADirector employeeWithName:@"director"]];
-    [self employeesWithClass:[TKAAccountant class] count:kTKACountAccountant name:@"Accountant"];
-    [self employeesWithClass:[TKAWasher class] count:kTKACountWasher name:@"Washer"];
+    [self employeesWithClass:[TKAAccountant class] count:kTKACountAccountant name:kTKANameAccountant];
+    [self employeesWithClass:[TKAWasher class] count:kTKACountWasher name:kTKANameWasher];
 }
 
 - (void)addEmployee:(TKAEmployee *)employee {

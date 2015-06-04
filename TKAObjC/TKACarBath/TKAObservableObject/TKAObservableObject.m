@@ -56,13 +56,10 @@
     @synchronized (self) {
         if (state != _state) {
             _state = state;
-            if ([NSThread isMainThread]) {
-                [self notifyOfStateChangeWithSelector];
-            } else {
+            
             [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
                                    withObject:nil
                                 waitUntilDone:YES];
-            }
         }
     }
 }
