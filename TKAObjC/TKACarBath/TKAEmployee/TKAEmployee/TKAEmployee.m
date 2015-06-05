@@ -30,7 +30,6 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self removeObserver:self];
     self.name = nil;
     
     [super dealloc];
@@ -40,7 +39,6 @@
     self = [super init];
     if (self) {
         self.name = name;
-        [self addObserver:self];
     }
     
     return self;
@@ -66,23 +64,15 @@
 }
 
 - (void)performWorkWithObject:(id)object {
-    if ([NSThread isMainThread]) {
-        [self performWorkWithObjectOnMainThread:object];
-    } else {
-        [self performSelectorOnMainThread:@selector(performWorkWithObjectOnMainThread:)
-                               withObject:object
-                            waitUntilDone:NO];
-    }
-}
-
-- (void)performWorkWithObjectOnMainThread:(id)object {
-    @synchronized (self) {
-        if (TKAEmployeeReadyToWork == self.state) {
-            self.state = TKAEmployeePerformWork;
-            self.processedObject = object;
-            
-            [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
-                                   withObject:object];
+    if (object) {
+        @synchronized (self) {
+            if (TKAEmployeeReadyToWork == self.state) {
+                self.state = TKAEmployeePerformWork;
+                self.processedObject = object;
+                
+                [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
+                                       withObject:object];
+            }
         }
     }
 }
@@ -98,11 +88,10 @@
 }
 
 - (void)workWithObjectOnMainThread:(id)object {
+    self.processedObject = nil;
     self.state = TKAEmployeeReadyForProcessing;
     
     [self workOnMainThread:object];
-    
-    self.processedObject = nil;
 }
 
 - (void)workOnMainThread:(TKAEmployee *)object {
@@ -117,20 +106,19 @@
 #pragma mark TKATransferMoneyProtocol
 
 - (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
-    NSUInteger cash = [self takeAllMoneyFromObject:object];;
-    [self giveMoney:cash ];
+    [self takeMoney:[object giveAllMoney]];
 }
 
-- (NSUInteger)takeAllMoneyFromObject:(id<TKATransferMoneyProtocol>)object {
-    @synchronized (object) {
-        NSUInteger cash = object.money;
-        object.money = 0;
+- (NSUInteger)giveAllMoney {
+    @synchronized (self) {
+        NSUInteger cash = self.money;
+        self.money = 0;
         
         return cash;
     }
 }
 
-- (void)giveMoney:(NSUInteger)cash {
+- (void)takeMoney:(NSUInteger)cash {
     @synchronized (self) {
         self.money += cash;
     }
@@ -156,12 +144,8 @@
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee {
-    if (self != employee) {
-        @synchronized (self) {
-            if (TKAEmployeeReadyForProcessing == employee.state) {
-                [self performWorkWithObject:employee];
-            }
-        }
+    @synchronized (self) {
+        [self performWorkWithObject:employee];
     }
 }
 

@@ -135,32 +135,6 @@ static NSString * const kTKANameAccountant      = @"Accountant";
     }
 }
 
-//- (TKACar *)nextCarInQueue {
-//    @synchronized (self) {
-//        NSMutableArray *cars = self.mutableCars;
-//        TKACar *result = [[[cars firstObject] retain] autorelease];
-//        if (result) {
-//            [cars removeObject:result];
-//        }
-//        
-//        return result;
-//    }
-//}
-
-//- (id)freeEmployeeOfClass:(Class)classPosition {
-//    @synchronized (self) {
-//        NSMutableSet *employees = [self employeesOfClass:classPosition];
-//        NSMutableSet *freeEmployees = [NSMutableSet set];
-//        for (TKAEmployee *employee in employees) {
-//            if (TKAEmployeeReadyToWork == employee.state) {
-//                [freeEmployees addObject:employee];
-//            }
-//        }
-//        
-//        return [freeEmployees anyObject];
-//    }
-//}
-
 - (NSMutableSet *)employeesOfClass:(Class)classPosition {
     @synchronized (self) {
         NSMutableSet *result = [NSMutableSet set];

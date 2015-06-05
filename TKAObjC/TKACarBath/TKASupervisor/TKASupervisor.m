@@ -93,14 +93,13 @@
 #pragma mark Privat Methods
 
 - (id)freeProcessor {
-    @synchronized (self) {
-        for (TKAEmployee *employee in self.mutableProcessors) {
-            if (TKAEmployeeReadyToWork == employee.state) {
-                return employee;            }
+    for (TKAEmployee *employee in self.mutableProcessors) {
+        if (TKAEmployeeReadyToWork == employee.state) {
+            return employee;
         }
-        
-        return nil;
     }
+    
+    return nil;
 }
 
 #pragma mark -
@@ -109,10 +108,7 @@
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
     @synchronized (self) {
         if (TKAEmployeeReadyToWork == employee.state ) {
-            id objectForProcessing = [self.processingQueue nextObjectQueue];
-            if (objectForProcessing)  {
-                [employee performWorkWithObject:objectForProcessing];
-            }
+            [employee performWorkWithObject:[self.processingQueue nextObjectQueue]];
         }
     }
 }

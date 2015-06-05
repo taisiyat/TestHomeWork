@@ -13,6 +13,8 @@
 #import "TKAGCDObject.h"
 
 static const NSUInteger kTKACountCar        = 100;
+static NSString * const kTKANameQueueMain   = @"TKAQueueMain";
+
 
 void TKACarBathTask1() {
     @autoreleasepool {
@@ -22,40 +24,30 @@ void TKACarBathTask1() {
         NSLog(@"%@", [enterprise description]);
        
 //        for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-//            [enterprise washCar:[TKACar car]];
-//        //    [enterprise performSelectorInBackground:@selector(washCar:) withObject:[TKACar car]];
+//        //    [enterprise washCar:[TKACar car]];
+//            [enterprise performSelectorInBackground:@selector(washCar:) withObject:[TKACar car]];
 //        }
-       
-//        void (^blockMain)(size_t) = ^(size_t count) {
-//            [enterprise washCar:[TKACar car]];
-//            printf("ID = %lu, iteration count\n", count);
-//        };
-        
-        void (^blockMain)() = ^() {
+     
+        void (^blockMain)(size_t) = ^(size_t count) {
+            if (0 != count && count % 5 == 0) {
+                sleep(1);
+            }
+            
             [enterprise washCar:[TKACar car]];
         };
-        
-       
+
         TKAGCDObject *gcdMain = [[TKAGCDObject new] autorelease];
+        dispatch_queue_t queue = dispatch_queue_create([kTKANameQueueMain cStringUsingEncoding:NSUTF8StringEncoding],
+                                                       DISPATCH_QUEUE_CONCURRENT);
+        gcdMain.queue = queue;
+        dispatch_release(queue);
         
-//        void (^block)() = ^() {
-//            [enterprise washCar:[TKACar car]];
-//        };
-//        
-//        void (^blockMain)() = ^(){
-//            dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_UTILITY, 0);
-//            gcdMain.queue = queue;
-//            
-//            dispatch_sync (queue, ^{
-//                dispatch_apply(kTKACountCar, queue, block);
-//            });
-//        };
-        
-        [gcdMain executeSerialBlock:blockMain];
+        dispatch_async(gcdMain.queue, ^{
+            dispatch_apply(kTKACountCar, gcdMain.queue, blockMain);
+        });
         
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
-
     }
 }
 

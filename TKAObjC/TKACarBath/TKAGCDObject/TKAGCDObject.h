@@ -11,9 +11,6 @@
 @interface TKAGCDObject : NSObject
 @property (nonatomic, retain)   dispatch_queue_t    queue;
 
-- (void)executeSerialBlock:block;
-- (void)executeConcurrent:block;
-
 @end
 
 
