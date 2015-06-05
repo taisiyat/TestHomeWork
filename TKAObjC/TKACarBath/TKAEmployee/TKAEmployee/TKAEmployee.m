@@ -142,9 +142,7 @@
 #pragma mark TKAEmployeeObserver
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee {
-    @synchronized (self) {
         [self performWorkWithObject:employee];
-    }
 }
 
 @end
