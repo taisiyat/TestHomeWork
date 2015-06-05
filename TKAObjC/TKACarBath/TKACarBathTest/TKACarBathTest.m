@@ -12,7 +12,10 @@
 #import "TKACar.h"
 #import "TKAGCDObject.h"
 
-static const NSUInteger kTKACountCar        = 100;
+static const NSUInteger kTKACountCar            = 1000;
+static const NSUInteger kTKAPortionCar          = 10;
+static const NSUInteger kTKARandomSleep         = 1000;
+static const NSUInteger kTKARandomSleepInterval     = 1;
 static NSString * const kTKANameQueueMain   = @"TKAQueueMain";
 
 
@@ -29,8 +32,8 @@ void TKACarBathTask1() {
 //        }
      
         void (^blockMain)(size_t) = ^(size_t count) {
-            if (0 != count && count % 5 == 0) {
-                sleep(1);
+            if (0 != count && count % kTKAPortionCar == 0) {
+                sleep(arc4random_uniform(kTKARandomSleep * kTKARandomSleepInterval) / kTKARandomSleep);
             }
             
             [enterprise washCar:[TKACar car]];

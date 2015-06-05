@@ -131,7 +131,7 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)washCar:(TKACar *)car {
     if (car) {
-            [self.supervisorWasher workWithObject:car];
+        [self.supervisorWasher workWithObject:car];
     }
 }
 
@@ -181,9 +181,7 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee{
     @synchronized (self) {
-        if (TKAEmployeeReadyForProcessing == employee.state) {
             [self.supervisorAccountant workWithObject:employee];
-        }
     }
 }
 

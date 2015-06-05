@@ -54,8 +54,6 @@
     @synchronized (self) {
         NSMutableString *result = [NSMutableString stringWithString:@" "];
         [result appendFormat:@"name = %@ ", self.name];
-        //    [result appendFormat:@"experience = %lu", self.experience];
-        //    [result appendFormat:@"salary = %lu ", self.salary];
         [result appendFormat:@"state = %lu ", self.state];
         [result appendFormat:@"money = %lu", self.money];
         
