@@ -16,6 +16,7 @@
 
 @implementation TKAObservableObject
 
+@synthesize state = _state;
 @dynamic observerSet;
 
 #pragma mark -
@@ -63,6 +64,12 @@
     }
 }
 
+- (NSUInteger)state {
+    @synchronized (self) {
+        return _state;
+    }
+}
+
 #pragma mark -
 #pragma mark Pablic
 
@@ -87,7 +94,7 @@
 
 - (void)notifyOfStateChangeWithSelector {
     NSMutableSet *observerSet = self.mutableObserverSet;
-    SEL selector = [self selectorForState:self.state];
+    SEL selector = [self selectorForState:_state];
     for (TKAReference *reference in observerSet) {
         if ([reference.target respondsToSelector:selector]) {
            [reference.target performSelector:selector withObject:self];
