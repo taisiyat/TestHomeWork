@@ -53,10 +53,8 @@
 - (NSString *)description {
     @synchronized (self) {
         NSMutableString *result = [NSMutableString stringWithString:@" "];
-        [result appendFormat:@"name = %@ ", self.name];
-        [result appendFormat:@"state = %lu ", self.state];
-        [result appendFormat:@"money = %lu", self.money];
-        
+        [result appendFormat:@"name = %@, state = %lu, money = %lu", self.name, self.state, self.money];
+       
         return [[result copy] autorelease];
     }
 }

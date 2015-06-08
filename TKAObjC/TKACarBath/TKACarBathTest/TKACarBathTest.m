@@ -16,8 +16,6 @@ static const NSUInteger kTKACountCar                = 100;
 static const NSUInteger kTKAPortionCar              = 5;
 static const NSUInteger kTKARandomSleep             = 1000;
 static const NSUInteger kTKARandomSleepInterval     = 1;
-static NSString * const kTKANameQueueMain   = @"TKAQueueMain";
-
 
 void TKACarBathTask1() {
     @autoreleasepool {
@@ -33,21 +31,19 @@ void TKACarBathTask1() {
      
         void (^blockMain)(size_t) = ^(size_t count) {
             if (0 != count && count % kTKAPortionCar == 0) {
-                
-                sleep(arc4random_uniform(kTKARandomSleep * kTKARandomSleepInterval) / kTKARandomSleep);
+                NSTimeInterval timeInterval = arc4random_uniform(kTKARandomSleep) * kTKARandomSleepInterval / kTKARandomSleep;
+                sleep(timeInterval);
             }
             
             [enterprise washCar:[TKACar car]];
         };
-
-        TKAGCDObject *gcdMain = [[TKAGCDObject new] autorelease];
-        dispatch_queue_t queue = dispatch_queue_create([kTKANameQueueMain cStringUsingEncoding:NSUTF8StringEncoding],
-                                                       DISPATCH_QUEUE_CONCURRENT);
-        gcdMain.queue = queue;
+       
+        dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_UTILITY, 0);
+        enterprise.queue = queue;
         dispatch_release(queue);
-        
-        dispatch_async(gcdMain.queue, ^{
-            dispatch_apply(kTKACountCar, gcdMain.queue, blockMain);
+
+        dispatch_async(enterprise.queue, ^{
+            dispatch_apply(kTKACountCar, enterprise.queue, blockMain);
         });
         
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];

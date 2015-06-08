@@ -81,12 +81,13 @@
 
 - (void)workWithObject:(id)object {
     @synchronized (self) {
-            [self.processingQueue addObject:object];
-            TKAEmployee *processor = [self freeProcessor];
-            if (processor) {
-                [processor performWorkWithObject:[self.processingQueue nextObjectQueue]];
-            }
+        TKAQueue *queueObjects = self.processingQueue;
+        [queueObjects addObject:object];
+        TKAEmployee *processor = [self freeProcessor];
+        if (processor) {
+            [processor performWorkWithObject:[queueObjects nextObjectQueue]];
         }
+    }
 }
 
 #pragma mark -

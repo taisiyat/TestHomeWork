@@ -54,7 +54,8 @@ static NSString * const kTKANameAccountant      = @"Accountant";
     self.mutableCars = nil;
     self.supervisorWasher = nil;
     self.supervisorAccountant = nil;
-
+    self.queue = NULL;
+    self.timer = nil;
     
     [super dealloc];
 }
@@ -105,8 +106,9 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)addEmployee:(TKAEmployee *)employee {
     @synchronized (self) {
-        if (![self.mutableEmployees containsObject:employee]) {
-            [self.mutableEmployees addObject:employee];
+        NSMutableArray *emploees = self.mutableEmployees;
+        if (![emploees containsObject:employee]) {
+            [emploees addObject:employee];
             
             if ([employee isKindOfClass:[TKAWasher class]]) {
                 [employee addObserver:self];
