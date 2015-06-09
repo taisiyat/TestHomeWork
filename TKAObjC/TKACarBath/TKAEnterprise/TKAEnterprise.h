@@ -14,8 +14,6 @@
 @property (nonatomic, copy)         NSString            *name;
 @property (nonatomic, readonly)     NSArray             *employees;
 @property (nonatomic, assign)       NSMutableArray      *mutableCars;
-@property (nonatomic, retain)       NSTimer             *timer;
-@property (nonatomic, retain)       dispatch_queue_t    queue;
 
 + (instancetype)enterpriseWithName:(NSString *)name;
 

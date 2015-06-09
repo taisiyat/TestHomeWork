@@ -54,8 +54,6 @@ static NSString * const kTKANameAccountant      = @"Accountant";
     self.mutableCars = nil;
     self.supervisorWasher = nil;
     self.supervisorAccountant = nil;
-    self.queue = NULL;
-    self.timer = nil;
     
     [super dealloc];
 }
@@ -183,7 +181,7 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee{
     @synchronized (self) {
-            [self.supervisorAccountant workWithObject:employee];
+        [self.supervisorAccountant workWithObject:employee];
     }
 }
 

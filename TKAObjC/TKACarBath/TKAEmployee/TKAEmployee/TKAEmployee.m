@@ -66,29 +66,40 @@
                 self.state = TKAEmployeePerformWork;
                 self.processedObject = object;
                 
-                [self performSelectorInBackground:@selector(performWorkWithObjectInBackground:)
-                                       withObject:object];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [self processObject:object];
+                    
+                    usleep(1000 * arc4random_uniform(10));
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.processedObject = nil;
+                        self.state = TKAEmployeeReadyForProcessing;
+                        
+                        [self workOnMainThread:object];
+                    });
+
+                });
             }
         }
     }
 }
 
-- (void)performWorkWithObjectInBackground:(id)object {
-    [self processObject:object];
-    
-    usleep(1000 * arc4random_uniform(10));
-    
-    [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
-                               withObject:object
-                            waitUntilDone:NO];
-}
-
-- (void)workWithObjectOnMainThread:(id)object {
-    self.processedObject = nil;
-    self.state = TKAEmployeeReadyForProcessing;
-    
-    [self workOnMainThread:object];
-}
+//- (void)performWorkWithObjectInBackground:(id)object {
+//    [self processObject:object];
+//    
+//    usleep(1000 * arc4random_uniform(10));
+//    
+//    [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
+//                               withObject:object
+//                            waitUntilDone:NO];
+//}
+//
+//- (void)workWithObjectOnMainThread:(id)object {
+//    self.processedObject = nil;
+//    self.state = TKAEmployeeReadyForProcessing;
+//    
+//    [self workOnMainThread:object];
+//}
 
 - (void)workOnMainThread:(TKAEmployee *)object {
     object.state = TKAEmployeeReadyToWork;

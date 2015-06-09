@@ -57,9 +57,16 @@
         if (state != _state) {
             _state = state;
             
-            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-                                   withObject:nil
-                                waitUntilDone:YES];
+            if ([NSThread isMainThread]) {
+                [self notifyOfStateChangeWithSelector];
+            } else {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self notifyOfStateChangeWithSelector];
+                });
+            }
+//            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
+//                                   withObject:nil
+//                                waitUntilDone:YES];
         }
     }
 }
