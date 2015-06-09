@@ -15,7 +15,7 @@
 static const NSUInteger kTKACountCar                = 100;
 static const NSUInteger kTKAPortionCar              = 5;
 static const NSUInteger kTKARandomSleep             = 1000;
-static const NSUInteger kTKARandomInterval          = 1;
+static const NSUInteger kTKATimerInterval          = 1;
 
 @implementation TKACarGenerator
 
@@ -55,7 +55,7 @@ static const NSUInteger kTKARandomInterval          = 1;
 #pragma mark Public Methods
 
 - (void)start {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTKARandomInterval
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTKATimerInterval
                                                   target:self
                                                 selector:NULL
                                                 userInfo:nil
@@ -68,10 +68,10 @@ static const NSUInteger kTKARandomInterval          = 1;
 
 - (void)carGenerationForEnterprise:(TKAEnterprise *)enterprise {
     void (^blockMain)(size_t) = ^(size_t count) {
-//        if (0 != count && count % kTKAPortionCar == 0) {
-//            NSTimeInterval timeInterval = arc4random_uniform(kTKARandomSleep) * kTKARandomInterval / kTKARandomSleep;
-//            sleep(timeInterval);
-//        }
+        if (0 != count && count % kTKAPortionCar == 0) {
+            NSTimeInterval timeInterval = arc4random_uniform(kTKARandomSleep) * kTKATimerInterval / kTKARandomSleep;
+            sleep(timeInterval);
+        }
         
         [enterprise washCar:[TKACar car]];
     };
