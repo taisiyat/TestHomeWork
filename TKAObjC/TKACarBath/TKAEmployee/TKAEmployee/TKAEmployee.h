@@ -36,6 +36,8 @@ typedef NS_ENUM(NSUInteger, TKAEmployeeState) {
 
 + (instancetype)employeeWithName:(NSString *)name;
 
+//this method for overriding
+//don't call it directly
 - (void)processObject:(id)object;
 - (void)performWorkWithObject:(id)object;
 

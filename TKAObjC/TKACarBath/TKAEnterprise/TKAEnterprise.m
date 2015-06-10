@@ -54,7 +54,6 @@ static NSString * const kTKANameAccountant      = @"Accountant";
     self.mutableCars = nil;
     self.supervisorWasher = nil;
     self.supervisorAccountant = nil;
-
     
     [super dealloc];
 }
@@ -105,8 +104,9 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)addEmployee:(TKAEmployee *)employee {
     @synchronized (self) {
-        if (![self.mutableEmployees containsObject:employee]) {
-            [self.mutableEmployees addObject:employee];
+        NSMutableArray *emploees = self.mutableEmployees;
+        if (![emploees containsObject:employee]) {
+            [emploees addObject:employee];
             
             if ([employee isKindOfClass:[TKAWasher class]]) {
                 [employee addObserver:self];
@@ -131,37 +131,9 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)washCar:(TKACar *)car {
     if (car) {
-        @synchronized (self) {
-            [self.supervisorWasher workWithObject:car];
-        }
+        [self.supervisorWasher workWithObject:car];
     }
 }
-
-//- (TKACar *)nextCarInQueue {
-//    @synchronized (self) {
-//        NSMutableArray *cars = self.mutableCars;
-//        TKACar *result = [[[cars firstObject] retain] autorelease];
-//        if (result) {
-//            [cars removeObject:result];
-//        }
-//        
-//        return result;
-//    }
-//}
-
-//- (id)freeEmployeeOfClass:(Class)classPosition {
-//    @synchronized (self) {
-//        NSMutableSet *employees = [self employeesOfClass:classPosition];
-//        NSMutableSet *freeEmployees = [NSMutableSet set];
-//        for (TKAEmployee *employee in employees) {
-//            if (TKAEmployeeReadyToWork == employee.state) {
-//                [freeEmployees addObject:employee];
-//            }
-//        }
-//        
-//        return [freeEmployees anyObject];
-//    }
-//}
 
 - (NSMutableSet *)employeesOfClass:(Class)classPosition {
     @synchronized (self) {
@@ -209,9 +181,7 @@ static NSString * const kTKANameAccountant      = @"Accountant";
 
 - (void)employeeDidBecomeReadyForProcessing:(TKAEmployee *)employee{
     @synchronized (self) {
-        if (TKAEmployeeReadyForProcessing == employee.state) {
-            [self.supervisorAccountant workWithObject:employee];
-        }
+        [self.supervisorAccountant workWithObject:employee];
     }
 }
 

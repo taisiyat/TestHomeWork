@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TKACarBathTest.h"
 #import "TKAEnterprise.h"
-#import "TKACar.h"
-
-static const NSUInteger kTKACountCar        = 100;
+#import "TKACarGenerator.h"
+#import "TKATimer.h"
 
 void TKACarBathTask1() {
     @autoreleasepool {
@@ -20,15 +19,25 @@ void TKACarBathTask1() {
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
        
-        for (NSUInteger iter = 0; iter < kTKACountCar; iter++) {
-            [enterprise washCar:[TKACar car]];
-        //    [enterprise performSelectorInBackground:@selector(washCar:) withObject:[TKACar car]];
-        }
-       
+        TKACarGenerator *carGenerator = [TKACarGenerator carGenerator];
+        [carGenerator carGenerationForEnterprise:enterprise];
+
+        [carGenerator.timer startInRunLoopWithInterval:10 target:enterprise selector:@selector(washCar:)];
+        
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
 
-        NSLog(@"%@", [enterprise description]);
-        
     }
 }
+
+void TKAPerformBlockOnMainThread(TKABlock block) {
+    if ([NSThread isMainThread]) {
+        block();
+    } else {
+        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), block);
+    }
+};
+
+
+
+

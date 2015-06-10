@@ -11,6 +11,11 @@
 
 #import "NSObject+TKAExtension.h"
 
+typedef void(^TKABlock)();
+
+extern
+void TKAPerformBlockOnMainThread(TKABlock block);
+
 extern
 void TKACarBathTask1();
 

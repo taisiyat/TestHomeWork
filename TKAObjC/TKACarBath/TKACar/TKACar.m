@@ -59,6 +59,17 @@
     
     return [[result copy] autorelease];
 }
+#pragma mark -
+#pragma mark TKATransferMoneyProtocol
+
+- (NSUInteger)giveAllMoney {
+    @synchronized (self) {
+        NSUInteger cash = self.money;
+        self.money = 0;
+        
+        return cash;
+    }
+}
 
 #pragma mark -
 #pragma mark Private Methods

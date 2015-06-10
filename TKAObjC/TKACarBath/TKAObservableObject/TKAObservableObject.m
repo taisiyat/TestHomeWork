@@ -8,6 +8,7 @@
 
 #import "TKAObservableObject.h"
 #import "TKAAssignReference.h"
+#import "TKACarBathTest.h"
 
 @interface TKAObservableObject ()
 @property (nonatomic, retain)     NSMutableSet       *mutableObserverSet;
@@ -16,6 +17,7 @@
 
 @implementation TKAObservableObject
 
+@synthesize state = _state;
 @dynamic observerSet;
 
 #pragma mark -
@@ -40,7 +42,6 @@
 #pragma mark Accesssors
 
 - (NSSet *)observerSet {
-    //return [[self.mutableObserverSet copy] autorelease];
     @synchronized (self) {
         NSMutableSet *observerSet = self.mutableObserverSet;
         NSMutableSet *result = [NSMutableSet setWithCapacity:[observerSet count]];
@@ -57,10 +58,18 @@
         if (state != _state) {
             _state = state;
             
-            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-                                   withObject:nil
-                                waitUntilDone:YES];
+            void(^blockNotify)() = ^() {
+                [self notifyOfStateChangeWithSelector];
+            };
+            
+            TKAPerformBlockOnMainThread(blockNotify);
         }
+    }
+}
+
+- (NSUInteger)state {
+    @synchronized (self) {
+        return _state;
     }
 }
 
@@ -70,16 +79,12 @@
 - (void)addObserver:(id)observer {
     @synchronized (self) {
         [self.mutableObserverSet addObject:[TKAAssignReference referenceWithTarget:observer]];
-//        [self.mutableObserverSet addObject:observer];
-
     }
 }
 
 - (void)removeObserver:(id)observer {
     @synchronized (self) {
         [self.mutableObserverSet removeObject:[TKAAssignReference referenceWithTarget:observer]];
-//        [self.mutableObserverSet removeObject:observer];
-
     }
 }
 
@@ -91,13 +96,11 @@
 }
 
 - (void)notifyOfStateChangeWithSelector {
-    @synchronized (self) {
-        NSMutableSet *observerSet = self.mutableObserverSet;
-        SEL selector = [self selectorForState:self.state];
-        for (TKAReference *reference in observerSet) {
-            if ([reference.target respondsToSelector:selector]) {
-               [reference.target performSelector:selector withObject:self];
-            }
+    NSMutableSet *observerSet = self.mutableObserverSet;
+    SEL selector = [self selectorForState:_state];
+    for (TKAReference *reference in observerSet) {
+        if ([reference.target respondsToSelector:selector]) {
+           [reference.target performSelector:selector withObject:self];
         }
     }
 }

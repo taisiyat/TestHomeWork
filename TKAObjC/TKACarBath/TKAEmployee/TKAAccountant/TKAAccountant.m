@@ -20,11 +20,9 @@
 #pragma mark Public Methods
 
 - (void)processObject:(TKAEmployee *)object {
-//    @synchronized (self) {
         [self takeMoneyFromObject:object];
         usleep(1000 * arc4random_uniform(10));
         NSLog(@"%@ count money %@", self.name, object.name);
-//    }
 }
 
 @end

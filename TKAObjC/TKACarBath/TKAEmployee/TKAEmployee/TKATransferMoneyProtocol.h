@@ -15,5 +15,8 @@
 
 - (void)takeMoneyFromObject:(id<TKATransferMoneyProtocol>)object;
 
+- (NSUInteger)giveAllMoney;
+- (void)takeMoney:(NSUInteger)cash;
+
 @end
 

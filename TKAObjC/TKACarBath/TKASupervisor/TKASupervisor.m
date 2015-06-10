@@ -81,26 +81,26 @@
 
 - (void)workWithObject:(id)object {
     @synchronized (self) {
-            [self.processingQueue addObject:object];
-            TKAEmployee *processor = [self freeProcessor];
-            if (processor) {
-                [processor performWorkWithObject:[self.processingQueue nextObjectQueue]];
-            }
+        TKAQueue *queueObjects = self.processingQueue;
+        [queueObjects addObject:object];
+        TKAEmployee *processor = [self freeProcessor];
+        if (processor) {
+            [processor performWorkWithObject:[queueObjects nextObjectQueue]];
         }
+    }
 }
 
 #pragma mark -
 #pragma mark Privat Methods
 
 - (id)freeProcessor {
-    @synchronized (self) {
-        for (TKAEmployee *employee in self.mutableProcessors) {
-            if (TKAEmployeeReadyToWork == employee.state) {
-                return employee;            }
+    for (TKAEmployee *employee in self.mutableProcessors) {
+        if (TKAEmployeeReadyToWork == employee.state) {
+            return employee;
         }
-        
-        return nil;
     }
+    
+    return nil;
 }
 
 #pragma mark -
@@ -109,10 +109,7 @@
 - (void)employeeDidBecomeReadyToWork:(TKAEmployee *)employee {
     @synchronized (self) {
         if (TKAEmployeeReadyToWork == employee.state ) {
-            id objectForProcessing = [self.processingQueue nextObjectQueue];
-            if (objectForProcessing)  {
-                [employee performWorkWithObject:objectForProcessing];
-            }
+            [employee performWorkWithObject:[self.processingQueue nextObjectQueue]];
         }
     }
 }

@@ -10,7 +10,7 @@
 
 @interface TKAObservableObject : NSObject
 @property (nonatomic, readonly)     NSSet       *observerSet;
-@property (nonatomic, assign)       NSUInteger  state;
+@property (atomic, assign)       NSUInteger  state;
 
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
