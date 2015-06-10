@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class TKAEnterprise;
+@class TKATimer;
 
 @interface TKACarGenerator : NSObject
-@property (nonatomic, retain)       NSTimer             *timer;
+@property (nonatomic, retain) TKATimer *timer;
 
 + (instancetype)carGenerator;
 
 - (void)carGenerationForEnterprise:(TKAEnterprise *)enterprise;
-- (void)start;
-- (void)stop;
 
 @end

@@ -60,7 +60,7 @@
             if ([NSThread isMainThread]) {
                 [self notifyOfStateChangeWithSelector];
             } else {
-                dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_sync(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
                     [self notifyOfStateChangeWithSelector];
                 });
             }

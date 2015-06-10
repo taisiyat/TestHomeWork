@@ -70,6 +70,8 @@
 		8ACB6A181B26F9E200066ABE /* TKACarGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB6A171B26F9E200066ABE /* TKACarGenerator.m */; };
 		8ACB6A191B26F9E200066ABE /* TKACarGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB6A171B26F9E200066ABE /* TKACarGenerator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8ACC58481AFFD56F0082CA3A /* TKACarBathSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC58461AFFD56F0082CA3A /* TKACarBathSpec.m */; };
+		8ADAC9011B28117900587046 /* TKATimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC9001B28117900587046 /* TKATimer.m */; };
+		8ADAC9021B28117900587046 /* TKATimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC9001B28117900587046 /* TKATimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8ADFA51A1B16E5D1000DD0A8 /* TKAQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADFA5131B16E5D1000DD0A8 /* TKAQueue.m */; };
 		8ADFA51B1B16E5D1000DD0A8 /* TKAQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADFA5131B16E5D1000DD0A8 /* TKAQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8ADFA5231B16E613000DD0A8 /* TKASupervisor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADFA5221B16E613000DD0A8 /* TKASupervisor.m */; };
@@ -202,6 +204,8 @@
 		8ACB6A161B26F9E200066ABE /* TKACarGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKACarGenerator.h; sourceTree = "<group>"; };
 		8ACB6A171B26F9E200066ABE /* TKACarGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACarGenerator.m; sourceTree = "<group>"; };
 		8ACC58461AFFD56F0082CA3A /* TKACarBathSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKACarBathSpec.m; sourceTree = "<group>"; };
+		8ADAC8FF1B28117900587046 /* TKATimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKATimer.h; sourceTree = "<group>"; };
+		8ADAC9001B28117900587046 /* TKATimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKATimer.m; sourceTree = "<group>"; };
 		8ADFA5121B16E5D1000DD0A8 /* TKAQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAQueue.h; sourceTree = "<group>"; };
 		8ADFA5131B16E5D1000DD0A8 /* TKAQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAQueue.m; sourceTree = "<group>"; };
 		8ADFA5211B16E613000DD0A8 /* TKASupervisor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKASupervisor.h; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 		8A271C5A1AF3F828006BE4FE /* TKACarBath */ = {
 			isa = PBXGroup;
 			children = (
+				8ADAC8FE1B28117900587046 /* TKATimer */,
 				8A271C6B1AF3F828006BE4FE /* TKACarBathTest */,
 				8ACB6A151B26F9E200066ABE /* TKACarGenerator */,
 				8A2064231B205E8300897D22 /* TKAGCDObject */,
@@ -802,6 +807,15 @@
 			path = TKACarGenerator;
 			sourceTree = "<group>";
 		};
+		8ADAC8FE1B28117900587046 /* TKATimer */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC8FF1B28117900587046 /* TKATimer.h */,
+				8ADAC9001B28117900587046 /* TKATimer.m */,
+			);
+			path = TKATimer;
+			sourceTree = "<group>";
+		};
 		8ADFA5111B16E5D1000DD0A8 /* TKAQueue */ = {
 			isa = PBXGroup;
 			children = (
@@ -1003,6 +1017,7 @@
 				8A90DBE81AF8BA8000CB186A /* TKARangeAlphabet.m in Sources */,
 				8ADFA51B1B16E5D1000DD0A8 /* TKAQueue.m in Sources */,
 				8A2064271B205E8300897D22 /* TKAGCDObject.m in Sources */,
+				8ADAC9021B28117900587046 /* TKATimer.m in Sources */,
 				8AC6A3BB1B126A18002C87B8 /* TKAThreadObject.m in Sources */,
 				8A90DBEE1AF8BB3D00CB186A /* TKAAlphabet.m in Sources */,
 				8ADFA5241B16E613000DD0A8 /* TKASupervisor.m in Sources */,
@@ -1038,6 +1053,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ADAC9011B28117900587046 /* TKATimer.m in Sources */,
 				8ACB6A181B26F9E200066ABE /* TKACarGenerator.m in Sources */,
 				8ADFA51A1B16E5D1000DD0A8 /* TKAQueue.m in Sources */,
 				8A271C861AF3F828006BE4FE /* TKACreature.m in Sources */,
