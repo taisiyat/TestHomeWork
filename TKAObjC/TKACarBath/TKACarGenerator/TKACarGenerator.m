@@ -15,7 +15,7 @@
 
 static const NSUInteger kTKACountCar                = 100;
 static const NSUInteger kTKAPortionCar              = 5;
-static const NSUInteger kTKARandomSleep             = 1000;
+static const NSUInteger kTKARandomSleep             = 100;
 static const NSUInteger kTKATimerInterval           = 2;
 
 @implementation TKACarGenerator
@@ -52,7 +52,7 @@ static const NSUInteger kTKATimerInterval           = 2;
         [enterprise washCar:[TKACar car]];
     };
 
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_apply(kTKACountCar, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), blockMain);
     });
 }
