@@ -14,7 +14,7 @@
 typedef void(^TKABlock)();
 
 extern
-void TKAPerformBlockOnMainThread(TKABlock block);
+void TKAPerformBlockOnMainQueue(TKABlock block);
 
 extern
 void TKACarBathTask1();

@@ -10,7 +10,6 @@
 #import "TKACarBathTest.h"
 #import "TKAEnterprise.h"
 #import "TKACarGenerator.h"
-#import "TKATimer.h"
 
 void TKACarBathTask1() {
     @autoreleasepool {
@@ -21,20 +20,18 @@ void TKACarBathTask1() {
        
         TKACarGenerator *carGenerator = [TKACarGenerator carGenerator];
         [carGenerator carGenerationForEnterprise:enterprise];
-
-        [carGenerator.timer startInRunLoopWithInterval:10 target:enterprise selector:@selector(washCar:)];
-        
+       
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
 
     }
 }
 
-void TKAPerformBlockOnMainThread(TKABlock block) {
+void TKAPerformBlockOnMainQueue(TKABlock block) {
     if ([NSThread isMainThread]) {
         block();
     } else {
-        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), block);
+        dispatch_sync(dispatch_get_main_queue(), block);
     }
 };
 

@@ -62,7 +62,7 @@
                 [self notifyOfStateChangeWithSelector];
             };
             
-            TKAPerformBlockOnMainThread(blockNotify);
+            TKAPerformBlockOnMainQueue(blockNotify);
         }
     }
 }

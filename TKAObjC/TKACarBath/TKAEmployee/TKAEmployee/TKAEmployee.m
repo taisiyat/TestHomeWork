@@ -84,23 +84,6 @@
     }
 }
 
-//- (void)performWorkWithObjectInBackground:(id)object {
-//    [self processObject:object];
-//    
-//    usleep(1000 * arc4random_uniform(10));
-//    
-//    [self performSelectorOnMainThread:@selector(workWithObjectOnMainThread:)
-//                               withObject:object
-//                            waitUntilDone:NO];
-//}
-//
-//- (void)workWithObjectOnMainThread:(id)object {
-//    self.processedObject = nil;
-//    self.state = TKAEmployeeReadyForProcessing;
-//    
-//    [self workOnMainThread:object];
-//}
-
 - (void)workOnMainThread:(TKAEmployee *)object {
     object.state = TKAEmployeeReadyToWork;
 }
