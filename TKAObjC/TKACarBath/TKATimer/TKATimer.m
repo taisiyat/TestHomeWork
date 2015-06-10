@@ -52,7 +52,7 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)startWithInterval:(NSTimeInterval)interval target:(id)target selector:(SEL)selector {
+- (void)startInRunLoopWithInterval:(NSTimeInterval)interval target:(id)target selector:(SEL)selector {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:interval
                                                   target:target
                                                 selector:selector
@@ -60,13 +60,13 @@
                                                  repeats:YES];
 }
 
-//- (void)startWithInterval:(NSTimeInterval)interval target:(id)target selector:(SEL)selector {
-//    self.timer = [NSTimer timerWithTimeInterval:interval
-//                                                  target:target
-//                                                selector:selector
-//                                                userInfo:nil
-//                                                 repeats:YES];
-//}
+- (void)startWithInterval:(NSTimeInterval)interval target:(id)target selector:(SEL)selector {
+    self.timer = [NSTimer timerWithTimeInterval:interval
+                                                  target:target
+                                                selector:selector
+                                                userInfo:nil
+                                                 repeats:YES];
+}
 
 - (void)addToCurrentRunLoop {
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];

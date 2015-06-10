@@ -15,6 +15,7 @@
 - (void)addToCurrentRunLoop;
 - (void)addToMainRunLoop;
 - (void)startWithInterval:(NSTimeInterval)interval target:(id)target selector:(SEL)selector;
+- (void)startInRunLoopWithInterval:(NSTimeInterval)interval target:(id)target selector:(SEL)selector;
 - (void)stop;
 
 @end

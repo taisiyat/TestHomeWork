@@ -8,6 +8,7 @@
 
 #import "TKAObservableObject.h"
 #import "TKAAssignReference.h"
+#import "TKACarBathTest.h"
 
 @interface TKAObservableObject ()
 @property (nonatomic, retain)     NSMutableSet       *mutableObserverSet;
@@ -57,16 +58,11 @@
         if (state != _state) {
             _state = state;
             
-            if ([NSThread isMainThread]) {
+            void(^blockNotify)() = ^() {
                 [self notifyOfStateChangeWithSelector];
-            } else {
-                dispatch_sync(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
-                    [self notifyOfStateChangeWithSelector];
-                });
-            }
-//            [self performSelectorOnMainThread:@selector(notifyOfStateChangeWithSelector)
-//                                   withObject:nil
-//                                waitUntilDone:YES];
+            };
+            
+            TKAPerformBlockOnMainThread(blockNotify);
         }
     }
 }

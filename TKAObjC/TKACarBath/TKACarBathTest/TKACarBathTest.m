@@ -22,13 +22,22 @@ void TKACarBathTask1() {
         TKACarGenerator *carGenerator = [TKACarGenerator carGenerator];
         [carGenerator carGenerationForEnterprise:enterprise];
 
-        [carGenerator.timer startWithInterval:10 target:enterprise selector:@selector(washCar:)];
+        [carGenerator.timer startInRunLoopWithInterval:10 target:enterprise selector:@selector(washCar:)];
         
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
 
     }
 }
+
+void TKAPerformBlockOnMainThread(TKABlock block) {
+    if ([NSThread isMainThread]) {
+        block();
+    } else {
+        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), block);
+    }
+};
+
 
 
 

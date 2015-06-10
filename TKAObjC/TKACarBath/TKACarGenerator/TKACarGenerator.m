@@ -44,16 +44,16 @@ static const NSUInteger kTKATimerInterval           = 2;
 
 - (void)carGenerationForEnterprise:(TKAEnterprise *)enterprise {
     void (^blockMain)(size_t) = ^(size_t count) {
-//        if (0 != count && count % kTKAPortionCar == 0) {
-//            NSTimeInterval timeInterval = arc4random_uniform(kTKARandomSleep) * kTKATimerInterval / kTKARandomSleep;
-//            sleep(timeInterval);
-//        }
+        if (0 != count && count % kTKAPortionCar == 0) {
+            NSTimeInterval timeInterval = arc4random_uniform(kTKARandomSleep) * kTKATimerInterval / kTKARandomSleep;
+            sleep(timeInterval);
+        }
 
         [enterprise washCar:[TKACar car]];
     };
 
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
-        dispatch_apply(kTKACountCar, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), blockMain);
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+        dispatch_apply(kTKACountCar, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), blockMain);
     });
 }
 

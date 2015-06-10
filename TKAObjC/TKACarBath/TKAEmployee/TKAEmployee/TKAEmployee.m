@@ -66,7 +66,7 @@
                 self.state = TKAEmployeePerformWork;
                 self.processedObject = object;
                 
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
                     [self processObject:object];
                     
                     usleep(1000 * arc4random_uniform(10));
