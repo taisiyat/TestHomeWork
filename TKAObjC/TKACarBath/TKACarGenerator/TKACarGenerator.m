@@ -16,10 +16,10 @@
 static const NSUInteger kTKACountCar                = 100;
 static const NSUInteger kTKAPortionCar              = 5;
 static const NSUInteger kTKARandomSleep             = 100;
-static const NSUInteger kTKATimerInterval           = 2;
+static const NSUInteger kTKATimerInterval           = 1;
 
 @interface TKACarGenerator ()
-@property (nonatomic, retain) NSTimer *timer;
+//@property (nonatomic, retain) NSTimer *timer;
 
 @end
 
@@ -28,6 +28,9 @@ static const NSUInteger kTKATimerInterval           = 2;
 #pragma mark -
 #pragma mark Class Methods
 
++ (instancetype)carGeneratorWithTimerWithTarget:(id)target selector:(SEL)selector {
+    return [[[self alloc] initWithTimerWithTarget:target selector:selector] autorelease];
+}
 + (instancetype)carGenerator {
     return [[[self alloc] initWithTimer] autorelease];
 }
@@ -39,6 +42,15 @@ static const NSUInteger kTKATimerInterval           = 2;
     [self stop];
     
     [super dealloc];
+}
+
+- (instancetype)initWithTimerWithTarget:(id)target selector:(SEL)selector {
+    self = [super init];
+    if (self) {
+        [self startWithTimerWithTarget:(id)target selector:(SEL)selector];
+    }
+    
+    return self;
 }
 
 - (instancetype)initWithTimer {
@@ -78,7 +90,7 @@ static const NSUInteger kTKATimerInterval           = 2;
 //            NSTimeInterval timeInterval = arc4random_uniform(kTKARandomSleep) * kTKATimerInterval / kTKARandomSleep;
 //            sleep(timeInterval);
 //        }
-
+        
         [enterprise washCar:[TKACar car]];
     };
 
@@ -90,9 +102,18 @@ static const NSUInteger kTKATimerInterval           = 2;
 - (void)start {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kTKATimerInterval
                                                   target:self
-                                                selector:@selector(washCar:)
+                                                selector:@selector(carGenerationForEnterprise:)
                                                 userInfo:nil
                                                  repeats:YES];
+}
+
+- (void)startWithTimerWithTarget:(id)target selector:(SEL)selector  {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTKATimerInterval
+                                                  target:target
+                                                selector:selector
+                                                userInfo:nil
+                                                 repeats:YES];
+
 //    self.timer = [NSTimer timerWithTimeInterval:kTKATimerInterval
 //                                                  target:self
 //                                                selector:@selector(washCar:)

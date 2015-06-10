@@ -18,6 +18,7 @@ void TKACarBathTask1() {
         [enterprise prepare];
         NSLog(@"%@", [enterprise description]);
        
+//        TKACarGenerator *carGenerator = [TKACarGenerator carGeneratorWithTimerWithTarget:enterprise selector:@selector(washCar:)];
         TKACarGenerator *carGenerator = [TKACarGenerator carGenerator];
         [carGenerator carGenerationForEnterprise:enterprise];
        
