@@ -24,7 +24,6 @@ void TKACarBathTask1() {
        
         NSRunLoop *runLoop = [NSRunLoop mainRunLoop];
         [runLoop run];
-
     }
 }
 

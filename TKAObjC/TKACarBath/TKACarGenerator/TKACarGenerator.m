@@ -102,9 +102,15 @@ static const NSUInteger kTKATimerInterval           = 1;
 - (void)start {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kTKATimerInterval
                                                   target:self
-                                                selector:@selector(carGenerationForEnterprise:)
+                                                selector:@selector(washCar:)
                                                 userInfo:nil
                                                  repeats:YES];
+//    self.timer = [NSTimer timerWithTimeInterval:kTKATimerInterval
+//                                            target:self
+//                                          selector:@selector(washCar:)
+//                                          userInfo:nil
+//                                           repeats:YES];
+//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)startWithTimerWithTarget:(id)target selector:(SEL)selector  {
@@ -113,13 +119,6 @@ static const NSUInteger kTKATimerInterval           = 1;
                                                 selector:selector
                                                 userInfo:nil
                                                  repeats:YES];
-
-//    self.timer = [NSTimer timerWithTimeInterval:kTKATimerInterval
-//                                                  target:self
-//                                                selector:@selector(washCar:)
-//                                                userInfo:nil
-//                                                 repeats:YES];
-//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)stop {
