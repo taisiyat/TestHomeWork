@@ -11,11 +11,10 @@
 @class TKAEnterprise;
 
 @interface TKACarGenerator : NSObject
-@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, retain) TKAEnterprise *enterprise;
 
-+ (instancetype)carGeneratorWithTimerWithTarget:(id)target selector:(SEL)selector;
 + (instancetype)carGenerator;
 
-- (void)carGenerationForEnterprise:(TKAEnterprise *)enterprise;
+- (void)carGenerationForEnterprise;
 
 @end
